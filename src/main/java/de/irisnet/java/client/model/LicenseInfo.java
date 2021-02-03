@@ -28,7 +28,7 @@ import java.io.IOException;
  * Describes the current balance of the given license key. A key has a certain amount of credits that can be used for any kind of AI recognition. The license key is invalid, when all of the credits have been used.
  */
 @ApiModel(description = "Describes the current balance of the given license key. A key has a certain amount of credits that can be used for any kind of AI recognition. The license key is invalid, when all of the credits have been used.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T14:59:35.790Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T16:53:53.323Z[Etc/UTC]")
 public class LicenseInfo {
   public static final String SERIALIZED_NAME_CREDITS_USED = "creditsUsed";
   @SerializedName(SERIALIZED_NAME_CREDITS_USED)

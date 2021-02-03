@@ -32,7 +32,7 @@ import java.util.List;
  * Contains information on the AI result from the source media check.
  */
 @ApiModel(description = "Contains information on the AI result from the source media check.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T14:59:35.790Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T16:53:53.323Z[Etc/UTC]")
 public class IrisNet {
   public static final String SERIALIZED_NAME_RULES_BROKEN = "rulesBroken";
   @SerializedName(SERIALIZED_NAME_RULES_BROKEN)
