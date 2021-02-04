@@ -28,7 +28,7 @@ import java.io.IOException;
  * Describes the rules applied and the count of objects found for the given classification.
  */
 @ApiModel(description = "Describes the rules applied and the count of objects found for the given classification.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T16:53:53.323Z[Etc/UTC]")
+
 public class INRule {
   public static final String SERIALIZED_NAME_IN_CLASS = "inClass";
   @SerializedName(SERIALIZED_NAME_IN_CLASS)

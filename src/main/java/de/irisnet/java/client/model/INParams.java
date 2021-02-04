@@ -32,7 +32,7 @@ import java.util.List;
  * A set of parameters/rules that describe how the AI should behave.
  */
 @ApiModel(description = "A set of parameters/rules that describe how the AI should behave.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T16:53:53.323Z[Etc/UTC]")
+
 public class INParams {
   public static final String SERIALIZED_NAME_IN_DEFAULT = "inDefault";
   @SerializedName(SERIALIZED_NAME_IN_DEFAULT)

@@ -18,7 +18,7 @@ import de.irisnet.java.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T16:53:53.323Z[Etc/UTC]")
+
 public class HttpBearerAuth implements Authentication {
   private final String scheme;
   private String bearerToken;

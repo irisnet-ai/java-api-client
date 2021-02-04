@@ -31,7 +31,7 @@ import java.util.List;
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
 @ApiModel(description = "Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-03T16:53:53.323Z[Etc/UTC]")
+
 public class INDefineAI {
   public static final String SERIALIZED_NAME_IN_IMAGE = "inImage";
   @SerializedName(SERIALIZED_NAME_IN_IMAGE)
