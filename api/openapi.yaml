@@ -68,15 +68,16 @@ paths:
                 value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inParams>\n\t\
                   <inParam inClass=\"child\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"\
                   0\"/>\n</inParams>"
-              Blur nudity example:
-                description: Blur out everything related to nudity.
+              Blur sexual content example:
+                description: Blur out everything related to sexuality.
                 value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inParams>\n\t\
                   <inParam inClass=\"breast\" drawMode=\"3\" />\n\t<inParam inClass=\"\
                   vulva\" drawMode=\"3\" />\n\t<inParam inClass=\"penis\" drawMode=\"\
                   3\" />\n\t<inParam inClass=\"vagina\" drawMode=\"3\" />\n\t<inParam\
                   \ inClass=\"buttocks\" drawMode=\"3\" />\n\t<inParam inClass=\"\
-                  anus\" drawMode=\"3\" />\n\t<inParam inClass=\"oral\" drawMode=\"\
-                  3\" />\n\t<inParam inClass=\"penetration\" drawMode=\"3\" />\n</inParams>"
+                  anus\" drawMode=\"3\" />\n\t<inParam inClass=\"toy\" drawMode=\"\
+                  3\" />\n\t<inParam inClass=\"oral\" drawMode=\"3\" />\n\t<inParam\
+                  \ inClass=\"penetration\" drawMode=\"3\" />\n</inParams>"
             schema:
               $ref: '#/components/schemas/INParams'
           application/json:
@@ -159,8 +160,8 @@ paths:
                     max: "0"
                     drawMode: "2"
                     grey: "0"
-              Blur nudity example:
-                description: Blur out everything related to nudity.
+              Blur sexual content example:
+                description: Blur out everything related to sexuality.
                 value:
                   inParam:
                   - inClass: breast
@@ -174,6 +175,8 @@ paths:
                   - inClass: buttocks
                     drawMode: "3"
                   - inClass: anus
+                    drawMode: "3"
+                  - inClass: toy
                     drawMode: "3"
                   - inClass: oral
                     drawMode: "3"
@@ -207,12 +210,13 @@ paths:
         content:
           application/xml:
             examples:
-              Block nudity, children and illegal symbols:
+              Block nudity, children, text and illegal symbols:
                 description: This example shows the configuration for multiple AI-checks
                   per image.
                 value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inDefineAI>\n\
                   \t<inImage proto=\"nudityCheck\"/>\n\t<inImage proto=\"ageEstimation\"\
-                  />\n\t<inImage proto=\"illegalSymbols\"/>\n</inDefineAI>"
+                  />\n\t<inImage proto=\"textRecognition\"/>\n\t<inImage proto=\"\
+                  illegalSymbols\"/>\n</inDefineAI>"
               Default AI configuration:
                 description: Shows the default configuration of the AI. This is automatically
                   set, if no custom definition is posted.
@@ -280,15 +284,6 @@ paths:
           type: string
         style: simple
       responses:
-        "402":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: Not enough credits
         "200":
           content:
             application/xml:
@@ -298,6 +293,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/IrisNet'
           description: successful operation
+        "402":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/INError'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: Not enough credits
       summary: Check image url against previously chosen configuration.
       tags:
       - Endpoints for AI-checks
@@ -340,15 +344,6 @@ paths:
               type: object
         required: true
       responses:
-        "402":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: Not enough credits
         "200":
           content:
             application/xml:
@@ -358,6 +353,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/IrisNet'
           description: successful operation
+        "402":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/INError'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: Not enough credits
       summary: Upload and check image against previously chosen configuration.
       tags:
       - Endpoints for AI-checks
@@ -432,13 +436,6 @@ paths:
     get:
       operationId: getAICost
       responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                format: int64
-                type: integer
-          description: Contains the cost of the AI check with the current set of parameters.
         "429":
           content:
             '*/*':
@@ -448,6 +445,13 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: int64
+                type: integer
+          description: Contains the cost of the AI check with the current set of parameters.
       summary: Get the cost per image check of the previously set parameters. The
         cost of the configuration is subtracted from the license key during each check.
       tags:
@@ -528,7 +532,8 @@ components:
             \ - Object that recognizes sex toys.\n* _oral_ _(0, 0, 2)_ - Object that\
             \ recognizes oral sex.\n* _penetration_ _(0, 0, 2)_ - Object that recognizes\
             \ a sexual penetration penetration.\n* _illegalSymbols_ _(0, 0, 1)_ -\
-            \ Classification for symbols that are not permitted in Germany.\n\n_Please\
+            \ Classification for symbols that are not permitted in Germany.\n\n* _textRecognition_\
+            \ _(0, 3, 6)_ - Classification for recognizing text occurrences.\n\n_Please\
             \ be aware that the default values can be subject to change. This is due\
             \ to the difficulty of recognizing certain objects e.g. objects that are\
             \ classified as toy._"
@@ -554,6 +559,7 @@ components:
           - ageVerification
           - ageEstimation
           - illegalSymbols
+          - textRecognition
           example: face
           type: string
           xml:
@@ -660,30 +666,19 @@ components:
             * _ageVerification_ - Deprecated see 'ageEstimation'.
             * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps.
             * _illegalSymbols_ - Checks for symbols that are not permitted in Germany.
+            * _textRecognition_ - Checks for text occurrences.
           enum:
           - nudityCheck
           - ageVerification
           - ageEstimation
           - illegalSymbols
+          - textRecognition
           type: string
           xml:
             attribute: true
       type: object
       xml:
         name: inImage
-    INError:
-      properties:
-        code:
-          example: 418
-          format: int32
-          type: integer
-        message:
-          example: Here´s an example of what I can do, I can turn my handle into a
-            spout, Tip me over and pour me out!
-          type: string
-      type: object
-      xml:
-        name: error
     INObject:
       description: Describes a rectangle that stretches around the recognized object.
         This is useful when redacting or blurring certain recognized objects. Each
@@ -859,6 +854,19 @@ components:
       type: object
       xml:
         name: irisnet
+    INError:
+      properties:
+        code:
+          example: 418
+          format: int32
+          type: integer
+        message:
+          example: Here´s an example of what I can do, I can turn my handle into a
+            spout, Tip me over and pour me out!
+          type: string
+      type: object
+      xml:
+        name: error
     LicenseInfo:
       description: Describes the current balance of the given license key. A key has
         a certain amount of credits that can be used for any kind of AI recognition.
