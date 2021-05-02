@@ -179,8 +179,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Contains the cost of the AI check with the current set of parameters. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAICostCall(final ApiCallback _callback) throws ApiException {
@@ -229,8 +229,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Contains the cost of the AI check with the current set of parameters. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public Long getAICost() throws ApiException {
@@ -246,8 +246,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Contains the cost of the AI check with the current set of parameters. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Long> getAICostWithHttpInfo() throws ApiException {
@@ -265,8 +265,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Contains the cost of the AI check with the current set of parameters. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAICostAsync(final ApiCallback<Long> _callback) throws ApiException {

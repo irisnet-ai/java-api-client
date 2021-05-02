@@ -70,8 +70,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | successful operation |  -  |
 **402** | Not enough credits |  -  |
+**200** | successful operation |  -  |
 
 <a name="checkImageUrl"></a>
 # **checkImageUrl**
@@ -135,6 +135,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | successful operation |  -  |
 **402** | Not enough credits |  -  |
+**200** | successful operation |  -  |
 

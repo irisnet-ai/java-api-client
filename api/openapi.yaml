@@ -284,15 +284,6 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-          description: successful operation
         "402":
           content:
             application/xml:
@@ -302,6 +293,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/INError'
           description: Not enough credits
+        "200":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/IrisNet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IrisNet'
+          description: successful operation
       summary: Check image url against previously chosen configuration.
       tags:
       - Endpoints for AI-checks
@@ -344,15 +344,6 @@ paths:
               type: object
         required: true
       responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-          description: successful operation
         "402":
           content:
             application/xml:
@@ -362,6 +353,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/INError'
           description: Not enough credits
+        "200":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/IrisNet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IrisNet'
+          description: successful operation
       summary: Upload and check image against previously chosen configuration.
       tags:
       - Endpoints for AI-checks
@@ -436,6 +436,13 @@ paths:
     get:
       operationId: getAICost
       responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: int64
+                type: integer
+          description: Contains the cost of the AI check with the current set of parameters.
         "429":
           content:
             '*/*':
@@ -445,13 +452,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
-          content:
-            '*/*':
-              schema:
-                format: int64
-                type: integer
-          description: Contains the cost of the AI check with the current set of parameters.
       summary: Get the cost per image check of the previously set parameters. The
         cost of the configuration is subtracted from the license key during each check.
       tags:
@@ -679,6 +679,19 @@ components:
       type: object
       xml:
         name: inImage
+    INError:
+      properties:
+        code:
+          example: 418
+          format: int32
+          type: integer
+        message:
+          example: Here´s an example of what I can do, I can turn my handle into a
+            spout, Tip me over and pour me out!
+          type: string
+      type: object
+      xml:
+        name: error
     INObject:
       description: Describes a rectangle that stretches around the recognized object.
         This is useful when redacting or blurring certain recognized objects. Each
@@ -854,19 +867,6 @@ components:
       type: object
       xml:
         name: irisnet
-    INError:
-      properties:
-        code:
-          example: 418
-          format: int32
-          type: integer
-        message:
-          example: Here´s an example of what I can do, I can turn my handle into a
-            spout, Tip me over and pour me out!
-          type: string
-      type: object
-      xml:
-        name: error
     LicenseInfo:
       description: Describes the current balance of the given license key. A key has
         a certain amount of credits that can be used for any kind of AI recognition.

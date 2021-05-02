@@ -67,8 +67,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageCall(String licenseKey, Integer detail, File file, final ApiCallback _callback) throws ApiException {
@@ -134,8 +134,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public IrisNet checkImage(String licenseKey, Integer detail, File file) throws ApiException {
@@ -154,8 +154,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IrisNet> checkImageWithHttpInfo(String licenseKey, Integer detail, File file) throws ApiException {
@@ -176,8 +176,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageAsync(String licenseKey, Integer detail, File file, final ApiCallback<IrisNet> _callback) throws ApiException {
@@ -198,8 +198,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageUrlCall(String url, String licenseKey, Integer detail, final ApiCallback _callback) throws ApiException {
@@ -270,8 +270,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public IrisNet checkImageUrl(String url, String licenseKey, Integer detail) throws ApiException {
@@ -290,8 +290,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IrisNet> checkImageUrlWithHttpInfo(String url, String licenseKey, Integer detail) throws ApiException {
@@ -312,8 +312,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageUrlAsync(String url, String licenseKey, Integer detail, final ApiCallback<IrisNet> _callback) throws ApiException {
