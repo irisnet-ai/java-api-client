@@ -45,8 +45,7 @@ public class InlineObject {
    * Get file
    * @return file
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public File getFile() {
     return file;

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="checkImage"></a>
 # **checkImage**
-> IrisNet checkImage(licenseKey, detail, file)
+> IrisNet checkImage(licenseKey, file, detail)
 
 Upload and check image against previously chosen configuration.
 
@@ -30,10 +30,10 @@ public class Example {
 
     EndpointsForAiChecksApi apiInstance = new EndpointsForAiChecksApi(defaultClient);
     String licenseKey = "licenseKey_example"; // String | License obtained from irisnet.de shop.
-    Integer detail = 1; // Integer | Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
     File file = new File("/path/to/file"); // File | 
+    Integer detail = 1; // Integer | Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
     try {
-      IrisNet result = apiInstance.checkImage(licenseKey, detail, file);
+      IrisNet result = apiInstance.checkImage(licenseKey, file, detail);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling EndpointsForAiChecksApi#checkImage");
@@ -51,8 +51,8 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **licenseKey** | **String**| License obtained from irisnet.de shop. |
+ **file** | **File**|  |
  **detail** | **Integer**| Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. | [optional] [default to 1]
- **file** | **File**|  | [optional]
 
 ### Return type
 
@@ -70,8 +70,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**402** | Not enough credits |  -  |
 **200** | successful operation |  -  |
+**402** | Not enough credits |  -  |
 
 <a name="checkImageUrl"></a>
 # **checkImageUrl**
@@ -135,6 +135,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**402** | Not enough credits |  -  |
 **200** | successful operation |  -  |
+**402** | Not enough credits |  -  |
 

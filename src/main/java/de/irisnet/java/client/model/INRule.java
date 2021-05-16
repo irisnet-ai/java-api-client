@@ -34,6 +34,10 @@ public class INRule {
   @SerializedName(SERIALIZED_NAME_IN_CLASS)
   private String inClass;
 
+  public static final String SERIALIZED_NAME_IN_GROUP = "inGroup";
+  @SerializedName(SERIALIZED_NAME_IN_GROUP)
+  private String inGroup;
+
   public static final String SERIALIZED_NAME_FOUND = "found";
   @SerializedName(SERIALIZED_NAME_FOUND)
   private Integer found;
@@ -67,6 +71,29 @@ public class INRule {
 
   public void setInClass(String inClass) {
     this.inClass = inClass;
+  }
+
+
+  public INRule inGroup(String inGroup) {
+    
+    this.inGroup = inGroup;
+    return this;
+  }
+
+   /**
+   * The group of the classification.
+   * @return inGroup
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "human", value = "The group of the classification.")
+
+  public String getInGroup() {
+    return inGroup;
+  }
+
+
+  public void setInGroup(String inGroup) {
+    this.inGroup = inGroup;
   }
 
 
@@ -149,6 +176,7 @@ public class INRule {
     }
     INRule inRule = (INRule) o;
     return Objects.equals(this.inClass, inRule.inClass) &&
+        Objects.equals(this.inGroup, inRule.inGroup) &&
         Objects.equals(this.found, inRule.found) &&
         Objects.equals(this.min, inRule.min) &&
         Objects.equals(this.max, inRule.max);
@@ -156,7 +184,7 @@ public class INRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(inClass, found, min, max);
+    return Objects.hash(inClass, inGroup, found, min, max);
   }
 
 
@@ -165,6 +193,7 @@ public class INRule {
     StringBuilder sb = new StringBuilder();
     sb.append("class INRule {\n");
     sb.append("    inClass: ").append(toIndentedString(inClass)).append("\n");
+    sb.append("    inGroup: ").append(toIndentedString(inGroup)).append("\n");
     sb.append("    found: ").append(toIndentedString(found)).append("\n");
     sb.append("    min: ").append(toIndentedString(min)).append("\n");
     sb.append("    max: ").append(toIndentedString(max)).append("\n");

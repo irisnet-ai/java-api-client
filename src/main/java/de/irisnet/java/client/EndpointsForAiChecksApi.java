@@ -59,19 +59,19 @@ public class EndpointsForAiChecksApi {
     /**
      * Build call for checkImage
      * @param licenseKey License obtained from irisnet.de shop. (required)
+     * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
-     * @param file  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageCall(String licenseKey, Integer detail, File file, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkImageCall(String licenseKey, File file, Integer detail, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -110,15 +110,20 @@ public class EndpointsForAiChecksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkImageValidateBeforeCall(String licenseKey, Integer detail, File file, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkImageValidateBeforeCall(String licenseKey, File file, Integer detail, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'licenseKey' is set
         if (licenseKey == null) {
             throw new ApiException("Missing the required parameter 'licenseKey' when calling checkImage(Async)");
         }
         
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling checkImage(Async)");
+        }
+        
 
-        okhttp3.Call localVarCall = checkImageCall(licenseKey, detail, file, _callback);
+        okhttp3.Call localVarCall = checkImageCall(licenseKey, file, detail, _callback);
         return localVarCall;
 
     }
@@ -127,19 +132,19 @@ public class EndpointsForAiChecksApi {
      * Upload and check image against previously chosen configuration.
      * 
      * @param licenseKey License obtained from irisnet.de shop. (required)
+     * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
-     * @param file  (optional)
      * @return IrisNet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public IrisNet checkImage(String licenseKey, Integer detail, File file) throws ApiException {
-        ApiResponse<IrisNet> localVarResp = checkImageWithHttpInfo(licenseKey, detail, file);
+    public IrisNet checkImage(String licenseKey, File file, Integer detail) throws ApiException {
+        ApiResponse<IrisNet> localVarResp = checkImageWithHttpInfo(licenseKey, file, detail);
         return localVarResp.getData();
     }
 
@@ -147,19 +152,19 @@ public class EndpointsForAiChecksApi {
      * Upload and check image against previously chosen configuration.
      * 
      * @param licenseKey License obtained from irisnet.de shop. (required)
+     * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
-     * @param file  (optional)
      * @return ApiResponse&lt;IrisNet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IrisNet> checkImageWithHttpInfo(String licenseKey, Integer detail, File file) throws ApiException {
-        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, detail, file, null);
+    public ApiResponse<IrisNet> checkImageWithHttpInfo(String licenseKey, File file, Integer detail) throws ApiException {
+        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, file, detail, null);
         Type localVarReturnType = new TypeToken<IrisNet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -168,21 +173,21 @@ public class EndpointsForAiChecksApi {
      * Upload and check image against previously chosen configuration. (asynchronously)
      * 
      * @param licenseKey License obtained from irisnet.de shop. (required)
+     * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
-     * @param file  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageAsync(String licenseKey, Integer detail, File file, final ApiCallback<IrisNet> _callback) throws ApiException {
+    public okhttp3.Call checkImageAsync(String licenseKey, File file, Integer detail, final ApiCallback<IrisNet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, detail, file, _callback);
+        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, file, detail, _callback);
         Type localVarReturnType = new TypeToken<IrisNet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -198,8 +203,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageUrlCall(String url, String licenseKey, Integer detail, final ApiCallback _callback) throws ApiException {
@@ -270,8 +275,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
     public IrisNet checkImageUrl(String url, String licenseKey, Integer detail) throws ApiException {
@@ -290,8 +295,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IrisNet> checkImageUrlWithHttpInfo(String url, String licenseKey, Integer detail) throws ApiException {
@@ -312,8 +317,8 @@ public class EndpointsForAiChecksApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageUrlAsync(String url, String licenseKey, Integer detail, final ApiCallback<IrisNet> _callback) throws ApiException {

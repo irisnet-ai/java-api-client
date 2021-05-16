@@ -65,8 +65,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call downloadProcessedCall(String filename, final ApiCallback _callback) throws ApiException {
@@ -122,8 +122,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public File downloadProcessed(String filename) throws ApiException {
@@ -140,8 +140,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> downloadProcessedWithHttpInfo(String filename) throws ApiException {
@@ -160,8 +160,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call downloadProcessedAsync(String filename, final ApiCallback<File> _callback) throws ApiException {
@@ -285,8 +285,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoCall(String licenseKey, final ApiCallback _callback) throws ApiException {
@@ -342,8 +342,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public LicenseInfo getLicenseInfo(String licenseKey) throws ApiException {
@@ -360,8 +360,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicenseInfo> getLicenseInfoWithHttpInfo(String licenseKey) throws ApiException {
@@ -380,8 +380,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoAsync(String licenseKey, final ApiCallback<LicenseInfo> _callback) throws ApiException {

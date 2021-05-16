@@ -284,15 +284,6 @@ paths:
           type: string
         style: simple
       responses:
-        "402":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: Not enough credits
         "200":
           content:
             application/xml:
@@ -302,6 +293,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/IrisNet'
           description: successful operation
+        "402":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/INError'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: Not enough credits
       summary: Check image url against previously chosen configuration.
       tags:
       - Endpoints for AI-checks
@@ -341,18 +341,11 @@ paths:
                 file:
                   format: binary
                   type: string
+              required:
+              - file
               type: object
         required: true
       responses:
-        "402":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: Not enough credits
         "200":
           content:
             application/xml:
@@ -362,6 +355,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/IrisNet'
           description: successful operation
+        "402":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/INError'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: Not enough credits
       summary: Upload and check image against previously chosen configuration.
       tags:
       - Endpoints for AI-checks
@@ -380,15 +382,6 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/LicenseInfo'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LicenseInfo'
-          description: successful operation
         "404":
           content:
             application/xml:
@@ -398,6 +391,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/INError'
           description: The entered license key was not found.
+        "200":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LicenseInfo'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseInfo'
+          description: successful operation
       summary: Get information from given license key.
       tags:
       - Miscellaneous operations
@@ -414,6 +416,12 @@ paths:
           type: string
         style: simple
       responses:
+        "404":
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: Specified file was not found.
         "200":
           content:
             application/octet-stream:
@@ -422,12 +430,6 @@ paths:
                 type: string
           description: Returns the file AI produced file with masking or blurring,
             depending on given AI parameters.
-        "404":
-          content:
-            application/octet-stream:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: Specified file was not found.
       summary: Get the resulting media file.
       tags:
       - Miscellaneous operations
@@ -679,19 +681,6 @@ components:
       type: object
       xml:
         name: inImage
-    INError:
-      properties:
-        code:
-          example: 418
-          format: int32
-          type: integer
-        message:
-          example: Here´s an example of what I can do, I can turn my handle into a
-            spout, Tip me over and pour me out!
-          type: string
-      type: object
-      xml:
-        name: error
     INObject:
       description: Describes a rectangle that stretches around the recognized object.
         This is useful when redacting or blurring certain recognized objects. Each
@@ -700,11 +689,13 @@ components:
         system is on the top left of the of the source material. The bottom right
         of the source is always y = 1 and x = 1.
       example:
+        inId: human
         inClass: face
         probability: 94
         y0: 0.1
         x0: 0.1
         width: 0.1
+        inGroup: human
         height: 0.1
       properties:
         inClass:
@@ -713,6 +704,19 @@ components:
           type: string
           xml:
             attribute: true
+        inGroup:
+          description: The group of the classification.
+          example: human
+          type: string
+          xml:
+            attribute: true
+        inId:
+          description: The group of the classification.
+          example: human
+          type: string
+          xml:
+            attribute: true
+            name: inID
         x0:
           description: The starting point of the rectangle in the vertical (x) direction.
           example: 0.1
@@ -759,10 +763,17 @@ components:
         min: 1
         inClass: face
         max: 1
+        inGroup: human
       properties:
         inClass:
           description: The classification of the recognized object.
           example: face
+          type: string
+          xml:
+            attribute: true
+        inGroup:
+          description: The group of the classification.
+          example: human
           type: string
           xml:
             attribute: true
@@ -797,26 +808,32 @@ components:
           min: 1
           inClass: face
           max: 1
+          inGroup: human
         - found: 1
           min: 1
           inClass: face
           max: 1
+          inGroup: human
         getnObjects: 1
         helpSuggested: 0
         getnClasses: 8
         rulesBroken: 0
         inObject:
-        - inClass: face
+        - inId: human
+          inClass: face
           probability: 94
           y0: 0.1
           x0: 0.1
           width: 0.1
+          inGroup: human
           height: 0.1
-        - inClass: face
+        - inId: human
+          inClass: face
           probability: 94
           y0: 0.1
           x0: 0.1
           width: 0.1
+          inGroup: human
           height: 0.1
       properties:
         rulesBroken:
@@ -867,6 +884,19 @@ components:
       type: object
       xml:
         name: irisnet
+    INError:
+      properties:
+        code:
+          example: 418
+          format: int32
+          type: integer
+        message:
+          example: Here´s an example of what I can do, I can turn my handle into a
+            spout, Tip me over and pour me out!
+          type: string
+      type: object
+      xml:
+        name: error
     LicenseInfo:
       description: Describes the current balance of the given license key. A key has
         a certain amount of credits that can be used for any kind of AI recognition.
@@ -900,5 +930,7 @@ components:
         file:
           format: binary
           type: string
+      required:
+      - file
       type: object
 

@@ -34,6 +34,14 @@ public class INObject {
   @SerializedName(SERIALIZED_NAME_IN_CLASS)
   private String inClass;
 
+  public static final String SERIALIZED_NAME_IN_GROUP = "inGroup";
+  @SerializedName(SERIALIZED_NAME_IN_GROUP)
+  private String inGroup;
+
+  public static final String SERIALIZED_NAME_IN_ID = "inId";
+  @SerializedName(SERIALIZED_NAME_IN_ID)
+  private String inId;
+
   public static final String SERIALIZED_NAME_X0 = "x0";
   @SerializedName(SERIALIZED_NAME_X0)
   private Float x0;
@@ -75,6 +83,52 @@ public class INObject {
 
   public void setInClass(String inClass) {
     this.inClass = inClass;
+  }
+
+
+  public INObject inGroup(String inGroup) {
+    
+    this.inGroup = inGroup;
+    return this;
+  }
+
+   /**
+   * The group of the classification.
+   * @return inGroup
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "human", value = "The group of the classification.")
+
+  public String getInGroup() {
+    return inGroup;
+  }
+
+
+  public void setInGroup(String inGroup) {
+    this.inGroup = inGroup;
+  }
+
+
+  public INObject inId(String inId) {
+    
+    this.inId = inId;
+    return this;
+  }
+
+   /**
+   * The group of the classification.
+   * @return inId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "human", value = "The group of the classification.")
+
+  public String getInId() {
+    return inId;
+  }
+
+
+  public void setInId(String inId) {
+    this.inId = inId;
   }
 
 
@@ -203,6 +257,8 @@ public class INObject {
     }
     INObject inObject = (INObject) o;
     return Objects.equals(this.inClass, inObject.inClass) &&
+        Objects.equals(this.inGroup, inObject.inGroup) &&
+        Objects.equals(this.inId, inObject.inId) &&
         Objects.equals(this.x0, inObject.x0) &&
         Objects.equals(this.y0, inObject.y0) &&
         Objects.equals(this.width, inObject.width) &&
@@ -212,7 +268,7 @@ public class INObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(inClass, x0, y0, width, height, probability);
+    return Objects.hash(inClass, inGroup, inId, x0, y0, width, height, probability);
   }
 
 
@@ -221,6 +277,8 @@ public class INObject {
     StringBuilder sb = new StringBuilder();
     sb.append("class INObject {\n");
     sb.append("    inClass: ").append(toIndentedString(inClass)).append("\n");
+    sb.append("    inGroup: ").append(toIndentedString(inGroup)).append("\n");
+    sb.append("    inId: ").append(toIndentedString(inId)).append("\n");
     sb.append("    x0: ").append(toIndentedString(x0)).append("\n");
     sb.append("    y0: ").append(toIndentedString(y0)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
