@@ -1,6 +1,6 @@
 /*
  * Irisnet API
- * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses.By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
+ * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
  *
  * The version of the OpenAPI document: v1
  * 
@@ -61,6 +61,7 @@ public class EndpointsForAiChecksApi {
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -71,7 +72,7 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageCall(String licenseKey, File file, Integer detail, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkImageCall(String licenseKey, File file, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -82,6 +83,10 @@ public class EndpointsForAiChecksApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (detail != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("detail", detail));
+        }
+
+        if (imageEncode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("imageEncode", imageEncode));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -110,7 +115,7 @@ public class EndpointsForAiChecksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkImageValidateBeforeCall(String licenseKey, File file, Integer detail, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkImageValidateBeforeCall(String licenseKey, File file, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'licenseKey' is set
         if (licenseKey == null) {
@@ -123,7 +128,7 @@ public class EndpointsForAiChecksApi {
         }
         
 
-        okhttp3.Call localVarCall = checkImageCall(licenseKey, file, detail, _callback);
+        okhttp3.Call localVarCall = checkImageCall(licenseKey, file, detail, imageEncode, _callback);
         return localVarCall;
 
     }
@@ -134,6 +139,7 @@ public class EndpointsForAiChecksApi {
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @return IrisNet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -143,8 +149,8 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public IrisNet checkImage(String licenseKey, File file, Integer detail) throws ApiException {
-        ApiResponse<IrisNet> localVarResp = checkImageWithHttpInfo(licenseKey, file, detail);
+    public IrisNet checkImage(String licenseKey, File file, Integer detail, Boolean imageEncode) throws ApiException {
+        ApiResponse<IrisNet> localVarResp = checkImageWithHttpInfo(licenseKey, file, detail, imageEncode);
         return localVarResp.getData();
     }
 
@@ -154,6 +160,7 @@ public class EndpointsForAiChecksApi {
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @return ApiResponse&lt;IrisNet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -163,8 +170,8 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IrisNet> checkImageWithHttpInfo(String licenseKey, File file, Integer detail) throws ApiException {
-        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, file, detail, null);
+    public ApiResponse<IrisNet> checkImageWithHttpInfo(String licenseKey, File file, Integer detail, Boolean imageEncode) throws ApiException {
+        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, file, detail, imageEncode, null);
         Type localVarReturnType = new TypeToken<IrisNet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -175,6 +182,7 @@ public class EndpointsForAiChecksApi {
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param file  (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -185,9 +193,9 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageAsync(String licenseKey, File file, Integer detail, final ApiCallback<IrisNet> _callback) throws ApiException {
+    public okhttp3.Call checkImageAsync(String licenseKey, File file, Integer detail, Boolean imageEncode, final ApiCallback<IrisNet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, file, detail, _callback);
+        okhttp3.Call localVarCall = checkImageValidateBeforeCall(licenseKey, file, detail, imageEncode, _callback);
         Type localVarReturnType = new TypeToken<IrisNet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -197,6 +205,7 @@ public class EndpointsForAiChecksApi {
      * @param url  (required)
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -207,7 +216,7 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageUrlCall(String url, String licenseKey, Integer detail, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkImageUrlCall(String url, String licenseKey, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -222,6 +231,10 @@ public class EndpointsForAiChecksApi {
 
         if (detail != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("detail", detail));
+        }
+
+        if (imageEncode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("imageEncode", imageEncode));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -246,7 +259,7 @@ public class EndpointsForAiChecksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkImageUrlValidateBeforeCall(String url, String licenseKey, Integer detail, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkImageUrlValidateBeforeCall(String url, String licenseKey, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'url' is set
         if (url == null) {
@@ -259,7 +272,7 @@ public class EndpointsForAiChecksApi {
         }
         
 
-        okhttp3.Call localVarCall = checkImageUrlCall(url, licenseKey, detail, _callback);
+        okhttp3.Call localVarCall = checkImageUrlCall(url, licenseKey, detail, imageEncode, _callback);
         return localVarCall;
 
     }
@@ -270,6 +283,7 @@ public class EndpointsForAiChecksApi {
      * @param url  (required)
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @return IrisNet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -279,8 +293,8 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public IrisNet checkImageUrl(String url, String licenseKey, Integer detail) throws ApiException {
-        ApiResponse<IrisNet> localVarResp = checkImageUrlWithHttpInfo(url, licenseKey, detail);
+    public IrisNet checkImageUrl(String url, String licenseKey, Integer detail, Boolean imageEncode) throws ApiException {
+        ApiResponse<IrisNet> localVarResp = checkImageUrlWithHttpInfo(url, licenseKey, detail, imageEncode);
         return localVarResp.getData();
     }
 
@@ -290,6 +304,7 @@ public class EndpointsForAiChecksApi {
      * @param url  (required)
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @return ApiResponse&lt;IrisNet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -299,8 +314,8 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IrisNet> checkImageUrlWithHttpInfo(String url, String licenseKey, Integer detail) throws ApiException {
-        okhttp3.Call localVarCall = checkImageUrlValidateBeforeCall(url, licenseKey, detail, null);
+    public ApiResponse<IrisNet> checkImageUrlWithHttpInfo(String url, String licenseKey, Integer detail, Boolean imageEncode) throws ApiException {
+        okhttp3.Call localVarCall = checkImageUrlValidateBeforeCall(url, licenseKey, detail, imageEncode, null);
         Type localVarReturnType = new TypeToken<IrisNet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -311,6 +326,7 @@ public class EndpointsForAiChecksApi {
      * @param url  (required)
      * @param licenseKey License obtained from irisnet.de shop. (required)
      * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information. (optional, default to 1)
+     * @param imageEncode Specifies whether or not to draw an output image that can be downloaded afterwards. (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -321,9 +337,9 @@ public class EndpointsForAiChecksApi {
         <tr><td> 402 </td><td> Not enough credits </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageUrlAsync(String url, String licenseKey, Integer detail, final ApiCallback<IrisNet> _callback) throws ApiException {
+    public okhttp3.Call checkImageUrlAsync(String url, String licenseKey, Integer detail, Boolean imageEncode, final ApiCallback<IrisNet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkImageUrlValidateBeforeCall(url, licenseKey, detail, _callback);
+        okhttp3.Call localVarCall = checkImageUrlValidateBeforeCall(url, licenseKey, detail, imageEncode, _callback);
         Type localVarReturnType = new TypeToken<IrisNet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

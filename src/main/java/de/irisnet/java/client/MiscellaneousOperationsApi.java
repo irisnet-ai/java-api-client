@@ -1,6 +1,6 @@
 /*
  * Irisnet API
- * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses.By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
+ * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
  *
  * The version of the OpenAPI document: v1
  * 
@@ -65,8 +65,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call downloadProcessedCall(String filename, final ApiCallback _callback) throws ApiException {
@@ -122,8 +122,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
      </table>
      */
     public File downloadProcessed(String filename) throws ApiException {
@@ -140,8 +140,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> downloadProcessedWithHttpInfo(String filename) throws ApiException {
@@ -160,8 +160,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call downloadProcessedAsync(String filename, final ApiCallback<File> _callback) throws ApiException {
@@ -278,15 +278,15 @@ public class MiscellaneousOperationsApi {
     }
     /**
      * Build call for getLicenseInfo
-     * @param licenseKey License obtained from the https://www.irisnet.de/prices shop. (required)
+     * @param licenseKey License obtained from the https://irisnet.de/subscribe shop. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoCall(String licenseKey, final ApiCallback _callback) throws ApiException {
@@ -336,14 +336,14 @@ public class MiscellaneousOperationsApi {
     /**
      * Get information from given license key.
      * 
-     * @param licenseKey License obtained from the https://www.irisnet.de/prices shop. (required)
+     * @param licenseKey License obtained from the https://irisnet.de/subscribe shop. (required)
      * @return LicenseInfo
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public LicenseInfo getLicenseInfo(String licenseKey) throws ApiException {
@@ -354,14 +354,14 @@ public class MiscellaneousOperationsApi {
     /**
      * Get information from given license key.
      * 
-     * @param licenseKey License obtained from the https://www.irisnet.de/prices shop. (required)
+     * @param licenseKey License obtained from the https://irisnet.de/subscribe shop. (required)
      * @return ApiResponse&lt;LicenseInfo&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicenseInfo> getLicenseInfoWithHttpInfo(String licenseKey) throws ApiException {
@@ -373,15 +373,15 @@ public class MiscellaneousOperationsApi {
     /**
      * Get information from given license key. (asynchronously)
      * 
-     * @param licenseKey License obtained from the https://www.irisnet.de/prices shop. (required)
+     * @param licenseKey License obtained from the https://irisnet.de/subscribe shop. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoAsync(String licenseKey, final ApiCallback<LicenseInfo> _callback) throws ApiException {

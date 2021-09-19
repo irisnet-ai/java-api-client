@@ -35,8 +35,9 @@ public class Example {
 <inDefineAI>
 	<inImage proto="nudityCheck"/>
 	<inImage proto="ageEstimation"/>
-	<inImage proto="textRecognition"/>
 	<inImage proto="illegalSymbols"/>
+	<inImage proto="attributesCheck"/>
+	<inImage proto="textRecognition"/>
 </inDefineAI>; // INDefineAI | 
     try {
       apiInstance.setINDefine(inDefineAI);

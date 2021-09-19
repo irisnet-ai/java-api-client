@@ -6,9 +6,9 @@ info:
     Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API.
     The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.
 
-    Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses.By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.
+    Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.
 
-  termsOfService: https://www.irisnet.de/allgemeine-geschaeftsbedingungen/
+  termsOfService: https://irisnet.de/terms-and-conditions/
   title: Irisnet API
   version: v1
 servers:
@@ -210,13 +210,13 @@ paths:
         content:
           application/xml:
             examples:
-              Block nudity, children, text and illegal symbols:
+              Block nudity, children and illegal symbols, find attributes and text:
                 description: This example shows the configuration for multiple AI-checks
                   per image.
                 value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inDefineAI>\n\
                   \t<inImage proto=\"nudityCheck\"/>\n\t<inImage proto=\"ageEstimation\"\
-                  />\n\t<inImage proto=\"textRecognition\"/>\n\t<inImage proto=\"\
-                  illegalSymbols\"/>\n</inDefineAI>"
+                  />\n\t<inImage proto=\"illegalSymbols\"/>\n\t<inImage proto=\"attributesCheck\"\
+                  />\n\t<inImage proto=\"textRecognition\"/>\n</inDefineAI>"
               Default AI configuration:
                 description: Shows the default configuration of the AI. This is automatically
                   set, if no custom definition is posted.
@@ -275,6 +275,16 @@ paths:
           format: int32
           type: integer
         style: form
+      - description: Specifies whether or not to draw an output image that can be
+          downloaded afterwards.
+        explode: true
+        in: query
+        name: imageEncode
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       - description: License obtained from irisnet.de shop.
         explode: false
         in: path
@@ -323,6 +333,16 @@ paths:
           default: 1
           format: int32
           type: integer
+        style: form
+      - description: Specifies whether or not to draw an output image that can be
+          downloaded afterwards.
+        explode: true
+        in: query
+        name: imageEncode
+        required: false
+        schema:
+          default: false
+          type: boolean
         style: form
       - description: License obtained from irisnet.de shop.
         explode: false
@@ -373,7 +393,7 @@ paths:
     get:
       operationId: getLicenseInfo
       parameters:
-      - description: License obtained from the https://www.irisnet.de/prices shop.
+      - description: License obtained from the https://irisnet.de/subscribe shop.
         explode: false
         in: path
         name: licenseKey
@@ -382,15 +402,6 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: The entered license key was not found.
         "200":
           content:
             application/xml:
@@ -400,6 +411,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/LicenseInfo'
           description: successful operation
+        "404":
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/INError'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: The entered license key was not found.
       summary: Get information from given license key.
       tags:
       - Miscellaneous operations
@@ -416,12 +436,6 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
-          content:
-            application/octet-stream:
-              schema:
-                $ref: '#/components/schemas/INError'
-          description: Specified file was not found.
         "200":
           content:
             application/octet-stream:
@@ -430,6 +444,12 @@ paths:
                 type: string
           description: Returns the file AI produced file with masking or blurring,
             depending on given AI parameters.
+        "404":
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/INError'
+          description: Specified file was not found.
       summary: Get the resulting media file.
       tags:
       - Miscellaneous operations
@@ -517,51 +537,72 @@ components:
             \ to. Default parameter values are defined per classification object.\
             \ The following list contains the default values for 'min', 'max' and\
             \ 'drawMode' in order. \n* _face_ _(1, 3, 0)_ - Classification for human\
-            \ faces.\n* _child_ _(0, 0, 1)_ - Recognizes children's faces. Overwrites\
-            \ classification parameters of face.\n* _adult_ _(0, -1, 1)_ - Recognizes\
-            \ faces of adults that are not considered seniors. Overwrites classification\
-            \ parameters of face.\n* _senior_ _(0, -1, 1)_ - Recognizes faces of seniors.\
-            \ Overwrites classification parameters of face.\n* _pose_ _(0, 0, 1)_\
-            \ - The age can not be estimated, due to a pose that hides facial features.\n\
-            * _hand_ _(0, -1, 0)_ - Classification for recognizing hands.\n* _foot_\
-            \ _(0, -1, 0)_ - Classification for recognizing feet.\n* _footwear_ _(0,\
-            \ -1, 0)_ - Classification for recognizing footwear.\n* _breast_ _(0,\
-            \ 0, 2)_ - Object that recognizes female breasts.\n* _vulva_ _(0, 0, 2)_\
-            \ - Object that recognizes vulvae.\n* _penis_ _(0, 0, 2)_ - Object that\
-            \ recognizes penises.\n* _vagina_ _(0, 0, 2)_ - Object that recognizes\
+            \ faces.\n* _child (*)_ _(0, 0, 6)_ - Recognizes children's faces.\n*\
+            \ _adult (*)_ _(0, -1, 0)_ - Recognizes faces of adults that are not considered\
+            \ seniors.\n* _senior (*)_ _(0, -1, 0)_ - Recognizes faces of seniors.\n\
+            * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that\
+            \ hides facial features.\n* _female (*)_ _(0, -1, 0)_ - Recognizes female\
+            \ faces.\n\n* _male (*)_ _(0, -1, 0)_ - Recognizes male faces.\n\n* _hand_\
+            \ _(0, -1, 0)_ - Classification for recognizing hands.\n* _foot_ _(0,\
+            \ -1, 0)_ - Classification for recognizing feet.\n* _footwear_ _(0, -1,\
+            \ 0)_ - Classification for recognizing footwear.\n* _hair_ _(0, -1, 0)_\
+            \ - Classification for recognizing hair.\n\n* _hairless_ _(0, -1, 0)_\
+            \ - Classification for recognizing no hair.\n\n* _beard_ _(0, -1, 0)_\
+            \ - Classification for recognizing beards.\n\n* _moustache_ _(0, -1, 0)_\
+            \ - Classification for recognizing moustaches.\n\n* _headpiece_ _(0, -1,\
+            \ 0)_ - Classification for recognizing headpieces.\n\n* _glasses_ _(0,\
+            \ -1, 0)_ - Classification for recognizing glasses.\n\n* _sunglasses_\
+            \ _(0, -1, 0)_ - Classification for recognizing sunglasses.\n\n* _mask_\
+            \ _(0, -1, 0)_ - Classification for recognizing medical masks.\n\n* _breast_\
+            \ _(0, 0, 2)_ - Object that recognizes female breasts.\n* _vulva_ _(0,\
+            \ 0, 2)_ - Object that recognizes vulvae.\n* _penis_ _(0, 0, 2)_ - Object\
+            \ that recognizes penises.\n* _vagina_ _(0, 0, 2)_ - Object that recognizes\
             \ vaginae.\n* _buttocks_ _(0, 0, 2)_ - Object that recognizes buttocks.\n\
-            * _anus_ _(0, 0, 2)_ - Object that recognizes ani.\n* _toy_ _(0, 0, 2)_\
+            * _anus_ _(0, 0, 2)_ - Object that recognizes ani.\n* _toy_ _(0, -1, 0)_\
             \ - Object that recognizes sex toys.\n* _oral_ _(0, 0, 2)_ - Object that\
             \ recognizes oral sex.\n* _penetration_ _(0, 0, 2)_ - Object that recognizes\
             \ a sexual penetration penetration.\n* _illegalSymbols_ _(0, 0, 1)_ -\
             \ Classification for symbols that are not permitted in Germany.\n\n* _textRecognition_\
-            \ _(0, 3, 6)_ - Classification for recognizing text occurrences.\n\n_Please\
-            \ be aware that the default values can be subject to change. This is due\
-            \ to the difficulty of recognizing certain objects e.g. objects that are\
-            \ classified as toy._"
+            \ _(0, 6, 6)_ - Classification for recognizing text occurrences.\n\n_Classification\
+            \ objects that are marked with (*) are sub-classifications of face. Both\
+            \ face and the marked classification are affected by the given parameter\
+            \ values._\n\n_Please be aware that the default values can be subject\
+            \ to change. This is due to the difficulty of recognizing certain objects\
+            \ e.g. objects that are classified as toy._"
           enum:
           - face
-          - child
-          - adult
-          - senior
-          - pose
           - hand
+          - foot
+          - footwear
           - breast
           - vulva
           - penis
           - vagina
           - buttocks
           - anus
-          - toy
           - oral
           - penetration
-          - foot
-          - footwear
+          - toy
+          - child
+          - adult
+          - senior
+          - pose
+          - female
+          - male
+          - hair
+          - hairless
+          - beard
+          - moustache
+          - headpiece
+          - glasses
+          - sunglasses
+          - mask
           - nudityCheck
           - ageVerification
           - ageEstimation
           - illegalSymbols
           - textRecognition
+          - attributesCheck
           example: face
           type: string
           xml:
@@ -669,12 +710,14 @@ components:
             * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps.
             * _illegalSymbols_ - Checks for symbols that are not permitted in Germany.
             * _textRecognition_ - Checks for text occurrences.
+            * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc).
           enum:
           - nudityCheck
           - ageVerification
           - ageEstimation
           - illegalSymbols
           - textRecognition
+          - attributesCheck
           type: string
           xml:
             attribute: true
@@ -690,11 +733,13 @@ components:
         of the source is always y = 1 and x = 1.
       example:
         inId: human
+        color: black
         inClass: face
         probability: 94
         y0: 0.1
         x0: 0.1
         width: 0.1
+        style: longHaired
         inGroup: human
         height: 0.1
       properties:
@@ -717,6 +762,32 @@ components:
           xml:
             attribute: true
             name: inID
+        color:
+          description: "The color of the object, e.g. the color of the hair. Is only\
+            \ available for certain classification objects. See list below: \n* _hair_\
+            \ - black, brown, blonde, grey, red, other"
+          enum:
+          - black
+          - brown
+          - blonde
+          - grey
+          - red
+          - other
+          example: black
+          type: string
+          xml:
+            attribute: true
+        style:
+          description: "The style attribute of the object, e.g. the style of the hair.\
+            \ Is only available for certain classification objects. See list below:\
+            \ \n* _hair_ - longHaired, shortHaired"
+          enum:
+          - longHaired
+          - shortHaired
+          example: longHaired
+          type: string
+          xml:
+            attribute: true
         x0:
           description: The starting point of the rectangle in the vertical (x) direction.
           example: 0.1
@@ -820,19 +891,23 @@ components:
         rulesBroken: 0
         inObject:
         - inId: human
+          color: black
           inClass: face
           probability: 94
           y0: 0.1
           x0: 0.1
           width: 0.1
+          style: longHaired
           inGroup: human
           height: 0.1
         - inId: human
+          color: black
           inClass: face
           probability: 94
           y0: 0.1
           x0: 0.1
           width: 0.1
+          style: longHaired
           inGroup: human
           height: 0.1
       properties:

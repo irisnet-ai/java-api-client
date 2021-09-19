@@ -1,6 +1,6 @@
 /*
  * Irisnet API
- * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses.By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
+ * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
  *
  * The version of the OpenAPI document: v1
  * 
@@ -41,6 +41,116 @@ public class INObject {
   public static final String SERIALIZED_NAME_IN_ID = "inId";
   @SerializedName(SERIALIZED_NAME_IN_ID)
   private String inId;
+
+  /**
+   * The color of the object, e.g. the color of the hair. Is only available for certain classification objects. See list below:  * _hair_ - black, brown, blonde, grey, red, other
+   */
+  @JsonAdapter(ColorEnum.Adapter.class)
+  public enum ColorEnum {
+    BLACK("black"),
+    
+    BROWN("brown"),
+    
+    BLONDE("blonde"),
+    
+    GREY("grey"),
+    
+    RED("red"),
+    
+    OTHER("other");
+
+    private String value;
+
+    ColorEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ColorEnum fromValue(String value) {
+      for (ColorEnum b : ColorEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ColorEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ColorEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ColorEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ColorEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_COLOR = "color";
+  @SerializedName(SERIALIZED_NAME_COLOR)
+  private ColorEnum color;
+
+  /**
+   * The style attribute of the object, e.g. the style of the hair. Is only available for certain classification objects. See list below:  * _hair_ - longHaired, shortHaired
+   */
+  @JsonAdapter(StyleEnum.Adapter.class)
+  public enum StyleEnum {
+    LONGHAIRED("longHaired"),
+    
+    SHORTHAIRED("shortHaired");
+
+    private String value;
+
+    StyleEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StyleEnum fromValue(String value) {
+      for (StyleEnum b : StyleEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StyleEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StyleEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StyleEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StyleEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STYLE = "style";
+  @SerializedName(SERIALIZED_NAME_STYLE)
+  private StyleEnum style;
 
   public static final String SERIALIZED_NAME_X0 = "x0";
   @SerializedName(SERIALIZED_NAME_X0)
@@ -129,6 +239,52 @@ public class INObject {
 
   public void setInId(String inId) {
     this.inId = inId;
+  }
+
+
+  public INObject color(ColorEnum color) {
+    
+    this.color = color;
+    return this;
+  }
+
+   /**
+   * The color of the object, e.g. the color of the hair. Is only available for certain classification objects. See list below:  * _hair_ - black, brown, blonde, grey, red, other
+   * @return color
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "black", value = "The color of the object, e.g. the color of the hair. Is only available for certain classification objects. See list below:  * _hair_ - black, brown, blonde, grey, red, other")
+
+  public ColorEnum getColor() {
+    return color;
+  }
+
+
+  public void setColor(ColorEnum color) {
+    this.color = color;
+  }
+
+
+  public INObject style(StyleEnum style) {
+    
+    this.style = style;
+    return this;
+  }
+
+   /**
+   * The style attribute of the object, e.g. the style of the hair. Is only available for certain classification objects. See list below:  * _hair_ - longHaired, shortHaired
+   * @return style
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "longHaired", value = "The style attribute of the object, e.g. the style of the hair. Is only available for certain classification objects. See list below:  * _hair_ - longHaired, shortHaired")
+
+  public StyleEnum getStyle() {
+    return style;
+  }
+
+
+  public void setStyle(StyleEnum style) {
+    this.style = style;
   }
 
 
@@ -259,6 +415,8 @@ public class INObject {
     return Objects.equals(this.inClass, inObject.inClass) &&
         Objects.equals(this.inGroup, inObject.inGroup) &&
         Objects.equals(this.inId, inObject.inId) &&
+        Objects.equals(this.color, inObject.color) &&
+        Objects.equals(this.style, inObject.style) &&
         Objects.equals(this.x0, inObject.x0) &&
         Objects.equals(this.y0, inObject.y0) &&
         Objects.equals(this.width, inObject.width) &&
@@ -268,7 +426,7 @@ public class INObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(inClass, inGroup, inId, x0, y0, width, height, probability);
+    return Objects.hash(inClass, inGroup, inId, color, style, x0, y0, width, height, probability);
   }
 
 
@@ -279,6 +437,8 @@ public class INObject {
     sb.append("    inClass: ").append(toIndentedString(inClass)).append("\n");
     sb.append("    inGroup: ").append(toIndentedString(inGroup)).append("\n");
     sb.append("    inId: ").append(toIndentedString(inId)).append("\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
+    sb.append("    style: ").append(toIndentedString(style)).append("\n");
     sb.append("    x0: ").append(toIndentedString(x0)).append("\n");
     sb.append("    y0: ").append(toIndentedString(y0)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");

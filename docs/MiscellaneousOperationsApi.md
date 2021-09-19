@@ -67,8 +67,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**404** | Specified file was not found. |  -  |
 **200** | Returns the file AI produced file with masking or blurring, depending on given AI parameters. |  -  |
+**404** | Specified file was not found. |  -  |
 
 <a name="getAICost"></a>
 # **getAICost**
@@ -148,7 +148,7 @@ public class Example {
     defaultClient.setBasePath("https://api.irisnet.de");
 
     MiscellaneousOperationsApi apiInstance = new MiscellaneousOperationsApi(defaultClient);
-    String licenseKey = "licenseKey_example"; // String | License obtained from the https://www.irisnet.de/prices shop.
+    String licenseKey = "licenseKey_example"; // String | License obtained from the https://irisnet.de/subscribe shop.
     try {
       LicenseInfo result = apiInstance.getLicenseInfo(licenseKey);
       System.out.println(result);
@@ -167,7 +167,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseKey** | **String**| License obtained from the https://www.irisnet.de/prices shop. |
+ **licenseKey** | **String**| License obtained from the https://irisnet.de/subscribe shop. |
 
 ### Return type
 
@@ -185,6 +185,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**404** | The entered license key was not found. |  -  |
 **200** | successful operation |  -  |
+**404** | The entered license key was not found. |  -  |
 
