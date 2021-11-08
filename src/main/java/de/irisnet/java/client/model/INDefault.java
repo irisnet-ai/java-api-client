@@ -28,7 +28,7 @@ import java.io.IOException;
  * An element that defines some overall defaults if needed. These will be applied on every parameter set. Single parameters can be still overwritten by their respective attributes within the &#39;inParam&#39; element.
  */
 @ApiModel(description = "An element that defines some overall defaults if needed. These will be applied on every parameter set. Single parameters can be still overwritten by their respective attributes within the 'inParam' element.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class INDefault {
   public static final String SERIALIZED_NAME_THRESH = "thresh";
   @SerializedName(SERIALIZED_NAME_THRESH)
@@ -90,7 +90,7 @@ public class INDefault {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -107,7 +107,6 @@ public class INDefault {
     return Objects.hash(thresh, grey);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -122,7 +121,7 @@ public class INDefault {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

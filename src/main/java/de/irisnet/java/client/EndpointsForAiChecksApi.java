@@ -81,19 +81,20 @@ public class EndpointsForAiChecksApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams.put("file", file);
+        }
+
         if (detail != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("detail", detail));
         }
 
         if (imageEncode != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("imageEncode", imageEncode));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        if (file != null) {
-            localVarFormParams.put("file", file);
         }
 
         final String[] localVarAccepts = {
@@ -225,6 +226,10 @@ public class EndpointsForAiChecksApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (url != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("url", url));
         }
@@ -237,9 +242,6 @@ public class EndpointsForAiChecksApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("imageEncode", imageEncode));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "application/xml", "application/json"
         };

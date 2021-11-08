@@ -3,6 +3,7 @@
 # INDefault
 
 An element that defines some overall defaults if needed. These will be applied on every parameter set. Single parameters can be still overwritten by their respective attributes within the 'inParam' element.
+
 ## Properties
 
 Name | Type | Description | Notes

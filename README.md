@@ -2,14 +2,13 @@
 
 Irisnet API
 - API version: v1
-  - Build date: 2021-02-03T14:59:35.790Z[Etc/UTC]
 
 Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.
 
 Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API.
 The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.
 
-Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses.By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.
+Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.
 
 
 
@@ -47,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>2.1.5</version>
+  <version>2.4.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +56,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:2.1.5"
+compile "de.irisnet.java.client:irisnet-java-client:2.4.1"
 ```
 
 ### Others
@@ -70,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-2.1.5.jar`
+* `target/irisnet-java-client-2.4.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -93,10 +92,11 @@ public class Example {
 
     EndpointsForAiChecksApi apiInstance = new EndpointsForAiChecksApi(defaultClient);
     String licenseKey = "licenseKey_example"; // String | License obtained from irisnet.de shop.
-    Integer detail = 1; // Integer | Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
     File file = new File("/path/to/file"); // File | 
+    Integer detail = 1; // Integer | Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
+    Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output image that can be downloaded afterwards.
     try {
-      IrisNet result = apiInstance.checkImage(licenseKey, detail, file);
+      IrisNet result = apiInstance.checkImage(licenseKey, file, detail, imageEncode);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling EndpointsForAiChecksApi#checkImage");
@@ -135,7 +135,6 @@ Class | Method | HTTP request | Description
  - [INParam](docs/INParam.md)
  - [INParams](docs/INParams.md)
  - [INRule](docs/INRule.md)
- - [InlineObject](docs/InlineObject.md)
  - [IrisNet](docs/IrisNet.md)
  - [LicenseInfo](docs/LicenseInfo.md)
 

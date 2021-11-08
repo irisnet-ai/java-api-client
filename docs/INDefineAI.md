@@ -3,6 +3,7 @@
 # INDefineAI
 
 Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
+
 ## Properties
 
 Name | Type | Description | Notes

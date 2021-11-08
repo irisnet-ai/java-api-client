@@ -32,7 +32,7 @@ import java.util.List;
  * Contains information on the AI result from the source media check.
  */
 @ApiModel(description = "Contains information on the AI result from the source media check.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IrisNet {
   public static final String SERIALIZED_NAME_RULES_BROKEN = "rulesBroken";
   @SerializedName(SERIALIZED_NAME_RULES_BROKEN)
@@ -241,7 +241,7 @@ public class IrisNet {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -263,7 +263,6 @@ public class IrisNet {
     return Objects.hash(rulesBroken, helpSuggested, severity, getnClasses, getnObjects, inRule, inObject);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -283,7 +282,7 @@ public class IrisNet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

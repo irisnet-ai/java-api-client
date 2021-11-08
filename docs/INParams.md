@@ -3,6 +3,7 @@
 # INParams
 
 A set of parameters/rules that describe how the AI should behave.
+
 ## Properties
 
 Name | Type | Description | Notes

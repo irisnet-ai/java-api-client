@@ -28,7 +28,7 @@ import java.io.IOException;
  * Describes a rectangle that stretches around the recognized object. This is useful when redacting or blurring certain recognized objects. Each object contains the name of the classification and coordinates for a rectangle around the recognized object. The origin point (y &#x3D; 0.0, x &#x3D; 0.0) of the coordinate system is on the top left of the of the source material. The bottom right of the source is always y &#x3D; 1 and x &#x3D; 1.
  */
 @ApiModel(description = "Describes a rectangle that stretches around the recognized object. This is useful when redacting or blurring certain recognized objects. Each object contains the name of the classification and coordinates for a rectangle around the recognized object. The origin point (y = 0.0, x = 0.0) of the coordinate system is on the top left of the of the source material. The bottom right of the source is always y = 1 and x = 1.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class INObject {
   public static final String SERIALIZED_NAME_IN_CLASS = "inClass";
   @SerializedName(SERIALIZED_NAME_IN_CLASS)
@@ -404,7 +404,7 @@ public class INObject {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -429,7 +429,6 @@ public class INObject {
     return Objects.hash(inClass, inGroup, inId, color, style, x0, y0, width, height, probability);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -452,7 +451,7 @@ public class INObject {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

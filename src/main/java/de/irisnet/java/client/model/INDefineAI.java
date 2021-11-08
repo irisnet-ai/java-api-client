@@ -31,7 +31,7 @@ import java.util.List;
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
 @ApiModel(description = "Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class INDefineAI {
   public static final String SERIALIZED_NAME_IN_IMAGE = "inImage";
   @SerializedName(SERIALIZED_NAME_IN_IMAGE)
@@ -70,7 +70,7 @@ public class INDefineAI {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -86,7 +86,6 @@ public class INDefineAI {
     return Objects.hash(inImage);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -100,7 +99,7 @@ public class INDefineAI {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

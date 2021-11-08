@@ -32,7 +32,7 @@ import java.util.List;
  * A set of parameters/rules that describe how the AI should behave.
  */
 @ApiModel(description = "A set of parameters/rules that describe how the AI should behave.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class INParams {
   public static final String SERIALIZED_NAME_IN_DEFAULT = "inDefault";
   @SerializedName(SERIALIZED_NAME_IN_DEFAULT)
@@ -98,7 +98,7 @@ public class INParams {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -115,7 +115,6 @@ public class INParams {
     return Objects.hash(inDefault, inParam);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -130,7 +129,7 @@ public class INParams {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

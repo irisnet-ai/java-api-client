@@ -28,7 +28,7 @@ import java.io.IOException;
  * A single parameter set for one object, for example face, describing the behaviour of the AI. Each object has default parameters that are set if these are empty.
  */
 @ApiModel(description = "A single parameter set for one object, for example face, describing the behaviour of the AI. Each object has default parameters that are set if these are empty.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class INParam {
   /**
    * The classification of the object, that the element refers to. Default parameter values are defined per classification object. The following list contains the default values for &#39;min&#39;, &#39;max&#39; and &#39;drawMode&#39; in order.  * _face_ _(1, 3, 0)_ - Classification for human faces. * _child (*)_ _(0, 0, 6)_ - Recognizes children&#39;s faces. * _adult (*)_ _(0, -1, 0)_ - Recognizes faces of adults that are not considered seniors. * _senior (*)_ _(0, -1, 0)_ - Recognizes faces of seniors. * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features. * _female (*)_ _(0, -1, 0)_ - Recognizes female faces.  * _male (*)_ _(0, -1, 0)_ - Recognizes male faces.  * _hand_ _(0, -1, 0)_ - Classification for recognizing hands. * _foot_ _(0, -1, 0)_ - Classification for recognizing feet. * _footwear_ _(0, -1, 0)_ - Classification for recognizing footwear. * _hair_ _(0, -1, 0)_ - Classification for recognizing hair.  * _hairless_ _(0, -1, 0)_ - Classification for recognizing no hair.  * _beard_ _(0, -1, 0)_ - Classification for recognizing beards.  * _moustache_ _(0, -1, 0)_ - Classification for recognizing moustaches.  * _headpiece_ _(0, -1, 0)_ - Classification for recognizing headpieces.  * _glasses_ _(0, -1, 0)_ - Classification for recognizing glasses.  * _sunglasses_ _(0, -1, 0)_ - Classification for recognizing sunglasses.  * _mask_ _(0, -1, 0)_ - Classification for recognizing medical masks.  * _breast_ _(0, 0, 2)_ - Object that recognizes female breasts. * _vulva_ _(0, 0, 2)_ - Object that recognizes vulvae. * _penis_ _(0, 0, 2)_ - Object that recognizes penises. * _vagina_ _(0, 0, 2)_ - Object that recognizes vaginae. * _buttocks_ _(0, 0, 2)_ - Object that recognizes buttocks. * _anus_ _(0, 0, 2)_ - Object that recognizes ani. * _toy_ _(0, -1, 0)_ - Object that recognizes sex toys. * _oral_ _(0, 0, 2)_ - Object that recognizes oral sex. * _penetration_ _(0, 0, 2)_ - Object that recognizes a sexual penetration penetration. * _illegalSymbols_ _(0, 0, 1)_ - Classification for symbols that are not permitted in Germany.  * _textRecognition_ _(0, 6, 6)_ - Classification for recognizing text occurrences.  _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._  _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
@@ -338,7 +338,7 @@ public class INParam {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -360,7 +360,6 @@ public class INParam {
     return Objects.hash(inClass, min, max, severity, drawMode, grey, scale);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -380,7 +379,7 @@ public class INParam {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

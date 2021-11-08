@@ -3,6 +3,7 @@
 # INRule
 
 Describes the rules applied and the count of objects found for the given classification.
+
 ## Properties
 
 Name | Type | Description | Notes

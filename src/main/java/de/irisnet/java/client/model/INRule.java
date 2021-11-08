@@ -28,7 +28,7 @@ import java.io.IOException;
  * Describes the rules applied and the count of objects found for the given classification.
  */
 @ApiModel(description = "Describes the rules applied and the count of objects found for the given classification.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class INRule {
   public static final String SERIALIZED_NAME_IN_CLASS = "inClass";
   @SerializedName(SERIALIZED_NAME_IN_CLASS)
@@ -194,7 +194,7 @@ public class INRule {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -215,7 +215,6 @@ public class INRule {
     return Objects.hash(inClass, inGroup, found, min, max, severity);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -234,7 +233,7 @@ public class INRule {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

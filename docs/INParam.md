@@ -3,6 +3,7 @@
 # INParam
 
 A single parameter set for one object, for example face, describing the behaviour of the AI. Each object has default parameters that are set if these are empty.
+
 ## Properties
 
 Name | Type | Description | Notes
