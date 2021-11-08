@@ -42,6 +42,10 @@ public class IrisNet {
   @SerializedName(SERIALIZED_NAME_HELP_SUGGESTED)
   private Integer helpSuggested;
 
+  public static final String SERIALIZED_NAME_SEVERITY = "severity";
+  @SerializedName(SERIALIZED_NAME_SEVERITY)
+  private Integer severity;
+
   public static final String SERIALIZED_NAME_GETN_CLASSES = "getnClasses";
   @SerializedName(SERIALIZED_NAME_GETN_CLASSES)
   private Integer getnClasses;
@@ -102,6 +106,29 @@ public class IrisNet {
 
   public void setHelpSuggested(Integer helpSuggested) {
     this.helpSuggested = helpSuggested;
+  }
+
+
+  public IrisNet severity(Integer severity) {
+    
+    this.severity = severity;
+    return this;
+  }
+
+   /**
+   * The highest severity value found amongst the broken rules.
+   * @return severity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100", value = "The highest severity value found amongst the broken rules.")
+
+  public Integer getSeverity() {
+    return severity;
+  }
+
+
+  public void setSeverity(Integer severity) {
+    this.severity = severity;
   }
 
 
@@ -224,6 +251,7 @@ public class IrisNet {
     IrisNet irisNet = (IrisNet) o;
     return Objects.equals(this.rulesBroken, irisNet.rulesBroken) &&
         Objects.equals(this.helpSuggested, irisNet.helpSuggested) &&
+        Objects.equals(this.severity, irisNet.severity) &&
         Objects.equals(this.getnClasses, irisNet.getnClasses) &&
         Objects.equals(this.getnObjects, irisNet.getnObjects) &&
         Objects.equals(this.inRule, irisNet.inRule) &&
@@ -232,7 +260,7 @@ public class IrisNet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(rulesBroken, helpSuggested, getnClasses, getnObjects, inRule, inObject);
+    return Objects.hash(rulesBroken, helpSuggested, severity, getnClasses, getnObjects, inRule, inObject);
   }
 
 
@@ -242,6 +270,7 @@ public class IrisNet {
     sb.append("class IrisNet {\n");
     sb.append("    rulesBroken: ").append(toIndentedString(rulesBroken)).append("\n");
     sb.append("    helpSuggested: ").append(toIndentedString(helpSuggested)).append("\n");
+    sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    getnClasses: ").append(toIndentedString(getnClasses)).append("\n");
     sb.append("    getnObjects: ").append(toIndentedString(getnObjects)).append("\n");
     sb.append("    inRule: ").append(toIndentedString(inRule)).append("\n");

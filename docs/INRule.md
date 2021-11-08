@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **found** | **Integer** | The count of how many instances of the classification object were found. |  [optional]
 **min** | **Integer** | The minimum allowed instances of the classification object. |  [optional]
 **max** | **Integer** | The maximum allowed instances of the classification object. |  [optional]
+**severity** | **Integer** | The severity of the classification object set while configuring the AI. |  [optional]
 
 
 

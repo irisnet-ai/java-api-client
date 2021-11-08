@@ -50,6 +50,10 @@ public class INRule {
   @SerializedName(SERIALIZED_NAME_MAX)
   private Integer max;
 
+  public static final String SERIALIZED_NAME_SEVERITY = "severity";
+  @SerializedName(SERIALIZED_NAME_SEVERITY)
+  private Integer severity;
+
 
   public INRule inClass(String inClass) {
     
@@ -166,6 +170,29 @@ public class INRule {
   }
 
 
+  public INRule severity(Integer severity) {
+    
+    this.severity = severity;
+    return this;
+  }
+
+   /**
+   * The severity of the classification object set while configuring the AI.
+   * @return severity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100", value = "The severity of the classification object set while configuring the AI.")
+
+  public Integer getSeverity() {
+    return severity;
+  }
+
+
+  public void setSeverity(Integer severity) {
+    this.severity = severity;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -179,12 +206,13 @@ public class INRule {
         Objects.equals(this.inGroup, inRule.inGroup) &&
         Objects.equals(this.found, inRule.found) &&
         Objects.equals(this.min, inRule.min) &&
-        Objects.equals(this.max, inRule.max);
+        Objects.equals(this.max, inRule.max) &&
+        Objects.equals(this.severity, inRule.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inClass, inGroup, found, min, max);
+    return Objects.hash(inClass, inGroup, found, min, max, severity);
   }
 
 
@@ -197,6 +225,7 @@ public class INRule {
     sb.append("    found: ").append(toIndentedString(found)).append("\n");
     sb.append("    min: ").append(toIndentedString(min)).append("\n");
     sb.append("    max: ").append(toIndentedString(max)).append("\n");
+    sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -151,6 +151,10 @@ public class INParam {
   @SerializedName(SERIALIZED_NAME_MAX)
   private Integer max;
 
+  public static final String SERIALIZED_NAME_SEVERITY = "severity";
+  @SerializedName(SERIALIZED_NAME_SEVERITY)
+  private Integer severity = 100;
+
   public static final String SERIALIZED_NAME_DRAW_MODE = "drawMode";
   @SerializedName(SERIALIZED_NAME_DRAW_MODE)
   private Integer drawMode;
@@ -158,6 +162,10 @@ public class INParam {
   public static final String SERIALIZED_NAME_GREY = "grey";
   @SerializedName(SERIALIZED_NAME_GREY)
   private Integer grey = 127;
+
+  public static final String SERIALIZED_NAME_SCALE = "scale";
+  @SerializedName(SERIALIZED_NAME_SCALE)
+  private Float scale = 1.0f;
 
 
   public INParam inClass(InClassEnum inClass) {
@@ -229,6 +237,31 @@ public class INParam {
   }
 
 
+  public INParam severity(Integer severity) {
+    
+    this.severity = severity;
+    return this;
+  }
+
+   /**
+   * Set a value to define the severity of a broken rule of the given classification object.
+   * minimum: 0
+   * maximum: 1000
+   * @return severity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100", value = "Set a value to define the severity of a broken rule of the given classification object.")
+
+  public Integer getSeverity() {
+    return severity;
+  }
+
+
+  public void setSeverity(Integer severity) {
+    this.severity = severity;
+  }
+
+
   public INParam drawMode(Integer drawMode) {
     
     this.drawMode = drawMode;
@@ -279,6 +312,31 @@ public class INParam {
   }
 
 
+  public INParam scale(Float scale) {
+    
+    this.scale = scale;
+    return this;
+  }
+
+   /**
+   * Scale of the draw rectangle around the classification object. Specify a value to increase or decrease the size of the border.
+   * minimum: 0.5
+   * maximum: 2.0
+   * @return scale
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Scale of the draw rectangle around the classification object. Specify a value to increase or decrease the size of the border.")
+
+  public Float getScale() {
+    return scale;
+  }
+
+
+  public void setScale(Float scale) {
+    this.scale = scale;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -291,13 +349,15 @@ public class INParam {
     return Objects.equals(this.inClass, inParam.inClass) &&
         Objects.equals(this.min, inParam.min) &&
         Objects.equals(this.max, inParam.max) &&
+        Objects.equals(this.severity, inParam.severity) &&
         Objects.equals(this.drawMode, inParam.drawMode) &&
-        Objects.equals(this.grey, inParam.grey);
+        Objects.equals(this.grey, inParam.grey) &&
+        Objects.equals(this.scale, inParam.scale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inClass, min, max, drawMode, grey);
+    return Objects.hash(inClass, min, max, severity, drawMode, grey, scale);
   }
 
 
@@ -308,8 +368,10 @@ public class INParam {
     sb.append("    inClass: ").append(toIndentedString(inClass)).append("\n");
     sb.append("    min: ").append(toIndentedString(min)).append("\n");
     sb.append("    max: ").append(toIndentedString(max)).append("\n");
+    sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("    drawMode: ").append(toIndentedString(drawMode)).append("\n");
     sb.append("    grey: ").append(toIndentedString(grey)).append("\n");
+    sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

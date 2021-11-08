@@ -45,20 +45,25 @@ paths:
                   set, if no custom parameters are posted.
                 value: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"\
                   ?>\n<inParams>\n\t<inDefault thresh=\"0.5\" grey=\"127\"/>\n\t<inParam\
-                  \ inClass=\"face\" min=\"-1\" max=\"-1\" drawMode=\"0\" grey=\"\
-                  127\"/>\n\t<inParam inClass=\"hand\" min=\"-1\" max=\"-1\" drawMode=\"\
-                  0\" grey=\"127\"/>\n\t<inParam inClass=\"breast\" min=\"0\" max=\"\
-                  0\" drawMode=\"2\" grey=\"127\"/>\n\t<inParam inClass=\"vulva\"\
-                  \ min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\"/>\n\t<inParam\
-                  \ inClass=\"penis\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\"\
-                  />\n\t<inParam inClass=\"vagina\" min=\"0\" max=\"0\" drawMode=\"\
-                  2\" grey=\"127\"/>\n\t<inParam inClass=\"buttocks\" min=\"0\" max=\"\
-                  0\" drawMode=\"2\" grey=\"127\"/>\n\t<inParam inClass=\"anus\" min=\"\
-                  0\" max=\"0\" drawMode=\"2\" grey=\"127\"/>\n\t<inParam inClass=\"\
-                  toy\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\"/>\n\t<inParam\
-                  \ inClass=\"oral\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\"\
-                  />\n\t<inParam inClass=\"penetration\" min=\"0\" max=\"0\" drawMode=\"\
-                  2\" grey=\"127\"/>\n</inParams>"
+                  \ inClass=\"face\" min=\"1\" max=\"3\" drawMode=\"0\" grey=\"127\"\
+                  \ scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"hand\"\
+                  \ min=\"-1\" max=\"-1\" drawMode=\"0\" grey=\"127\" scale=\"1.0\"\
+                  \ severity=\"100\"/>\n\t<inParam inClass=\"breast\" min=\"0\" max=\"\
+                  0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\
+                  \t<inParam inClass=\"vulva\" min=\"0\" max=\"0\" drawMode=\"2\"\
+                  \ grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"\
+                  penis\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"\
+                  1.0\" severity=\"100\"/>\n\t<inParam inClass=\"vagina\" min=\"0\"\
+                  \ max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\" severity=\"\
+                  100\"/>\n\t<inParam inClass=\"buttocks\" min=\"0\" max=\"0\" drawMode=\"\
+                  2\" grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"\
+                  anus\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"\
+                  1.0\" severity=\"100\"/>\n\t<inParam inClass=\"toy\" min=\"0\" max=\"\
+                  0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\
+                  \t<inParam inClass=\"oral\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"\
+                  127\" scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"penetration\"\
+                  \ min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\"\
+                  \ severity=\"100\"/>\n</inParams>"
               Profile picture example:
                 description: Allow pictures that contain only one Face
                 value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inParams>\n\t\
@@ -90,60 +95,82 @@ paths:
                     grey: "127"
                   inParam:
                   - inClass: face
-                    min: -1
-                    max: -1
+                    min: "1"
+                    max: "3"
                     drawMode: "0"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: hand
                     min: -1
                     max: -1
                     drawMode: "0"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: breast
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: vulva
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: penis
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: vagina
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: buttocks
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: anus
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: toy
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: oral
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
                   - inClass: penetration
                     min: "0"
                     max: "0"
                     drawMode: "2"
                     grey: "127"
+                    scale: "1.0"
+                    severity: "100"
               Profile picture example:
                 description: Allow pictures that contain only one Face
                 value:
@@ -458,13 +485,6 @@ paths:
     get:
       operationId: getAICost
       responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                format: int64
-                type: integer
-          description: Contains the cost of the AI check with the current set of parameters.
         "429":
           content:
             '*/*':
@@ -474,6 +494,13 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: int64
+                type: integer
+          description: Contains the cost of the AI check with the current set of parameters.
       summary: Get the cost per image check of the previously set parameters. The
         cost of the configuration is subtracted from the license key during each check.
       tags:
@@ -526,10 +553,12 @@ components:
         the behaviour of the AI. Each object has default parameters that are set if
         these are empty.
       example:
+        severity: 100
         min: 1
         drawMode: 3
         inClass: face
         max: 5
+        scale: 1.5592102
         grey: 58
       properties:
         inClass:
@@ -621,6 +650,17 @@ components:
           type: integer
           xml:
             attribute: true
+        severity:
+          default: 100
+          description: Set a value to define the severity of a broken rule of the
+            given classification object.
+          example: 100
+          format: int32
+          maximum: 1000
+          minimum: 0
+          type: integer
+          xml:
+            attribute: true
         drawMode:
           description: "The draw mode that will be used for the creating the media.\
             \ \n* _0_ - will draw nothing,\n* _1_ - will draw a frame with class name\
@@ -644,6 +684,16 @@ components:
           type: integer
           xml:
             attribute: true
+        scale:
+          default: 1.0
+          description: Scale of the draw rectangle around the classification object.
+            Specify a value to increase or decrease the size of the border.
+          format: float
+          maximum: 2.0
+          minimum: 0.5
+          type: number
+          xml:
+            attribute: true
       type: object
       xml:
         name: inParam
@@ -651,15 +701,19 @@ components:
       description: A set of parameters/rules that describe how the AI should behave.
       example:
         inParam:
-        - min: 1
+        - severity: 100
+          min: 1
           drawMode: 3
           inClass: face
           max: 5
+          scale: 1.5592102
           grey: 58
-        - min: 1
+        - severity: 100
+          min: 1
           drawMode: 3
           inClass: face
           max: 5
+          scale: 1.5592102
           grey: 58
         inDefault:
           thresh: 0.08008282
@@ -789,30 +843,32 @@ components:
           xml:
             attribute: true
         x0:
-          description: The starting point of the rectangle in the vertical (x) direction.
+          description: The center of the rectangle in the horizontal (x) direction.
           example: 0.1
           format: float
           type: number
           xml:
             attribute: true
         y0:
-          description: The starting point of the rectangle in the horizontal (y) direction.
+          description: The center of the rectangle in the vertical (y) direction.
           example: 0.1
           format: float
           type: number
           xml:
             attribute: true
         width:
-          description: The distance from the starting point (y0) to end the rectangle
-            in the horizontal direction.
+          description: The total width of the rectangle in the horizontal (x) direction.
+            Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges
+            of the rectangle.
           example: 0.1
           format: float
           type: number
           xml:
             attribute: true
         height:
-          description: The distance from the starting point (x0) to end the rectangle
-            in the vertical direction.
+          description: The total height of the rectangle in the vertical (y) direction.
+            Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom
+            edges of the rectangle.
           example: 0.1
           format: float
           type: number
@@ -830,6 +886,7 @@ components:
       description: Describes the rules applied and the count of objects found for
         the given classification.
       example:
+        severity: 100
         found: 1
         min: 1
         inClass: face
@@ -870,17 +927,28 @@ components:
           type: integer
           xml:
             attribute: true
+        severity:
+          description: The severity of the classification object set while configuring
+            the AI.
+          example: 100
+          format: int32
+          type: integer
+          xml:
+            attribute: true
       type: object
     IrisNet:
       description: Contains information on the AI result from the source media check.
       example:
+        severity: 100
         inRule:
-        - found: 1
+        - severity: 100
+          found: 1
           min: 1
           inClass: face
           max: 1
           inGroup: human
-        - found: 1
+        - severity: 100
+          found: 1
           min: 1
           inClass: face
           max: 1
@@ -924,6 +992,13 @@ components:
             indication that it could be useful to double check the source media by
             a human.
           example: 0
+          format: int32
+          type: integer
+          xml:
+            attribute: true
+        severity:
+          description: The highest severity value found amongst the broken rules.
+          example: 100
           format: int32
           type: integer
           xml:

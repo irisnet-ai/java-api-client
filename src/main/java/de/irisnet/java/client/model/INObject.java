@@ -295,11 +295,11 @@ public class INObject {
   }
 
    /**
-   * The starting point of the rectangle in the vertical (x) direction.
+   * The center of the rectangle in the horizontal (x) direction.
    * @return x0
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.1", value = "The starting point of the rectangle in the vertical (x) direction.")
+  @ApiModelProperty(example = "0.1", value = "The center of the rectangle in the horizontal (x) direction.")
 
   public Float getX0() {
     return x0;
@@ -318,11 +318,11 @@ public class INObject {
   }
 
    /**
-   * The starting point of the rectangle in the horizontal (y) direction.
+   * The center of the rectangle in the vertical (y) direction.
    * @return y0
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.1", value = "The starting point of the rectangle in the horizontal (y) direction.")
+  @ApiModelProperty(example = "0.1", value = "The center of the rectangle in the vertical (y) direction.")
 
   public Float getY0() {
     return y0;
@@ -341,11 +341,11 @@ public class INObject {
   }
 
    /**
-   * The distance from the starting point (y0) to end the rectangle in the horizontal direction.
+   * The total width of the rectangle in the horizontal (x) direction. Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges of the rectangle.
    * @return width
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.1", value = "The distance from the starting point (y0) to end the rectangle in the horizontal direction.")
+  @ApiModelProperty(example = "0.1", value = "The total width of the rectangle in the horizontal (x) direction. Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges of the rectangle.")
 
   public Float getWidth() {
     return width;
@@ -364,11 +364,11 @@ public class INObject {
   }
 
    /**
-   * The distance from the starting point (x0) to end the rectangle in the vertical direction.
+   * The total height of the rectangle in the vertical (y) direction. Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom edges of the rectangle.
    * @return height
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.1", value = "The distance from the starting point (x0) to end the rectangle in the vertical direction.")
+  @ApiModelProperty(example = "0.1", value = "The total height of the rectangle in the vertical (y) direction. Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom edges of the rectangle.")
 
   public Float getHeight() {
     return height;
