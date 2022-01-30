@@ -42,6 +42,8 @@ public class INParams {
   @SerializedName(SERIALIZED_NAME_IN_PARAM)
   private List<INParam> inParam = null;
 
+  public INParams() { 
+  }
 
   public INParams inDefault(INDefault inDefault) {
     

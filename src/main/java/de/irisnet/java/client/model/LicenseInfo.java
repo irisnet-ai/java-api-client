@@ -42,6 +42,8 @@ public class LicenseInfo {
   @SerializedName(SERIALIZED_NAME_TOTAL_CREDITS)
   private Integer totalCredits;
 
+  public LicenseInfo() { 
+  }
 
   public LicenseInfo creditsUsed(Integer creditsUsed) {
     

@@ -172,6 +172,8 @@ public class INObject {
   @SerializedName(SERIALIZED_NAME_PROBABILITY)
   private Integer probability;
 
+  public INObject() { 
+  }
 
   public INObject inClass(String inClass) {
     

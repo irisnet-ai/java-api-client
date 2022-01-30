@@ -20,7 +20,7 @@ Underneath the endpoints you'll find the model schemas. These are the models use
 
 Building the API client library requires:
 1. Java 1.7+
-2. Maven/Gradle
+2. Maven (3.8.3+)/Gradle (7.2+)
 
 ## Installation
 
@@ -46,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>2.4.1</version>
+  <version>2.4.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -56,7 +56,14 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:2.4.1"
+  repositories {
+    mavenCentral()     // Needed if the 'irisnet-java-client' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'irisnet-java-client' jar has been published to the local maven repo.
+  }
+
+  dependencies {
+     implementation "de.irisnet.java.client:irisnet-java-client:2.4.2"
+  }
 ```
 
 ### Others
@@ -69,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-2.4.1.jar`
+* `target/irisnet-java-client-2.4.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

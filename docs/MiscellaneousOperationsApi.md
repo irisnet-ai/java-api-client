@@ -67,8 +67,8 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the file AI produced file with masking or blurring, depending on given AI parameters. |  -  |
 **404** | Specified file was not found. |  -  |
+**200** | Returns the file AI produced file with masking or blurring, depending on given AI parameters. |  -  |
 
 <a name="getAICost"></a>
 # **getAICost**
@@ -185,6 +185,6 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | successful operation |  -  |
 **404** | The entered license key was not found. |  -  |
+**200** | successful operation |  -  |
 

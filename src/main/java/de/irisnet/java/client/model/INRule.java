@@ -54,6 +54,8 @@ public class INRule {
   @SerializedName(SERIALIZED_NAME_SEVERITY)
   private Integer severity;
 
+  public INRule() { 
+  }
 
   public INRule inClass(String inClass) {
     

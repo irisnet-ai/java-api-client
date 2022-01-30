@@ -62,6 +62,8 @@ public class IrisNet {
   @SerializedName(SERIALIZED_NAME_IN_OBJECT)
   private List<INObject> inObject = null;
 
+  public IrisNet() { 
+  }
 
   public IrisNet rulesBroken(Integer rulesBroken) {
     

@@ -39,6 +39,8 @@ import java.util.Map;
 
 public class MiscellaneousOperationsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public MiscellaneousOperationsApi() {
         this(Configuration.getDefaultApiClient());
@@ -56,6 +58,22 @@ public class MiscellaneousOperationsApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for downloadProcessed
      * @param filename  (required)
@@ -65,11 +83,25 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call downloadProcessedCall(String filename, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -94,10 +126,12 @@ public class MiscellaneousOperationsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarHeaderParams != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -123,8 +157,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public File downloadProcessed(String filename) throws ApiException {
@@ -141,8 +175,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> downloadProcessedWithHttpInfo(String filename) throws ApiException {
@@ -161,8 +195,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Specified file was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the file AI produced file with masking or blurring, depending on given AI parameters. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call downloadProcessedAsync(String filename, final ApiCallback<File> _callback) throws ApiException {
@@ -185,6 +219,20 @@ public class MiscellaneousOperationsApi {
      </table>
      */
     public okhttp3.Call getAICostCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -208,10 +256,12 @@ public class MiscellaneousOperationsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarHeaderParams != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -287,11 +337,25 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoCall(String licenseKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -316,10 +380,12 @@ public class MiscellaneousOperationsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarHeaderParams != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -345,8 +411,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public LicenseInfo getLicenseInfo(String licenseKey) throws ApiException {
@@ -363,8 +429,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicenseInfo> getLicenseInfoWithHttpInfo(String licenseKey) throws ApiException {
@@ -383,8 +449,8 @@ public class MiscellaneousOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoAsync(String licenseKey, final ApiCallback<LicenseInfo> _callback) throws ApiException {

@@ -38,6 +38,8 @@ public class INDefault {
   @SerializedName(SERIALIZED_NAME_GREY)
   private Integer grey = 127;
 
+  public INDefault() { 
+  }
 
   public INDefault thresh(Float thresh) {
     

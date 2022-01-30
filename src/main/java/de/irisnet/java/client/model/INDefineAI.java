@@ -37,6 +37,8 @@ public class INDefineAI {
   @SerializedName(SERIALIZED_NAME_IN_IMAGE)
   private List<INImage> inImage = null;
 
+  public INDefineAI() { 
+  }
 
   public INDefineAI inImage(List<INImage> inImage) {
     

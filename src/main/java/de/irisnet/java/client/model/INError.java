@@ -37,6 +37,8 @@ public class INError {
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   private String message;
 
+  public INError() { 
+  }
 
   public INError code(Integer code) {
     
