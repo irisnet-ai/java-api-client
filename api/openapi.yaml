@@ -1,289 +1,228 @@
 openapi: 3.0.1
 info:
-  description: |+
-    Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.
+  contact:
+    email: info@irisnet.de
+    name: irisnet GmbH
+    url: https://irisnet.de/subscribe/
+  description: |-
+    Artificial Intelligence (AI) for image- and video-processing in real-time. This is an interactive documentation where you can quickly look up the endpoints and their schemas, while having the opportunity to try things out for yourself.
 
-    Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API.
+    In the list below, you can see the available endpoints of the API, which can be expanded by clicking on them. Each expanded endpoint lists the request parameters (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail.
+
+    Additionally you'll find a 'Try it out' button that allows you to enter your custom parameters and custom body and execute that against the API. <b>Be sure to enter your license key to authorize the requests before using this documentation interactively.</b>
+
     The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.
 
-    Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.
+    Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. If you click on the right arrow, you can expand the model and get a description of the model and the model parameters. For nested models, you can keep clicking the right arrow for further details.
 
+    Clicking the link below the title at the top of this page opens the [OpenAPI specification](https://swagger.io/specification/) (OAS3) in JSON format. The OAS3 Spec allows the generation of clients in many programming languages. There are several free client generators available that can be used to get started easily.
   termsOfService: https://irisnet.de/terms-and-conditions/
   title: Irisnet API
-  version: v1
+  version: v2
 servers:
 - description: Live Server
   url: https://api.irisnet.de
 tags:
-- description: "Typically an interaction with the AI can be setup with one or two\
-    \ API calls. Depending on your needs you can \n* 1. use the '_set-definition_'\
-    \ endpoint for granular setup\n* 2. and the '_set-parameters_' endpoint to than\
-    \ fine tune the setup of the AI, if required.\n\n* 3. use the endpoints for AI-checks\
-    \ listed below to test against the AI-definition and rules.\n\nThe subsequent\
-    \ checks will refer to the prior setup. If you want to reset your setup, restart\
-    \ from step 1."
-  name: Endpoints to setup the AI
-- description: After having setup the AI you can do one or more checks. Choose what
-    check best works for your case
-  name: Endpoints for AI-checks
-- description: Retrieve license key information, download the processed media or find
-    out how many credits a setup will cost.
-  name: Miscellaneous operations
+- description: Configure the basics of the AI.
+  name: Configuration Management
+- description: Configure the AI in detail with specific parameters.
+  name: Detailed configuration parameters
+- description: Check images or a moving images with the AI.
+  name: AI check operations
+- description: Retrieve license key information or find out how many credits a check
+    operation will cost.
+  name: Balance endpoints
 paths:
-  /v1/set-parameters:
-    post:
-      description: Overwrites or extends the default configuration of the AI. By setting
-        precise behaviour parameters, the AI can be fine tuned for specific use cases.
-        See inParam schema to learn more about the classification objects. To reset
-        the parameters to their default values, make a post request to 'set-definition'.
-      operationId: setINParams
-      requestBody:
-        content:
-          application/xml:
-            examples:
-              Default parameter set:
-                description: Shows the default parameters set by the AI. This is automatically
-                  set, if no custom parameters are posted.
-                value: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"\
-                  ?>\n<inParams>\n\t<inDefault thresh=\"0.5\" grey=\"127\"/>\n\t<inParam\
-                  \ inClass=\"face\" min=\"1\" max=\"3\" drawMode=\"0\" grey=\"127\"\
-                  \ scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"hand\"\
-                  \ min=\"-1\" max=\"-1\" drawMode=\"0\" grey=\"127\" scale=\"1.0\"\
-                  \ severity=\"100\"/>\n\t<inParam inClass=\"breast\" min=\"0\" max=\"\
-                  0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\
-                  \t<inParam inClass=\"vulva\" min=\"0\" max=\"0\" drawMode=\"2\"\
-                  \ grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"\
-                  penis\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"\
-                  1.0\" severity=\"100\"/>\n\t<inParam inClass=\"vagina\" min=\"0\"\
-                  \ max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\" severity=\"\
-                  100\"/>\n\t<inParam inClass=\"buttocks\" min=\"0\" max=\"0\" drawMode=\"\
-                  2\" grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"\
-                  anus\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"\
-                  1.0\" severity=\"100\"/>\n\t<inParam inClass=\"toy\" min=\"0\" max=\"\
-                  0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\" severity=\"100\"/>\n\
-                  \t<inParam inClass=\"oral\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"\
-                  127\" scale=\"1.0\" severity=\"100\"/>\n\t<inParam inClass=\"penetration\"\
-                  \ min=\"0\" max=\"0\" drawMode=\"2\" grey=\"127\" scale=\"1.0\"\
-                  \ severity=\"100\"/>\n</inParams>"
-              Profile picture example:
-                description: Allow pictures that contain only one Face
-                value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inParams>\n\t\
-                  <inParam inClass=\"face\" min=\"1\" max=\"1\" />\n</inParams>"
-              Hide children example:
-                description: Mask out children on the source media with black rectangles.
-                value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inParams>\n\t\
-                  <inParam inClass=\"child\" min=\"0\" max=\"0\" drawMode=\"2\" grey=\"\
-                  0\"/>\n</inParams>"
-              Blur sexual content example:
-                description: Blur out everything related to sexuality.
-                value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inParams>\n\t\
-                  <inParam inClass=\"breast\" drawMode=\"3\" />\n\t<inParam inClass=\"\
-                  vulva\" drawMode=\"3\" />\n\t<inParam inClass=\"penis\" drawMode=\"\
-                  3\" />\n\t<inParam inClass=\"vagina\" drawMode=\"3\" />\n\t<inParam\
-                  \ inClass=\"buttocks\" drawMode=\"3\" />\n\t<inParam inClass=\"\
-                  anus\" drawMode=\"3\" />\n\t<inParam inClass=\"toy\" drawMode=\"\
-                  3\" />\n\t<inParam inClass=\"oral\" drawMode=\"3\" />\n\t<inParam\
-                  \ inClass=\"penetration\" drawMode=\"3\" />\n</inParams>"
-            schema:
-              $ref: '#/components/schemas/INParams'
-          application/json:
-            examples:
-              Default parameter set:
-                description: Shows the default parameters set by the AI.
-                value:
-                  inDefault:
-                    thresh: "0.5"
-                    grey: "127"
-                  inParam:
-                  - inClass: face
-                    min: "1"
-                    max: "3"
-                    drawMode: "0"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: hand
-                    min: -1
-                    max: -1
-                    drawMode: "0"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: breast
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: vulva
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: penis
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: vagina
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: buttocks
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: anus
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: toy
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: oral
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-                  - inClass: penetration
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "127"
-                    scale: "1.0"
-                    severity: "100"
-              Profile picture example:
-                description: Allow pictures that contain only one Face
-                value:
-                  inParam:
-                  - inClass: face
-                    min: "1"
-                    max: "1"
-              Hide children example:
-                description: Mask out children on the source media with black rectangles.
-                value:
-                  inParam:
-                  - inClass: child
-                    min: "0"
-                    max: "0"
-                    drawMode: "2"
-                    grey: "0"
-              Blur sexual content example:
-                description: Blur out everything related to sexuality.
-                value:
-                  inParam:
-                  - inClass: breast
-                    drawMode: "3"
-                  - inClass: vulva
-                    drawMode: "3"
-                  - inClass: penis
-                    drawMode: "3"
-                  - inClass: vagina
-                    drawMode: "3"
-                  - inClass: buttocks
-                    drawMode: "3"
-                  - inClass: anus
-                    drawMode: "3"
-                  - inClass: toy
-                    drawMode: "3"
-                  - inClass: oral
-                    drawMode: "3"
-                  - inClass: penetration
-                    drawMode: "3"
-            schema:
-              $ref: '#/components/schemas/INParams'
-        required: true
-      responses:
-        "400":
-          description: Bad request. Check for badly formatted request body.
-        "200":
-          description: successful operation
-      summary: Set the behaviour parameters for one object class.
-      tags:
-      - Endpoints to setup the AI
-      x-contentType: application/xml
-      x-accepts: application/json
-  /v1/set-definition:
-    post:
-      description: Each available prototype groups together a pre-defined set of parameters
-        that will define the behaviour of the AI. This allows to configure multiple
-        AI-checks per image. The image upload is only required once. Set the definition
-        context with your needs in mind, credits are subtracted accordingly. See 'cost'
-        endpoint for further information. Additionally you can overwrite specific
-        parameters using 'set-parameters'. Any prior request to 'set-parameters' are
-        invalidated when calling this request. This can also be used to reset the
-        AI configuration.
-      operationId: setINDefine
-      requestBody:
-        content:
-          application/xml:
-            examples:
-              Block nudity, children and illegal symbols, find attributes and text:
-                description: This example shows the configuration for multiple AI-checks
-                  per image.
-                value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inDefineAI>\n\
-                  \t<inImage proto=\"nudityCheck\"/>\n\t<inImage proto=\"ageEstimation\"\
-                  />\n\t<inImage proto=\"illegalSymbols\"/>\n\t<inImage proto=\"attributesCheck\"\
-                  />\n\t<inImage proto=\"nippleCheck\"/>\n\t<inImage proto=\"textRecognition\"\
-                  />\n</inDefineAI>"
-              Default AI configuration:
-                description: Shows the default configuration of the AI. This is automatically
-                  set, if no custom definition is posted.
-                value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<inDefineAI>\n\
-                  \t<inImage proto=\"nudityCheck\"/>\n</inDefineAI>"
-            schema:
-              $ref: '#/components/schemas/INDefineAI'
-          application/json:
-            examples:
-              Default AI configuration:
-                description: Shows the default configuration of the AI.
-                value:
-                  inImage:
-                  - proto: nudityCheck
-              Block nudity and illegal symbols:
-                description: Shows the default configuration of the AI.
-                value:
-                  inImage:
-                  - proto: nudityCheck
-                  - proto: illegalSymbols
-            schema:
-              $ref: '#/components/schemas/INDefineAI'
-        required: true
-      responses:
-        "400":
-          description: Bad request. Check for badly formatted request body.
-        "200":
-          description: successful operation
-      summary: Set definitions via pre-defined prototypes.
-      tags:
-      - Endpoints to setup the AI
-      x-contentType: application/xml
-      x-accepts: application/json
-  /v1/check-url/{licenseKey}:
-    post:
-      operationId: checkImageUrl
+  /v2/config/parameters/{configId}:
+    delete:
+      description: Clears the parameters and restores the defaults for all classifications.
+      operationId: clearParameters
       parameters:
-      - explode: true
+      - description: The id of the configuration where the parameters should be deleted.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "204":
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Delete the parameters of the AI configuration.
+      tags:
+      - Detailed configuration parameters
+      x-accepts: application/json
+    get:
+      description: Returns the parameters stored in the given configuration.
+      operationId: getParameters
+      parameters:
+      - description: The id of the configuration for which the parameters are being
+          requested.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configuration with given id not found or parameters for configuration
+            not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Get the parameters of the AI configuration.
+      tags:
+      - Detailed configuration parameters
+      x-accepts: application/json
+    post:
+      description: Save or modify the parameters stored in the AI configuration.
+      operationId: setParameters
+      parameters:
+      - description: The id of the configuration where the parameters should be added.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParamSet'
+        description: Define the parameters to use for an AI check operation. View
+          the _ParamSet_ and _Param_ schema to see the available parameters.
+        required: true
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "204":
+          description: successful operation. No previously configured parameters exist.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation. Previous user configured parameters are
+            returned.
+      security:
+      - LICENSE-KEY: []
+      summary: Set parameters to the given AI configuration.
+      tags:
+      - Detailed configuration parameters
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/config/:
+    get:
+      description: Returns a list of all configurations with its id's and configured
+        prototypes. There is a limit on how many configurations can be stored per
+        license key. You can find this limit in the response of the info operation.
+      operationId: getAllConfigs
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Config'
+                type: array
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: List all saved AI configurations.
+      tags:
+      - Configuration Management
+      x-accepts: application/json
+    post:
+      description: Create a new AI configuration with the desired prototypes.
+      operationId: setConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
+        description: Define the prototypes to use for an AI check operation. View
+          the _Config_ schema to see the available prototypes.
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Maximum number of stored AI configurations reached.
+      security:
+      - LICENSE-KEY: []
+      summary: Create a new AI configuration.
+      tags:
+      - Configuration Management
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/check-video/{configId}:
+    post:
+      description: |-
+        An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+
+        <b>NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.<b>
+      operationId: checkVideo
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The url to the video that needs to be checked.
+        explode: true
         in: query
         name: url
         required: true
@@ -291,10 +230,10 @@ paths:
           type: string
         style: form
       - description: |-
-          Sets the response details.
-           * _1_ - The response body informs you if the image is ok or not ok (better API performance)
-          * _2_ - In addition the response body lists all broken rules.
-          * _3_ - In addition to the first two options, this will show all objects with positional information.
+          Set the detail level of the response.
+           * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance).
+          * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested.
+          * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.
         explode: true
         in: query
         name: detail
@@ -302,10 +241,12 @@ paths:
         schema:
           default: 1
           format: int32
+          maximum: 3
+          minimum: 0
           type: integer
         style: form
-      - description: Specifies whether or not to draw an output image that can be
-          downloaded afterwards.
+      - description: Specifies whether or not to draw an output video that can be
+          downloaded afterwards. The _Encoded_ schema will be available in the response.
         explode: true
         in: query
         name: imageEncode
@@ -314,46 +255,160 @@ paths:
           default: false
           type: boolean
         style: form
-      - description: License obtained from irisnet.de shop.
+      - description: The milliseconds between each AI check. E.g. The AI will check
+          1 frame per second when checkRate is set to '1000'.
+        explode: true
+        in: query
+        name: checkRate
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Callback'
+        required: true
+      responses:
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "202":
+          description: "operation accepted: wait for callback."
+      security:
+      - LICENSE-KEY: []
+      summary: Check a video with the AI.
+      tags:
+      - AI check operations
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/check-stream/{configId}:
+    post:
+      description: |-
+        The body is continuously send per JSON stream until completion of the video stream. Only then the full _CheckResult_ schema will be shown (past _Events_ omitted).
+
+        <b>NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.<b>
+
+        <b>WARNING: Please do not use the 'Try it out' for this operation. The browser is not able to refresh the response preview until the completion of the video stream.<b>
+      operationId: checkStream
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
         explode: false
         in: path
-        name: licenseKey
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The URL of the video stream that the AI should check.
+        explode: true
+        in: query
+        name: inUrl
         required: true
         schema:
           type: string
-        style: simple
+        style: form
+      - description: The URL of where the AI should send the encoded stream.
+        explode: true
+        in: query
+        name: outUrl
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Determine how often (value in milliseconds) the the AI should
+          give a feedback.
+        explode: true
+        in: query
+        name: cycleLength
+        required: false
+        schema:
+          default: 500
+          format: int32
+          minimum: 100
+          type: integer
+        style: form
+      - description: The milliseconds between each AI check. E.g. The AI will check
+          1 frame per second when checkRate is set to '1000'.
+        explode: true
+        in: query
+        name: checkRate
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
       responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-          description: successful operation
         "402":
           content:
-            application/xml:
+            application/x-ndjson:
               schema:
-                $ref: '#/components/schemas/INError'
-            application/json:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "404":
+          content:
+            application/x-ndjson:
               schema:
-                $ref: '#/components/schemas/INError'
-          description: Not enough credits
-      summary: Check image url against previously chosen configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "200":
+          content:
+            application/x-ndjson:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CheckResult'
+                type: array
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Check a stream with the AI.
       tags:
-      - Endpoints for AI-checks
-      x-accepts: application/json
-  /v1/check-image/{licenseKey}:
+      - AI check operations
+      x-accepts: application/x-ndjson
+  /v2/check-image/{configId}:
     post:
+      description: The response (_CheckResult_ schema) is returned immediately after
+        the request.
       operationId: checkImage
       parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The url to the image that needs to be checked.
+        explode: true
+        in: query
+        name: url
+        required: true
+        schema:
+          type: string
+        style: form
       - description: |-
-          Sets the response details.
-           * _1_ - The response body informs you if the image is ok or not ok (better API performance)
-          * _2_ - In addition the response body lists all broken rules.
-          * _3_ - In addition to the first two options, this will show all objects with positional information.
+          Set the detail level of the response.
+           * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance).
+          * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested.
+          * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
         explode: true
         in: query
         name: detail
@@ -361,10 +416,13 @@ paths:
         schema:
           default: 1
           format: int32
+          maximum: 3
+          minimum: 0
           type: integer
         style: form
-      - description: Specifies whether or not to draw an output image that can be
-          downloaded afterwards.
+      - description: Specifies whether or not to draw an output image that will be
+          delivered in the response body as base64 encoded string. The _Encoded_ schema
+          will be available in the response.
         explode: true
         in: query
         name: imageEncode
@@ -373,197 +431,293 @@ paths:
           default: false
           type: boolean
         style: form
-      - description: License obtained from irisnet.de shop.
-        explode: false
-        in: path
-        name: licenseKey
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        $ref: '#/components/requestBodies/inline_object'
-        content:
-          multipart/form-data:
-            schema:
-              properties:
-                file:
-                  format: binary
-                  type: string
-              required:
-              - file
-              type: object
-        required: true
       responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IrisNet'
-          description: successful operation
         "402":
           content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
             application/json:
               schema:
-                $ref: '#/components/schemas/INError'
-          description: Not enough credits
-      summary: Upload and check image against previously chosen configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Check an image with the AI.
       tags:
-      - Endpoints for AI-checks
-      x-contentType: multipart/form-data
+      - AI check operations
       x-accepts: application/json
-  /v1/info/{licenseKey}:
+  /v2/info/:
     get:
+      description: Get the LicenseInfo schema for the given license key in the authorization
+        header.
       operationId: getLicenseInfo
-      parameters:
-      - description: License obtained from the https://irisnet.de/subscribe shop.
-        explode: false
-        in: path
-        name: licenseKey
-        required: true
-        schema:
-          type: string
-        style: simple
       responses:
         "404":
           content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/INError'
             application/json:
               schema:
-                $ref: '#/components/schemas/INError'
+                $ref: '#/components/schemas/ApiNotice'
           description: The entered license key was not found.
         "200":
           content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/LicenseInfo'
             application/json:
               schema:
                 $ref: '#/components/schemas/LicenseInfo'
-          description: successful operation
-      summary: Get information from given license key.
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Get information for the given license key.
       tags:
-      - Miscellaneous operations
+      - Balance endpoints
       x-accepts: application/json
-  /v1/download/{filename}:
+  /v2/cost/{configId}/{frames}:
     get:
-      operationId: downloadProcessed
+      description: |-
+        The cost is subtracted from the license key after a successful check operation for moving images.
+
+        <b>NOTICE: The returned cost is an approximation. The exact cost can only be determined during the check operation.<b>
+      operationId: getVideoCost
       parameters:
-      - explode: false
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
         in: path
-        name: filename
+        name: configId
         required: true
         schema:
+          format: uuid
           type: string
+        style: simple
+      - description: The number of frames that the AI should check.
+        explode: false
+        in: path
+        name: frames
+        required: true
+        schema:
+          format: int64
+          type: integer
         style: simple
       responses:
         "404":
           content:
-            application/octet-stream:
+            application/json:
               schema:
-                $ref: '#/components/schemas/INError'
-          description: Specified file was not found.
-        "200":
-          content:
-            application/octet-stream:
-              schema:
-                format: binary
-                type: string
-          description: Returns the file AI produced file with masking or blurring,
-            depending on given AI parameters.
-      summary: Get the resulting media file.
-      tags:
-      - Miscellaneous operations
-      x-accepts: application/octet-stream
-  /v1/cost:
-    get:
-      operationId: getAICost
-      responses:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/INError'
+                $ref: '#/components/schemas/ApiNotice'
           description: The ai could not handle the request because it is either overloaded
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
         "200":
           content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration
+      security:
+      - LICENSE-KEY: []
+      summary: Get the cost of the configuration for moving images.
+      tags:
+      - Balance endpoints
+      x-accepts: application/json
+  /v2/cost/{configId}/{fps}/{duration}:
+    get:
+      description: |-
+        The cost is subtracted from the license key after a successful check operation for moving images.
+
+        <b>NOTICE: The returned cost is an approximation. The exact cost can only be determined during the check operation.<b>
+      operationId: getVideoCost_1
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The frames per second of the video or stream.
+        explode: false
+        in: path
+        name: fps
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - description: The duration in seconds of the video or stream.
+        explode: false
+        in: path
+        name: duration
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: The ai could not handle the request because it is either overloaded
+            or currently down for maintenance. This is a temporary state. A 'Retry-After'
+            Header is included in the response to signal the client to retry after
+            a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
+      security:
+      - LICENSE-KEY: []
+      summary: Get the cost of the configuration for moving images.
+      tags:
+      - Balance endpoints
+      x-accepts: application/json
+  /v2/cost/{configId}:
+    get:
+      description: The cost is subtracted from the license key after a successful
+        check-image operation.
+      operationId: getCost
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: The ai could not handle the request because it is either overloaded
+            or currently down for maintenance. This is a temporary state. A 'Retry-After'
+            Header is included in the response to signal the client to retry after
+            a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
+      security:
+      - LICENSE-KEY: []
+      summary: Get the cost of the configuration for a single image.
+      tags:
+      - Balance endpoints
+      x-accepts: application/json
+  /v2/config/{configId}:
+    delete:
+      description: Deletes the AI configuration with the given id.
+      operationId: deleteConfig
+      parameters:
+      - description: The id of the configuration that should be deleted.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
             '*/*':
               schema:
-                format: int64
-                type: integer
-          description: Contains the cost of the AI check with the current set of parameters.
-      summary: Get the cost per image check of the previously set parameters. The
-        cost of the configuration is subtracted from the license key during each check.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "204":
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Delete an AI configuration.
       tags:
-      - Miscellaneous operations
+      - Configuration Management
       x-accepts: '*/*'
+    get:
+      description: Returns a specific AI configuration for the requested id.
+      operationId: getConfig
+      parameters:
+      - description: The id of the configuration that is being requested.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
+      security:
+      - LICENSE-KEY: []
+      summary: Get a specific AI configuration.
+      tags:
+      - Configuration Management
+      x-accepts: application/json
 components:
-  requestBodies:
-    inline_object:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object'
-      required: true
   schemas:
-    INDefault:
-      description: An element that defines some overall defaults if needed. These
-        will be applied on every parameter set. Single parameters can be still overwritten
-        by their respective attributes within the 'inParam' element.
-      example:
-        thresh: 0.08008282
-        grey: 153
-      properties:
-        thresh:
-          default: 0.5
-          description: Threshold when an object can be recognized. Lowering the value
-            will increase the probability of recognizing objects. A threshhold of
-            0.5 would mean, that 50% of an object like a face must be visible, to
-            be detected.Setting the value too low however, can cause false positives.
-          format: float
-          maximum: 1.0
-          minimum: 0.0
-          type: number
-          xml:
-            attribute: true
-        grey:
-          default: 127
-          description: A grey scale color to use for frame or masking. '0' will represent
-            black, while the maximum '255' will be white.
-          format: int32
-          maximum: 255
-          minimum: 0
-          type: integer
-          xml:
-            attribute: true
-      type: object
-      xml:
-        name: inDefault
-    INParam:
-      description: A single parameter set for one object, for example face, describing
-        the behaviour of the AI. Each object has default parameters that are set if
-        these are empty.
+    Param:
+      description: "A single parameter set for one classification, for example face,\
+        \ describing the behaviour of the AI. Each classification has default parameters\
+        \ that are set if these are empty."
       example:
         severity: 100
-        min: 1
-        drawMode: 3
-        inClass: face
-        max: 5
-        scale: 1.5592102
-        grey: 58
+        min: 0
+        drawMode: 4
+        max: 0
+        scale: 1.7656269
+        ignore: false
+        classification: face
+        grey: 237
       properties:
-        inClass:
+        classification:
           description: |-
             The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of 'min', 'max' and 'drawMode' are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications.
             ##### nudityCheck
@@ -600,13 +754,45 @@ components:
             * _glasses_ _(0, -1, 0)_
             * _sunglasses_ _(0, -1, 0)_
             * _mask_ _(0, -1, 0)_
+            * _slimSizedFace (*)_ _(0, -1, 0)_
+            * _realSizedFace (*)_ _(0, -1, 0)_
+            * _plusSizedFace (*)_ _(0, -1, 0)_
             ##### nippleCheck
             > _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_
-            * _noNipple_ _(0, 0, 0)_
+            * _noNipple_ _(0, -1, 0)_
             * _hasNipple_ _(0, 0, 0)_
+            ##### bodyAttributes
+            > _Contains classification objects for determining the body size._
+            * _slimSized_ _(0, -1, 0)_
+            * _realSized_ _(0, -1, 0)_
+            * _plusSized_ _(0, -1, 0)_
             ##### illegalSymbols
             > _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_
             * _illegalSymbols_ _(0, 0, 1)_
+            ##### unwantedSubstances
+            > _Contains classification objects for different substances._
+            * _beer_ _(0, -1, 0)_
+            * _beerBottle_ _(0, -1, 0)_
+            * _beerCan_ _(0, -1, 0)_
+            * _wine_ _(0, -1, 0)_
+            * _wineBottle_ _(0, -1, 0)_
+            * _cocktail_ _(0, -1, 0)_
+            * _alcohol_ _(0, -1, 0)_
+            * _cannabis_ _(0, 0, 0)_
+            * _cigarette_ _(0, 0, 0)_
+            * _cocaine_ _(0, 0, 0)_
+            * _heroine_ _(0, 0, 0)_
+            * _coffee_ _(0, -1, 0)_
+            ##### violenceCheck
+            > _Contains classification objects for violent items or acts._
+            * _camouflage_ _(0, -1, 0)_
+            * _club_ _(0, -1, 0)_
+            * _knife_ _(0, 0, 0)_
+            * _sword_ _(0, 0, 0)_
+            * _pistol_ _(0, 0, 0)_
+            * _rifle_ _(0, 0, 0)_
+            * _cannon_ _(0, 0, 0)_
+            * _fire_ _(0, -1, 0)_
             ##### textRecognition
             > _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_
             * _textRecognition_ _(0, 6, 6)_
@@ -643,46 +829,71 @@ components:
           - glasses
           - sunglasses
           - mask
+          - slimSizedFace
+          - realSizedFace
+          - plusSizedFace
+          - slimSized
+          - realSized
+          - plusSized
           - noNipple
           - hasNipple
+          - beer
+          - beerBottle
+          - beerCan
+          - wine
+          - wineBottle
+          - cocktail
+          - alcohol
+          - cannabis
+          - cigarette
+          - cocaine
+          - heroine
+          - coffee
+          - camouflage
+          - club
+          - knife
+          - sword
+          - pistol
+          - rifle
+          - cannon
+          - fire
           - nudityCheck
           - ageVerification
           - ageEstimation
           - illegalSymbols
           - textRecognition
           - attributesCheck
+          - bodyAttributes
           - nippleCheck
+          - unwantedSubstances
+          - violenceCheck
           example: face
           type: string
-          xml:
-            attribute: true
         min:
-          description: The minimum amount of objects allowed on the source media.
-            Setting the value to -1 will cause the AI to ignore this rule.
+          description: The minimum amount of objects allowed on the image. Setting
+            the value to -1 will cause the AI to ignore this rule. For moving images
+            this value is applied to a single frame.
           format: int32
+          minimum: -1
           type: integer
-          xml:
-            attribute: true
         max:
-          description: The maximum amount of objects allowed on the source media.
-            Setting the value to -1 will cause the AI to ignore this rule.
+          description: The maximum amount of objects allowed on the image. Setting
+            the value to -1 will cause the AI to ignore this rule. For moving images
+            this value is applied to a single frame.
           format: int32
+          minimum: -1
           type: integer
-          xml:
-            attribute: true
         severity:
           default: 100
           description: Set a value to define the severity of a broken rule of the
             given classification object.
           example: 100
           format: int32
-          maximum: 1000
+          maximum: 999
           minimum: 0
           type: integer
-          xml:
-            attribute: true
         drawMode:
-          description: "The draw mode that will be used for the creating the media.\
+          description: "Set if and how a classification object should be drawn over.\
             \ \n* _0_ - will draw nothing,\n* _1_ - will draw a frame with class name\
             \ surrounding the object,\n* _2_ - will draw a filled rectangle that will\
             \ mask the object,\n* _3_ - is a combination between _1_ and _2_ (frame/name\
@@ -692,156 +903,462 @@ components:
           maximum: 7
           minimum: 0
           type: integer
-          xml:
-            attribute: true
         grey:
           default: 127
-          description: A grey scale color to use for masking. '0' will represent black,
-            while the maximum '255' will be white.
+          description: "A grey scale color used in combination of _drawMode_ '2' or\
+            \ '3'. '0' will represent black, while the maximum '255' will be white."
           format: int32
           maximum: 255
           minimum: 0
           type: integer
-          xml:
-            attribute: true
         scale:
           default: 1.0
-          description: Scale of the draw rectangle around the classification object.
-            Specify a value to increase or decrease the size of the border.
+          description: Scale of the bounds around the classification object. Specify
+            a value to increase or decrease the size of the bounds. This is applied
+            to the resulting media as well as the JSON coordinates.
           format: float
-          maximum: 2.0
+          maximum: 4.0
           minimum: 0.5
           type: number
-          xml:
-            attribute: true
+        ignore:
+          default: false
+          description: "A shorthand to ignore the classification object. This is equal\
+            \ to setting _min=0_, _max=-1_ and _drawMode=0_."
+          type: boolean
+      required:
+      - classification
       type: object
-      xml:
-        name: inParam
-    INParams:
+    ParamSet:
       description: A set of parameters/rules that describe how the AI should behave.
       example:
-        inParam:
+        minDuration: 79
+        abortOnSeverity: 0
+        params:
         - severity: 100
-          min: 1
-          drawMode: 3
-          inClass: face
-          max: 5
-          scale: 1.5592102
-          grey: 58
+          min: 0
+          drawMode: 4
+          max: 0
+          scale: 1.7656269
+          ignore: false
+          classification: face
+          grey: 237
         - severity: 100
-          min: 1
-          drawMode: 3
-          inClass: face
-          max: 5
-          scale: 1.5592102
-          grey: 58
-        inDefault:
-          thresh: 0.08008282
-          grey: 153
+          min: 0
+          drawMode: 4
+          max: 0
+          scale: 1.7656269
+          ignore: false
+          classification: face
+          grey: 237
+        thresh: 0.08008282
+        grey: 153
       properties:
-        inDefault:
-          $ref: '#/components/schemas/INDefault'
-        inParam:
+        thresh:
+          default: 0.5
+          description: "Threshold when an object can be recognized. Lowering the value\
+            \ will increase the probability of recognizing objects. A threshold of\
+            \ 0.5 would mean, that 50% of an object like a face must be visible, to\
+            \ be detected.Setting the value too low however, can cause false positives."
+          format: float
+          maximum: 1.0
+          minimum: 0.0
+          type: number
+        grey:
+          default: 127
+          description: "A grey scale color to use for frame or masking. '0' will represent\
+            \ black, while the maximum '255' will be white."
+          format: int32
+          maximum: 255
+          minimum: 0
+          type: integer
+        minDuration:
+          default: 100
+          description: Set the overall minimum duration in milliseconds for a rule
+            to be broken in moving images.
+          format: int32
+          maximum: 250
+          minimum: 50
+          type: integer
+        abortOnSeverity:
+          default: -1
+          description: Set a severity on which to automatically stop the check operation.
+            Works with moving images.Use '-1' to ignore this option.
+          format: int32
+          minimum: -1
+          type: integer
+        params:
           description: A list of parameter sets that describe the rules of the objects.
           items:
-            $ref: '#/components/schemas/INParam'
+            $ref: '#/components/schemas/Param'
           type: array
       type: object
+    ApiNotice:
+      example:
+        code: 418
+        level: WARN
+        message: "Here´s an example of what I can do, I can turn my handle into a\
+          \ spout, Tip me over and pour me out!"
+      properties:
+        code:
+          description: The status code of the response.
+          example: 418
+          format: int32
+          type: integer
+        level:
+          description: The severity level of the notice.
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: WARN
+          type: string
+        message:
+          description: A hopefully detailed message describing what went wrong.
+          example: "Here´s an example of what I can do, I can turn my handle into\
+            \ a spout, Tip me over and pour me out!"
+          type: string
+      type: object
       xml:
-        name: inParams
-    INDefineAI:
+        name: error
+    Config:
       description: Can be used to set a multitude of pre-defined commonly used rules
         without the need of specifying each parameter set.
       example:
-        inImage:
-        - proto: nudityCheck
-        - proto: nudityCheck
+        prototypes:
+        - nudityCheck
+        - nudityCheck
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        inImage:
-          description: Configures your detection. As there are literally hundreds
-            of parameters, INDefine uses prototypes to get usefull behaviour. This
-            includes a default setting for parameters and rules that should be applied
-            to images. You can combine multiple detections by using more than 1 prototype
-          items:
-            $ref: '#/components/schemas/INImage'
-          type: array
-      type: object
-      xml:
-        name: inDefineAI
-    INImage:
-      description: Configures your detection. As there are literally hundreds of parameters,
-        INDefine uses prototypes to get usefull behaviour. This includes a default
-        setting for parameters and rules that should be applied to images. You can
-        combine multiple detections by using more than 1 prototype
-      example:
-        proto: nudityCheck
-      properties:
-        proto:
-          description: |
-            Name of commonly used rule sets (prototypes). That can be used to speed up the setup process.
-            * _nudityCheck_ - Commonly used prototype to check for nudity.
-            * _ageVerification_ - Deprecated see 'ageEstimation'.
-            * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps.
-            * _illegalSymbols_ - Checks for symbols that are not permitted in Germany.
-            * _textRecognition_ - Checks for text occurrences.
-            * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc).
-            * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple.
-          enum:
-          - nudityCheck
-          - ageVerification
-          - ageEstimation
-          - illegalSymbols
-          - textRecognition
-          - attributesCheck
-          - nippleCheck
+        id:
+          description: The unique identifier for the AI configuration. Use this for
+            any check operation to tell the AI how to behave.
+          format: uuid
           type: string
-          xml:
-            attribute: true
+        prototypes:
+          description: "Configures your detection. As there are literally hundreds\
+            \ of parameters, prototypes can be used to get useful behaviour. This\
+            \ includes a default setting for parameters and rules that should be applied\
+            \ to the check operations. You can use multiple prototypes for a single\
+            \ check operation."
+          items:
+            description: |
+              Name of commonly used rule sets (prototypes). That can be used to speed up the setup process.
+              * _nudityCheck_ - Commonly used prototype to check for nudity.
+              * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps.
+              * _illegalSymbols_ - Checks for symbols that are not permitted in Germany.
+              * _textRecognition_ - Checks for text occurrences.
+              * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc).
+              * _bodyAttributes_ - Checks for attributes of the persons body.
+              * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple.
+              * _unwantedSubstances_ - Check for undesired or unwanted substances.
+              * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc.
+            enum:
+            - nudityCheck
+            - ageVerification
+            - ageEstimation
+            - illegalSymbols
+            - textRecognition
+            - attributesCheck
+            - bodyAttributes
+            - nippleCheck
+            - unwantedSubstances
+            - violenceCheck
+            type: string
+          type: array
+          uniqueItems: true
       type: object
-      xml:
-        name: inImage
-    INObject:
-      description: Describes a rectangle that stretches around the recognized object.
-        This is useful when redacting or blurring certain recognized objects. Each
-        object contains the name of the classification and coordinates for a rectangle
-        around the recognized object. The origin point (y = 0.0, x = 0.0) of the coordinate
-        system is on the top left of the of the source material. The bottom right
-        of the source is always y = 1 and x = 1.
+    Callback:
+      description: Callback options to send a response to.
       example:
-        inId: human
-        color: black
-        inClass: face
-        probability: 94
-        y0: 0.1
-        x0: 0.1
-        width: 0.1
-        style: longHaired
-        inGroup: human
-        height: 0.1
+        headers: "[\"Authorization\": \"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"]"
+        callbackUrl: https://openapi-generator.tech
       properties:
-        inClass:
+        callbackUrl:
+          description: Define a URL where a response should be sent.
+          format: uri
+          type: string
+        headers:
+          additionalProperties:
+            description: Define headers to send to the URL.
+            example: "[\"Authorization\": \"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"]"
+            type: string
+          description: Define headers to send to the URL.
+          example: "[\"Authorization\": \"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"]"
+          type: object
+      required:
+      - callbackUrl
+      type: object
+    BaseAttribute:
+      description: An attribute describes a quality or characteristic that a detection
+        object has.
+      discriminator:
+        propertyName: type
+      properties:
+        classification:
+          description: The classification of the recognized attribute.
+          example: female
+          type: string
+        probability:
+          description: The probability that the attribute found matches the classification.
+          example: 94
+          format: int32
+          type: integer
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: BaseAttribute
+          type: string
+      type: object
+    BaseDetection:
+      description: A detection describes the object found with all its details.
+      discriminator:
+        propertyName: type
+      properties:
+        classification:
           description: The classification of the recognized object.
           example: face
           type: string
-          xml:
-            attribute: true
-        inGroup:
+        group:
           description: The group of the classification.
           example: human
           type: string
-          xml:
-            attribute: true
-        inId:
+        id:
+          description: The id of the detection object.
+          example: 1003
+          format: int32
+          type: integer
+        probability:
+          description: The probability that the object found matches the classification.
+          example: 94
+          format: int32
+          type: integer
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: FaceDetection
+          type: string
+      type: object
+    BreastDetection:
+      allOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/BreastDetection_allOf'
+      description: Contains further characteristics particular to _breast_ detection.
+      type: object
+    BrokenRule:
+      description: Describes what and why a rule was broken according the the applied
+        during the configuration.
+      example:
+        severity: 100
+        duration: 8.32
+        found: 1
+        min: 1
+        max: 1
+        classification: face
+        group: human
+      properties:
+        classification:
+          description: The classification of the recognized object.
+          example: face
+          type: string
+        group:
           description: The group of the classification.
           example: human
           type: string
-          xml:
-            attribute: true
-            name: inID
+        found:
+          description: The count of how many instances of the classification object
+            were found.
+          example: 1
+          format: int32
+          type: integer
+        min:
+          description: The minimum allowed instances of the classification object.
+          example: 1
+          format: int32
+          type: integer
+        max:
+          description: The maximum allowed instances of the classification object.
+          example: 1
+          format: int32
+          type: integer
+        severity:
+          description: The severity of the classification object set while configuring
+            the AI.
+          example: 100
+          format: int32
+          type: integer
+        duration:
+          description: The overall duration of the found classification. Not available
+            for still images.
+          example: 8.32
+          format: float
+          type: number
+      type: object
+    CheckResult:
+      description: The root object returned after a check operation.
+      example:
+        summary:
+          severity: 100
+          helpSuggested: 0
+          brokenRulesCount: 0
+          rejectTags:
+          - rejectTags
+          - rejectTags
+          creditsConsumed: 3
+          status: reject
+          tags:
+          - tags
+          - tags
+          rejectReasons:
+          - rejectReasons
+          - rejectReasons
+        encodings:
+        - data: ""
+          name: name
+          downloadUrl: downloadUrl
+        - data: ""
+          name: name
+          downloadUrl: downloadUrl
+        brokenRules:
+        - severity: 100
+          duration: 8.32
+          found: 1
+          min: 1
+          max: 1
+          classification: face
+          group: human
+        - severity: 100
+          duration: 8.32
+          found: 1
+          min: 1
+          max: 1
+          classification: face
+          group: human
+        events:
+        - duration: 3.12
+          severity: 100
+          start: 8.32
+          classification: face
+          group: human
+        - duration: 3.12
+          severity: 100
+          start: 8.32
+          classification: face
+          group: human
+        notifications:
+        - code: 418
+          level: WARN
+          message: "Here´s an example of what I can do, I can turn my handle into\
+            \ a spout, Tip me over and pour me out!"
+        - code: 418
+          level: WARN
+          message: "Here´s an example of what I can do, I can turn my handle into\
+            \ a spout, Tip me over and pour me out!"
+        detections:
+        - null
+        - null
+      properties:
+        summary:
+          $ref: '#/components/schemas/Summary'
+        encodings:
+          items:
+            $ref: '#/components/schemas/Encoded'
+          type: array
+        brokenRules:
+          items:
+            $ref: '#/components/schemas/BrokenRule'
+          type: array
+        detections:
+          items:
+            $ref: '#/components/schemas/CheckResult_detections_inner'
+          type: array
+        events:
+          items:
+            $ref: '#/components/schemas/Event'
+          type: array
+        notifications:
+          items:
+            $ref: '#/components/schemas/ApiNotice'
+          type: array
+      type: object
+    Coordinates:
+      description: Describes the position and bounds of the classification object.
+      properties:
+        rectangles:
+          items:
+            $ref: '#/components/schemas/Rectangle'
+          type: array
+      type: object
+    Encoded:
+      description: Contains the resulting media as base64 encoded string or an URL
+        to download that media.
+      example:
+        data: ""
+        name: name
+        downloadUrl: downloadUrl
+      properties:
+        name:
+          description: The original filename of the image or video.
+          type: string
+        data:
+          description: The encoded media in base64 format.
+          format: binary
+          type: string
+        downloadUrl:
+          description: A one time URL to download the resulting media. The URL is
+            only valid for 24 hours.
+          type: string
+      type: object
+    Event:
+      description: Describes an event that lead to a broken rule.
+      example:
+        duration: 3.12
+        severity: 100
+        start: 8.32
+        classification: face
+        group: human
+      properties:
+        classification:
+          description: The classification of the recognized object.
+          example: face
+          type: string
+        group:
+          description: The group of the classification.
+          example: human
+          type: string
+        start:
+          description: The start in seconds where the classification object is found.
+          example: 8.32
+          format: float
+          type: number
+        duration:
+          description: The duration of the event in seconds until the classification
+            object is no longer in frame. The current event is ongoing if the duration
+            is not set.
+          example: 3.12
+          format: float
+          type: number
+        severity:
+          description: The severity of the classification object set while configuring
+            the AI.
+          example: 100
+          format: int32
+          type: integer
+      type: object
+    FaceDetection:
+      allOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/FaceDetection_allOf'
+      description: Contains further characteristics particular to _face_ detection.
+      type: object
+    HairAttribute:
+      description: Attributes qualifying the _hair_ classification.
+      properties:
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: BaseAttribute
+          type: string
         color:
-          description: "The color of the object, e.g. the color of the hair. Is only\
-            \ available for certain classification objects. See list below: \n* _hair_\
-            \ - black, brown, blonde, grey, red, other"
+          description: The color of the hair.
           enum:
           - black
           - brown
@@ -849,35 +1366,33 @@ components:
           - grey
           - red
           - other
-          example: black
           type: string
-          xml:
-            attribute: true
         style:
-          description: "The style attribute of the object, e.g. the style of the hair.\
-            \ Is only available for certain classification objects. See list below:\
-            \ \n* _hair_ - longHaired, shortHaired"
+          description: The hair style.
           enum:
           - longHaired
           - shortHaired
-          example: longHaired
           type: string
-          xml:
-            attribute: true
+      type: object
+    HairDetection:
+      allOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/HairDetection_allOf'
+      description: Contains further characteristics particular to _hair_ detection.
+      type: object
+    Rectangle:
+      description: Describes the bounds of a rectangle starting from the center.
+      properties:
         x0:
           description: The center of the rectangle in the horizontal (x) direction.
           example: 0.1
           format: float
           type: number
-          xml:
-            attribute: true
         y0:
           description: The center of the rectangle in the vertical (y) direction.
           example: 0.1
           format: float
           type: number
-          xml:
-            attribute: true
         width:
           description: The total width of the rectangle in the horizontal (x) direction.
             Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges
@@ -885,8 +1400,6 @@ components:
           example: 0.1
           format: float
           type: number
-          xml:
-            attribute: true
         height:
           description: The total height of the rectangle in the vertical (y) direction.
             Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom
@@ -894,189 +1407,90 @@ components:
           example: 0.1
           format: float
           type: number
-          xml:
-            attribute: true
-        probability:
-          description: The probability that the object found matches the classification.
-          example: 94
-          format: int32
-          type: integer
-          xml:
-            attribute: true
       type: object
-    INRule:
-      description: Describes the rules applied and the count of objects found for
-        the given classification.
+    Summary:
+      description: Summarizing the result of the AI.
       example:
         severity: 100
-        found: 1
-        min: 1
-        inClass: face
-        max: 1
-        inGroup: human
-      properties:
-        inClass:
-          description: The classification of the recognized object.
-          example: face
-          type: string
-          xml:
-            attribute: true
-        inGroup:
-          description: The group of the classification.
-          example: human
-          type: string
-          xml:
-            attribute: true
-        found:
-          description: The count of how many instances of the classification object
-            were found.
-          example: 1
-          format: int32
-          type: integer
-          xml:
-            attribute: true
-        min:
-          description: The minimum allowed instances of the classification object.
-          example: 1
-          format: int32
-          type: integer
-          xml:
-            attribute: true
-        max:
-          description: The maximum allowed instances of the classification object.
-          example: 1
-          format: int32
-          type: integer
-          xml:
-            attribute: true
-        severity:
-          description: The severity of the classification object set while configuring
-            the AI.
-          example: 100
-          format: int32
-          type: integer
-          xml:
-            attribute: true
-      type: object
-    IrisNet:
-      description: Contains information on the AI result from the source media check.
-      example:
-        severity: 100
-        inRule:
-        - severity: 100
-          found: 1
-          min: 1
-          inClass: face
-          max: 1
-          inGroup: human
-        - severity: 100
-          found: 1
-          min: 1
-          inClass: face
-          max: 1
-          inGroup: human
-        getnObjects: 1
         helpSuggested: 0
-        getnClasses: 8
-        rulesBroken: 0
-        inObject:
-        - inId: human
-          color: black
-          inClass: face
-          probability: 94
-          y0: 0.1
-          x0: 0.1
-          width: 0.1
-          style: longHaired
-          inGroup: human
-          height: 0.1
-        - inId: human
-          color: black
-          inClass: face
-          probability: 94
-          y0: 0.1
-          x0: 0.1
-          width: 0.1
-          style: longHaired
-          inGroup: human
-          height: 0.1
+        brokenRulesCount: 0
+        rejectTags:
+        - rejectTags
+        - rejectTags
+        creditsConsumed: 3
+        status: reject
+        tags:
+        - tags
+        - tags
+        rejectReasons:
+        - rejectReasons
+        - rejectReasons
       properties:
-        rulesBroken:
+        status:
+          description: A simple status string that can be either _accept_ or _reject_.
+          example: reject
+          type: string
+        brokenRulesCount:
           description: The amount of broken rules that are contained in the source
             media.
           example: 0
           format: int32
           type: integer
-          xml:
-            attribute: true
         helpSuggested:
-          description: In cases where the AI is uncertain, this attribute is set (1),
-            indication that it could be useful to double check the source media by
-            a human.
+          description: "In cases where the AI is uncertain, this attribute is set\
+            \ (1), indication that it could be useful to double check the source media\
+            \ by a human."
           example: 0
           format: int32
           type: integer
-          xml:
-            attribute: true
         severity:
           description: The highest severity value found amongst the broken rules.
           example: 100
           format: int32
           type: integer
-          xml:
-            attribute: true
-        getnClasses:
-          description: The amount of classification objects that were checked against
-            on the source media. This does not mean that all of the classifications
-            were found.
-          example: 8
+        creditsConsumed:
+          description: The amount of credits that was consumed for the check.
+          example: 3
           format: int32
           type: integer
-          xml:
-            attribute: true
-        getnObjects:
-          description: The amount of objects that were recognized on the source image.
-          example: 1
-          format: int32
-          type: integer
-          xml:
-            attribute: true
-        inRule:
-          description: This list contains one rule per classification. Rules for classification
-            objects that were not found, are omitted.
+        tags:
+          description: A list of classification names that were found.
           items:
-            $ref: '#/components/schemas/INRule'
+            description: A list of classification names that were found.
+            type: string
           type: array
-        inObject:
-          description: A list of all instances of the classification objects found
-            on the source image.
+          uniqueItems: true
+        rejectTags:
+          description: A list of classification names that caused a rule to be broken.
           items:
-            $ref: '#/components/schemas/INObject'
+            description: A list of classification names that caused a rule to be broken.
+            type: string
           type: array
+          uniqueItems: true
+        rejectReasons:
+          description: The names of the classification groups that caused a rule to
+            be broken.
+          items:
+            description: The names of the classification groups that caused a rule
+              to be broken.
+            type: string
+          type: array
+          uniqueItems: true
       type: object
-      xml:
-        name: irisnet
-    INError:
-      properties:
-        code:
-          example: 418
-          format: int32
-          type: integer
-        message:
-          example: Here´s an example of what I can do, I can turn my handle into a
-            spout, Tip me over and pour me out!
-          type: string
-      type: object
-      xml:
-        name: error
     LicenseInfo:
-      description: Describes the current balance of the given license key. A key has
-        a certain amount of credits that can be used for any kind of AI recognition.
-        The license key is invalid, when all of the credits have been used.
+      description: "Describes the current balance of the given license key. A key\
+        \ has a certain amount of credits that can be used for any kind of AI recognition.\
+        \ The license key is invalid, when all of the credits have been used, the\
+        \ license was disabled or expired."
       example:
-        totalCredits: 100
         creditsUsed: 14
         creditsRemaining: 86
+        totalCredits: 100
+        licenseKey: ABc-123-DeF-456
+        privileges:
+          has-video-privilege: "true"
+          has-stream-privilege: "false"
+          max-config-storage: "10"
       properties:
         creditsUsed:
           description: Credits used for the license key.
@@ -1089,20 +1503,78 @@ components:
           format: int32
           type: integer
         totalCredits:
-          description: Total credits contained within the license.
+          description: Total credits contained within the license key.
           example: 100
           format: int32
           type: integer
+        licenseKey:
+          description: The license key
+          type: string
+        privileges:
+          additionalProperties:
+            description: A map of privileges
+            type: string
+          description: A map of privileges
+          type: object
       title: LicenseInfo
       type: object
       xml:
         name: info
-    inline_object:
+    Pricing:
+      description: Contains information about the credit cost of a check operation.
+      example:
+        cost: 0
       properties:
-        file:
-          format: binary
-          type: string
-      required:
-      - file
+        cost:
+          format: int32
+          type: integer
       type: object
+    BreastDetection_allOf:
+      properties:
+        attributes:
+          description: Attributes characterizing the _breast_ detection. Mainly contains
+            attributes that were activated with the _nippleCheck_ prototype.
+          items:
+            $ref: '#/components/schemas/BaseAttribute'
+          type: array
+      type: object
+      example: null
+    CheckResult_detections_inner:
+      oneOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/BreastDetection'
+      - $ref: '#/components/schemas/FaceDetection'
+      - $ref: '#/components/schemas/HairDetection'
+    FaceDetection_allOf:
+      properties:
+        attributes:
+          description: Attributes characterizing the _face_ detection. Mainly contains
+            attributes that were activated with the _ageEstimation_ prototype.
+          items:
+            $ref: '#/components/schemas/BaseAttribute'
+          type: array
+        subDetections:
+          description: A set of sub-detection that are particular to the _face_ detection.
+            Mainly contains detections that were activated with the _attributesCheck_
+            prototype.
+          items:
+            $ref: '#/components/schemas/BaseDetection'
+          type: array
+      type: object
+      example: null
+    HairDetection_allOf:
+      properties:
+        attributes:
+          description: Contains attributes for the _hair_ classification.
+          items:
+            $ref: '#/components/schemas/HairAttribute'
+          type: array
+      type: object
+      example: null
+  securitySchemes:
+    LICENSE-KEY:
+      description: License Key access
+      in: header
+      name: LICENSE-KEY
+      type: apiKey
 
