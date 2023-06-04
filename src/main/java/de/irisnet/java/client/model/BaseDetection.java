@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -88,7 +92,6 @@ public class BaseDetection {
    * @return classification
   **/
   @javax.annotation.Nullable
-
   public String getClassification() {
     return classification;
   }
@@ -110,7 +113,6 @@ public class BaseDetection {
    * @return group
   **/
   @javax.annotation.Nullable
-
   public String getGroup() {
     return group;
   }
@@ -132,7 +134,6 @@ public class BaseDetection {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public Integer getId() {
     return id;
   }
@@ -154,7 +155,6 @@ public class BaseDetection {
    * @return probability
   **/
   @javax.annotation.Nullable
-
   public Integer getProbability() {
     return probability;
   }
@@ -176,7 +176,6 @@ public class BaseDetection {
    * @return coordinates
   **/
   @javax.annotation.Nullable
-
   public Coordinates getCoordinates() {
     return coordinates;
   }
@@ -198,7 +197,6 @@ public class BaseDetection {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public String getType() {
     return type;
   }

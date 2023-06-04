@@ -9,7 +9,7 @@ All URIs are relative to *https://api.irisnet.de*
 | [**checkVideo**](AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI. |
 
 
-<a name="checkImage"></a>
+<a id="checkImage"></a>
 # **checkImage**
 > CheckResult checkImage(configId, url, detail, imageEncode)
 
@@ -86,7 +86,7 @@ public class Example {
 | **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
 
-<a name="checkStream"></a>
+<a id="checkStream"></a>
 # **checkStream**
 > List&lt;CheckResult&gt; checkStream(configId, inUrl, outUrl, cycleLength, checkRate)
 
@@ -165,7 +165,7 @@ public class Example {
 | **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
 
-<a name="checkVideo"></a>
+<a id="checkVideo"></a>
 # **checkVideo**
 > checkVideo(configId, url, callback, detail, imageEncode, checkRate)
 
@@ -241,7 +241,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **202** | operation accepted: wait for callback. |  -  |
 | **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
-| **202** | operation accepted: wait for callback. |  -  |
 

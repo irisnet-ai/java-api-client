@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -84,7 +88,6 @@ public class LicenseInfo {
    * @return creditsUsed
   **/
   @javax.annotation.Nullable
-
   public Integer getCreditsUsed() {
     return creditsUsed;
   }
@@ -106,7 +109,6 @@ public class LicenseInfo {
    * @return creditsRemaining
   **/
   @javax.annotation.Nullable
-
   public Integer getCreditsRemaining() {
     return creditsRemaining;
   }
@@ -128,7 +130,6 @@ public class LicenseInfo {
    * @return totalCredits
   **/
   @javax.annotation.Nullable
-
   public Integer getTotalCredits() {
     return totalCredits;
   }
@@ -150,7 +151,6 @@ public class LicenseInfo {
    * @return licenseKey
   **/
   @javax.annotation.Nullable
-
   public String getLicenseKey() {
     return licenseKey;
   }
@@ -180,7 +180,6 @@ public class LicenseInfo {
    * @return privileges
   **/
   @javax.annotation.Nullable
-
   public Map<String, String> getPrivileges() {
     return privileges;
   }

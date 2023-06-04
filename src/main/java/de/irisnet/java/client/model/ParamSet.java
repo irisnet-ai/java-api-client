@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -87,7 +91,6 @@ public class ParamSet {
    * @return thresh
   **/
   @javax.annotation.Nullable
-
   public Float getThresh() {
     return thresh;
   }
@@ -111,7 +114,6 @@ public class ParamSet {
    * @return grey
   **/
   @javax.annotation.Nullable
-
   public Integer getGrey() {
     return grey;
   }
@@ -135,7 +137,6 @@ public class ParamSet {
    * @return minDuration
   **/
   @javax.annotation.Nullable
-
   public Integer getMinDuration() {
     return minDuration;
   }
@@ -158,7 +159,6 @@ public class ParamSet {
    * @return abortOnSeverity
   **/
   @javax.annotation.Nullable
-
   public Integer getAbortOnSeverity() {
     return abortOnSeverity;
   }
@@ -188,7 +188,6 @@ public class ParamSet {
    * @return params
   **/
   @javax.annotation.Nullable
-
   public List<Param> getParams() {
     return params;
   }

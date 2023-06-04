@@ -40,6 +40,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -94,7 +98,6 @@ public class CheckResult {
    * @return summary
   **/
   @javax.annotation.Nullable
-
   public Summary getSummary() {
     return summary;
   }
@@ -124,7 +127,6 @@ public class CheckResult {
    * @return encodings
   **/
   @javax.annotation.Nullable
-
   public List<Encoded> getEncodings() {
     return encodings;
   }
@@ -154,7 +156,6 @@ public class CheckResult {
    * @return brokenRules
   **/
   @javax.annotation.Nullable
-
   public List<BrokenRule> getBrokenRules() {
     return brokenRules;
   }
@@ -184,7 +185,6 @@ public class CheckResult {
    * @return detections
   **/
   @javax.annotation.Nullable
-
   public List<CheckResultDetectionsInner> getDetections() {
     return detections;
   }
@@ -214,7 +214,6 @@ public class CheckResult {
    * @return events
   **/
   @javax.annotation.Nullable
-
   public List<Event> getEvents() {
     return events;
   }
@@ -244,7 +243,6 @@ public class CheckResult {
    * @return notifications
   **/
   @javax.annotation.Nullable
-
   public List<ApiNotice> getNotifications() {
     return notifications;
   }

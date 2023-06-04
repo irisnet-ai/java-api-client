@@ -9,7 +9,7 @@ All URIs are relative to *https://api.irisnet.de*
 | [**setParameters**](DetailedConfigurationParametersApi.md#setParameters) | **POST** /v2/config/parameters/{configId} | Set parameters to the given AI configuration. |
 
 
-<a name="clearParameters"></a>
+<a id="clearParameters"></a>
 # **clearParameters**
 > clearParameters(configId)
 
@@ -75,10 +75,10 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configId not found. |  -  |
 | **204** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
 
-<a name="getParameters"></a>
+<a id="getParameters"></a>
 # **getParameters**
 > ParamSet getParameters(configId)
 
@@ -145,10 +145,10 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configuration with given id not found or parameters for configuration not found. |  -  |
 | **200** | successful operation. |  -  |
+| **404** | configuration with given id not found or parameters for configuration not found. |  -  |
 
-<a name="setParameters"></a>
+<a id="setParameters"></a>
 # **setParameters**
 > ParamSet setParameters(configId, paramSet)
 
@@ -217,8 +217,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** | Bad request. Check for badly formatted request body. |  -  |
 | **404** | configId not found. |  -  |
 | **204** | successful operation. No previously configured parameters exist. |  -  |
-| **400** | Bad request. Check for badly formatted request body. |  -  |
 | **200** | successful operation. Previous user configured parameters are returned. |  -  |
 

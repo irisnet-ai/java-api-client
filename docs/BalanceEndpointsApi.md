@@ -10,7 +10,7 @@ All URIs are relative to *https://api.irisnet.de*
 | [**getVideoCost1**](BalanceEndpointsApi.md#getVideoCost1) | **GET** /v2/cost/{configId}/{fps}/{duration} | Get the cost of the configuration for moving images. |
 
 
-<a name="getCost"></a>
+<a id="getCost"></a>
 # **getCost**
 > Pricing getCost(configId)
 
@@ -78,10 +78,10 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **404** | configId not found. |  -  |
-| **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 | **200** | The cost of the given configuration. |  -  |
+| **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 
-<a name="getLicenseInfo"></a>
+<a id="getLicenseInfo"></a>
 # **getLicenseInfo**
 > LicenseInfo getLicenseInfo()
 
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 | **404** | The entered license key was not found. |  -  |
 | **200** | successful operation. |  -  |
 
-<a name="getVideoCost"></a>
+<a id="getVideoCost"></a>
 # **getVideoCost**
 > Pricing getVideoCost(configId, frames)
 
@@ -220,7 +220,7 @@ public class Example {
 | **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 | **200** | The cost of the given configuration |  -  |
 
-<a name="getVideoCost1"></a>
+<a id="getVideoCost1"></a>
 # **getVideoCost1**
 > Pricing getVideoCost1(configId, fps, duration)
 
@@ -292,6 +292,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **404** | configId not found. |  -  |
-| **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 | **200** | The cost of the given configuration. |  -  |
+| **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 

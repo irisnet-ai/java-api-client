@@ -10,7 +10,7 @@ All URIs are relative to *https://api.irisnet.de*
 | [**setConfig**](ConfigurationManagementApi.md#setConfig) | **POST** /v2/config/ | Create a new AI configuration. |
 
 
-<a name="deleteConfig"></a>
+<a id="deleteConfig"></a>
 # **deleteConfig**
 > deleteConfig(configId)
 
@@ -76,10 +76,10 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configId not found. |  -  |
 | **204** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
 
-<a name="getAllConfigs"></a>
+<a id="getAllConfigs"></a>
 # **getAllConfigs**
 > List&lt;Config&gt; getAllConfigs()
 
@@ -144,7 +144,7 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 | **200** | successful operation. |  -  |
 
-<a name="getConfig"></a>
+<a id="getConfig"></a>
 # **getConfig**
 > Config getConfig(configId)
 
@@ -214,7 +214,7 @@ public class Example {
 | **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
 
-<a name="setConfig"></a>
+<a id="setConfig"></a>
 # **setConfig**
 > Config setConfig(config)
 
@@ -282,6 +282,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **400** | Bad request. Check for badly formatted request body. |  -  |
-| **200** | successful operation. |  -  |
 | **403** | Maximum number of stored AI configurations reached. |  -  |
+| **200** | successful operation. |  -  |
 

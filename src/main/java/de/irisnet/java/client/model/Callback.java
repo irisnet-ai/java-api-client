@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -73,7 +77,6 @@ public class Callback {
    * @return callbackUrl
   **/
   @javax.annotation.Nonnull
-
   public URI getCallbackUrl() {
     return callbackUrl;
   }
@@ -103,7 +106,6 @@ public class Callback {
    * @return headers
   **/
   @javax.annotation.Nullable
-
   public Map<String, String> getHeaders() {
     return headers;
   }

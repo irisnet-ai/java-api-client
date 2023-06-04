@@ -84,8 +84,8 @@ public class ConfigurationManagementApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigCall(UUID configId, final ApiCallback _callback) throws ApiException {
@@ -152,8 +152,8 @@ public class ConfigurationManagementApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteConfig(UUID configId) throws ApiException {
@@ -169,8 +169,8 @@ public class ConfigurationManagementApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteConfigWithHttpInfo(UUID configId) throws ApiException {
@@ -188,8 +188,8 @@ public class ConfigurationManagementApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigAsync(UUID configId, final ApiCallback<Void> _callback) throws ApiException {
@@ -448,8 +448,8 @@ public class ConfigurationManagementApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setConfigCall(Config config, final ApiCallback _callback) throws ApiException {
@@ -518,8 +518,8 @@ public class ConfigurationManagementApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public Config setConfig(Config config) throws ApiException {
@@ -537,8 +537,8 @@ public class ConfigurationManagementApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Config> setConfigWithHttpInfo(Config config) throws ApiException {
@@ -558,8 +558,8 @@ public class ConfigurationManagementApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setConfigAsync(Config config, final ApiCallback<Config> _callback) throws ApiException {

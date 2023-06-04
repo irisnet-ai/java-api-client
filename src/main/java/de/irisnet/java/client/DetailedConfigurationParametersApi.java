@@ -84,8 +84,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call clearParametersCall(UUID configId, final ApiCallback _callback) throws ApiException {
@@ -152,8 +152,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void clearParameters(UUID configId) throws ApiException {
@@ -169,8 +169,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> clearParametersWithHttpInfo(UUID configId) throws ApiException {
@@ -188,8 +188,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call clearParametersAsync(UUID configId, final ApiCallback<Void> _callback) throws ApiException {
@@ -207,8 +207,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getParametersCall(UUID configId, final ApiCallback _callback) throws ApiException {
@@ -276,8 +276,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public ParamSet getParameters(UUID configId) throws ApiException {
@@ -294,8 +294,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ParamSet> getParametersWithHttpInfo(UUID configId) throws ApiException {
@@ -314,8 +314,8 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getParametersAsync(UUID configId, final ApiCallback<ParamSet> _callback) throws ApiException {
@@ -335,9 +335,9 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
@@ -413,9 +413,9 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
@@ -434,9 +434,9 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
@@ -457,9 +457,9 @@ public class DetailedConfigurationParametersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */

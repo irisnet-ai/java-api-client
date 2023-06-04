@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -78,7 +82,6 @@ public class Rectangle {
    * @return x0
   **/
   @javax.annotation.Nullable
-
   public Float getX0() {
     return x0;
   }
@@ -100,7 +103,6 @@ public class Rectangle {
    * @return y0
   **/
   @javax.annotation.Nullable
-
   public Float getY0() {
     return y0;
   }
@@ -122,7 +124,6 @@ public class Rectangle {
    * @return width
   **/
   @javax.annotation.Nullable
-
   public Float getWidth() {
     return width;
   }
@@ -144,7 +145,6 @@ public class Rectangle {
    * @return height
   **/
   @javax.annotation.Nullable
-
   public Float getHeight() {
     return height;
   }

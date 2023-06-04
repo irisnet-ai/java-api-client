@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -82,7 +86,6 @@ public class Event {
    * @return classification
   **/
   @javax.annotation.Nullable
-
   public String getClassification() {
     return classification;
   }
@@ -104,7 +107,6 @@ public class Event {
    * @return group
   **/
   @javax.annotation.Nullable
-
   public String getGroup() {
     return group;
   }
@@ -126,7 +128,6 @@ public class Event {
    * @return start
   **/
   @javax.annotation.Nullable
-
   public Float getStart() {
     return start;
   }
@@ -148,7 +149,6 @@ public class Event {
    * @return duration
   **/
   @javax.annotation.Nullable
-
   public Float getDuration() {
     return duration;
   }
@@ -170,7 +170,6 @@ public class Event {
    * @return severity
   **/
   @javax.annotation.Nullable
-
   public Integer getSeverity() {
     return severity;
   }

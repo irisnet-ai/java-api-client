@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>3.0.5</version>
+  <version>3.0.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -66,7 +66,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:3.0.5"
+     implementation "de.irisnet.java.client:irisnet-java-client:3.0.6"
   }
 ```
 
@@ -80,7 +80,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-3.0.5.jar`
+* `target/irisnet-java-client-3.0.6.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -178,9 +178,12 @@ Class | Method | HTTP request | Description
  - [Summary](docs/Summary.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="LICENSE-KEY"></a>
 ### LICENSE-KEY
 
 - **Type**: API key

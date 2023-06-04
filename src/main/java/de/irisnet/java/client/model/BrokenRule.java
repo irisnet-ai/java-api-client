@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -90,7 +94,6 @@ public class BrokenRule {
    * @return classification
   **/
   @javax.annotation.Nullable
-
   public String getClassification() {
     return classification;
   }
@@ -112,7 +115,6 @@ public class BrokenRule {
    * @return group
   **/
   @javax.annotation.Nullable
-
   public String getGroup() {
     return group;
   }
@@ -134,7 +136,6 @@ public class BrokenRule {
    * @return found
   **/
   @javax.annotation.Nullable
-
   public Integer getFound() {
     return found;
   }
@@ -156,7 +157,6 @@ public class BrokenRule {
    * @return min
   **/
   @javax.annotation.Nullable
-
   public Integer getMin() {
     return min;
   }
@@ -178,7 +178,6 @@ public class BrokenRule {
    * @return max
   **/
   @javax.annotation.Nullable
-
   public Integer getMax() {
     return max;
   }
@@ -200,7 +199,6 @@ public class BrokenRule {
    * @return severity
   **/
   @javax.annotation.Nullable
-
   public Integer getSeverity() {
     return severity;
   }
@@ -222,7 +220,6 @@ public class BrokenRule {
    * @return duration
   **/
   @javax.annotation.Nullable
-
   public Float getDuration() {
     return duration;
   }

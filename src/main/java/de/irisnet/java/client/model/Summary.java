@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -96,7 +100,6 @@ public class Summary {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public String getStatus() {
     return status;
   }
@@ -118,7 +121,6 @@ public class Summary {
    * @return brokenRulesCount
   **/
   @javax.annotation.Nullable
-
   public Integer getBrokenRulesCount() {
     return brokenRulesCount;
   }
@@ -140,7 +142,6 @@ public class Summary {
    * @return helpSuggested
   **/
   @javax.annotation.Nullable
-
   public Integer getHelpSuggested() {
     return helpSuggested;
   }
@@ -162,7 +163,6 @@ public class Summary {
    * @return severity
   **/
   @javax.annotation.Nullable
-
   public Integer getSeverity() {
     return severity;
   }
@@ -184,7 +184,6 @@ public class Summary {
    * @return creditsConsumed
   **/
   @javax.annotation.Nullable
-
   public Integer getCreditsConsumed() {
     return creditsConsumed;
   }
@@ -214,7 +213,6 @@ public class Summary {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public Set<String> getTags() {
     return tags;
   }
@@ -244,7 +242,6 @@ public class Summary {
    * @return rejectTags
   **/
   @javax.annotation.Nullable
-
   public Set<String> getRejectTags() {
     return rejectTags;
   }
@@ -274,7 +271,6 @@ public class Summary {
    * @return rejectReasons
   **/
   @javax.annotation.Nullable
-
   public Set<String> getRejectReasons() {
     return rejectReasons;
   }
