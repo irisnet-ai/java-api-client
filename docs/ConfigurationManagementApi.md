@@ -76,8 +76,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **204** | successful operation. |  -  |
 
 <a id="getAllConfigs"></a>
 # **getAllConfigs**
@@ -282,6 +282,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **400** | Bad request. Check for badly formatted request body. |  -  |
-| **403** | Maximum number of stored AI configurations reached. |  -  |
 | **200** | successful operation. |  -  |
+| **403** | Maximum number of stored AI configurations reached. |  -  |
 

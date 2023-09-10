@@ -14,7 +14,6 @@
 package de.irisnet.java.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,9 +27,10 @@ import de.irisnet.java.client.model.HairAttribute;
 import de.irisnet.java.client.model.HairDetection;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import javax.ws.rs.core.GenericType;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -59,6 +60,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
 
 import de.irisnet.java.JSON;
@@ -90,39 +92,35 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
 
                     // check if the actual instance is of the type `BaseDetection`
                     if (value.getActualInstance() instanceof BaseDetection) {
-                        JsonObject obj = adapterBaseDetection.toJsonTree((BaseDetection)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterBaseDetection.toJsonTree((BaseDetection)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
                     // check if the actual instance is of the type `BreastDetection`
                     if (value.getActualInstance() instanceof BreastDetection) {
-                        JsonObject obj = adapterBreastDetection.toJsonTree((BreastDetection)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterBreastDetection.toJsonTree((BreastDetection)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
                     // check if the actual instance is of the type `FaceDetection`
                     if (value.getActualInstance() instanceof FaceDetection) {
-                        JsonObject obj = adapterFaceDetection.toJsonTree((FaceDetection)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterFaceDetection.toJsonTree((FaceDetection)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
                     // check if the actual instance is of the type `HairDetection`
                     if (value.getActualInstance() instanceof HairDetection) {
-                        JsonObject obj = adapterHairDetection.toJsonTree((HairDetection)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterHairDetection.toJsonTree((HairDetection)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
                     throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection");
                 }
 
                 @Override
                 public CheckResultDetectionsInner read(JsonReader in) throws IOException {
                     Object deserialized = null;
-                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+                    JsonElement jsonElement = elementAdapter.read(in);
 
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
@@ -130,70 +128,67 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
 
                     // deserialize BaseDetection
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        BaseDetection.validateJsonObject(jsonObject);
-                        actualAdapter = adapterBaseDetection;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'BaseDetection'");
+                      // validate the JSON object to see if any exception is thrown
+                      BaseDetection.validateJsonElement(jsonElement);
+                      actualAdapter = adapterBaseDetection;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'BaseDetection'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BaseDetection'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'BaseDetection'", e);
                     }
-
                     // deserialize BreastDetection
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        BreastDetection.validateJsonObject(jsonObject);
-                        actualAdapter = adapterBreastDetection;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'BreastDetection'");
+                      // validate the JSON object to see if any exception is thrown
+                      BreastDetection.validateJsonElement(jsonElement);
+                      actualAdapter = adapterBreastDetection;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'BreastDetection'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BreastDetection'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'BreastDetection'", e);
                     }
-
                     // deserialize FaceDetection
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        FaceDetection.validateJsonObject(jsonObject);
-                        actualAdapter = adapterFaceDetection;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'FaceDetection'");
+                      // validate the JSON object to see if any exception is thrown
+                      FaceDetection.validateJsonElement(jsonElement);
+                      actualAdapter = adapterFaceDetection;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'FaceDetection'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'FaceDetection'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'FaceDetection'", e);
                     }
-
                     // deserialize HairDetection
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        HairDetection.validateJsonObject(jsonObject);
-                        actualAdapter = adapterHairDetection;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'HairDetection'");
+                      // validate the JSON object to see if any exception is thrown
+                      HairDetection.validateJsonElement(jsonElement);
+                      actualAdapter = adapterHairDetection;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'HairDetection'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'HairDetection'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'HairDetection'", e);
                     }
 
                     if (match == 1) {
                         CheckResultDetectionsInner ret = new CheckResultDetectionsInner();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CheckResultDetectionsInner: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for CheckResultDetectionsInner: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
     // store a list of schema names defined in oneOf
-    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public CheckResultDetectionsInner() {
         super("oneOf", Boolean.FALSE);
@@ -220,18 +215,14 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("BaseDetection", new GenericType<BaseDetection>() {
-        });
-        schemas.put("BreastDetection", new GenericType<BreastDetection>() {
-        });
-        schemas.put("FaceDetection", new GenericType<FaceDetection>() {
-        });
-        schemas.put("HairDetection", new GenericType<HairDetection>() {
-        });
+        schemas.put("BaseDetection", BaseDetection.class);
+        schemas.put("BreastDetection", BreastDetection.class);
+        schemas.put("FaceDetection", FaceDetection.class);
+        schemas.put("HairDetection", HairDetection.class);
     }
 
     @Override
-    public Map<String, GenericType> getSchemas() {
+    public Map<String, Class<?>> getSchemas() {
         return CheckResultDetectionsInner.schemas;
     }
 
@@ -241,7 +232,6 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
      * BaseDetection, BreastDetection, FaceDetection, HairDetection
      *
      * It could be an instance of the 'oneOf' schemas.
-     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {
@@ -289,7 +279,6 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     public BaseDetection getBaseDetection() throws ClassCastException {
         return (BaseDetection)super.getActualInstance();
     }
-
     /**
      * Get the actual instance of `BreastDetection`. If the actual instance is not `BreastDetection`,
      * the ClassCastException will be thrown.
@@ -300,7 +289,6 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     public BreastDetection getBreastDetection() throws ClassCastException {
         return (BreastDetection)super.getActualInstance();
     }
-
     /**
      * Get the actual instance of `FaceDetection`. If the actual instance is not `FaceDetection`,
      * the ClassCastException will be thrown.
@@ -311,7 +299,6 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     public FaceDetection getFaceDetection() throws ClassCastException {
         return (FaceDetection)super.getActualInstance();
     }
-
     /**
      * Get the actual instance of `HairDetection`. If the actual instance is not `HairDetection`,
      * the ClassCastException will be thrown.
@@ -323,20 +310,19 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
         return (HairDetection)super.getActualInstance();
     }
 
-
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CheckResultDetectionsInner
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CheckResultDetectionsInner
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
     // validate the json string with BaseDetection
     try {
-      BaseDetection.validateJsonObject(jsonObj);
+      BaseDetection.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
@@ -344,7 +330,7 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     }
     // validate the json string with BreastDetection
     try {
-      BreastDetection.validateJsonObject(jsonObj);
+      BreastDetection.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
@@ -352,7 +338,7 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     }
     // validate the json string with FaceDetection
     try {
-      FaceDetection.validateJsonObject(jsonObj);
+      FaceDetection.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
@@ -360,14 +346,14 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     }
     // validate the json string with HairDetection
     try {
-      HairDetection.validateJsonObject(jsonObj);
+      HairDetection.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for CheckResultDetectionsInner with oneOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for CheckResultDetectionsInner with oneOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

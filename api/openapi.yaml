@@ -48,14 +48,14 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "204":
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete the parameters of the AI configuration.
@@ -77,12 +77,6 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation.
         "404":
           content:
             application/json:
@@ -90,6 +84,12 @@ paths:
                 $ref: '#/components/schemas/ApiNotice'
           description: configuration with given id not found or parameters for configuration
             not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get the parameters of the AI configuration.
@@ -112,6 +112,92 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              Reject explicit content:
+                description: Rejects and blurs all classifications showing explicit
+                  content. (Requires 'nudityCheck' prototype)
+                value:
+                  params:
+                  - classification: breast
+                    drawMode: 3
+                  - classification: vulva
+                    drawMode: 3
+                  - classification: penis
+                    drawMode: 3
+                  - classification: vagina
+                    drawMode: 3
+                  - classification: buttocks
+                    drawMode: 3
+                  - classification: anus
+                    drawMode: 3
+                  - classification: toy
+                    drawMode: 3
+                  - classification: oral
+                    drawMode: 3
+                  - classification: penetration
+                    drawMode: 3
+              Mask children:
+                description: Draws a black mask over children without rejecting. (Requires
+                  'nudityCheck' and 'ageEstimation' prototypes)
+                value:
+                  params:
+                  - classification: child
+                    min: 0
+                    max: -1
+                    drawMode: 2
+                    grey: 255
+              Profile picture:
+                description: Only allow pictures with one face. (Requires 'nudityCheck'
+                  prototype)
+                value:
+                  params:
+                  - classification: face
+                    min: 1
+                    max: 1
+              Reject breast showing nipple:
+                description: "Allow breasts not showing nipple (e.g. cleavage), but\
+                  \ reject and blur breasts showing nipple. (Requires 'nudityCheck'\
+                  \ and 'nippleCheck' prototypes)"
+                value:
+                  params:
+                  - classification: breast
+                    ignore: true
+                  - classification: hasNipple
+                    min: 0
+                    max: 0
+                    drawMode: 6
+              Abort on severity:
+                description: Aborts a video or stream check when a severity of '200'
+                  is reached. Only 'breast' and 'buttocks' is considered OK in this
+                  example.
+                value:
+                  abortOnSeverity: 200
+                  params:
+                  - classification: breast
+                    severity: 150
+                  - classification: buttocks
+                    severity: 150
+                  - classification: vulva
+                    severity: 200
+                  - classification: penis
+                    severity: 200
+                  - classification: vagina
+                    severity: 200
+                  - classification: anus
+                    severity: 200
+                  - classification: oral
+                    severity: 200
+                  - classification: penetration
+                    severity: 200
+              Event duration:
+                description: Configure the event duration of 250ms for the child classification
+                  before the rule is considered to be broken.
+                value:
+                  minDuration: 250
+                  params:
+                  - classification: child
+                    min: 0
+                    max: 0
             schema:
               $ref: '#/components/schemas/ParamSet'
         description: Define the parameters to use for an AI check operation. View
@@ -130,8 +216,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "204":
-          description: successful operation. No previously configured parameters exist.
         "200":
           content:
             application/json:
@@ -139,6 +223,8 @@ paths:
                 $ref: '#/components/schemas/ParamSet'
           description: successful operation. Previous user configured parameters are
             returned.
+        "204":
+          description: successful operation. No previously configured parameters exist.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -173,6 +259,28 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              All checks:
+                description: This example shows the configuration with all checks/prototypes.
+                value:
+                  prototypes:
+                  - nudityCheck
+                  - ageEstimation
+                  - illegalSymbols
+                  - attributesCheck
+                  - nippleCheck
+                  - textRecognition
+                  - bodyAttributes
+                  - unwantedSubstances
+                  - violenceCheck
+              Most common checks:
+                description: This example shows a typical configuration to start with.
+                value:
+                  prototypes:
+                  - nudityCheck
+                  - ageEstimation
+                  - attributesCheck
+                  - textRecognition
             schema:
               $ref: '#/components/schemas/Config'
         description: Define the prototypes to use for an AI check operation. View
@@ -185,18 +293,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Bad request. Check for badly formatted request body.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Maximum number of stored AI configurations reached.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
           description: successful operation.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Maximum number of stored AI configurations reached.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -270,24 +378,44 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              Simple basic-auth authorization:
+                description: Url will be accessed with the 'Authorization' header.
+                  Any key/value pair can be added to the 'header' block.
+                value:
+                  callbackUrl: http://www.example.com/callback?video
+                  headers:
+                    Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+              Simple callback:
+                description: This example shows a typical callback object to start
+                  with.
+                value:
+                  callbackUrl: http://www.example.com/callback?video
+              Callback with custom id:
+                description: Adds a custom id to the 'header' block. The id will be
+                  accessible as header when the callback is received.
+                value:
+                  callbackUrl: http://www.example.com/callback?video
+                  headers:
+                    my-custom-id: TmFwdWwz
             schema:
-              $ref: '#/components/schemas/Callback'
+              $ref: '#/components/schemas/Config'
         required: true
       responses:
-        "202":
-          description: "operation accepted: wait for callback."
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "202":
+          description: "operation accepted: wait for callback."
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -355,18 +483,18 @@ paths:
           type: integer
         style: form
       responses:
-        "402":
-          content:
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "404":
           content:
             application/x-ndjson:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "402":
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
         "200":
           content:
             application/x-ndjson:
@@ -396,11 +524,23 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: The url to the image that needs to be checked.
+      - deprecated: true
+        description: "<s>The url to the image that needs to be checked.</s> Deprecated:\
+          \ Use 'data' parameter instead. <b>This parameter will be removed in future\
+          \ releases.</b>"
         explode: true
         in: query
         name: url
-        required: true
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The http(s) url or base64 encoded data uri of the image that
+          needs to be checked.
+        explode: true
+        in: query
+        name: data
+        required: false
         schema:
           type: string
         style: form
@@ -432,18 +572,18 @@ paths:
           type: boolean
         style: form
       responses:
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
         "200":
           content:
             application/json:
@@ -513,6 +653,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration
         "429":
           content:
             application/json:
@@ -522,12 +668,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -576,12 +716,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -591,6 +725,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -619,12 +759,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -634,6 +768,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -655,14 +795,14 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: successful operation.
         "404":
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "204":
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete an AI configuration.
@@ -736,6 +876,8 @@ components:
             * _toy_ _(0, -1, 0)_
             * _oral_ _(0, 0, 2)_
             * _penetration_ _(0, 0, 2)_
+            * _bondage_ _(0, -1, 0)_
+            * _gag_ _(0, -1, 0)_
             ##### ageEstimation
             > _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_
             * _child (*)_ _(0, 0, 6)_
@@ -815,6 +957,8 @@ components:
           - oral
           - penetration
           - toy
+          - bondage
+          - gag
           - child
           - adult
           - senior
@@ -1067,27 +1211,6 @@ components:
           type: array
           uniqueItems: true
       type: object
-    Callback:
-      description: Callback options to send a response to.
-      example:
-        headers: "[\"Authorization\": \"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"]"
-        callbackUrl: https://openapi-generator.tech
-      properties:
-        callbackUrl:
-          description: Define a URL where a response should be sent.
-          format: uri
-          type: string
-        headers:
-          additionalProperties:
-            description: Define headers to send to the URL.
-            example: "[\"Authorization\": \"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"]"
-            type: string
-          description: Define headers to send to the URL.
-          example: "[\"Authorization\": \"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"]"
-          type: object
-      required:
-      - callbackUrl
-      type: object
     BaseAttribute:
       description: An attribute describes a quality or characteristic that a detection
         object has.
@@ -1141,7 +1264,14 @@ components:
     BreastDetection:
       allOf:
       - $ref: '#/components/schemas/BaseDetection'
-      - $ref: '#/components/schemas/BreastDetection_allOf'
+      - properties:
+          attributes:
+            description: Attributes characterizing the _breast_ detection. Mainly
+              contains attributes that were activated with the _nippleCheck_ prototype.
+            items:
+              $ref: '#/components/schemas/BaseAttribute'
+            type: array
+        type: object
       description: Contains further characteristics particular to _breast_ detection.
       type: object
     BrokenRule:
@@ -1297,14 +1427,17 @@ components:
         downloadUrl: downloadUrl
       properties:
         name:
-          description: The original filename of the image or video.
+          deprecated: true
+          description: <s>The original filename of the image or video.</s> Contains
+            a randomly generated filename. <b>This property will be removed in future
+            releases.</b>
           type: string
         data:
-          description: The encoded media in base64 format.
+          description: The encoded image in base64 format.
           format: binary
           type: string
         downloadUrl:
-          description: A one time URL to download the resulting media. The URL is
+          description: A one time URL to download the resulting video. The URL is
             only valid for 24 hours.
           type: string
       type: object
@@ -1347,7 +1480,21 @@ components:
     FaceDetection:
       allOf:
       - $ref: '#/components/schemas/BaseDetection'
-      - $ref: '#/components/schemas/FaceDetection_allOf'
+      - properties:
+          attributes:
+            description: Attributes characterizing the _face_ detection. Mainly contains
+              attributes that were activated with the _ageEstimation_ prototype.
+            items:
+              $ref: '#/components/schemas/BaseAttribute'
+            type: array
+          subDetections:
+            description: A set of sub-detection that are particular to the _face_
+              detection. Mainly contains detections that were activated with the _attributesCheck_
+              prototype.
+            items:
+              $ref: '#/components/schemas/BaseDetection'
+            type: array
+        type: object
       description: Contains further characteristics particular to _face_ detection.
       type: object
     HairAttribute:
@@ -1377,7 +1524,13 @@ components:
     HairDetection:
       allOf:
       - $ref: '#/components/schemas/BaseDetection'
-      - $ref: '#/components/schemas/HairDetection_allOf'
+      - properties:
+          attributes:
+            description: Contains attributes for the _hair_ classification.
+            items:
+              $ref: '#/components/schemas/HairAttribute'
+            type: array
+        type: object
       description: Contains further characteristics particular to _hair_ detection.
       type: object
     Rectangle:
@@ -1529,48 +1682,12 @@ components:
           format: int32
           type: integer
       type: object
-    BreastDetection_allOf:
-      properties:
-        attributes:
-          description: Attributes characterizing the _breast_ detection. Mainly contains
-            attributes that were activated with the _nippleCheck_ prototype.
-          items:
-            $ref: '#/components/schemas/BaseAttribute'
-          type: array
-      type: object
-      example: null
     CheckResult_detections_inner:
       oneOf:
       - $ref: '#/components/schemas/BaseDetection'
       - $ref: '#/components/schemas/BreastDetection'
       - $ref: '#/components/schemas/FaceDetection'
       - $ref: '#/components/schemas/HairDetection'
-    FaceDetection_allOf:
-      properties:
-        attributes:
-          description: Attributes characterizing the _face_ detection. Mainly contains
-            attributes that were activated with the _ageEstimation_ prototype.
-          items:
-            $ref: '#/components/schemas/BaseAttribute'
-          type: array
-        subDetections:
-          description: A set of sub-detection that are particular to the _face_ detection.
-            Mainly contains detections that were activated with the _attributesCheck_
-            prototype.
-          items:
-            $ref: '#/components/schemas/BaseDetection'
-          type: array
-      type: object
-      example: null
-    HairDetection_allOf:
-      properties:
-        attributes:
-          description: Contains attributes for the _hair_ classification.
-          items:
-            $ref: '#/components/schemas/HairAttribute'
-          type: array
-      type: object
-      example: null
   securitySchemes:
     LICENSE-KEY:
       description: License Key access

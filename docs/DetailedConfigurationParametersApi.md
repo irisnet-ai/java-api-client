@@ -75,8 +75,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **204** | successful operation. |  -  |
 
 <a id="getParameters"></a>
 # **getParameters**
@@ -145,8 +145,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | successful operation. |  -  |
 | **404** | configuration with given id not found or parameters for configuration not found. |  -  |
+| **200** | successful operation. |  -  |
 
 <a id="setParameters"></a>
 # **setParameters**
@@ -219,6 +219,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **400** | Bad request. Check for badly formatted request body. |  -  |
 | **404** | configId not found. |  -  |
-| **204** | successful operation. No previously configured parameters exist. |  -  |
 | **200** | successful operation. Previous user configured parameters are returned. |  -  |
+| **204** | successful operation. No previously configured parameters exist. |  -  |
 

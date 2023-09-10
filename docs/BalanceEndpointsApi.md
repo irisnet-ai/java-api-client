@@ -78,8 +78,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **404** | configId not found. |  -  |
-| **200** | The cost of the given configuration. |  -  |
 | **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
+| **200** | The cost of the given configuration. |  -  |
 
 <a id="getLicenseInfo"></a>
 # **getLicenseInfo**
@@ -217,8 +217,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **404** | configId not found. |  -  |
-| **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 | **200** | The cost of the given configuration |  -  |
+| **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
 
 <a id="getVideoCost1"></a>
 # **getVideoCost1**
@@ -292,6 +292,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **404** | configId not found. |  -  |
-| **200** | The cost of the given configuration. |  -  |
 | **429** | The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. |  -  |
+| **200** | The cost of the given configuration. |  -  |
 

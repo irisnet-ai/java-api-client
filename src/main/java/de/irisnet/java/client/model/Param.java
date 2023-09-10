@@ -14,13 +14,13 @@
 package de.irisnet.java.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +53,7 @@ import de.irisnet.java.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Param {
   /**
-   * The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of &#39;min&#39;, &#39;max&#39; and &#39;drawMode&#39; are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications. ##### nudityCheck &gt; _A prototype containing classifications for basic human attributes and sexual contents. This prototype and the containing classifications are activated by default_ * _face_ _(1, 3, 0)_ * _hand_ _(0, -1, 0)_ * _foot_ _(0, -1, 0)_ * _footwear_ _(0, -1, 0)_ * _chest_ _(0, -1, 0)_ * _breast_ _(0, 0, 2)_ * _vulva_ _(0, 0, 2)_ * _penis_ _(0, 0, 2)_ * _vagina_ _(0, 0, 2)_ * _buttocks_ _(0, 0, 2)_ * _anus_ _(0, 0, 2)_ * _toy_ _(0, -1, 0)_ * _oral_ _(0, 0, 2)_ * _penetration_ _(0, 0, 2)_ ##### ageEstimation &gt; _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_ * _child (*)_ _(0, 0, 6)_ * _adult (*)_ _(0, -1, 0)_ * _senior (*)_ _(0, -1, 0)_ * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features. ##### attributesCheck &gt; _Contains classification objects for various attributes of the human face. This prototype activates nudityCheck_ * _female (*)_ _(0, -1, 0)_ * _male (*)_ _(0, -1, 0)_ * _hair_ _(0, -1, 0)_ * _hairless_ _(0, -1, 0)_ * _beard_ _(0, -1, 0)_ * _moustache_ _(0, -1, 0)_ * _headpiece_ _(0, -1, 0)_ * _glasses_ _(0, -1, 0)_ * _sunglasses_ _(0, -1, 0)_ * _mask_ _(0, -1, 0)_ * _slimSizedFace (*)_ _(0, -1, 0)_ * _realSizedFace (*)_ _(0, -1, 0)_ * _plusSizedFace (*)_ _(0, -1, 0)_ ##### nippleCheck &gt; _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_ * _noNipple_ _(0, -1, 0)_ * _hasNipple_ _(0, 0, 0)_ ##### bodyAttributes &gt; _Contains classification objects for determining the body size._ * _slimSized_ _(0, -1, 0)_ * _realSized_ _(0, -1, 0)_ * _plusSized_ _(0, -1, 0)_ ##### illegalSymbols &gt; _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_ * _illegalSymbols_ _(0, 0, 1)_ ##### unwantedSubstances &gt; _Contains classification objects for different substances._ * _beer_ _(0, -1, 0)_ * _beerBottle_ _(0, -1, 0)_ * _beerCan_ _(0, -1, 0)_ * _wine_ _(0, -1, 0)_ * _wineBottle_ _(0, -1, 0)_ * _cocktail_ _(0, -1, 0)_ * _alcohol_ _(0, -1, 0)_ * _cannabis_ _(0, 0, 0)_ * _cigarette_ _(0, 0, 0)_ * _cocaine_ _(0, 0, 0)_ * _heroine_ _(0, 0, 0)_ * _coffee_ _(0, -1, 0)_ ##### violenceCheck &gt; _Contains classification objects for violent items or acts._ * _camouflage_ _(0, -1, 0)_ * _club_ _(0, -1, 0)_ * _knife_ _(0, 0, 0)_ * _sword_ _(0, 0, 0)_ * _pistol_ _(0, 0, 0)_ * _rifle_ _(0, 0, 0)_ * _cannon_ _(0, 0, 0)_ * _fire_ _(0, -1, 0)_ ##### textRecognition &gt; _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_ * _textRecognition_ _(0, 6, 6)_  _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._  _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
+   * The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of &#39;min&#39;, &#39;max&#39; and &#39;drawMode&#39; are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications. ##### nudityCheck &gt; _A prototype containing classifications for basic human attributes and sexual contents. This prototype and the containing classifications are activated by default_ * _face_ _(1, 3, 0)_ * _hand_ _(0, -1, 0)_ * _foot_ _(0, -1, 0)_ * _footwear_ _(0, -1, 0)_ * _chest_ _(0, -1, 0)_ * _breast_ _(0, 0, 2)_ * _vulva_ _(0, 0, 2)_ * _penis_ _(0, 0, 2)_ * _vagina_ _(0, 0, 2)_ * _buttocks_ _(0, 0, 2)_ * _anus_ _(0, 0, 2)_ * _toy_ _(0, -1, 0)_ * _oral_ _(0, 0, 2)_ * _penetration_ _(0, 0, 2)_ * _bondage_ _(0, -1, 0)_ * _gag_ _(0, -1, 0)_ ##### ageEstimation &gt; _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_ * _child (*)_ _(0, 0, 6)_ * _adult (*)_ _(0, -1, 0)_ * _senior (*)_ _(0, -1, 0)_ * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features. ##### attributesCheck &gt; _Contains classification objects for various attributes of the human face. This prototype activates nudityCheck_ * _female (*)_ _(0, -1, 0)_ * _male (*)_ _(0, -1, 0)_ * _hair_ _(0, -1, 0)_ * _hairless_ _(0, -1, 0)_ * _beard_ _(0, -1, 0)_ * _moustache_ _(0, -1, 0)_ * _headpiece_ _(0, -1, 0)_ * _glasses_ _(0, -1, 0)_ * _sunglasses_ _(0, -1, 0)_ * _mask_ _(0, -1, 0)_ * _slimSizedFace (*)_ _(0, -1, 0)_ * _realSizedFace (*)_ _(0, -1, 0)_ * _plusSizedFace (*)_ _(0, -1, 0)_ ##### nippleCheck &gt; _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_ * _noNipple_ _(0, -1, 0)_ * _hasNipple_ _(0, 0, 0)_ ##### bodyAttributes &gt; _Contains classification objects for determining the body size._ * _slimSized_ _(0, -1, 0)_ * _realSized_ _(0, -1, 0)_ * _plusSized_ _(0, -1, 0)_ ##### illegalSymbols &gt; _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_ * _illegalSymbols_ _(0, 0, 1)_ ##### unwantedSubstances &gt; _Contains classification objects for different substances._ * _beer_ _(0, -1, 0)_ * _beerBottle_ _(0, -1, 0)_ * _beerCan_ _(0, -1, 0)_ * _wine_ _(0, -1, 0)_ * _wineBottle_ _(0, -1, 0)_ * _cocktail_ _(0, -1, 0)_ * _alcohol_ _(0, -1, 0)_ * _cannabis_ _(0, 0, 0)_ * _cigarette_ _(0, 0, 0)_ * _cocaine_ _(0, 0, 0)_ * _heroine_ _(0, 0, 0)_ * _coffee_ _(0, -1, 0)_ ##### violenceCheck &gt; _Contains classification objects for violent items or acts._ * _camouflage_ _(0, -1, 0)_ * _club_ _(0, -1, 0)_ * _knife_ _(0, 0, 0)_ * _sword_ _(0, 0, 0)_ * _pistol_ _(0, 0, 0)_ * _rifle_ _(0, 0, 0)_ * _cannon_ _(0, 0, 0)_ * _fire_ _(0, -1, 0)_ ##### textRecognition &gt; _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_ * _textRecognition_ _(0, 6, 6)_  _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._  _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
    */
   @JsonAdapter(ClassificationEnum.Adapter.class)
   public enum ClassificationEnum {
@@ -84,6 +84,10 @@ public class Param {
     PENETRATION("penetration"),
     
     TOY("toy"),
+    
+    BONDAGE("bondage"),
+    
+    GAG("gag"),
     
     CHILD("child"),
     
@@ -269,7 +273,7 @@ public class Param {
   }
 
    /**
-   * The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of &#39;min&#39;, &#39;max&#39; and &#39;drawMode&#39; are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications. ##### nudityCheck &gt; _A prototype containing classifications for basic human attributes and sexual contents. This prototype and the containing classifications are activated by default_ * _face_ _(1, 3, 0)_ * _hand_ _(0, -1, 0)_ * _foot_ _(0, -1, 0)_ * _footwear_ _(0, -1, 0)_ * _chest_ _(0, -1, 0)_ * _breast_ _(0, 0, 2)_ * _vulva_ _(0, 0, 2)_ * _penis_ _(0, 0, 2)_ * _vagina_ _(0, 0, 2)_ * _buttocks_ _(0, 0, 2)_ * _anus_ _(0, 0, 2)_ * _toy_ _(0, -1, 0)_ * _oral_ _(0, 0, 2)_ * _penetration_ _(0, 0, 2)_ ##### ageEstimation &gt; _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_ * _child (*)_ _(0, 0, 6)_ * _adult (*)_ _(0, -1, 0)_ * _senior (*)_ _(0, -1, 0)_ * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features. ##### attributesCheck &gt; _Contains classification objects for various attributes of the human face. This prototype activates nudityCheck_ * _female (*)_ _(0, -1, 0)_ * _male (*)_ _(0, -1, 0)_ * _hair_ _(0, -1, 0)_ * _hairless_ _(0, -1, 0)_ * _beard_ _(0, -1, 0)_ * _moustache_ _(0, -1, 0)_ * _headpiece_ _(0, -1, 0)_ * _glasses_ _(0, -1, 0)_ * _sunglasses_ _(0, -1, 0)_ * _mask_ _(0, -1, 0)_ * _slimSizedFace (*)_ _(0, -1, 0)_ * _realSizedFace (*)_ _(0, -1, 0)_ * _plusSizedFace (*)_ _(0, -1, 0)_ ##### nippleCheck &gt; _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_ * _noNipple_ _(0, -1, 0)_ * _hasNipple_ _(0, 0, 0)_ ##### bodyAttributes &gt; _Contains classification objects for determining the body size._ * _slimSized_ _(0, -1, 0)_ * _realSized_ _(0, -1, 0)_ * _plusSized_ _(0, -1, 0)_ ##### illegalSymbols &gt; _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_ * _illegalSymbols_ _(0, 0, 1)_ ##### unwantedSubstances &gt; _Contains classification objects for different substances._ * _beer_ _(0, -1, 0)_ * _beerBottle_ _(0, -1, 0)_ * _beerCan_ _(0, -1, 0)_ * _wine_ _(0, -1, 0)_ * _wineBottle_ _(0, -1, 0)_ * _cocktail_ _(0, -1, 0)_ * _alcohol_ _(0, -1, 0)_ * _cannabis_ _(0, 0, 0)_ * _cigarette_ _(0, 0, 0)_ * _cocaine_ _(0, 0, 0)_ * _heroine_ _(0, 0, 0)_ * _coffee_ _(0, -1, 0)_ ##### violenceCheck &gt; _Contains classification objects for violent items or acts._ * _camouflage_ _(0, -1, 0)_ * _club_ _(0, -1, 0)_ * _knife_ _(0, 0, 0)_ * _sword_ _(0, 0, 0)_ * _pistol_ _(0, 0, 0)_ * _rifle_ _(0, 0, 0)_ * _cannon_ _(0, 0, 0)_ * _fire_ _(0, -1, 0)_ ##### textRecognition &gt; _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_ * _textRecognition_ _(0, 6, 6)_  _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._  _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
+   * The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of &#39;min&#39;, &#39;max&#39; and &#39;drawMode&#39; are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications. ##### nudityCheck &gt; _A prototype containing classifications for basic human attributes and sexual contents. This prototype and the containing classifications are activated by default_ * _face_ _(1, 3, 0)_ * _hand_ _(0, -1, 0)_ * _foot_ _(0, -1, 0)_ * _footwear_ _(0, -1, 0)_ * _chest_ _(0, -1, 0)_ * _breast_ _(0, 0, 2)_ * _vulva_ _(0, 0, 2)_ * _penis_ _(0, 0, 2)_ * _vagina_ _(0, 0, 2)_ * _buttocks_ _(0, 0, 2)_ * _anus_ _(0, 0, 2)_ * _toy_ _(0, -1, 0)_ * _oral_ _(0, 0, 2)_ * _penetration_ _(0, 0, 2)_ * _bondage_ _(0, -1, 0)_ * _gag_ _(0, -1, 0)_ ##### ageEstimation &gt; _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_ * _child (*)_ _(0, 0, 6)_ * _adult (*)_ _(0, -1, 0)_ * _senior (*)_ _(0, -1, 0)_ * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features. ##### attributesCheck &gt; _Contains classification objects for various attributes of the human face. This prototype activates nudityCheck_ * _female (*)_ _(0, -1, 0)_ * _male (*)_ _(0, -1, 0)_ * _hair_ _(0, -1, 0)_ * _hairless_ _(0, -1, 0)_ * _beard_ _(0, -1, 0)_ * _moustache_ _(0, -1, 0)_ * _headpiece_ _(0, -1, 0)_ * _glasses_ _(0, -1, 0)_ * _sunglasses_ _(0, -1, 0)_ * _mask_ _(0, -1, 0)_ * _slimSizedFace (*)_ _(0, -1, 0)_ * _realSizedFace (*)_ _(0, -1, 0)_ * _plusSizedFace (*)_ _(0, -1, 0)_ ##### nippleCheck &gt; _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_ * _noNipple_ _(0, -1, 0)_ * _hasNipple_ _(0, 0, 0)_ ##### bodyAttributes &gt; _Contains classification objects for determining the body size._ * _slimSized_ _(0, -1, 0)_ * _realSized_ _(0, -1, 0)_ * _plusSized_ _(0, -1, 0)_ ##### illegalSymbols &gt; _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_ * _illegalSymbols_ _(0, 0, 1)_ ##### unwantedSubstances &gt; _Contains classification objects for different substances._ * _beer_ _(0, -1, 0)_ * _beerBottle_ _(0, -1, 0)_ * _beerCan_ _(0, -1, 0)_ * _wine_ _(0, -1, 0)_ * _wineBottle_ _(0, -1, 0)_ * _cocktail_ _(0, -1, 0)_ * _alcohol_ _(0, -1, 0)_ * _cannabis_ _(0, 0, 0)_ * _cigarette_ _(0, 0, 0)_ * _cocaine_ _(0, 0, 0)_ * _heroine_ _(0, 0, 0)_ * _coffee_ _(0, -1, 0)_ ##### violenceCheck &gt; _Contains classification objects for violent items or acts._ * _camouflage_ _(0, -1, 0)_ * _club_ _(0, -1, 0)_ * _knife_ _(0, 0, 0)_ * _sword_ _(0, 0, 0)_ * _pistol_ _(0, 0, 0)_ * _rifle_ _(0, 0, 0)_ * _cannon_ _(0, 0, 0)_ * _fire_ _(0, -1, 0)_ ##### textRecognition &gt; _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_ * _textRecognition_ _(0, 6, 6)_  _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._  _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
    * @return classification
   **/
   @javax.annotation.Nonnull
@@ -514,32 +518,33 @@ public class Param {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Param
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Param
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Param.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Param.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Param is not found in the empty JSON string", Param.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!Param.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Param` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Param` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Param.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("classification").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `classification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("classification").toString()));
       }
@@ -565,9 +570,9 @@ public class Param {
 
            @Override
            public Param read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

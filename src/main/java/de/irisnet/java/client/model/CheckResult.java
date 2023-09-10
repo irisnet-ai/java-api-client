@@ -14,7 +14,6 @@
 package de.irisnet.java.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,6 +27,7 @@ import de.irisnet.java.client.model.Event;
 import de.irisnet.java.client.model.Summary;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -320,28 +320,29 @@ public class CheckResult {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CheckResult
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CheckResult
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CheckResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CheckResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CheckResult is not found in the empty JSON string", CheckResult.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!CheckResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CheckResult` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CheckResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `summary`
       if (jsonObj.get("summary") != null && !jsonObj.get("summary").isJsonNull()) {
-        Summary.validateJsonObject(jsonObj.getAsJsonObject("summary"));
+        Summary.validateJsonElement(jsonObj.get("summary"));
       }
       if (jsonObj.get("encodings") != null && !jsonObj.get("encodings").isJsonNull()) {
         JsonArray jsonArrayencodings = jsonObj.getAsJsonArray("encodings");
@@ -353,7 +354,7 @@ public class CheckResult {
 
           // validate the optional field `encodings` (array)
           for (int i = 0; i < jsonArrayencodings.size(); i++) {
-            Encoded.validateJsonObject(jsonArrayencodings.get(i).getAsJsonObject());
+            Encoded.validateJsonElement(jsonArrayencodings.get(i));
           };
         }
       }
@@ -367,7 +368,7 @@ public class CheckResult {
 
           // validate the optional field `brokenRules` (array)
           for (int i = 0; i < jsonArraybrokenRules.size(); i++) {
-            BrokenRule.validateJsonObject(jsonArraybrokenRules.get(i).getAsJsonObject());
+            BrokenRule.validateJsonElement(jsonArraybrokenRules.get(i));
           };
         }
       }
@@ -381,7 +382,7 @@ public class CheckResult {
 
           // validate the optional field `detections` (array)
           for (int i = 0; i < jsonArraydetections.size(); i++) {
-            CheckResultDetectionsInner.validateJsonObject(jsonArraydetections.get(i).getAsJsonObject());
+            CheckResultDetectionsInner.validateJsonElement(jsonArraydetections.get(i));
           };
         }
       }
@@ -395,7 +396,7 @@ public class CheckResult {
 
           // validate the optional field `events` (array)
           for (int i = 0; i < jsonArrayevents.size(); i++) {
-            Event.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
+            Event.validateJsonElement(jsonArrayevents.get(i));
           };
         }
       }
@@ -409,7 +410,7 @@ public class CheckResult {
 
           // validate the optional field `notifications` (array)
           for (int i = 0; i < jsonArraynotifications.size(); i++) {
-            ApiNotice.validateJsonObject(jsonArraynotifications.get(i).getAsJsonObject());
+            ApiNotice.validateJsonElement(jsonArraynotifications.get(i));
           };
         }
       }
@@ -435,9 +436,9 @@ public class CheckResult {
 
            @Override
            public CheckResult read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

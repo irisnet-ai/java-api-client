@@ -15,7 +15,7 @@ package de.irisnet.java;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Configuration {
-    public static final String VERSION = "3.0.6";
+    public static final String VERSION = "3.3.0";
 
     private static ApiClient defaultApiClient = new ApiClient();
 

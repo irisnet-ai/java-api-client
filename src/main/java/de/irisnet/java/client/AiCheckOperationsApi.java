@@ -28,8 +28,8 @@ import java.io.IOException;
 
 
 import de.irisnet.java.client.model.ApiNotice;
-import de.irisnet.java.client.model.Callback;
 import de.irisnet.java.client.model.CheckResult;
+import de.irisnet.java.client.model.Config;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class AiCheckOperationsApi {
     private ApiClient localVarApiClient;
@@ -79,7 +78,8 @@ public class AiCheckOperationsApi {
     /**
      * Build call for checkImage
      * @param configId The configuration id from the Basic Configuration operations. (required)
-     * @param url The url to the image that needs to be checked. (required)
+     * @param url &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; (optional)
+     * @param data The http(s) url or base64 encoded data uri of the image that needs to be checked. (optional)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param _callback Callback for upload/download progress
@@ -88,12 +88,12 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageCall(UUID configId, String url, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkImageCall(UUID configId, String url, String data, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,6 +121,10 @@ public class AiCheckOperationsApi {
 
         if (url != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("url", url));
+        }
+
+        if (data != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("data", data));
         }
 
         if (detail != null) {
@@ -151,18 +155,13 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkImageValidateBeforeCall(UUID configId, String url, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkImageValidateBeforeCall(UUID configId, String url, String data, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkImage(Async)");
         }
 
-        // verify the required parameter 'url' is set
-        if (url == null) {
-            throw new ApiException("Missing the required parameter 'url' when calling checkImage(Async)");
-        }
-
-        return checkImageCall(configId, url, detail, imageEncode, _callback);
+        return checkImageCall(configId, url, data, detail, imageEncode, _callback);
 
     }
 
@@ -170,7 +169,8 @@ public class AiCheckOperationsApi {
      * Check an image with the AI.
      * The response (_CheckResult_ schema) is returned immediately after the request.
      * @param configId The configuration id from the Basic Configuration operations. (required)
-     * @param url The url to the image that needs to be checked. (required)
+     * @param url &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; (optional)
+     * @param data The http(s) url or base64 encoded data uri of the image that needs to be checked. (optional)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @return CheckResult
@@ -178,13 +178,13 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckResult checkImage(UUID configId, String url, Integer detail, Boolean imageEncode) throws ApiException {
-        ApiResponse<CheckResult> localVarResp = checkImageWithHttpInfo(configId, url, detail, imageEncode);
+    public CheckResult checkImage(UUID configId, String url, String data, Integer detail, Boolean imageEncode) throws ApiException {
+        ApiResponse<CheckResult> localVarResp = checkImageWithHttpInfo(configId, url, data, detail, imageEncode);
         return localVarResp.getData();
     }
 
@@ -192,7 +192,8 @@ public class AiCheckOperationsApi {
      * Check an image with the AI.
      * The response (_CheckResult_ schema) is returned immediately after the request.
      * @param configId The configuration id from the Basic Configuration operations. (required)
-     * @param url The url to the image that needs to be checked. (required)
+     * @param url &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; (optional)
+     * @param data The http(s) url or base64 encoded data uri of the image that needs to be checked. (optional)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @return ApiResponse&lt;CheckResult&gt;
@@ -200,13 +201,13 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckResult> checkImageWithHttpInfo(UUID configId, String url, Integer detail, Boolean imageEncode) throws ApiException {
-        okhttp3.Call localVarCall = checkImageValidateBeforeCall(configId, url, detail, imageEncode, null);
+    public ApiResponse<CheckResult> checkImageWithHttpInfo(UUID configId, String url, String data, Integer detail, Boolean imageEncode) throws ApiException {
+        okhttp3.Call localVarCall = checkImageValidateBeforeCall(configId, url, data, detail, imageEncode, null);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -215,7 +216,8 @@ public class AiCheckOperationsApi {
      * Check an image with the AI. (asynchronously)
      * The response (_CheckResult_ schema) is returned immediately after the request.
      * @param configId The configuration id from the Basic Configuration operations. (required)
-     * @param url The url to the image that needs to be checked. (required)
+     * @param url &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; (optional)
+     * @param data The http(s) url or base64 encoded data uri of the image that needs to be checked. (optional)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
@@ -224,14 +226,14 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageAsync(UUID configId, String url, Integer detail, Boolean imageEncode, final ApiCallback<CheckResult> _callback) throws ApiException {
+    public okhttp3.Call checkImageAsync(UUID configId, String url, String data, Integer detail, Boolean imageEncode, final ApiCallback<CheckResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkImageValidateBeforeCall(configId, url, detail, imageEncode, _callback);
+        okhttp3.Call localVarCall = checkImageValidateBeforeCall(configId, url, data, detail, imageEncode, _callback);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -249,8 +251,8 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
@@ -344,8 +346,8 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
@@ -367,8 +369,8 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
@@ -392,8 +394,8 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
@@ -408,7 +410,7 @@ public class AiCheckOperationsApi {
      * Build call for checkVideo
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param url The url to the video that needs to be checked. (required)
-     * @param callback  (required)
+     * @param config  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
@@ -418,12 +420,12 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkVideoCall(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkVideoCall(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -437,7 +439,7 @@ public class AiCheckOperationsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = callback;
+        Object localVarPostBody = config;
 
         // create path and map variables
         String localVarPath = "/v2/check-video/{configId}"
@@ -486,7 +488,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkVideoValidateBeforeCall(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkVideoValidateBeforeCall(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkVideo(Async)");
@@ -497,12 +499,12 @@ public class AiCheckOperationsApi {
             throw new ApiException("Missing the required parameter 'url' when calling checkVideo(Async)");
         }
 
-        // verify the required parameter 'callback' is set
-        if (callback == null) {
-            throw new ApiException("Missing the required parameter 'callback' when calling checkVideo(Async)");
+        // verify the required parameter 'config' is set
+        if (config == null) {
+            throw new ApiException("Missing the required parameter 'config' when calling checkVideo(Async)");
         }
 
-        return checkVideoCall(configId, url, callback, detail, imageEncode, checkRate, _callback);
+        return checkVideoCall(configId, url, config, detail, imageEncode, checkRate, _callback);
 
     }
 
@@ -511,7 +513,7 @@ public class AiCheckOperationsApi {
      * An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.  &lt;b&gt;NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.&lt;b&gt;
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param url The url to the video that needs to be checked. (required)
-     * @param callback  (required)
+     * @param config  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
@@ -519,13 +521,13 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
-    public void checkVideo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
-        checkVideoWithHttpInfo(configId, url, callback, detail, imageEncode, checkRate);
+    public void checkVideo(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
+        checkVideoWithHttpInfo(configId, url, config, detail, imageEncode, checkRate);
     }
 
     /**
@@ -533,7 +535,7 @@ public class AiCheckOperationsApi {
      * An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.  &lt;b&gt;NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.&lt;b&gt;
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param url The url to the video that needs to be checked. (required)
-     * @param callback  (required)
+     * @param config  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
@@ -542,13 +544,13 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> checkVideoWithHttpInfo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
-        okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, callback, detail, imageEncode, checkRate, null);
+    public ApiResponse<Void> checkVideoWithHttpInfo(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
+        okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, config, detail, imageEncode, checkRate, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -557,7 +559,7 @@ public class AiCheckOperationsApi {
      * An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.  &lt;b&gt;NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.&lt;b&gt;
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param url The url to the video that needs to be checked. (required)
-     * @param callback  (required)
+     * @param config  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
      * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
@@ -567,14 +569,14 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkVideoAsync(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call checkVideoAsync(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, callback, detail, imageEncode, checkRate, _callback);
+        okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, config, detail, imageEncode, checkRate, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

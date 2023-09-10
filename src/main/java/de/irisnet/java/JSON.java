@@ -157,9 +157,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.ApiNotice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BaseAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BreastDetection.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BreastDetectionAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BrokenRule.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Callback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.CheckResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.CheckResultDetectionsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Config.CustomTypeAdapterFactory());
@@ -167,10 +165,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Encoded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Event.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.FaceDetection.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.FaceDetectionAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.HairAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.HairDetection.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.HairDetectionAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.LicenseInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Param.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.ParamSet.CustomTypeAdapterFactory());
