@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import de.irisnet.java.JSON;
@@ -60,7 +59,7 @@ public class Config {
   private UUID id;
 
   /**
-   * Name of commonly used rule sets (prototypes). That can be used to speed up the setup process. * _nudityCheck_ - Commonly used prototype to check for nudity. * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps. * _illegalSymbols_ - Checks for symbols that are not permitted in Germany. * _textRecognition_ - Checks for text occurrences. * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc). * _bodyAttributes_ - Checks for attributes of the persons body. * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple. * _unwantedSubstances_ - Check for undesired or unwanted substances. * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc. 
+   * Name of commonly used rule sets (prototypes). That can be used to speed up the setup process. * _nudityCheck_ - Commonly used prototype to check for nudity. * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps. * _illegalSymbols_ - Checks for symbols that are not permitted in Germany. * _textRecognition_ - Checks for text occurrences. * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc). * _bodyAttributes_ - Checks for attributes of the persons body. * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple. * _unwantedSubstances_ - Check for undesired or unwanted substances. * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc. * _selfieCheck_ - Checks for pre-defined gestures in a selfie. 
    */
   @JsonAdapter(PrototypesEnum.Adapter.class)
   public enum PrototypesEnum {
@@ -82,7 +81,9 @@ public class Config {
     
     UNWANTEDSUBSTANCES("unwantedSubstances"),
     
-    VIOLENCECHECK("violenceCheck");
+    VIOLENCECHECK("violenceCheck"),
+    
+    SELFIECHECK("selfieCheck");
 
     private String value;
 
@@ -246,9 +247,9 @@ public class Config {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
+      for (Map.Entry<String, JsonElement> entry : entries) {
         if (!Config.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Config` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }

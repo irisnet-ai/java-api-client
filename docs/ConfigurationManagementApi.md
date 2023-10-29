@@ -281,7 +281,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **403** | Maximum number of stored AI configurations reached. |  -  |
 | **400** | Bad request. Check for badly formatted request body. |  -  |
 | **200** | successful operation. |  -  |
-| **403** | Maximum number of stored AI configurations reached. |  -  |
 

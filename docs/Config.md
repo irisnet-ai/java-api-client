@@ -27,6 +27,7 @@ Can be used to set a multitude of pre-defined commonly used rules without the ne
 | NIPPLECHECK | &quot;nippleCheck&quot; |
 | UNWANTEDSUBSTANCES | &quot;unwantedSubstances&quot; |
 | VIOLENCECHECK | &quot;violenceCheck&quot; |
+| SELFIECHECK | &quot;selfieCheck&quot; |
 
 
 

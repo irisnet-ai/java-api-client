@@ -204,18 +204,20 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
+        "204":
+          description: successful operation. No previously configured parameters exist.
         "200":
           content:
             application/json:
@@ -223,8 +225,6 @@ paths:
                 $ref: '#/components/schemas/ParamSet'
           description: successful operation. Previous user configured parameters are
             returned.
-        "204":
-          description: successful operation. No previously configured parameters exist.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -273,6 +273,7 @@ paths:
                   - bodyAttributes
                   - unwantedSubstances
                   - violenceCheck
+                  - selfieCheck
               Most common checks:
                 description: This example shows a typical configuration to start with.
                 value:
@@ -287,6 +288,12 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Maximum number of stored AI configurations reached.
         "400":
           content:
             application/json:
@@ -299,12 +306,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Config'
           description: successful operation.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Maximum number of stored AI configurations reached.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -408,14 +409,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "202":
+          description: "operation accepted: wait for callback."
         "402":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "202":
-          description: "operation accepted: wait for callback."
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -489,12 +490,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "402":
-          content:
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "200":
           content:
             application/x-ndjson:
@@ -503,6 +498,12 @@ paths:
                   $ref: '#/components/schemas/CheckResult'
                 type: array
           description: successful operation.
+        "402":
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
@@ -578,18 +579,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckResult'
           description: successful operation.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
@@ -602,18 +603,18 @@ paths:
         header.
       operationId: getLicenseInfo
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: The entered license key was not found.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LicenseInfo'
           description: successful operation.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: The entered license key was not found.
       security:
       - LICENSE-KEY: []
       summary: Get information for the given license key.
@@ -647,12 +648,6 @@ paths:
           type: integer
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
@@ -668,6 +663,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -710,12 +711,12 @@ paths:
           type: integer
         style: simple
       responses:
-        "404":
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -725,12 +726,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -753,12 +754,12 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -768,12 +769,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -935,6 +936,21 @@ components:
             * _rifle_ _(0, 0, 0)_
             * _cannon_ _(0, 0, 0)_
             * _fire_ _(0, -1, 0)_
+            ##### selfieCheck
+            > _Classification objects representing various pre-defined poses for the selfie task._
+            * _hand2mouth_ _(0, 1, 0)_
+            * _point2nose_ _(0, 1, 0)_
+            * _relaxed_ _(0, 1, 0)_
+            * _point2chin_ _(0, 1, 0)_
+            * _hand2cheek_ _(0, 1, 0)_
+            * _excellent_ _(0, 1, 0)_
+            * _nice_ _(0, 1, 0)_
+            * _thinking_ _(0, 1, 0)_
+            * _thumbUp_ _(0, 1, 0)_
+            * _victory_ _(0, 1, 0)_
+            * _lookout_ _(0, 1, 0)_
+            * _fingerUp_ _(0, 1, 0)_
+            * _middleFinger_ _(0, 0, 0)_
             ##### textRecognition
             > _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_
             * _textRecognition_ _(0, 6, 6)_
@@ -1001,6 +1017,19 @@ components:
           - rifle
           - cannon
           - fire
+          - hand2mouth
+          - point2nose
+          - relaxed
+          - point2chin
+          - hand2cheek
+          - excellent
+          - nice
+          - thinking
+          - thumbUp
+          - victory
+          - lookout
+          - fingerUp
+          - middleFinger
           - nudityCheck
           - ageVerification
           - ageEstimation
@@ -1011,6 +1040,7 @@ components:
           - nippleCheck
           - unwantedSubstances
           - violenceCheck
+          - selfieCheck
           example: face
           type: string
         min:
@@ -1196,6 +1226,7 @@ components:
               * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple.
               * _unwantedSubstances_ - Check for undesired or unwanted substances.
               * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc.
+              * _selfieCheck_ - Checks for pre-defined gestures in a selfie.
             enum:
             - nudityCheck
             - ageVerification
@@ -1207,6 +1238,7 @@ components:
             - nippleCheck
             - unwantedSubstances
             - violenceCheck
+            - selfieCheck
             type: string
           type: array
           uniqueItems: true
