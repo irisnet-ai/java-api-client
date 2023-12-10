@@ -84,9 +84,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
-| **402** | Not enough credits. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -163,9 +163,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
-| **402** | Not enough credits. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
@@ -243,7 +243,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configId not found. |  -  |
 | **202** | operation accepted: wait for callback. |  -  |
 | **402** | Not enough credits. |  -  |
+| **404** | configId not found. |  -  |
 

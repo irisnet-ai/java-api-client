@@ -102,6 +102,11 @@ public class ApiNotice {
         return LevelEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      LevelEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
@@ -258,6 +263,10 @@ public class ApiNotice {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("level") != null && !jsonObj.get("level").isJsonNull()) && !jsonObj.get("level").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `level` to be a primitive type in the JSON string but got `%s`", jsonObj.get("level").toString()));
+      }
+      // validate the optional field `level`
+      if (jsonObj.get("level") != null && !jsonObj.get("level").isJsonNull()) {
+        LevelEnum.validateJsonElement(jsonObj.get("level"));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));

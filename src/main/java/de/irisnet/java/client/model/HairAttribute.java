@@ -108,6 +108,11 @@ public class HairAttribute {
         return ColorEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ColorEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_COLOR = "color";
@@ -158,6 +163,11 @@ public class HairAttribute {
         String value =  jsonReader.nextString();
         return StyleEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StyleEnum.fromValue(value);
     }
   }
 
@@ -315,8 +325,16 @@ public class HairAttribute {
       if ((jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) && !jsonObj.get("color").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("color").toString()));
       }
+      // validate the optional field `color`
+      if (jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) {
+        ColorEnum.validateJsonElement(jsonObj.get("color"));
+      }
       if ((jsonObj.get("style") != null && !jsonObj.get("style").isJsonNull()) && !jsonObj.get("style").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `style` to be a primitive type in the JSON string but got `%s`", jsonObj.get("style").toString()));
+      }
+      // validate the optional field `style`
+      if (jsonObj.get("style") != null && !jsonObj.get("style").isJsonNull()) {
+        StyleEnum.validateJsonElement(jsonObj.get("style"));
       }
   }
 

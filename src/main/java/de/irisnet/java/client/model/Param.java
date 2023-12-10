@@ -256,6 +256,11 @@ public class Param {
         return ClassificationEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ClassificationEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
@@ -575,6 +580,8 @@ public class Param {
       if (!jsonObj.get("classification").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `classification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("classification").toString()));
       }
+      // validate the required field `classification`
+      ClassificationEnum.validateJsonElement(jsonObj.get("classification"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

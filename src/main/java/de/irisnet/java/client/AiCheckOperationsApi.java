@@ -88,9 +88,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageCall(UUID configId, String url, String data, Integer detail, Boolean imageEncode, final ApiCallback _callback) throws ApiException {
@@ -178,9 +178,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult checkImage(UUID configId, String url, String data, Integer detail, Boolean imageEncode) throws ApiException {
@@ -201,9 +201,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> checkImageWithHttpInfo(UUID configId, String url, String data, Integer detail, Boolean imageEncode) throws ApiException {
@@ -226,9 +226,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageAsync(UUID configId, String url, String data, Integer detail, Boolean imageEncode, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -251,9 +251,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkStreamCall(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -346,9 +346,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public List<CheckResult> checkStream(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate) throws ApiException {
@@ -369,9 +369,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<CheckResult>> checkStreamWithHttpInfo(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate) throws ApiException {
@@ -394,9 +394,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkStreamAsync(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback<List<CheckResult>> _callback) throws ApiException {
@@ -420,9 +420,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoCall(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -521,9 +521,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void checkVideo(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
@@ -544,9 +544,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> checkVideoWithHttpInfo(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
@@ -569,9 +569,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoAsync(UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {

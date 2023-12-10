@@ -121,6 +121,11 @@ public class Config {
         return PrototypesEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      PrototypesEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_PROTOTYPES = "prototypes";
