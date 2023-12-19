@@ -12,11 +12,13 @@ docs/BaseAttribute.md
 docs/BaseDetection.md
 docs/BreastDetection.md
 docs/BrokenRule.md
+docs/Callback.md
 docs/CheckResult.md
 docs/CheckResultDetectionsInner.md
 docs/Config.md
 docs/ConfigurationManagementApi.md
 docs/Coordinates.md
+docs/Data.md
 docs/DetailedConfigurationParametersApi.md
 docs/Encoded.md
 docs/Event.md
@@ -65,10 +67,12 @@ src/main/java/de/irisnet/java/client/model/BaseAttribute.java
 src/main/java/de/irisnet/java/client/model/BaseDetection.java
 src/main/java/de/irisnet/java/client/model/BreastDetection.java
 src/main/java/de/irisnet/java/client/model/BrokenRule.java
+src/main/java/de/irisnet/java/client/model/Callback.java
 src/main/java/de/irisnet/java/client/model/CheckResult.java
 src/main/java/de/irisnet/java/client/model/CheckResultDetectionsInner.java
 src/main/java/de/irisnet/java/client/model/Config.java
 src/main/java/de/irisnet/java/client/model/Coordinates.java
+src/main/java/de/irisnet/java/client/model/Data.java
 src/main/java/de/irisnet/java/client/model/Encoded.java
 src/main/java/de/irisnet/java/client/model/Event.java
 src/main/java/de/irisnet/java/client/model/FaceDetection.java
@@ -80,3 +84,4 @@ src/main/java/de/irisnet/java/client/model/ParamSet.java
 src/main/java/de/irisnet/java/client/model/Pricing.java
 src/main/java/de/irisnet/java/client/model/Rectangle.java
 src/main/java/de/irisnet/java/client/model/Summary.java
+src/test/java/de/irisnet/java/client/model/DataTest.java

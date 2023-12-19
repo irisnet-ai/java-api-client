@@ -20,10 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,68 +47,35 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Callback options to send a response to.
+ * The data to be checked.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class Callback {
-  public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
-  @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
-  private URI callbackUrl;
+public class Data {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private String data;
 
-  public static final String SERIALIZED_NAME_HEADERS = "headers";
-  @SerializedName(SERIALIZED_NAME_HEADERS)
-  private Map<String, String> headers = new HashMap<>();
-
-  public Callback() {
+  public Data() {
   }
 
-  public Callback callbackUrl(URI callbackUrl) {
+  public Data data(String data) {
     
-    this.callbackUrl = callbackUrl;
+    this.data = data;
     return this;
   }
 
    /**
-   * Define a URL where a response should be sent.
-   * @return callbackUrl
+   * The http(s) url or base64 encoded data uri of the image that needs to be checked.
+   * @return data
   **/
   @javax.annotation.Nonnull
-  public URI getCallbackUrl() {
-    return callbackUrl;
+  public String getData() {
+    return data;
   }
 
 
-  public void setCallbackUrl(URI callbackUrl) {
-    this.callbackUrl = callbackUrl;
-  }
-
-
-  public Callback headers(Map<String, String> headers) {
-    
-    this.headers = headers;
-    return this;
-  }
-
-  public Callback putHeadersItem(String key, String headersItem) {
-    if (this.headers == null) {
-      this.headers = new HashMap<>();
-    }
-    this.headers.put(key, headersItem);
-    return this;
-  }
-
-   /**
-   * Define headers to send to the URL.
-   * @return headers
-  **/
-  @javax.annotation.Nullable
-  public Map<String, String> getHeaders() {
-    return headers;
-  }
-
-
-  public void setHeaders(Map<String, String> headers) {
-    this.headers = headers;
+  public void setData(String data) {
+    this.data = data;
   }
 
 
@@ -124,22 +88,20 @@ public class Callback {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Callback callback = (Callback) o;
-    return Objects.equals(this.callbackUrl, callback.callbackUrl) &&
-        Objects.equals(this.headers, callback.headers);
+    Data data = (Data) o;
+    return Objects.equals(this.data, data.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(callbackUrl, headers);
+    return Objects.hash(data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Callback {\n");
-    sb.append("    callbackUrl: ").append(toIndentedString(callbackUrl)).append("\n");
-    sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
+    sb.append("class Data {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -162,44 +124,43 @@ public class Callback {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("callbackUrl");
-    openapiFields.add("headers");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("callbackUrl");
+    openapiRequiredFields.add("data");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Callback
+  * @throws IOException if the JSON Element is invalid with respect to Data
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Callback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Callback is not found in the empty JSON string", Callback.openapiRequiredFields.toString()));
+        if (!Data.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Data is not found in the empty JSON string", Data.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Callback.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Callback` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Data.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Data` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Callback.openapiRequiredFields) {
+      for (String requiredField : Data.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("callbackUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
+      if (!jsonObj.get("data").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data").toString()));
       }
   }
 
@@ -207,22 +168,22 @@ public class Callback {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Callback.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Callback' and its subtypes
+       if (!Data.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Data' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Callback> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Callback.class));
+       final TypeAdapter<Data> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Data.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Callback>() {
+       return (TypeAdapter<T>) new TypeAdapter<Data>() {
            @Override
-           public void write(JsonWriter out, Callback value) throws IOException {
+           public void write(JsonWriter out, Data value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Callback read(JsonReader in) throws IOException {
+           public Data read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -233,18 +194,18 @@ public class Callback {
   }
 
  /**
-  * Create an instance of Callback given an JSON string
+  * Create an instance of Data given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Callback
-  * @throws IOException if the JSON string is invalid with respect to Callback
+  * @return An instance of Data
+  * @throws IOException if the JSON string is invalid with respect to Data
   */
-  public static Callback fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Callback.class);
+  public static Data fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Data.class);
   }
 
  /**
-  * Convert an instance of Callback to an JSON string
+  * Convert an instance of Data to an JSON string
   *
   * @return JSON string
   */

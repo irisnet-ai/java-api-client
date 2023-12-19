@@ -48,14 +48,14 @@ paths:
           type: string
         style: simple
       responses:
+        "204":
+          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "204":
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete the parameters of the AI configuration.
@@ -77,6 +77,12 @@ paths:
           type: string
         style: simple
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation.
         "404":
           content:
             application/json:
@@ -84,12 +90,6 @@ paths:
                 $ref: '#/components/schemas/ApiNotice'
           description: configuration with given id not found or parameters for configuration
             not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get the parameters of the AI configuration.
@@ -204,18 +204,18 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Bad request. Check for badly formatted request body.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "204":
           description: successful operation. No previously configured parameters exist.
         "200":
@@ -288,12 +288,6 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Config'
-          description: successful operation.
         "400":
           content:
             application/json:
@@ -306,6 +300,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Maximum number of stored AI configurations reached.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -400,9 +400,11 @@ paths:
                   headers:
                     my-custom-id: TmFwdWwz
             schema:
-              $ref: '#/components/schemas/Config'
+              $ref: '#/components/schemas/Callback'
         required: true
       responses:
+        "202":
+          description: "operation accepted: wait for callback."
         "404":
           content:
             application/json:
@@ -415,8 +417,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "202":
-          description: "operation accepted: wait for callback."
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -484,6 +484,14 @@ paths:
           type: integer
         style: form
       responses:
+        "200":
+          content:
+            application/x-ndjson:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CheckResult'
+                type: array
+          description: successful operation.
         "404":
           content:
             application/x-ndjson:
@@ -496,14 +504,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "200":
-          content:
-            application/x-ndjson:
-              schema:
-                items:
-                  $ref: '#/components/schemas/CheckResult'
-                type: array
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
@@ -527,20 +527,11 @@ paths:
         style: simple
       - deprecated: true
         description: "<s>The url to the image that needs to be checked.</s> Deprecated:\
-          \ Use 'data' parameter instead. <b>This parameter will be removed in future\
+          \ Use request body instead. <b>This parameter will be removed in future\
           \ releases.</b>"
         explode: true
         in: query
         name: url
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The http(s) url or base64 encoded data uri of the image that
-          needs to be checked.
-        explode: true
-        in: query
-        name: data
         required: false
         schema:
           type: string
@@ -572,7 +563,29 @@ paths:
           default: false
           type: boolean
         style: form
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Image url:
+                description: Image url
+                value:
+                  data: https://example.com/path/to/your/image.png
+              Base64 encoded image:
+                description: Base64 encoded image
+                value:
+                  data: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAwHpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjabVBBEsIwCLznFT4BWJqS50RbZ/yBz5cIdRp1Z7KQLNkQyv583MtlQFiLLqvVVis5tGmT7olRoL+ZSd98gJOn8/JJxSM8IgSrees458mGuHu2nIzslsJ1FppGFPsykggYHY18S6OWRpAQOA16fItqs/X8hetOMyxWGaQ2t/2zX3162+LvQGQHg5wBjQYwFgq6C+JMUC9kL+hAckszH8i/OR0oL9VMWQoOkAyEAAABhGlDQ1BJQ0MgcHJvZmlsZQAAeJx9kT1Iw1AUhU/TSkUqDnYQcYhQnSyIijhqFYpQIdQKrTqYvPQPmjQkKS6OgmvBwZ/FqoOLs64OroIg+APi6uKk6CIl3pcUWsT44PI+znvncN99gNCoMM0KjQOabpvpZELM5lbF8CsiCFENY0BmljEnSSn4rq97BPh+F+dZ/vf+XL1q3mJAQCSeZYZpE28QT2/aBud94igrySrxOfGYSQ0SP3Jd8fiNc9FlgWdGzUx6njhKLBY7WOlgVjI14inimKrplC9kPVY5b3HWKjXW6pO/MJLXV5a5TjWEJBaxBAkiFNRQRgU24rTrpFhI03nCxz/o+iVyKeQqg5FjAVVokF0/+B/8nq1VmJzwkiIJoOvFcT5GgPAu0Kw7zvex4zRPgOAzcKW3/dUGMPNJer2txY6Avm3g4rqtKXvA5Q4w8GTIpuxKQSqhUADez+ibckD/LdCz5s2tdY7TByBDs0rdAAeHwGiRstd93t3dObd/77Tm9wNGH3KVLxpYXwAADXhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDQuNC4wLUV4aXYyIj4KIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgIHhtbG5zOkdJTVA9Imh0dHA6Ly93d3cuZ2ltcC5vcmcveG1wLyIKICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICB4bXBNTTpEb2N1bWVudElEPSJnaW1wOmRvY2lkOmdpbXA6NGZiNTQyYTAtYjQ3Mi00ZGIzLThlY2YtZDg1YzQ1MDdhZWE1IgogICB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOmMxNmM2NjgwLTE5YjQtNDg1Mi05NmQ5LWE1NjU1NDc5OTE5NSIKICAgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjQ4MThjNGI3LTM2MzMtNGJhYy04MWQ4LTdhYmQwN2Y5NmVjOCIKICAgZGM6Rm9ybWF0PSJpbWFnZS9wbmciCiAgIEdJTVA6QVBJPSIyLjAiCiAgIEdJTVA6UGxhdGZvcm09IkxpbnV4IgogICBHSU1QOlRpbWVTdGFtcD0iMTcwMTY5MzIxOTMwNDU2OSIKICAgR0lNUDpWZXJzaW9uPSIyLjEwLjM0IgogICB0aWZmOk9yaWVudGF0aW9uPSIxIgogICB4bXA6Q3JlYXRvclRvb2w9IkdJTVAgMi4xMCIKICAgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMzoxMjowNFQxMzozMzozOSswMTowMCIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjM6MTI6MDRUMTM6MzM6MzkrMDE6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo5YTlkZjNlYS1kYTVjLTRlMDAtODBhNC0wYmE1ODc5NjI1ZTYiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTGludXgpIgogICAgICBzdEV2dDp3aGVuPSIyMDIzLTEyLTA0VDEzOjMzOjM5KzAxOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PipGGiUAAAAGYktHRAAAAAAAAPlDu38AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnDAQMISetiKIgAAAgAElEQVR42u19e3xU1bn2s+dE5gPMKDAJSAKSRBKQiwqN0AgcEqBKBbT0AvSDw/FQPT/T9PzqJ9gWSwXx1KOC9fuM6NFSarWKVOWmBeV6uEQghksgQAJDMCSEJEOAiRBHUvb3x1wyk6y1Z++ZPXv25X3605KR7Nl7r/d93ud917vWEkRRFEEgECwJG70CAoEIgEAgWBBJ9AoIAbS0euBpvYILV86j9fq14Oet317D2UunJH93cO+7wn7u2a0XbunWA/YkO5yOVHq5OoVANQDrwe1phKf1Cs5fqcXFr5vQePU8ttW+E9fvnJA+B6nd+6LXzSnIcN4BR9dbkNzVQYNBBECIN+qaz6HafRonGo7E3dGVIMWeheEpeRjQYyDu7DscaT370WARARDM6vByCGHigB9hYOogZPXJgT3JToNJBECQ5/Q1+PLsPmw9+yGavC5TPFOucyrG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"
+            schema:
+              $ref: '#/components/schemas/Data'
+        description: The http(s) url or base64 encoded body uri of the image that
+          needs to be checked.
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: successful operation.
         "404":
           content:
             application/json:
@@ -585,17 +598,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CheckResult'
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
       tags:
       - AI check operations
+      x-content-type: application/json
       x-accepts: application/json
   /v2/info/:
     get:
@@ -648,12 +656,6 @@ paths:
           type: integer
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
@@ -669,6 +671,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -711,12 +719,6 @@ paths:
           type: integer
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
@@ -732,6 +734,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -754,12 +762,6 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
@@ -775,6 +777,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -796,14 +804,14 @@ paths:
           type: string
         style: simple
       responses:
+        "204":
+          description: successful operation.
         "404":
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "204":
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete an AI configuration.
@@ -824,18 +832,18 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
           description: successful operation.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get a specific AI configuration.
@@ -1242,6 +1250,30 @@ components:
             type: string
           type: array
           uniqueItems: true
+      type: object
+    Callback:
+      description: Callback options to send a response to.
+      example:
+        headers:
+          Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+        callbackUrl: http://www.example.com/callback?video
+      properties:
+        callbackUrl:
+          description: Define a URL where a response should be sent.
+          example: http://www.example.com/callback?video
+          format: uri
+          type: string
+        headers:
+          additionalProperties:
+            description: Define headers to send to the URL.
+            example: "{\"Authorization\":\"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"}"
+            type: string
+          description: Define headers to send to the URL.
+          example:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          type: object
+      required:
+      - callbackUrl
       type: object
     BaseAttribute:
       description: An attribute describes a quality or characteristic that a detection
@@ -1661,6 +1693,19 @@ components:
             type: string
           type: array
           uniqueItems: true
+      type: object
+    Data:
+      description: The data to be checked.
+      example:
+        data: https://example.com/path/to/your/image.png
+      properties:
+        data:
+          description: The http(s) url or base64 encoded data uri of the image that
+            needs to be checked.
+          example: https://example.com/path/to/your/image.png
+          type: string
+      required:
+      - data
       type: object
     LicenseInfo:
       description: "Describes the current balance of the given license key. A key\

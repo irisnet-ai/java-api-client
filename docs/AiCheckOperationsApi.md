@@ -11,7 +11,7 @@ All URIs are relative to *https://api.irisnet.de*
 
 <a id="checkImage"></a>
 # **checkImage**
-> CheckResult checkImage(configId, url, data, detail, imageEncode)
+> CheckResult checkImage(configId, url, detail, imageEncode, data)
 
 Check an image with the AI.
 
@@ -40,12 +40,12 @@ public class Example {
 
     AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
     UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
-    String url = "url_example"; // String | <s>The url to the image that needs to be checked.</s> Deprecated: Use 'data' parameter instead. <b>This parameter will be removed in future releases.</b>
-    String data = "data_example"; // String | The http(s) url or base64 encoded data uri of the image that needs to be checked.
+    String url = "url_example"; // String | <s>The url to the image that needs to be checked.</s> Deprecated: Use request body instead. <b>This parameter will be removed in future releases.</b>
     Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
     Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
+    Data data = new Data(); // Data | The http(s) url or base64 encoded body uri of the image that needs to be checked.
     try {
-      CheckResult result = apiInstance.checkImage(configId, url, data, detail, imageEncode);
+      CheckResult result = apiInstance.checkImage(configId, url, detail, imageEncode, data);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AiCheckOperationsApi#checkImage");
@@ -63,10 +63,10 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
-| **url** | **String**| &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; | [optional] |
-| **data** | **String**| The http(s) url or base64 encoded data uri of the image that needs to be checked. | [optional] |
+| **url** | **String**| &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use request body instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; | [optional] |
 | **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. | [optional] [default to 1] |
 | **imageEncode** | **Boolean**| Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response. | [optional] [default to false] |
+| **data** | [**Data**](Data.md)| The http(s) url or base64 encoded body uri of the image that needs to be checked. | [optional] |
 
 ### Return type
 
@@ -78,15 +78,15 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
 | **402** | Not enough credits. |  -  |
-| **200** | successful operation. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -163,13 +163,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
 | **402** | Not enough credits. |  -  |
-| **200** | successful operation. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
-> checkVideo(configId, url, config, detail, imageEncode, checkRate)
+> checkVideo(configId, url, callback, detail, imageEncode, checkRate)
 
 Check a video with the AI.
 
@@ -199,12 +199,12 @@ public class Example {
     AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
     UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
     String url = "url_example"; // String | The url to the video that needs to be checked.
-    Config config = new Config(); // Config | 
+    Callback callback = new Callback(); // Callback | 
     Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.
     Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response.
     Integer checkRate = 0; // Integer | The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to '1000'.
     try {
-      apiInstance.checkVideo(configId, url, config, detail, imageEncode, checkRate);
+      apiInstance.checkVideo(configId, url, callback, detail, imageEncode, checkRate);
     } catch (ApiException e) {
       System.err.println("Exception when calling AiCheckOperationsApi#checkVideo");
       System.err.println("Status code: " + e.getCode());
@@ -222,7 +222,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
 | **url** | **String**| The url to the video that needs to be checked. | |
-| **config** | [**Config**](Config.md)|  | |
+| **callback** | [**Callback**](Callback.md)|  | |
 | **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. | [optional] [default to 1] |
 | **imageEncode** | **Boolean**| Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. | [optional] [default to false] |
 | **checkRate** | **Integer**| The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. | [optional] [default to 0] |
@@ -243,7 +243,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **202** | operation accepted: wait for callback. |  -  |
 | **404** | configId not found. |  -  |
 | **402** | Not enough credits. |  -  |
-| **202** | operation accepted: wait for callback. |  -  |
 
