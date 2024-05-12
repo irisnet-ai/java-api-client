@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * The data to be checked.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Data {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -59,7 +59,6 @@ public class Data {
   }
 
   public Data data(String data) {
-    
     this.data = data;
     return this;
   }
@@ -72,7 +71,6 @@ public class Data {
   public String getData() {
     return data;
   }
-
 
   public void setData(String data) {
     this.data = data;

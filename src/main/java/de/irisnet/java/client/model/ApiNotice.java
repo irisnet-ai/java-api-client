@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * ApiNotice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class ApiNotice {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -121,7 +121,6 @@ public class ApiNotice {
   }
 
   public ApiNotice code(Integer code) {
-    
     this.code = code;
     return this;
   }
@@ -135,14 +134,12 @@ public class ApiNotice {
     return code;
   }
 
-
   public void setCode(Integer code) {
     this.code = code;
   }
 
 
   public ApiNotice level(LevelEnum level) {
-    
     this.level = level;
     return this;
   }
@@ -156,14 +153,12 @@ public class ApiNotice {
     return level;
   }
 
-
   public void setLevel(LevelEnum level) {
     this.level = level;
   }
 
 
   public ApiNotice message(String message) {
-    
     this.message = message;
     return this;
   }
@@ -176,7 +171,6 @@ public class ApiNotice {
   public String getMessage() {
     return message;
   }
-
 
   public void setMessage(String message) {
     this.message = message;

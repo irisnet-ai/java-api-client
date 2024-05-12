@@ -52,7 +52,7 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -130,13 +130,12 @@ public class Config {
 
   public static final String SERIALIZED_NAME_PROTOTYPES = "prototypes";
   @SerializedName(SERIALIZED_NAME_PROTOTYPES)
-  private Set<PrototypesEnum> prototypes;
+  private Set<PrototypesEnum> prototypes = new LinkedHashSet<>();
 
   public Config() {
   }
 
   public Config id(UUID id) {
-    
     this.id = id;
     return this;
   }
@@ -150,14 +149,12 @@ public class Config {
     return id;
   }
 
-
   public void setId(UUID id) {
     this.id = id;
   }
 
 
   public Config prototypes(Set<PrototypesEnum> prototypes) {
-    
     this.prototypes = prototypes;
     return this;
   }
@@ -178,7 +175,6 @@ public class Config {
   public Set<PrototypesEnum> getPrototypes() {
     return prototypes;
   }
-
 
   public void setPrototypes(Set<PrototypesEnum> prototypes) {
     this.prototypes = prototypes;

@@ -13,11 +13,11 @@
 
 package de.irisnet.java;
 
+import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
@@ -31,14 +31,16 @@ import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 /*
  * A JSON utility class
@@ -54,6 +56,11 @@ public class JSON {
     private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
     private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
     private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+
+    private static final StdDateFormat sdf = new StdDateFormat()
+        .withTimeZone(TimeZone.getTimeZone(ZoneId.systemDefault()))
+        .withColonInTimeZone(true);
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
@@ -71,9 +78,11 @@ public class JSON {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.BaseDetection> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
                         classByDiscriminatorValue.put("BreastDetection", de.irisnet.java.client.model.BreastDetection.class);
                         classByDiscriminatorValue.put("FaceDetection", de.irisnet.java.client.model.FaceDetection.class);
                         classByDiscriminatorValue.put("HairDetection", de.irisnet.java.client.model.HairDetection.class);
+                        classByDiscriminatorValue.put("IdDocumentDetection", de.irisnet.java.client.model.IdDocumentDetection.class);
                         classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
@@ -96,6 +105,7 @@ public class JSON {
                         classByDiscriminatorValue.put("BreastDetection", de.irisnet.java.client.model.BreastDetection.class);
                         classByDiscriminatorValue.put("FaceDetection", de.irisnet.java.client.model.FaceDetection.class);
                         classByDiscriminatorValue.put("HairDetection", de.irisnet.java.client.model.HairDetection.class);
+                        classByDiscriminatorValue.put("IdDocumentDetection", de.irisnet.java.client.model.IdDocumentDetection.class);
                         classByDiscriminatorValue.put("CheckResult_detections_inner", de.irisnet.java.client.model.CheckResultDetectionsInner.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
@@ -115,6 +125,15 @@ public class JSON {
                     public Class<? extends de.irisnet.java.client.model.HairDetection> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("HairDetection", de.irisnet.java.client.model.HairDetection.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
+                .registerTypeSelector(de.irisnet.java.client.model.IdDocumentDetection.class, new TypeSelector<de.irisnet.java.client.model.IdDocumentDetection>() {
+                    @Override
+                    public Class<? extends de.irisnet.java.client.model.IdDocumentDetection> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("IdDocumentDetection", de.irisnet.java.client.model.IdDocumentDetection.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
                     }
@@ -147,7 +166,7 @@ public class JSON {
         return clazz;
     }
 
-    {
+    static {
         GsonBuilder gsonBuilder = createGson();
         gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
         gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
@@ -162,18 +181,19 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.CheckResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.CheckResultDetectionsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Config.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Coordinates.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Data.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Encoded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Event.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.FaceDetection.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.HairAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.HairDetection.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.IdDocumentAttribute.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.IdDocumentDetection.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.IdDocumentSubChecks.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.LicenseInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Param.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.ParamSet.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Pricing.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Rectangle.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Summary.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
@@ -407,7 +427,7 @@ public class JSON {
                         if (dateFormat != null) {
                             return new java.sql.Date(dateFormat.parse(date).getTime());
                         }
-                        return new java.sql.Date(ISO8601Utils.parse(date, new ParsePosition(0)).getTime());
+                        return new java.sql.Date(sdf.parse(date).getTime());
                     } catch (ParseException e) {
                         throw new JsonParseException(e);
                     }
@@ -417,7 +437,7 @@ public class JSON {
 
     /**
      * Gson TypeAdapter for java.util.Date type
-     * If the dateFormat is null, ISO8601Utils will be used.
+     * If the dateFormat is null, DateTimeFormatter will be used.
      */
     public static class DateTypeAdapter extends TypeAdapter<Date> {
 
@@ -442,7 +462,7 @@ public class JSON {
                 if (dateFormat != null) {
                     value = dateFormat.format(date);
                 } else {
-                    value = ISO8601Utils.format(date, true);
+                    value = date.toInstant().atOffset(ZoneOffset.UTC).format(dtf);
                 }
                 out.value(value);
             }
@@ -461,7 +481,7 @@ public class JSON {
                             if (dateFormat != null) {
                                 return dateFormat.parse(date);
                             }
-                            return ISO8601Utils.parse(date, new ParsePosition(0));
+                            return sdf.parse(date);
                         } catch (ParseException e) {
                             throw new JsonParseException(e);
                         }

@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _hair_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class HairAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -179,7 +179,6 @@ public class HairAttribute {
   }
 
   public HairAttribute type(String type) {
-    
     this.type = type;
     return this;
   }
@@ -193,14 +192,12 @@ public class HairAttribute {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
 
   public HairAttribute color(ColorEnum color) {
-    
     this.color = color;
     return this;
   }
@@ -214,14 +211,12 @@ public class HairAttribute {
     return color;
   }
 
-
   public void setColor(ColorEnum color) {
     this.color = color;
   }
 
 
   public HairAttribute style(StyleEnum style) {
-    
     this.style = style;
     return this;
   }
@@ -234,7 +229,6 @@ public class HairAttribute {
   public StyleEnum getStyle() {
     return style;
   }
-
 
   public void setStyle(StyleEnum style) {
     this.style = style;

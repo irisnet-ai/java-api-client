@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.BaseAttribute;
 import de.irisnet.java.client.model.BaseDetection;
-import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.IdDocumentSubChecks;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,18 +54,17 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _breast_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class BreastDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private List<BaseAttribute> attributes;
+  private List<BaseAttribute> attributes = new ArrayList<>();
 
   public BreastDetection() {
     this.type = this.getClass().getSimpleName();
   }
 
   public BreastDetection attributes(List<BaseAttribute> attributes) {
-    
     this.attributes = attributes;
     return this;
   }
@@ -86,7 +85,6 @@ public class BreastDetection extends BaseDetection {
   public List<BaseAttribute> getAttributes() {
     return attributes;
   }
-
 
   public void setAttributes(List<BaseAttribute> attributes) {
     this.attributes = attributes;
@@ -140,16 +138,21 @@ public class BreastDetection extends BaseDetection {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("classification");
-    openapiFields.add("group");
-    openapiFields.add("id");
-    openapiFields.add("probability");
-    openapiFields.add("coordinates");
     openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("subDetections");
+    openapiFields.add("checkId");
+    openapiFields.add("hasOfficialDocument");
+    openapiFields.add("comparable");
+    openapiFields.add("faceSimilarity");
+    openapiFields.add("faceLivenessCheckScore");
+    openapiFields.add("documentFrontLivenessScore");
+    openapiFields.add("documentBackLivenessScore");
+    openapiFields.add("processedChecks");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -170,6 +173,13 @@ public class BreastDetection extends BaseDetection {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BreastDetection.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BreastDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : BreastDetection.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
   }

@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes an event that lead to a broken rule.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Event {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -75,7 +75,6 @@ public class Event {
   }
 
   public Event classification(String classification) {
-    
     this.classification = classification;
     return this;
   }
@@ -89,14 +88,12 @@ public class Event {
     return classification;
   }
 
-
   public void setClassification(String classification) {
     this.classification = classification;
   }
 
 
   public Event group(String group) {
-    
     this.group = group;
     return this;
   }
@@ -110,14 +107,12 @@ public class Event {
     return group;
   }
 
-
   public void setGroup(String group) {
     this.group = group;
   }
 
 
   public Event start(Float start) {
-    
     this.start = start;
     return this;
   }
@@ -131,14 +126,12 @@ public class Event {
     return start;
   }
 
-
   public void setStart(Float start) {
     this.start = start;
   }
 
 
   public Event duration(Float duration) {
-    
     this.duration = duration;
     return this;
   }
@@ -152,14 +145,12 @@ public class Event {
     return duration;
   }
 
-
   public void setDuration(Float duration) {
     this.duration = duration;
   }
 
 
   public Event severity(Integer severity) {
-    
     this.severity = severity;
     return this;
   }
@@ -172,7 +163,6 @@ public class Event {
   public Integer getSeverity() {
     return severity;
   }
-
 
   public void setSeverity(Integer severity) {
     this.severity = severity;

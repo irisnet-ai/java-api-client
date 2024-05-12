@@ -52,7 +52,7 @@ import de.irisnet.java.JSON;
 /**
  * A set of parameters/rules that describe how the AI should behave.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class ParamSet {
   public static final String SERIALIZED_NAME_THRESH = "thresh";
   @SerializedName(SERIALIZED_NAME_THRESH)
@@ -72,13 +72,12 @@ public class ParamSet {
 
   public static final String SERIALIZED_NAME_PARAMS = "params";
   @SerializedName(SERIALIZED_NAME_PARAMS)
-  private List<Param> params;
+  private List<Param> params = new ArrayList<>();
 
   public ParamSet() {
   }
 
   public ParamSet thresh(Float thresh) {
-    
     this.thresh = thresh;
     return this;
   }
@@ -94,14 +93,12 @@ public class ParamSet {
     return thresh;
   }
 
-
   public void setThresh(Float thresh) {
     this.thresh = thresh;
   }
 
 
   public ParamSet grey(Integer grey) {
-    
     this.grey = grey;
     return this;
   }
@@ -117,14 +114,12 @@ public class ParamSet {
     return grey;
   }
 
-
   public void setGrey(Integer grey) {
     this.grey = grey;
   }
 
 
   public ParamSet minDuration(Integer minDuration) {
-    
     this.minDuration = minDuration;
     return this;
   }
@@ -140,14 +135,12 @@ public class ParamSet {
     return minDuration;
   }
 
-
   public void setMinDuration(Integer minDuration) {
     this.minDuration = minDuration;
   }
 
 
   public ParamSet abortOnSeverity(Integer abortOnSeverity) {
-    
     this.abortOnSeverity = abortOnSeverity;
     return this;
   }
@@ -162,14 +155,12 @@ public class ParamSet {
     return abortOnSeverity;
   }
 
-
   public void setAbortOnSeverity(Integer abortOnSeverity) {
     this.abortOnSeverity = abortOnSeverity;
   }
 
 
   public ParamSet params(List<Param> params) {
-    
     this.params = params;
     return this;
   }
@@ -190,7 +181,6 @@ public class ParamSet {
   public List<Param> getParams() {
     return params;
   }
-
 
   public void setParams(List<Param> params) {
     this.params = params;

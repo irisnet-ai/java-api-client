@@ -52,7 +52,7 @@ import de.irisnet.java.JSON;
 /**
  * Callback options to send a response to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Callback {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -66,7 +66,6 @@ public class Callback {
   }
 
   public Callback callbackUrl(URI callbackUrl) {
-    
     this.callbackUrl = callbackUrl;
     return this;
   }
@@ -80,14 +79,12 @@ public class Callback {
     return callbackUrl;
   }
 
-
   public void setCallbackUrl(URI callbackUrl) {
     this.callbackUrl = callbackUrl;
   }
 
 
   public Callback headers(Map<String, String> headers) {
-    
     this.headers = headers;
     return this;
   }
@@ -108,7 +105,6 @@ public class Callback {
   public Map<String, String> getHeaders() {
     return headers;
   }
-
 
   public void setHeaders(Map<String, String> headers) {
     this.headers = headers;

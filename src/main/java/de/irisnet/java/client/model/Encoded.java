@@ -50,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains the resulting media as base64 encoded string or an URL to download that media.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Encoded {
   public static final String SERIALIZED_NAME_NAME = "name";
   @Deprecated
@@ -70,7 +70,6 @@ public class Encoded {
 
   @Deprecated
   public Encoded name(String name) {
-    
     this.name = name;
     return this;
   }
@@ -86,7 +85,6 @@ public class Encoded {
     return name;
   }
 
-
   @Deprecated
   public void setName(String name) {
     this.name = name;
@@ -94,7 +92,6 @@ public class Encoded {
 
 
   public Encoded data(File data) {
-    
     this.data = data;
     return this;
   }
@@ -108,14 +105,12 @@ public class Encoded {
     return data;
   }
 
-
   public void setData(File data) {
     this.data = data;
   }
 
 
   public Encoded downloadUrl(String downloadUrl) {
-    
     this.downloadUrl = downloadUrl;
     return this;
   }
@@ -128,7 +123,6 @@ public class Encoded {
   public String getDownloadUrl() {
     return downloadUrl;
   }
-
 
   public void setDownloadUrl(String downloadUrl) {
     this.downloadUrl = downloadUrl;

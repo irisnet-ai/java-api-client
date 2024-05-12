@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * An attribute describes a quality or characteristic that a detection object has.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class BaseAttribute {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -68,7 +68,6 @@ public class BaseAttribute {
   }
 
   public BaseAttribute classification(String classification) {
-    
     this.classification = classification;
     return this;
   }
@@ -82,14 +81,12 @@ public class BaseAttribute {
     return classification;
   }
 
-
   public void setClassification(String classification) {
     this.classification = classification;
   }
 
 
   public BaseAttribute probability(Integer probability) {
-    
     this.probability = probability;
     return this;
   }
@@ -103,14 +100,12 @@ public class BaseAttribute {
     return probability;
   }
 
-
   public void setProbability(Integer probability) {
     this.probability = probability;
   }
 
 
   public BaseAttribute type(String type) {
-    
     this.type = type;
     return this;
   }
@@ -123,7 +118,6 @@ public class BaseAttribute {
   public String getType() {
     return type;
   }
-
 
   public void setType(String type) {
     this.type = type;

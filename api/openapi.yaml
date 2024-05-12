@@ -3,7 +3,7 @@ info:
   contact:
     email: info@irisnet.de
     name: irisnet GmbH
-    url: https://irisnet.de/subscribe/
+    url: https://shop.airisprotect.com
   description: |-
     Artificial Intelligence (AI) for image- and video-processing in real-time. This is an interactive documentation where you can quickly look up the endpoints and their schemas, while having the opportunity to try things out for yourself.
 
@@ -16,7 +16,7 @@ info:
     Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. If you click on the right arrow, you can expand the model and get a description of the model and the model parameters. For nested models, you can keep clicking the right arrow for further details.
 
     Clicking the link below the title at the top of this page opens the [OpenAPI specification](https://swagger.io/specification/) (OAS3) in JSON format. The OAS3 Spec allows the generation of clients in many programming languages. There are several free client generators available that can be used to get started easily.
-  termsOfService: https://irisnet.de/terms-and-conditions/
+  termsOfService: https://shop.airisprotect.com/terms-and-conditions
   title: Irisnet API
   version: v2
 servers:
@@ -61,7 +61,8 @@ paths:
       summary: Delete the parameters of the AI configuration.
       tags:
       - Detailed configuration parameters
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: Returns the parameters stored in the given configuration.
       operationId: getParameters
@@ -77,12 +78,6 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation.
         "404":
           content:
             application/json:
@@ -90,12 +85,19 @@ paths:
                 $ref: '#/components/schemas/ApiNotice'
           description: configuration with given id not found or parameters for configuration
             not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get the parameters of the AI configuration.
       tags:
       - Detailed configuration parameters
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: Save or modify the parameters stored in the AI configuration.
       operationId: setParameters
@@ -204,6 +206,15 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
+        "204":
+          description: successful operation. No previously configured parameters exist.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation. Previous user configured parameters are
+            returned.
         "400":
           content:
             application/json:
@@ -216,22 +227,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "204":
-          description: successful operation. No previously configured parameters exist.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation. Previous user configured parameters are
-            returned.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
       tags:
       - Detailed configuration parameters
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/config/:
     get:
       description: Returns a list of all configurations with its id's and configured
@@ -252,7 +255,8 @@ paths:
       summary: List all saved AI configurations.
       tags:
       - Configuration Management
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: Create a new AI configuration with the desired prototypes.
       operationId: setConfig
@@ -288,12 +292,6 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
         "403":
           content:
             application/json:
@@ -306,13 +304,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/Config'
           description: successful operation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
       tags:
       - Configuration Management
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/check-video/{configId}:
     post:
       description: |-
@@ -355,7 +360,9 @@ paths:
           type: integer
         style: form
       - description: Specifies whether or not to draw an output video that can be
-          downloaded afterwards. The _Encoded_ schema will be available in the response.
+          downloaded afterwards. The output video format will be MP4 containing H.264
+          encoding independent of the input format. The _Encoded_ schema will be available
+          in the response.
         explode: true
         in: query
         name: imageEncode
@@ -405,25 +412,26 @@ paths:
       responses:
         "202":
           description: "operation accepted: wait for callback."
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "402":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
       tags:
       - AI check operations
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/check-stream/{configId}:
     post:
       description: |-
@@ -484,6 +492,12 @@ paths:
           type: integer
         style: form
       responses:
+        "402":
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
         "200":
           content:
             application/x-ndjson:
@@ -498,18 +512,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "402":
-          content:
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
       tags:
       - AI check operations
-      x-accepts: application/x-ndjson
+      x-accepts:
+      - application/x-ndjson
   /v2/check-image/{configId}:
     post:
       description: The response (_CheckResult_ schema) is returned immediately after
@@ -580,6 +589,12 @@ paths:
         description: The http(s) url or base64 encoded body uri of the image that
           needs to be checked.
       responses:
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
         "200":
           content:
             application/json:
@@ -592,19 +607,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
       tags:
       - AI check operations
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/info/:
     get:
       description: Get the LicenseInfo schema for the given license key in the authorization
@@ -628,7 +638,8 @@ paths:
       summary: Get information for the given license key.
       tags:
       - Balance endpoints
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/cost/{configId}/{frames}:
     get:
       description: |-
@@ -682,7 +693,8 @@ paths:
       summary: Get the cost of the configuration for moving images.
       tags:
       - Balance endpoints
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/cost/{configId}/{fps}/{duration}:
     get:
       description: |-
@@ -745,7 +757,8 @@ paths:
       summary: Get the cost of the configuration for moving images.
       tags:
       - Balance endpoints
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/cost/{configId}:
     get:
       description: The cost is subtracted from the license key after a successful
@@ -788,7 +801,8 @@ paths:
       summary: Get the cost of the configuration for a single image.
       tags:
       - Balance endpoints
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/config/{configId}:
     delete:
       description: Deletes the AI configuration with the given id.
@@ -817,7 +831,8 @@ paths:
       summary: Delete an AI configuration.
       tags:
       - Configuration Management
-      x-accepts: '*/*'
+      x-accepts:
+      - '*/*'
     get:
       description: Returns a specific AI configuration for the requested id.
       operationId: getConfig
@@ -849,7 +864,8 @@ paths:
       summary: Get a specific AI configuration.
       tags:
       - Configuration Management
-      x-accepts: application/json
+      x-accepts:
+      - application/json
 components:
   schemas:
     Param:
@@ -1296,34 +1312,22 @@ components:
           type: string
       type: object
     BaseDetection:
+      anyOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/FaceDetection'
+      - $ref: '#/components/schemas/BreastDetection'
+      - $ref: '#/components/schemas/HairDetection'
+      - $ref: '#/components/schemas/IdDocumentDetection'
       description: A detection describes the object found with all its details.
       discriminator:
         propertyName: type
+      example:
+        type: type
       properties:
-        classification:
-          description: The classification of the recognized object.
-          example: face
-          type: string
-        group:
-          description: The group of the classification.
-          example: human
-          type: string
-        id:
-          description: The id of the detection object.
-          example: 1003
-          format: int32
-          type: integer
-        probability:
-          description: The probability that the object found matches the classification.
-          example: 94
-          format: int32
-          type: integer
-        coordinates:
-          $ref: '#/components/schemas/Coordinates'
         type:
-          description: Used as a type discriminator for json to object conversion.
-          example: FaceDetection
           type: string
+      required:
+      - type
       type: object
     BreastDetection:
       allOf:
@@ -1427,6 +1431,7 @@ components:
           max: 1
           classification: face
           group: human
+        checkId: checkId
         events:
         - duration: 3.12
           severity: 100
@@ -1448,8 +1453,8 @@ components:
           message: "Here´s an example of what I can do, I can turn my handle into\
             \ a spout, Tip me over and pour me out!"
         detections:
-        - null
-        - null
+        - type: type
+        - type: type
       properties:
         summary:
           $ref: '#/components/schemas/Summary'
@@ -1473,14 +1478,9 @@ components:
           items:
             $ref: '#/components/schemas/ApiNotice'
           type: array
-      type: object
-    Coordinates:
-      description: Describes the position and bounds of the classification object.
-      properties:
-        rectangles:
-          items:
-            $ref: '#/components/schemas/Rectangle'
-          type: array
+        checkId:
+          description: The id of the async running check
+          type: string
       type: object
     Encoded:
       description: Contains the resulting media as base64 encoded string or an URL
@@ -1597,33 +1597,245 @@ components:
         type: object
       description: Contains further characteristics particular to _hair_ detection.
       type: object
-    Rectangle:
-      description: Describes the bounds of a rectangle starting from the center.
+    IdDocumentAttribute:
+      description: Attributes qualifying the _idDocument_ classification.
       properties:
-        x0:
-          description: The center of the rectangle in the horizontal (x) direction.
-          example: 0.1
-          format: float
-          type: number
-        y0:
-          description: The center of the rectangle in the vertical (y) direction.
-          example: 0.1
-          format: float
-          type: number
-        width:
-          description: The total width of the rectangle in the horizontal (x) direction.
-            Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges
-            of the rectangle.
-          example: 0.1
-          format: float
-          type: number
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: BaseAttribute
+          type: string
+        documentType:
+          description: The type of the document
+          enum:
+          - passport
+          - driving_license
+          - national_identity_card
+          - residence_permit
+          - visa
+          - unknown
+          example: national_identity_card
+          type: string
+        documentNumber:
+          description: The number of the document
+          type: string
+        isTwoSided:
+          description: Indicates whether the document is two-sided
+          type: boolean
+        issuingAuthority:
+          description: The issuing authority
+          type: string
+        issuingDate:
+          description: The issuing date
+          format: date
+          type: string
+        issuingCountry:
+          description: The document's country in ISO 3166-1 alpha-2 format
+          example: DE
+          type: string
+        expirationDate:
+          description: The expiration date
+          format: date
+          type: string
+        accessNumber:
+          description: The access number
+          type: string
+        firstNames:
+          description: The document holder's first name(s)
+          items:
+            description: The document holder's first name(s)
+            type: string
+          type: array
+        lastNames:
+          description: The document holder's last name(s)
+          items:
+            description: The document holder's last name(s)
+            type: string
+          type: array
+        birthName:
+          description: The document holder's birth name
+          type: string
+        dateOfBirth:
+          description: The document holder's date of birth
+          format: date
+          type: string
+        placeOfBirth:
+          description: The document holder's place of birth
+          type: string
+        nationality:
+          description: The document holder's nationality in ISO 3166-1 alpha-2 format
+          example: DE
+          type: string
+        gender:
+          description: The document holder's gender
+          enum:
+          - male
+          - female
+          - other
+          example: male
+          type: string
         height:
-          description: The total height of the rectangle in the vertical (y) direction.
-            Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom
-            edges of the rectangle.
-          example: 0.1
-          format: float
-          type: number
+          description: The document holder's height
+          type: string
+        address:
+          description: The document holder's address
+          type: string
+        machineReadableZone:
+          description: "The document's machine readable zone (MRZ), at most 3 lines"
+          items:
+            description: "The document's machine readable zone (MRZ), at most 3 lines"
+            type: string
+          type: array
+      type: object
+    IdDocumentDetection:
+      allOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - properties:
+          checkId:
+            description: The id of the check that lead to the detection
+            type: string
+          hasOfficialDocument:
+            description: Indicates whether the identified document is official
+            type: boolean
+          comparable:
+            description: Indicates whether the provided selfie-image is comparable
+              to the document
+            type: boolean
+          faceSimilarity:
+            description: Indicates the similarity-level of whether two faces belong
+              to the same person
+            format: int32
+            type: integer
+          faceLivenessCheckScore:
+            description: Indicates the liveness score of the selfie image
+            format: int32
+            type: integer
+          documentFrontLivenessScore:
+            description: Indicates the liveness score of the front side image of the
+              document
+            format: int32
+            type: integer
+          documentBackLivenessScore:
+            description: Indicates the liveness score of the back side image of the
+              document
+            format: int32
+            type: integer
+          processedChecks:
+            $ref: '#/components/schemas/IdDocumentSubChecks'
+          attributes:
+            description: Attributes of the _idDocument_ detection.
+            items:
+              $ref: '#/components/schemas/IdDocumentAttribute'
+            type: array
+        type: object
+      description: Contains further characteristics particular to _idDocument_ detection.
+      type: object
+    IdDocumentSubChecks:
+      description: Contains information on idDocument sub-checks
+      properties:
+        mrzChecksum:
+          description: Indicates whether the MRZ checksum is correct
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        mrzFormat:
+          description: Indicates whether the MRZ format is correct
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        mrzConsistency:
+          description: Indicates whether the MRZ is consistent with the document type
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        expirationDate:
+          description: Indicates whether the expirationDate is valid
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        securityElements:
+          description: Indicates whether the document's security elements are valid
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        photoLocation:
+          description: Indicates whether the photo is in the correct location for
+            a given document type
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        blacklistCheck:
+          description: Indicates whether a competent authority deny-listed the ID
+            document
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        photocopyCheck:
+          description: Indicates whether the document is a photocopy
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        tamperingCheck:
+          description: Indicates whether the document image has been digitally tampered
+            with
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        specimenCheck:
+          description: Indicates whether the document has been copied from the Internet
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        documentModelIdentification:
+          description: Indicates whether the document model has been identified
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        documentLivenessCheck:
+          description: Indicates if the document image is genuine and not a photo
+            of an image or of a screen
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        spoofedImageAnalysis:
+          description: "Indicates whether the selfie image is spoofed, copied from\
+            \ the Internet, or is a known deny-listed image"
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        faceLivenessCheck:
+          description: Indicates if the selfie image is genuine and not a photo of
+            an image or of a screen
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
       type: object
     Summary:
       description: Summarizing the result of the AI.
@@ -1765,6 +1977,7 @@ components:
       - $ref: '#/components/schemas/BreastDetection'
       - $ref: '#/components/schemas/FaceDetection'
       - $ref: '#/components/schemas/HairDetection'
+      - $ref: '#/components/schemas/IdDocumentDetection'
   securitySchemes:
     LICENSE-KEY:
       description: License Key access

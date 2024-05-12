@@ -89,9 +89,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageCall(UUID configId, String url, Integer detail, Boolean imageEncode, Data data, final ApiCallback _callback) throws ApiException {
@@ -176,9 +176,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult checkImage(UUID configId, String url, Integer detail, Boolean imageEncode, Data data) throws ApiException {
@@ -199,9 +199,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> checkImageWithHttpInfo(UUID configId, String url, Integer detail, Boolean imageEncode, Data data) throws ApiException {
@@ -224,9 +224,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageAsync(UUID configId, String url, Integer detail, Boolean imageEncode, Data data, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -249,9 +249,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkStreamCall(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -344,9 +344,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public List<CheckResult> checkStream(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate) throws ApiException {
@@ -367,9 +367,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<CheckResult>> checkStreamWithHttpInfo(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate) throws ApiException {
@@ -392,9 +392,9 @@ public class AiCheckOperationsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkStreamAsync(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback<List<CheckResult>> _callback) throws ApiException {
@@ -410,7 +410,7 @@ public class AiCheckOperationsApi {
      * @param url The url to the video that needs to be checked. (required)
      * @param callback  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
-     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
+     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The output video format will be MP4 containing H.264 encoding independent of the input format. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -419,8 +419,8 @@ public class AiCheckOperationsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoCall(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -513,15 +513,15 @@ public class AiCheckOperationsApi {
      * @param url The url to the video that needs to be checked. (required)
      * @param callback  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
-     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
+     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The output video format will be MP4 containing H.264 encoding independent of the input format. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void checkVideo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
@@ -535,7 +535,7 @@ public class AiCheckOperationsApi {
      * @param url The url to the video that needs to be checked. (required)
      * @param callback  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
-     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
+     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The output video format will be MP4 containing H.264 encoding independent of the input format. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -543,8 +543,8 @@ public class AiCheckOperationsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> checkVideoWithHttpInfo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
@@ -559,7 +559,7 @@ public class AiCheckOperationsApi {
      * @param url The url to the video that needs to be checked. (required)
      * @param callback  (required)
      * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. (optional, default to 1)
-     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. (optional, default to false)
+     * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The output video format will be MP4 containing H.264 encoding independent of the input format. The _Encoded_ schema will be available in the response. (optional, default to false)
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -568,8 +568,8 @@ public class AiCheckOperationsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoAsync(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {

@@ -14,6 +14,7 @@ The root object returned after a check operation.
 |**detections** | [**List&lt;CheckResultDetectionsInner&gt;**](CheckResultDetectionsInner.md) |  |  [optional] |
 |**events** | [**List&lt;Event&gt;**](Event.md) |  |  [optional] |
 |**notifications** | [**List&lt;ApiNotice&gt;**](ApiNotice.md) |  |  [optional] |
+|**checkId** | **String** | The id of the async running check |  [optional] |
 
 
 

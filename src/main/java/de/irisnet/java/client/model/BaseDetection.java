@@ -19,307 +19,406 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.BreastDetection;
+import de.irisnet.java.client.model.FaceDetection;
+import de.irisnet.java.client.model.HairDetection;
+import de.irisnet.java.client.model.IdDocumentAttribute;
+import de.irisnet.java.client.model.IdDocumentDetection;
+import de.irisnet.java.client.model.IdDocumentSubChecks;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import de.irisnet.java.JSON;
 
-/**
- * A detection describes the object found with all its details.
- */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BaseDetection {
-  public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
-  @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
-  private String classification;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+public class BaseDetection extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(BaseDetection.class.getName());
 
-  public static final String SERIALIZED_NAME_GROUP = "group";
-  @SerializedName(SERIALIZED_NAME_GROUP)
-  private String group;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BaseDetection.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BaseDetection' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BaseDetection> adapterBaseDetection = gson.getDelegateAdapter(this, TypeToken.get(BaseDetection.class));
+            final TypeAdapter<FaceDetection> adapterFaceDetection = gson.getDelegateAdapter(this, TypeToken.get(FaceDetection.class));
+            final TypeAdapter<BreastDetection> adapterBreastDetection = gson.getDelegateAdapter(this, TypeToken.get(BreastDetection.class));
+            final TypeAdapter<HairDetection> adapterHairDetection = gson.getDelegateAdapter(this, TypeToken.get(HairDetection.class));
+            final TypeAdapter<IdDocumentDetection> adapterIdDocumentDetection = gson.getDelegateAdapter(this, TypeToken.get(IdDocumentDetection.class));
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+            return (TypeAdapter<T>) new TypeAdapter<BaseDetection>() {
+                @Override
+                public void write(JsonWriter out, BaseDetection value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  public static final String SERIALIZED_NAME_PROBABILITY = "probability";
-  @SerializedName(SERIALIZED_NAME_PROBABILITY)
-  private Integer probability;
+                    // check if the actual instance is of the type `BaseDetection`
+                    if (value.getActualInstance() instanceof BaseDetection) {
+                        JsonElement element = adapterBaseDetection.toJsonTree((BaseDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `FaceDetection`
+                    if (value.getActualInstance() instanceof FaceDetection) {
+                        JsonElement element = adapterFaceDetection.toJsonTree((FaceDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `BreastDetection`
+                    if (value.getActualInstance() instanceof BreastDetection) {
+                        JsonElement element = adapterBreastDetection.toJsonTree((BreastDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `HairDetection`
+                    if (value.getActualInstance() instanceof HairDetection) {
+                        JsonElement element = adapterHairDetection.toJsonTree((HairDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `IdDocumentDetection`
+                    if (value.getActualInstance() instanceof IdDocumentDetection) {
+                        JsonElement element = adapterIdDocumentDetection.toJsonTree((IdDocumentDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
+                }
 
-  public static final String SERIALIZED_NAME_COORDINATES = "coordinates";
-  @SerializedName(SERIALIZED_NAME_COORDINATES)
-  private Coordinates coordinates;
+                @Override
+                public BaseDetection read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  protected String type;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
-  public BaseDetection() {
-    this.type = this.getClass().getSimpleName();
-  }
+                    // deserialize BaseDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        BaseDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterBaseDetection;
+                        BaseDetection ret = new BaseDetection();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'BaseDetection'", e);
+                    }
+                    // deserialize FaceDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        FaceDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterFaceDetection;
+                        BaseDetection ret = new BaseDetection();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'FaceDetection'", e);
+                    }
+                    // deserialize BreastDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        BreastDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterBreastDetection;
+                        BaseDetection ret = new BaseDetection();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'BreastDetection'", e);
+                    }
+                    // deserialize HairDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        HairDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterHairDetection;
+                        BaseDetection ret = new BaseDetection();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'HairDetection'", e);
+                    }
+                    // deserialize IdDocumentDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        IdDocumentDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterIdDocumentDetection;
+                        BaseDetection ret = new BaseDetection();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'IdDocumentDetection'", e);
+                    }
 
-  public BaseDetection classification(String classification) {
-    
-    this.classification = classification;
-    return this;
-  }
-
-   /**
-   * The classification of the recognized object.
-   * @return classification
-  **/
-  @javax.annotation.Nullable
-  public String getClassification() {
-    return classification;
-  }
-
-
-  public void setClassification(String classification) {
-    this.classification = classification;
-  }
-
-
-  public BaseDetection group(String group) {
-    
-    this.group = group;
-    return this;
-  }
-
-   /**
-   * The group of the classification.
-   * @return group
-  **/
-  @javax.annotation.Nullable
-  public String getGroup() {
-    return group;
-  }
-
-
-  public void setGroup(String group) {
-    this.group = group;
-  }
-
-
-  public BaseDetection id(Integer id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * The id of the detection object.
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  public Integer getId() {
-    return id;
-  }
-
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-
-  public BaseDetection probability(Integer probability) {
-    
-    this.probability = probability;
-    return this;
-  }
-
-   /**
-   * The probability that the object found matches the classification.
-   * @return probability
-  **/
-  @javax.annotation.Nullable
-  public Integer getProbability() {
-    return probability;
-  }
-
-
-  public void setProbability(Integer probability) {
-    this.probability = probability;
-  }
-
-
-  public BaseDetection coordinates(Coordinates coordinates) {
-    
-    this.coordinates = coordinates;
-    return this;
-  }
-
-   /**
-   * Get coordinates
-   * @return coordinates
-  **/
-  @javax.annotation.Nullable
-  public Coordinates getCoordinates() {
-    return coordinates;
-  }
-
-
-  public void setCoordinates(Coordinates coordinates) {
-    this.coordinates = coordinates;
-  }
-
-
-  public BaseDetection type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Used as a type discriminator for json to object conversion.
-   * @return type
-  **/
-  @javax.annotation.Nullable
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BaseDetection baseDetection = (BaseDetection) o;
-    return Objects.equals(this.classification, baseDetection.classification) &&
-        Objects.equals(this.group, baseDetection.group) &&
-        Objects.equals(this.id, baseDetection.id) &&
-        Objects.equals(this.probability, baseDetection.probability) &&
-        Objects.equals(this.coordinates, baseDetection.coordinates) &&
-        Objects.equals(this.type, baseDetection.type);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(classification, group, id, probability, coordinates, type);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BaseDetection {\n");
-    sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
-    sb.append("    group: ").append(toIndentedString(group)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
-    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("classification");
-    openapiFields.add("group");
-    openapiFields.add("id");
-    openapiFields.add("probability");
-    openapiFields.add("coordinates");
-    openapiFields.add("type");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to BaseDetection
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!BaseDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BaseDetection is not found in the empty JSON string", BaseDetection.openapiRequiredFields.toString()));
+                    throw new IOException(String.format("Failed deserialization for BaseDetection: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
         }
-      }
+    }
 
-      String discriminatorValue = jsonElement.getAsJsonObject().get("type").getAsString();
-      switch (discriminatorValue) {
-        case "BreastDetection":
-          BreastDetection.validateJsonElement(jsonElement);
-          break;
-        case "FaceDetection":
-          FaceDetection.validateJsonElement(jsonElement);
-          break;
-        case "HairDetection":
-          HairDetection.validateJsonElement(jsonElement);
-          break;
-        default:
-          throw new IllegalArgumentException(String.format("The value of the `type` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
-      }
-  }
+    // store a list of schema names defined in anyOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
+    public BaseDetection() {
+        super("anyOf", Boolean.FALSE);
+    }
 
- /**
-  * Create an instance of BaseDetection given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of BaseDetection
-  * @throws IOException if the JSON string is invalid with respect to BaseDetection
-  */
-  public static BaseDetection fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, BaseDetection.class);
-  }
+    public BaseDetection(BaseDetection o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
 
- /**
-  * Convert an instance of BaseDetection to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    public BaseDetection(BreastDetection o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public BaseDetection(FaceDetection o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public BaseDetection(HairDetection o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public BaseDetection(IdDocumentDetection o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    static {
+        schemas.put("BaseDetection", BaseDetection.class);
+        schemas.put("FaceDetection", FaceDetection.class);
+        schemas.put("BreastDetection", BreastDetection.class);
+        schemas.put("HairDetection", HairDetection.class);
+        schemas.put("IdDocumentDetection", IdDocumentDetection.class);
+    }
+
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return BaseDetection.schemas;
+    }
+
+    /**
+     * Set the instance that matches the anyOf child schema, check
+     * the instance parameter is valid against the anyOf child schemas:
+     * BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
+     *
+     * It could be an instance of the 'anyOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof BaseDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof FaceDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof BreastDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof HairDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof IdDocumentDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
+     *
+     * @return The actual instance (BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection)
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `BaseDetection`. If the actual instance is not `BaseDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `BaseDetection`
+     * @throws ClassCastException if the instance is not `BaseDetection`
+     */
+    public BaseDetection getBaseDetection() throws ClassCastException {
+        return (BaseDetection)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `FaceDetection`. If the actual instance is not `FaceDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `FaceDetection`
+     * @throws ClassCastException if the instance is not `FaceDetection`
+     */
+    public FaceDetection getFaceDetection() throws ClassCastException {
+        return (FaceDetection)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `BreastDetection`. If the actual instance is not `BreastDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `BreastDetection`
+     * @throws ClassCastException if the instance is not `BreastDetection`
+     */
+    public BreastDetection getBreastDetection() throws ClassCastException {
+        return (BreastDetection)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `HairDetection`. If the actual instance is not `HairDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `HairDetection`
+     * @throws ClassCastException if the instance is not `HairDetection`
+     */
+    public HairDetection getHairDetection() throws ClassCastException {
+        return (HairDetection)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `IdDocumentDetection`. If the actual instance is not `IdDocumentDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `IdDocumentDetection`
+     * @throws ClassCastException if the instance is not `IdDocumentDetection`
+     */
+    public IdDocumentDetection getIdDocumentDetection() throws ClassCastException {
+        return (IdDocumentDetection)super.getActualInstance();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BaseDetection
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        // validate anyOf schemas one by one
+        ArrayList<String> errorMessages = new ArrayList<>();
+        // validate the json string with BaseDetection
+        try {
+            BaseDetection.validateJsonElement(jsonElement);
+            return;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with FaceDetection
+        try {
+            FaceDetection.validateJsonElement(jsonElement);
+            return;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with BreastDetection
+        try {
+            BreastDetection.validateJsonElement(jsonElement);
+            return;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with HairDetection
+        try {
+            HairDetection.validateJsonElement(jsonElement);
+            return;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with IdDocumentDetection
+        try {
+            IdDocumentDetection.validateJsonElement(jsonElement);
+            return;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        throw new IOException(String.format("The JSON string is invalid for BaseDetection with anyOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+    }
+
+    /**
+     * Create an instance of BaseDetection given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BaseDetection
+     * @throws IOException if the JSON string is invalid with respect to BaseDetection
+     */
+    public static BaseDetection fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BaseDetection.class);
+    }
+
+    /**
+     * Convert an instance of BaseDetection to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
 

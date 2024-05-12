@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes the current balance of the given license key. A key has a certain amount of credits that can be used for any kind of AI recognition. The license key is invalid, when all of the credits have been used, the license was disabled or expired.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class LicenseInfo {
   public static final String SERIALIZED_NAME_CREDITS_USED = "creditsUsed";
   @SerializedName(SERIALIZED_NAME_CREDITS_USED)
@@ -77,7 +77,6 @@ public class LicenseInfo {
   }
 
   public LicenseInfo creditsUsed(Integer creditsUsed) {
-    
     this.creditsUsed = creditsUsed;
     return this;
   }
@@ -91,14 +90,12 @@ public class LicenseInfo {
     return creditsUsed;
   }
 
-
   public void setCreditsUsed(Integer creditsUsed) {
     this.creditsUsed = creditsUsed;
   }
 
 
   public LicenseInfo creditsRemaining(Integer creditsRemaining) {
-    
     this.creditsRemaining = creditsRemaining;
     return this;
   }
@@ -112,14 +109,12 @@ public class LicenseInfo {
     return creditsRemaining;
   }
 
-
   public void setCreditsRemaining(Integer creditsRemaining) {
     this.creditsRemaining = creditsRemaining;
   }
 
 
   public LicenseInfo totalCredits(Integer totalCredits) {
-    
     this.totalCredits = totalCredits;
     return this;
   }
@@ -133,14 +128,12 @@ public class LicenseInfo {
     return totalCredits;
   }
 
-
   public void setTotalCredits(Integer totalCredits) {
     this.totalCredits = totalCredits;
   }
 
 
   public LicenseInfo licenseKey(String licenseKey) {
-    
     this.licenseKey = licenseKey;
     return this;
   }
@@ -154,14 +147,12 @@ public class LicenseInfo {
     return licenseKey;
   }
 
-
   public void setLicenseKey(String licenseKey) {
     this.licenseKey = licenseKey;
   }
 
 
   public LicenseInfo privileges(Map<String, String> privileges) {
-    
     this.privileges = privileges;
     return this;
   }
@@ -182,7 +173,6 @@ public class LicenseInfo {
   public Map<String, String> getPrivileges() {
     return privileges;
   }
-
 
   public void setPrivileges(Map<String, String> privileges) {
     this.privileges = privileges;

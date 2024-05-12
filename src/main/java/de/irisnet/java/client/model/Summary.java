@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Summarizing the result of the AI.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Summary {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -75,21 +75,20 @@ public class Summary {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private Set<String> tags;
+  private Set<String> tags = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_REJECT_TAGS = "rejectTags";
   @SerializedName(SERIALIZED_NAME_REJECT_TAGS)
-  private Set<String> rejectTags;
+  private Set<String> rejectTags = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_REJECT_REASONS = "rejectReasons";
   @SerializedName(SERIALIZED_NAME_REJECT_REASONS)
-  private Set<String> rejectReasons;
+  private Set<String> rejectReasons = new LinkedHashSet<>();
 
   public Summary() {
   }
 
   public Summary status(String status) {
-    
     this.status = status;
     return this;
   }
@@ -103,14 +102,12 @@ public class Summary {
     return status;
   }
 
-
   public void setStatus(String status) {
     this.status = status;
   }
 
 
   public Summary brokenRulesCount(Integer brokenRulesCount) {
-    
     this.brokenRulesCount = brokenRulesCount;
     return this;
   }
@@ -124,14 +121,12 @@ public class Summary {
     return brokenRulesCount;
   }
 
-
   public void setBrokenRulesCount(Integer brokenRulesCount) {
     this.brokenRulesCount = brokenRulesCount;
   }
 
 
   public Summary helpSuggested(Integer helpSuggested) {
-    
     this.helpSuggested = helpSuggested;
     return this;
   }
@@ -145,14 +140,12 @@ public class Summary {
     return helpSuggested;
   }
 
-
   public void setHelpSuggested(Integer helpSuggested) {
     this.helpSuggested = helpSuggested;
   }
 
 
   public Summary severity(Integer severity) {
-    
     this.severity = severity;
     return this;
   }
@@ -166,14 +159,12 @@ public class Summary {
     return severity;
   }
 
-
   public void setSeverity(Integer severity) {
     this.severity = severity;
   }
 
 
   public Summary creditsConsumed(Integer creditsConsumed) {
-    
     this.creditsConsumed = creditsConsumed;
     return this;
   }
@@ -187,14 +178,12 @@ public class Summary {
     return creditsConsumed;
   }
 
-
   public void setCreditsConsumed(Integer creditsConsumed) {
     this.creditsConsumed = creditsConsumed;
   }
 
 
   public Summary tags(Set<String> tags) {
-    
     this.tags = tags;
     return this;
   }
@@ -216,14 +205,12 @@ public class Summary {
     return tags;
   }
 
-
   public void setTags(Set<String> tags) {
     this.tags = tags;
   }
 
 
   public Summary rejectTags(Set<String> rejectTags) {
-    
     this.rejectTags = rejectTags;
     return this;
   }
@@ -245,14 +232,12 @@ public class Summary {
     return rejectTags;
   }
 
-
   public void setRejectTags(Set<String> rejectTags) {
     this.rejectTags = rejectTags;
   }
 
 
   public Summary rejectReasons(Set<String> rejectReasons) {
-    
     this.rejectReasons = rejectReasons;
     return this;
   }
@@ -273,7 +258,6 @@ public class Summary {
   public Set<String> getRejectReasons() {
     return rejectReasons;
   }
-
 
   public void setRejectReasons(Set<String> rejectReasons) {
     this.rejectReasons = rejectReasons;

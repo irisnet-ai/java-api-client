@@ -84,9 +84,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
 | **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
-| **402** | Not enough credits. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -163,9 +163,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
 | **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
-| **402** | Not enough credits. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
@@ -201,7 +201,7 @@ public class Example {
     String url = "url_example"; // String | The url to the video that needs to be checked.
     Callback callback = new Callback(); // Callback | 
     Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.
-    Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response.
+    Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output video that can be downloaded afterwards. The output video format will be MP4 containing H.264 encoding independent of the input format. The _Encoded_ schema will be available in the response.
     Integer checkRate = 0; // Integer | The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to '1000'.
     try {
       apiInstance.checkVideo(configId, url, callback, detail, imageEncode, checkRate);
@@ -224,7 +224,7 @@ public class Example {
 | **url** | **String**| The url to the video that needs to be checked. | |
 | **callback** | [**Callback**](Callback.md)|  | |
 | **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. | [optional] [default to 1] |
-| **imageEncode** | **Boolean**| Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. | [optional] [default to false] |
+| **imageEncode** | **Boolean**| Specifies whether or not to draw an output video that can be downloaded afterwards. The output video format will be MP4 containing H.264 encoding independent of the input format. The _Encoded_ schema will be available in the response. | [optional] [default to false] |
 | **checkRate** | **Integer**| The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. | [optional] [default to 0] |
 
 ### Return type
@@ -244,6 +244,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | operation accepted: wait for callback. |  -  |
-| **404** | configId not found. |  -  |
 | **402** | Not enough credits. |  -  |
+| **404** | configId not found. |  -  |
 

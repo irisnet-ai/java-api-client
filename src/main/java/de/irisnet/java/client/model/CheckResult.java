@@ -57,7 +57,7 @@ import de.irisnet.java.JSON;
 /**
  * The root object returned after a check operation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class CheckResult {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
@@ -65,29 +65,32 @@ public class CheckResult {
 
   public static final String SERIALIZED_NAME_ENCODINGS = "encodings";
   @SerializedName(SERIALIZED_NAME_ENCODINGS)
-  private List<Encoded> encodings;
+  private List<Encoded> encodings = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BROKEN_RULES = "brokenRules";
   @SerializedName(SERIALIZED_NAME_BROKEN_RULES)
-  private List<BrokenRule> brokenRules;
+  private List<BrokenRule> brokenRules = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DETECTIONS = "detections";
   @SerializedName(SERIALIZED_NAME_DETECTIONS)
-  private List<CheckResultDetectionsInner> detections;
+  private List<CheckResultDetectionsInner> detections = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
-  private List<Event> events;
+  private List<Event> events = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NOTIFICATIONS = "notifications";
   @SerializedName(SERIALIZED_NAME_NOTIFICATIONS)
-  private List<ApiNotice> notifications;
+  private List<ApiNotice> notifications = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
+  @SerializedName(SERIALIZED_NAME_CHECK_ID)
+  private String checkId;
 
   public CheckResult() {
   }
 
   public CheckResult summary(Summary summary) {
-    
     this.summary = summary;
     return this;
   }
@@ -101,14 +104,12 @@ public class CheckResult {
     return summary;
   }
 
-
   public void setSummary(Summary summary) {
     this.summary = summary;
   }
 
 
   public CheckResult encodings(List<Encoded> encodings) {
-    
     this.encodings = encodings;
     return this;
   }
@@ -130,14 +131,12 @@ public class CheckResult {
     return encodings;
   }
 
-
   public void setEncodings(List<Encoded> encodings) {
     this.encodings = encodings;
   }
 
 
   public CheckResult brokenRules(List<BrokenRule> brokenRules) {
-    
     this.brokenRules = brokenRules;
     return this;
   }
@@ -159,14 +158,12 @@ public class CheckResult {
     return brokenRules;
   }
 
-
   public void setBrokenRules(List<BrokenRule> brokenRules) {
     this.brokenRules = brokenRules;
   }
 
 
   public CheckResult detections(List<CheckResultDetectionsInner> detections) {
-    
     this.detections = detections;
     return this;
   }
@@ -188,14 +185,12 @@ public class CheckResult {
     return detections;
   }
 
-
   public void setDetections(List<CheckResultDetectionsInner> detections) {
     this.detections = detections;
   }
 
 
   public CheckResult events(List<Event> events) {
-    
     this.events = events;
     return this;
   }
@@ -217,14 +212,12 @@ public class CheckResult {
     return events;
   }
 
-
   public void setEvents(List<Event> events) {
     this.events = events;
   }
 
 
   public CheckResult notifications(List<ApiNotice> notifications) {
-    
     this.notifications = notifications;
     return this;
   }
@@ -246,9 +239,27 @@ public class CheckResult {
     return notifications;
   }
 
-
   public void setNotifications(List<ApiNotice> notifications) {
     this.notifications = notifications;
+  }
+
+
+  public CheckResult checkId(String checkId) {
+    this.checkId = checkId;
+    return this;
+  }
+
+   /**
+   * The id of the async running check
+   * @return checkId
+  **/
+  @javax.annotation.Nullable
+  public String getCheckId() {
+    return checkId;
+  }
+
+  public void setCheckId(String checkId) {
+    this.checkId = checkId;
   }
 
 
@@ -267,12 +278,13 @@ public class CheckResult {
         Objects.equals(this.brokenRules, checkResult.brokenRules) &&
         Objects.equals(this.detections, checkResult.detections) &&
         Objects.equals(this.events, checkResult.events) &&
-        Objects.equals(this.notifications, checkResult.notifications);
+        Objects.equals(this.notifications, checkResult.notifications) &&
+        Objects.equals(this.checkId, checkResult.checkId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(summary, encodings, brokenRules, detections, events, notifications);
+    return Objects.hash(summary, encodings, brokenRules, detections, events, notifications, checkId);
   }
 
   @Override
@@ -285,6 +297,7 @@ public class CheckResult {
     sb.append("    detections: ").append(toIndentedString(detections)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    notifications: ").append(toIndentedString(notifications)).append("\n");
+    sb.append("    checkId: ").append(toIndentedString(checkId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,6 +326,7 @@ public class CheckResult {
     openapiFields.add("detections");
     openapiFields.add("events");
     openapiFields.add("notifications");
+    openapiFields.add("checkId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -412,6 +426,9 @@ public class CheckResult {
             ApiNotice.validateJsonElement(jsonArraynotifications.get(i));
           };
         }
+      }
+      if ((jsonObj.get("checkId") != null && !jsonObj.get("checkId").isJsonNull()) && !jsonObj.get("checkId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkId").toString()));
       }
   }
 

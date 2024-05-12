@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes what and why a rule was broken according the the applied during the configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class BrokenRule {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -83,7 +83,6 @@ public class BrokenRule {
   }
 
   public BrokenRule classification(String classification) {
-    
     this.classification = classification;
     return this;
   }
@@ -97,14 +96,12 @@ public class BrokenRule {
     return classification;
   }
 
-
   public void setClassification(String classification) {
     this.classification = classification;
   }
 
 
   public BrokenRule group(String group) {
-    
     this.group = group;
     return this;
   }
@@ -118,14 +115,12 @@ public class BrokenRule {
     return group;
   }
 
-
   public void setGroup(String group) {
     this.group = group;
   }
 
 
   public BrokenRule found(Integer found) {
-    
     this.found = found;
     return this;
   }
@@ -139,14 +134,12 @@ public class BrokenRule {
     return found;
   }
 
-
   public void setFound(Integer found) {
     this.found = found;
   }
 
 
   public BrokenRule min(Integer min) {
-    
     this.min = min;
     return this;
   }
@@ -160,14 +153,12 @@ public class BrokenRule {
     return min;
   }
 
-
   public void setMin(Integer min) {
     this.min = min;
   }
 
 
   public BrokenRule max(Integer max) {
-    
     this.max = max;
     return this;
   }
@@ -181,14 +172,12 @@ public class BrokenRule {
     return max;
   }
 
-
   public void setMax(Integer max) {
     this.max = max;
   }
 
 
   public BrokenRule severity(Integer severity) {
-    
     this.severity = severity;
     return this;
   }
@@ -202,14 +191,12 @@ public class BrokenRule {
     return severity;
   }
 
-
   public void setSeverity(Integer severity) {
     this.severity = severity;
   }
 
 
   public BrokenRule duration(Float duration) {
-    
     this.duration = duration;
     return this;
   }
@@ -222,7 +209,6 @@ public class BrokenRule {
   public Float getDuration() {
     return duration;
   }
-
 
   public void setDuration(Float duration) {
     this.duration = duration;
