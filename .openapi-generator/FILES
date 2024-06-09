@@ -14,11 +14,11 @@ docs/BreastDetection.md
 docs/BrokenRule.md
 docs/Callback.md
 docs/CheckResult.md
-docs/CheckResultDetectionsInner.md
 docs/Config.md
 docs/ConfigurationManagementApi.md
 docs/Data.md
 docs/DetailedConfigurationParametersApi.md
+docs/DocumentCheckRequestData.md
 docs/Encoded.md
 docs/Event.md
 docs/FaceDetection.md
@@ -70,9 +70,9 @@ src/main/java/de/irisnet/java/client/model/BreastDetection.java
 src/main/java/de/irisnet/java/client/model/BrokenRule.java
 src/main/java/de/irisnet/java/client/model/Callback.java
 src/main/java/de/irisnet/java/client/model/CheckResult.java
-src/main/java/de/irisnet/java/client/model/CheckResultDetectionsInner.java
 src/main/java/de/irisnet/java/client/model/Config.java
 src/main/java/de/irisnet/java/client/model/Data.java
+src/main/java/de/irisnet/java/client/model/DocumentCheckRequestData.java
 src/main/java/de/irisnet/java/client/model/Encoded.java
 src/main/java/de/irisnet/java/client/model/Event.java
 src/main/java/de/irisnet/java/client/model/FaceDetection.java
@@ -86,6 +86,4 @@ src/main/java/de/irisnet/java/client/model/Param.java
 src/main/java/de/irisnet/java/client/model/ParamSet.java
 src/main/java/de/irisnet/java/client/model/Pricing.java
 src/main/java/de/irisnet/java/client/model/Summary.java
-src/test/java/de/irisnet/java/client/model/IdDocumentAttributeTest.java
-src/test/java/de/irisnet/java/client/model/IdDocumentDetectionTest.java
-src/test/java/de/irisnet/java/client/model/IdDocumentSubChecksTest.java
+src/test/java/de/irisnet/java/client/model/DocumentCheckRequestDataTest.java

@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.ApiNotice;
+import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.BrokenRule;
-import de.irisnet.java.client.model.CheckResultDetectionsInner;
 import de.irisnet.java.client.model.Encoded;
 import de.irisnet.java.client.model.Event;
 import de.irisnet.java.client.model.Summary;
@@ -57,7 +57,7 @@ import de.irisnet.java.JSON;
 /**
  * The root object returned after a check operation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CheckResult {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
@@ -73,7 +73,7 @@ public class CheckResult {
 
   public static final String SERIALIZED_NAME_DETECTIONS = "detections";
   @SerializedName(SERIALIZED_NAME_DETECTIONS)
-  private List<CheckResultDetectionsInner> detections = new ArrayList<>();
+  private List<BaseDetection> detections = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
@@ -163,12 +163,12 @@ public class CheckResult {
   }
 
 
-  public CheckResult detections(List<CheckResultDetectionsInner> detections) {
+  public CheckResult detections(List<BaseDetection> detections) {
     this.detections = detections;
     return this;
   }
 
-  public CheckResult addDetectionsItem(CheckResultDetectionsInner detectionsItem) {
+  public CheckResult addDetectionsItem(BaseDetection detectionsItem) {
     if (this.detections == null) {
       this.detections = new ArrayList<>();
     }
@@ -181,11 +181,11 @@ public class CheckResult {
    * @return detections
   **/
   @javax.annotation.Nullable
-  public List<CheckResultDetectionsInner> getDetections() {
+  public List<BaseDetection> getDetections() {
     return detections;
   }
 
-  public void setDetections(List<CheckResultDetectionsInner> detections) {
+  public void setDetections(List<BaseDetection> detections) {
     this.detections = detections;
   }
 
@@ -395,7 +395,7 @@ public class CheckResult {
 
           // validate the optional field `detections` (array)
           for (int i = 0; i < jsonArraydetections.size(); i++) {
-            CheckResultDetectionsInner.validateJsonElement(jsonArraydetections.get(i));
+            BaseDetection.validateJsonElement(jsonArraydetections.get(i));
           };
         }
       }

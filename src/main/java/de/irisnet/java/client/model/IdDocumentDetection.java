@@ -54,7 +54,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _idDocument_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class IdDocumentDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
   @SerializedName(SERIALIZED_NAME_CHECK_ID)
@@ -91,6 +91,10 @@ public class IdDocumentDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private List<IdDocumentAttribute> attributes = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
+  private String documentHolderId;
 
   public IdDocumentDetection() {
     this.type = this.getClass().getSimpleName();
@@ -275,6 +279,25 @@ public class IdDocumentDetection extends BaseDetection {
   }
 
 
+  public IdDocumentDetection documentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+    return this;
+  }
+
+   /**
+   * The id of the documentHolder
+   * @return documentHolderId
+  **/
+  @javax.annotation.Nullable
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -294,12 +317,13 @@ public class IdDocumentDetection extends BaseDetection {
         Objects.equals(this.documentBackLivenessScore, idDocumentDetection.documentBackLivenessScore) &&
         Objects.equals(this.processedChecks, idDocumentDetection.processedChecks) &&
         Objects.equals(this.attributes, idDocumentDetection.attributes) &&
+        Objects.equals(this.documentHolderId, idDocumentDetection.documentHolderId) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkId, hasOfficialDocument, comparable, faceSimilarity, faceLivenessCheckScore, documentFrontLivenessScore, documentBackLivenessScore, processedChecks, attributes, super.hashCode());
+    return Objects.hash(checkId, hasOfficialDocument, comparable, faceSimilarity, faceLivenessCheckScore, documentFrontLivenessScore, documentBackLivenessScore, processedChecks, attributes, documentHolderId, super.hashCode());
   }
 
   @Override
@@ -316,6 +340,7 @@ public class IdDocumentDetection extends BaseDetection {
     sb.append("    documentBackLivenessScore: ").append(toIndentedString(documentBackLivenessScore)).append("\n");
     sb.append("    processedChecks: ").append(toIndentedString(processedChecks)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    documentHolderId: ").append(toIndentedString(documentHolderId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -349,6 +374,7 @@ public class IdDocumentDetection extends BaseDetection {
     openapiFields.add("documentFrontLivenessScore");
     openapiFields.add("documentBackLivenessScore");
     openapiFields.add("processedChecks");
+    openapiFields.add("documentHolderId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

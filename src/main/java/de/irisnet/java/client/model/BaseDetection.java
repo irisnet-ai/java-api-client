@@ -65,7 +65,7 @@ import com.google.gson.JsonParseException;
 
 import de.irisnet.java.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class BaseDetection extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(BaseDetection.class.getName());
 
@@ -211,27 +211,7 @@ public class BaseDetection extends AbstractOpenApiSchema {
         super("anyOf", Boolean.FALSE);
     }
 
-    public BaseDetection(BaseDetection o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public BaseDetection(BreastDetection o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public BaseDetection(FaceDetection o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public BaseDetection(HairDetection o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public BaseDetection(IdDocumentDetection o) {
+    public BaseDetection(Object o) {
         super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }

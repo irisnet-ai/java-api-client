@@ -211,8 +211,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **200** | successful operation. |  -  |
 
 <a id="setConfig"></a>
 # **setConfig**
@@ -281,7 +281,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **403** | Maximum number of stored AI configurations reached. |  -  |
-| **200** | successful operation. |  -  |
 | **400** | Bad request. Check for badly formatted request body. |  -  |
+| **200** | successful operation. |  -  |
+| **403** | Maximum number of stored AI configurations reached. |  -  |
 

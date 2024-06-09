@@ -17,6 +17,7 @@ Contains further characteristics particular to _idDocument_ detection.
 |**documentBackLivenessScore** | **Integer** | Indicates the liveness score of the back side image of the document |  [optional] |
 |**processedChecks** | [**IdDocumentSubChecks**](IdDocumentSubChecks.md) |  |  [optional] |
 |**attributes** | [**List&lt;IdDocumentAttribute&gt;**](IdDocumentAttribute.md) | Attributes of the _idDocument_ detection. |  [optional] |
+|**documentHolderId** | **String** | The id of the documentHolder |  [optional] |
 
 
 

@@ -97,20 +97,6 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
-                .registerTypeSelector(de.irisnet.java.client.model.CheckResultDetectionsInner.class, new TypeSelector<de.irisnet.java.client.model.CheckResultDetectionsInner>() {
-                    @Override
-                    public Class<? extends de.irisnet.java.client.model.CheckResultDetectionsInner> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
-                        classByDiscriminatorValue.put("BreastDetection", de.irisnet.java.client.model.BreastDetection.class);
-                        classByDiscriminatorValue.put("FaceDetection", de.irisnet.java.client.model.FaceDetection.class);
-                        classByDiscriminatorValue.put("HairDetection", de.irisnet.java.client.model.HairDetection.class);
-                        classByDiscriminatorValue.put("IdDocumentDetection", de.irisnet.java.client.model.IdDocumentDetection.class);
-                        classByDiscriminatorValue.put("CheckResult_detections_inner", de.irisnet.java.client.model.CheckResultDetectionsInner.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
                 .registerTypeSelector(de.irisnet.java.client.model.FaceDetection.class, new TypeSelector<de.irisnet.java.client.model.FaceDetection>() {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.FaceDetection> getClassForElement(JsonElement readElement) {
@@ -179,9 +165,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BrokenRule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Callback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.CheckResult.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.CheckResultDetectionsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Config.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Data.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.DocumentCheckRequestData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Encoded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.Event.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.FaceDetection.CustomTypeAdapterFactory());

@@ -4,10 +4,83 @@ All URIs are relative to *https://api.irisnet.de*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**checkIdDocument**](AiCheckOperationsApi.md#checkIdDocument) | **POST** /v2/check-id-document/{configId} | Check an id document with the AI. |
 | [**checkImage**](AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI. |
 | [**checkStream**](AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI. |
 | [**checkVideo**](AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI. |
 
+
+<a id="checkIdDocument"></a>
+# **checkIdDocument**
+> CheckResult checkIdDocument(configId, documentCheckRequestData)
+
+Check an id document with the AI.
+
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+
+### Example
+```java
+// Import classes:
+import de.irisnet.java.ApiClient;
+import de.irisnet.java.ApiException;
+import de.irisnet.java.Configuration;
+import de.irisnet.java.auth.*;
+import de.irisnet.java.models.*;
+import de.irisnet.java.client.AiCheckOperationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.irisnet.de");
+    
+    // Configure API key authorization: LICENSE-KEY
+    ApiKeyAuth LICENSE-KEY = (ApiKeyAuth) defaultClient.getAuthentication("LICENSE-KEY");
+    LICENSE-KEY.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //LICENSE-KEY.setApiKeyPrefix("Token");
+
+    AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
+    UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
+    DocumentCheckRequestData documentCheckRequestData = new DocumentCheckRequestData(); // DocumentCheckRequestData | The DocumentCheckRequestData containing data needed for the id document check.
+    try {
+      CheckResult result = apiInstance.checkIdDocument(configId, documentCheckRequestData);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiCheckOperationsApi#checkIdDocument");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
+| **documentCheckRequestData** | [**DocumentCheckRequestData**](DocumentCheckRequestData.md)| The DocumentCheckRequestData containing data needed for the id document check. | |
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
+| **202** | Input accepted: Wait for callback. |  -  |
 
 <a id="checkImage"></a>
 # **checkImage**
@@ -84,9 +157,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
-| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **200** | successful operation. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -163,9 +236,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
-| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **200** | successful operation. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
@@ -244,6 +317,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | operation accepted: wait for callback. |  -  |
-| **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
+| **402** | Not enough credits. |  -  |
 

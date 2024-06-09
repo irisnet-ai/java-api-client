@@ -206,8 +206,20 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
         "204":
           description: successful operation. No previously configured parameters exist.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "200":
           content:
             application/json:
@@ -215,18 +227,6 @@ paths:
                 $ref: '#/components/schemas/ParamSet'
           description: successful operation. Previous user configured parameters are
             returned.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -286,30 +286,46 @@ paths:
                   - ageEstimation
                   - attributesCheck
                   - textRecognition
+              Full identity document check:
+                description: This example shows how to configure an identity document
+                  check with automated document recognition and a biometric check
+                  of the provided selfie
+                value:
+                  kycCheckParameters:
+                  - identityDocumentCheck
+                  - automatedDocumentRecognition
+                  - biometricCheck
+              Identity document check without automated document recognition:
+                description: This example shows how to configure an identity document
+                  check and a biometric check of the provided selfie
+                value:
+                  kycCheckParameters:
+                  - identityDocumentCheck
+                  - biometricCheck
             schema:
               $ref: '#/components/schemas/Config'
         description: Define the prototypes to use for an AI check operation. View
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Maximum number of stored AI configurations reached.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Config'
-          description: successful operation.
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Bad request. Check for badly formatted request body.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Maximum number of stored AI configurations reached.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -412,18 +428,18 @@ paths:
       responses:
         "202":
           description: "operation accepted: wait for callback."
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -492,12 +508,12 @@ paths:
           type: integer
         style: form
       responses:
-        "402":
+        "404":
           content:
             application/x-ndjson:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
+          description: configId not found.
         "200":
           content:
             application/x-ndjson:
@@ -506,12 +522,12 @@ paths:
                   $ref: '#/components/schemas/CheckResult'
                 type: array
           description: successful operation.
-        "404":
+        "402":
           content:
             application/x-ndjson:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
@@ -589,27 +605,86 @@ paths:
         description: The http(s) url or base64 encoded body uri of the image that
           needs to be checked.
       responses:
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CheckResult'
-          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: successful operation.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
+      tags:
+      - AI check operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/check-id-document/{configId}:
+    post:
+      description: The response (_CheckResult_ schema) containing only the checkId
+        and possibly ApiNotices is returned immediately after the request. The actual
+        body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has
+        finished processing.
+      operationId: checkIdDocument
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              German ID:
+                description: German ID
+                value:
+                  callback:
+                    callbackUrl: https://www.example.com/callback?idcheck
+                  documentCountry: DE
+                  documentType: national_identity_card
+                  frontImage: /9j/4AAQSkZJRgABAQEASABIAAD...
+                  backImage: /9j/4AAQSkZJRgABAQEASABIAAD...
+                  selfieImage: /9j/4AAQSkZJRgABAQEASABIAAD...
+            schema:
+              $ref: '#/components/schemas/DocumentCheckRequestData'
+        description: The DocumentCheckRequestData containing data needed for the id
+          document check.
+        required: true
+      responses:
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "202":
+          content:
+            application/json:
+              example:
+                checkId: b1588f66-1b12-4cef-9d4e-ab8fdf96b7bb
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: "Input accepted: Wait for callback."
+      security:
+      - LICENSE-KEY: []
+      summary: Check an id document with the AI.
       tags:
       - AI check operations
       x-content-type: application/json
@@ -673,6 +748,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
             application/json:
@@ -682,12 +763,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -731,12 +806,12 @@ paths:
           type: integer
         style: simple
       responses:
-        "200":
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
             application/json:
@@ -746,12 +821,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "404":
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -775,12 +850,12 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
             application/json:
@@ -790,12 +865,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "404":
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -847,18 +922,18 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Config'
-          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get a specific AI configuration.
@@ -1225,6 +1300,9 @@ components:
         prototypes:
         - nudityCheck
         - nudityCheck
+        kycCheckParameters:
+        - identityDocumentCheck
+        - identityDocumentCheck
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
@@ -1263,6 +1341,26 @@ components:
             - unwantedSubstances
             - violenceCheck
             - selfieCheck
+            type: string
+          type: array
+          uniqueItems: true
+        kycCheckParameters:
+          description: Configures your kyc checks. You can combine certain parameters
+            to customize a single check operation.
+          items:
+            description: |
+              Names of kyc related parameters, that can be used to configure check behaviour.
+              * _identityDocumentCheck_ - Checks for validity and integrity of an official document.
+              * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition.
+              * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck
+              * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check.
+              * _ageEstimation_ - Performs an age estimation for a provided selfie.
+            enum:
+            - identityDocumentCheck
+            - automatedDocumentRecognition
+            - biometricCheck
+            - formAutofill
+            - ageEstimation
             type: string
           type: array
           uniqueItems: true
@@ -1468,7 +1566,7 @@ components:
           type: array
         detections:
           items:
-            $ref: '#/components/schemas/CheckResult_detections_inner'
+            $ref: '#/components/schemas/BaseDetection'
           type: array
         events:
           items:
@@ -1726,6 +1824,9 @@ components:
             items:
               $ref: '#/components/schemas/IdDocumentAttribute'
             type: array
+          documentHolderId:
+            description: The id of the documentHolder
+            type: string
         type: object
       description: Contains further characteristics particular to _idDocument_ detection.
       type: object
@@ -1785,14 +1886,6 @@ components:
           type: string
         photocopyCheck:
           description: Indicates whether the document is a photocopy
-          enum:
-          - passed
-          - failed
-          - not_processed
-          type: string
-        tamperingCheck:
-          description: Indicates whether the document image has been digitally tampered
-            with
           enum:
           - passed
           - failed
@@ -1919,6 +2012,51 @@ components:
       required:
       - data
       type: object
+    DocumentCheckRequestData:
+      example:
+        frontImage: frontImage
+        documentType: national_identity_card
+        callback:
+          headers:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          callbackUrl: http://www.example.com/callback?video
+        documentCountry: DE
+        backImage: backImage
+        selfieImage: selfieImage
+      properties:
+        callback:
+          $ref: '#/components/schemas/Callback'
+        frontImage:
+          description: The base64 encoded front image of the document to be checked
+            in either jpg or png file format
+          type: string
+        backImage:
+          description: The base64 encoded back image of the document to be checked
+            in either jpg or png file format
+          type: string
+        selfieImage:
+          description: The base64 encoded selfie image to be checked in either jpg
+            or png file format
+          type: string
+        documentType:
+          description: The type of the document
+          enum:
+          - passport
+          - driving_license
+          - national_identity_card
+          - residence_permit
+          - visa
+          - unknown
+          example: national_identity_card
+          type: string
+        documentCountry:
+          description: The document's country in ISO 3166-1 alpha-2 format
+          example: DE
+          type: string
+      required:
+      - callback
+      - frontImage
+      type: object
     LicenseInfo:
       description: "Describes the current balance of the given license key. A key\
         \ has a certain amount of credits that can be used for any kind of AI recognition.\
@@ -1968,16 +2106,9 @@ components:
         cost: 0
       properties:
         cost:
-          format: int32
+          format: int64
           type: integer
       type: object
-    CheckResult_detections_inner:
-      oneOf:
-      - $ref: '#/components/schemas/BaseDetection'
-      - $ref: '#/components/schemas/BreastDetection'
-      - $ref: '#/components/schemas/FaceDetection'
-      - $ref: '#/components/schemas/HairDetection'
-      - $ref: '#/components/schemas/IdDocumentDetection'
   securitySchemes:
     LICENSE-KEY:
       description: License Key access

@@ -52,7 +52,7 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -132,6 +132,68 @@ public class Config {
   @SerializedName(SERIALIZED_NAME_PROTOTYPES)
   private Set<PrototypesEnum> prototypes = new LinkedHashSet<>();
 
+  /**
+   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageEstimation_ - Performs an age estimation for a provided selfie. 
+   */
+  @JsonAdapter(KycCheckParametersEnum.Adapter.class)
+  public enum KycCheckParametersEnum {
+    IDENTITYDOCUMENTCHECK("identityDocumentCheck"),
+    
+    AUTOMATEDDOCUMENTRECOGNITION("automatedDocumentRecognition"),
+    
+    BIOMETRICCHECK("biometricCheck"),
+    
+    FORMAUTOFILL("formAutofill"),
+    
+    AGEESTIMATION("ageEstimation");
+
+    private String value;
+
+    KycCheckParametersEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static KycCheckParametersEnum fromValue(String value) {
+      for (KycCheckParametersEnum b : KycCheckParametersEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<KycCheckParametersEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final KycCheckParametersEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public KycCheckParametersEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return KycCheckParametersEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      KycCheckParametersEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_KYC_CHECK_PARAMETERS = "kycCheckParameters";
+  @SerializedName(SERIALIZED_NAME_KYC_CHECK_PARAMETERS)
+  private Set<KycCheckParametersEnum> kycCheckParameters = new LinkedHashSet<>();
+
   public Config() {
   }
 
@@ -181,6 +243,33 @@ public class Config {
   }
 
 
+  public Config kycCheckParameters(Set<KycCheckParametersEnum> kycCheckParameters) {
+    this.kycCheckParameters = kycCheckParameters;
+    return this;
+  }
+
+  public Config addKycCheckParametersItem(KycCheckParametersEnum kycCheckParametersItem) {
+    if (this.kycCheckParameters == null) {
+      this.kycCheckParameters = new LinkedHashSet<>();
+    }
+    this.kycCheckParameters.add(kycCheckParametersItem);
+    return this;
+  }
+
+   /**
+   * Configures your kyc checks. You can combine certain parameters to customize a single check operation.
+   * @return kycCheckParameters
+  **/
+  @javax.annotation.Nullable
+  public Set<KycCheckParametersEnum> getKycCheckParameters() {
+    return kycCheckParameters;
+  }
+
+  public void setKycCheckParameters(Set<KycCheckParametersEnum> kycCheckParameters) {
+    this.kycCheckParameters = kycCheckParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,12 +281,13 @@ public class Config {
     }
     Config config = (Config) o;
     return Objects.equals(this.id, config.id) &&
-        Objects.equals(this.prototypes, config.prototypes);
+        Objects.equals(this.prototypes, config.prototypes) &&
+        Objects.equals(this.kycCheckParameters, config.kycCheckParameters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, prototypes);
+    return Objects.hash(id, prototypes, kycCheckParameters);
   }
 
   @Override
@@ -206,6 +296,7 @@ public class Config {
     sb.append("class Config {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    prototypes: ").append(toIndentedString(prototypes)).append("\n");
+    sb.append("    kycCheckParameters: ").append(toIndentedString(kycCheckParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -230,6 +321,7 @@ public class Config {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("prototypes");
+    openapiFields.add("kycCheckParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -262,6 +354,10 @@ public class Config {
       // ensure the optional json data is an array if present
       if (jsonObj.get("prototypes") != null && !jsonObj.get("prototypes").isJsonNull() && !jsonObj.get("prototypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `prototypes` to be an array in the JSON string but got `%s`", jsonObj.get("prototypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("kycCheckParameters") != null && !jsonObj.get("kycCheckParameters").isJsonNull() && !jsonObj.get("kycCheckParameters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `kycCheckParameters` to be an array in the JSON string but got `%s`", jsonObj.get("kycCheckParameters").toString()));
       }
   }
 

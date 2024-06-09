@@ -54,7 +54,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _hair_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class HairDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -149,6 +149,7 @@ public class HairDetection extends BaseDetection {
     openapiFields.add("documentFrontLivenessScore");
     openapiFields.add("documentBackLivenessScore");
     openapiFields.add("processedChecks");
+    openapiFields.add("documentHolderId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

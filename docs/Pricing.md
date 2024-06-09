@@ -8,7 +8,7 @@ Contains information about the credit cost of a check operation.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**cost** | **Integer** |  |  [optional] |
+|**cost** | **Long** |  |  [optional] |
 
 
 

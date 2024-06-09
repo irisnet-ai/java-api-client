@@ -2,7 +2,7 @@
 
 Irisnet API
 - API version: v2
-  - Generator version: 7.5.0
+  - Generator version: 7.6.0
 
 Artificial Intelligence (AI) for image- and video-processing in real-time. This is an interactive documentation where you can quickly look up the endpoints and their schemas, while having the opportunity to try things out for yourself.
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>3.5.5</version>
+  <version>3.6.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:3.5.5"
+     implementation "de.irisnet.java.client:irisnet-java-client:3.6.2"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-3.5.5.jar`
+* `target/irisnet-java-client-3.6.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -111,15 +111,12 @@ public class Example {
 
     AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
     UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
-    String url = "url_example"; // String | <s>The url to the image that needs to be checked.</s> Deprecated: Use request body instead. <b>This parameter will be removed in future releases.</b>
-    Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
-    Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
-    Data data = new Data(); // Data | The http(s) url or base64 encoded body uri of the image that needs to be checked.
+    DocumentCheckRequestData documentCheckRequestData = new DocumentCheckRequestData(); // DocumentCheckRequestData | The DocumentCheckRequestData containing data needed for the id document check.
     try {
-      CheckResult result = apiInstance.checkImage(configId, url, detail, imageEncode, data);
+      CheckResult result = apiInstance.checkIdDocument(configId, documentCheckRequestData);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AiCheckOperationsApi#checkImage");
+      System.err.println("Exception when calling AiCheckOperationsApi#checkIdDocument");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -136,6 +133,7 @@ All URIs are relative to *https://api.irisnet.de*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AiCheckOperationsApi* | [**checkIdDocument**](docs/AiCheckOperationsApi.md#checkIdDocument) | **POST** /v2/check-id-document/{configId} | Check an id document with the AI.
 *AiCheckOperationsApi* | [**checkImage**](docs/AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
 *AiCheckOperationsApi* | [**checkStream**](docs/AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
 *AiCheckOperationsApi* | [**checkVideo**](docs/AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
@@ -161,9 +159,9 @@ Class | Method | HTTP request | Description
  - [BrokenRule](docs/BrokenRule.md)
  - [Callback](docs/Callback.md)
  - [CheckResult](docs/CheckResult.md)
- - [CheckResultDetectionsInner](docs/CheckResultDetectionsInner.md)
  - [Config](docs/Config.md)
  - [Data](docs/Data.md)
+ - [DocumentCheckRequestData](docs/DocumentCheckRequestData.md)
  - [Encoded](docs/Encoded.md)
  - [Event](docs/Event.md)
  - [FaceDetection](docs/FaceDetection.md)
