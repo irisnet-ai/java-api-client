@@ -19,9 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.irisnet.java.client.model.AgeEstimationAttribute;
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
 import de.irisnet.java.client.model.BaseDetection;
-import de.irisnet.java.client.model.HairAttribute;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,24 +52,116 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Contains further characteristics particular to _hair_ detection.
+ * Contains further characteristics particular to _ageEstimation_ detection.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
-public class HairDetection extends BaseDetection {
+public class AgeEstimationDetection extends BaseDetection {
+  public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
+  @SerializedName(SERIALIZED_NAME_CHECK_ID)
+  private String checkId;
+
+  public static final String SERIALIZED_NAME_FACE_SIMILARITY = "faceSimilarity";
+  @SerializedName(SERIALIZED_NAME_FACE_SIMILARITY)
+  private Integer faceSimilarity;
+
+  public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE = "faceLivenessCheckScore";
+  @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE)
+  private Integer faceLivenessCheckScore;
+
+  public static final String SERIALIZED_NAME_PROCESSED_CHECKS = "processedChecks";
+  @SerializedName(SERIALIZED_NAME_PROCESSED_CHECKS)
+  private AgeEstimationSubChecks processedChecks;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private List<HairAttribute> attributes = new ArrayList<>();
+  private List<AgeEstimationAttribute> attributes = new ArrayList<>();
 
-  public HairDetection() {
+  public AgeEstimationDetection() {
     this.type = this.getClass().getSimpleName();
   }
 
-  public HairDetection attributes(List<HairAttribute> attributes) {
+  public AgeEstimationDetection checkId(String checkId) {
+    this.checkId = checkId;
+    return this;
+  }
+
+   /**
+   * The id of the check that lead to the detection
+   * @return checkId
+  **/
+  @javax.annotation.Nullable
+  public String getCheckId() {
+    return checkId;
+  }
+
+  public void setCheckId(String checkId) {
+    this.checkId = checkId;
+  }
+
+
+  public AgeEstimationDetection faceSimilarity(Integer faceSimilarity) {
+    this.faceSimilarity = faceSimilarity;
+    return this;
+  }
+
+   /**
+   * Indicates the similarity-level of whether two faces belong to the same person
+   * @return faceSimilarity
+  **/
+  @javax.annotation.Nullable
+  public Integer getFaceSimilarity() {
+    return faceSimilarity;
+  }
+
+  public void setFaceSimilarity(Integer faceSimilarity) {
+    this.faceSimilarity = faceSimilarity;
+  }
+
+
+  public AgeEstimationDetection faceLivenessCheckScore(Integer faceLivenessCheckScore) {
+    this.faceLivenessCheckScore = faceLivenessCheckScore;
+    return this;
+  }
+
+   /**
+   * Indicates the liveness score of the selfie image
+   * @return faceLivenessCheckScore
+  **/
+  @javax.annotation.Nullable
+  public Integer getFaceLivenessCheckScore() {
+    return faceLivenessCheckScore;
+  }
+
+  public void setFaceLivenessCheckScore(Integer faceLivenessCheckScore) {
+    this.faceLivenessCheckScore = faceLivenessCheckScore;
+  }
+
+
+  public AgeEstimationDetection processedChecks(AgeEstimationSubChecks processedChecks) {
+    this.processedChecks = processedChecks;
+    return this;
+  }
+
+   /**
+   * Get processedChecks
+   * @return processedChecks
+  **/
+  @javax.annotation.Nullable
+  public AgeEstimationSubChecks getProcessedChecks() {
+    return processedChecks;
+  }
+
+  public void setProcessedChecks(AgeEstimationSubChecks processedChecks) {
+    this.processedChecks = processedChecks;
+  }
+
+
+  public AgeEstimationDetection attributes(List<AgeEstimationAttribute> attributes) {
     this.attributes = attributes;
     return this;
   }
 
-  public HairDetection addAttributesItem(HairAttribute attributesItem) {
+  public AgeEstimationDetection addAttributesItem(AgeEstimationAttribute attributesItem) {
     if (this.attributes == null) {
       this.attributes = new ArrayList<>();
     }
@@ -78,15 +170,15 @@ public class HairDetection extends BaseDetection {
   }
 
    /**
-   * Contains attributes for the _hair_ classification.
+   * Attributes of the _idDocument_ detection.
    * @return attributes
   **/
   @javax.annotation.Nullable
-  public List<HairAttribute> getAttributes() {
+  public List<AgeEstimationAttribute> getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(List<HairAttribute> attributes) {
+  public void setAttributes(List<AgeEstimationAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -100,21 +192,29 @@ public class HairDetection extends BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HairDetection hairDetection = (HairDetection) o;
-    return Objects.equals(this.attributes, hairDetection.attributes) &&
+    AgeEstimationDetection ageEstimationDetection = (AgeEstimationDetection) o;
+    return Objects.equals(this.checkId, ageEstimationDetection.checkId) &&
+        Objects.equals(this.faceSimilarity, ageEstimationDetection.faceSimilarity) &&
+        Objects.equals(this.faceLivenessCheckScore, ageEstimationDetection.faceLivenessCheckScore) &&
+        Objects.equals(this.processedChecks, ageEstimationDetection.processedChecks) &&
+        Objects.equals(this.attributes, ageEstimationDetection.attributes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, super.hashCode());
+    return Objects.hash(checkId, faceSimilarity, faceLivenessCheckScore, processedChecks, attributes, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HairDetection {\n");
+    sb.append("class AgeEstimationDetection {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    checkId: ").append(toIndentedString(checkId)).append("\n");
+    sb.append("    faceSimilarity: ").append(toIndentedString(faceSimilarity)).append("\n");
+    sb.append("    faceLivenessCheckScore: ").append(toIndentedString(faceLivenessCheckScore)).append("\n");
+    sb.append("    processedChecks: ").append(toIndentedString(processedChecks)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -160,25 +260,25 @@ public class HairDetection extends BaseDetection {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to HairDetection
+  * @throws IOException if the JSON Element is invalid with respect to AgeEstimationDetection
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!HairDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in HairDetection is not found in the empty JSON string", HairDetection.openapiRequiredFields.toString()));
+        if (!AgeEstimationDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AgeEstimationDetection is not found in the empty JSON string", AgeEstimationDetection.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!HairDetection.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HairDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AgeEstimationDetection.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgeEstimationDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : HairDetection.openapiRequiredFields) {
+      for (String requiredField : AgeEstimationDetection.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -189,22 +289,22 @@ public class HairDetection extends BaseDetection {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!HairDetection.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'HairDetection' and its subtypes
+       if (!AgeEstimationDetection.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AgeEstimationDetection' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<HairDetection> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(HairDetection.class));
+       final TypeAdapter<AgeEstimationDetection> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AgeEstimationDetection.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<HairDetection>() {
+       return (TypeAdapter<T>) new TypeAdapter<AgeEstimationDetection>() {
            @Override
-           public void write(JsonWriter out, HairDetection value) throws IOException {
+           public void write(JsonWriter out, AgeEstimationDetection value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public HairDetection read(JsonReader in) throws IOException {
+           public AgeEstimationDetection read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -215,18 +315,18 @@ public class HairDetection extends BaseDetection {
   }
 
  /**
-  * Create an instance of HairDetection given an JSON string
+  * Create an instance of AgeEstimationDetection given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of HairDetection
-  * @throws IOException if the JSON string is invalid with respect to HairDetection
+  * @return An instance of AgeEstimationDetection
+  * @throws IOException if the JSON string is invalid with respect to AgeEstimationDetection
   */
-  public static HairDetection fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, HairDetection.class);
+  public static AgeEstimationDetection fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AgeEstimationDetection.class);
   }
 
  /**
-  * Convert an instance of HairDetection to an JSON string
+  * Convert an instance of AgeEstimationDetection to an JSON string
   *
   * @return JSON string
   */

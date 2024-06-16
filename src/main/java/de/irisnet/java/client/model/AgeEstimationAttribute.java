@@ -19,13 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.AgeEstimationSubChecks;
-import de.irisnet.java.client.model.BaseDetection;
-import de.irisnet.java.client.model.HairAttribute;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,42 +47,102 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Contains further characteristics particular to _hair_ detection.
+ * Attributes qualifying the _ageEstimation_ classification.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
-public class HairDetection extends BaseDetection {
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private List<HairAttribute> attributes = new ArrayList<>();
+public class AgeEstimationAttribute {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
-  public HairDetection() {
-    this.type = this.getClass().getSimpleName();
+  public static final String SERIALIZED_NAME_AGE = "age";
+  @SerializedName(SERIALIZED_NAME_AGE)
+  private Integer age;
+
+  public static final String SERIALIZED_NAME_AGE_MIN = "ageMin";
+  @SerializedName(SERIALIZED_NAME_AGE_MIN)
+  private Integer ageMin;
+
+  public static final String SERIALIZED_NAME_AGE_MAX = "ageMax";
+  @SerializedName(SERIALIZED_NAME_AGE_MAX)
+  private Integer ageMax;
+
+  public AgeEstimationAttribute() {
   }
 
-  public HairDetection attributes(List<HairAttribute> attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  public HairDetection addAttributesItem(HairAttribute attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new ArrayList<>();
-    }
-    this.attributes.add(attributesItem);
+  public AgeEstimationAttribute type(String type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * Contains attributes for the _hair_ classification.
-   * @return attributes
+   * Used as a type discriminator for json to object conversion.
+   * @return type
   **/
   @javax.annotation.Nullable
-  public List<HairAttribute> getAttributes() {
-    return attributes;
+  public String getType() {
+    return type;
   }
 
-  public void setAttributes(List<HairAttribute> attributes) {
-    this.attributes = attributes;
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
+  public AgeEstimationAttribute age(Integer age) {
+    this.age = age;
+    return this;
+  }
+
+   /**
+   * The estimated age of the person in the selfie in years.
+   * @return age
+  **/
+  @javax.annotation.Nullable
+  public Integer getAge() {
+    return age;
+  }
+
+  public void setAge(Integer age) {
+    this.age = age;
+  }
+
+
+  public AgeEstimationAttribute ageMin(Integer ageMin) {
+    this.ageMin = ageMin;
+    return this;
+  }
+
+   /**
+   * The estimated minimum age of the person in the selfie in years.
+   * @return ageMin
+  **/
+  @javax.annotation.Nullable
+  public Integer getAgeMin() {
+    return ageMin;
+  }
+
+  public void setAgeMin(Integer ageMin) {
+    this.ageMin = ageMin;
+  }
+
+
+  public AgeEstimationAttribute ageMax(Integer ageMax) {
+    this.ageMax = ageMax;
+    return this;
+  }
+
+   /**
+   * The estimated maximum age of the person in the selfie in years.
+   * @return ageMax
+  **/
+  @javax.annotation.Nullable
+  public Integer getAgeMax() {
+    return ageMax;
+  }
+
+  public void setAgeMax(Integer ageMax) {
+    this.ageMax = ageMax;
   }
 
 
@@ -100,22 +155,26 @@ public class HairDetection extends BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HairDetection hairDetection = (HairDetection) o;
-    return Objects.equals(this.attributes, hairDetection.attributes) &&
-        super.equals(o);
+    AgeEstimationAttribute ageEstimationAttribute = (AgeEstimationAttribute) o;
+    return Objects.equals(this.type, ageEstimationAttribute.type) &&
+        Objects.equals(this.age, ageEstimationAttribute.age) &&
+        Objects.equals(this.ageMin, ageEstimationAttribute.ageMin) &&
+        Objects.equals(this.ageMax, ageEstimationAttribute.ageMax);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, super.hashCode());
+    return Objects.hash(type, age, ageMin, ageMax);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HairDetection {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("class AgeEstimationAttribute {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    age: ").append(toIndentedString(age)).append("\n");
+    sb.append("    ageMin: ").append(toIndentedString(ageMin)).append("\n");
+    sb.append("    ageMax: ").append(toIndentedString(ageMax)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -139,49 +198,37 @@ public class HairDetection extends BaseDetection {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
-    openapiFields.add("attributes");
-    openapiFields.add("subDetections");
-    openapiFields.add("checkId");
-    openapiFields.add("hasOfficialDocument");
-    openapiFields.add("comparable");
-    openapiFields.add("faceSimilarity");
-    openapiFields.add("faceLivenessCheckScore");
-    openapiFields.add("documentFrontLivenessScore");
-    openapiFields.add("documentBackLivenessScore");
-    openapiFields.add("processedChecks");
-    openapiFields.add("documentHolderId");
+    openapiFields.add("age");
+    openapiFields.add("ageMin");
+    openapiFields.add("ageMax");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to HairDetection
+  * @throws IOException if the JSON Element is invalid with respect to AgeEstimationAttribute
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!HairDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in HairDetection is not found in the empty JSON string", HairDetection.openapiRequiredFields.toString()));
+        if (!AgeEstimationAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AgeEstimationAttribute is not found in the empty JSON string", AgeEstimationAttribute.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!HairDetection.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HairDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AgeEstimationAttribute.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgeEstimationAttribute` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : HairDetection.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -189,22 +236,22 @@ public class HairDetection extends BaseDetection {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!HairDetection.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'HairDetection' and its subtypes
+       if (!AgeEstimationAttribute.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AgeEstimationAttribute' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<HairDetection> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(HairDetection.class));
+       final TypeAdapter<AgeEstimationAttribute> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AgeEstimationAttribute.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<HairDetection>() {
+       return (TypeAdapter<T>) new TypeAdapter<AgeEstimationAttribute>() {
            @Override
-           public void write(JsonWriter out, HairDetection value) throws IOException {
+           public void write(JsonWriter out, AgeEstimationAttribute value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public HairDetection read(JsonReader in) throws IOException {
+           public AgeEstimationAttribute read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -215,18 +262,18 @@ public class HairDetection extends BaseDetection {
   }
 
  /**
-  * Create an instance of HairDetection given an JSON string
+  * Create an instance of AgeEstimationAttribute given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of HairDetection
-  * @throws IOException if the JSON string is invalid with respect to HairDetection
+  * @return An instance of AgeEstimationAttribute
+  * @throws IOException if the JSON string is invalid with respect to AgeEstimationAttribute
   */
-  public static HairDetection fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, HairDetection.class);
+  public static AgeEstimationAttribute fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AgeEstimationAttribute.class);
   }
 
  /**
-  * Convert an instance of HairDetection to an JSON string
+  * Convert an instance of AgeEstimationAttribute to an JSON string
   *
   * @return JSON string
   */

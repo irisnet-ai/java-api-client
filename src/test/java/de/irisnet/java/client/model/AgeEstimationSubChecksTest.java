@@ -11,31 +11,46 @@
  */
 
 
-package de.irisnet.java;
+package de.irisnet.java.client.model;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
-public class Configuration {
-    public static final String VERSION = "3.6.3";
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-    private static ApiClient defaultApiClient = new ApiClient();
+/**
+ * Model tests for AgeEstimationSubChecks
+ */
+public class AgeEstimationSubChecksTest {
+    private final AgeEstimationSubChecks model = new AgeEstimationSubChecks();
 
     /**
-     * Get the default API client, which would be used when creating API
-     * instances without providing an API client.
-     *
-     * @return Default API client
+     * Model tests for AgeEstimationSubChecks
      */
-    public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+    @Test
+    public void testAgeEstimationSubChecks() {
+        // TODO: test AgeEstimationSubChecks
     }
 
     /**
-     * Set the default API client, which would be used when creating API
-     * instances without providing an API client.
-     *
-     * @param apiClient API client
+     * Test the property 'faceLivenessCheck'
      */
-    public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+    @Test
+    public void faceLivenessCheckTest() {
+        // TODO: test faceLivenessCheck
     }
+
+    /**
+     * Test the property 'ageValidationCheck'
+     */
+    @Test
+    public void ageValidationCheckTest() {
+        // TODO: test ageValidationCheck
+    }
+
 }

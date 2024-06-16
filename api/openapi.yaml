@@ -48,14 +48,14 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "204":
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete the parameters of the AI configuration.
@@ -206,14 +206,6 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
-        "204":
-          description: successful operation. No previously configured parameters exist.
         "404":
           content:
             application/json:
@@ -227,6 +219,14 @@ paths:
                 $ref: '#/components/schemas/ParamSet'
           description: successful operation. Previous user configured parameters are
             returned.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
+        "204":
+          description: successful operation. No previously configured parameters exist.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -308,12 +308,6 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
         "200":
           content:
             application/json:
@@ -326,6 +320,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Maximum number of stored AI configurations reached.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -426,14 +426,14 @@ paths:
               $ref: '#/components/schemas/Callback'
         required: true
       responses:
-        "202":
-          description: "operation accepted: wait for callback."
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "202":
+          description: "operation accepted: wait for callback."
         "402":
           content:
             application/json:
@@ -514,6 +514,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "402":
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
         "200":
           content:
             application/x-ndjson:
@@ -522,12 +528,6 @@ paths:
                   $ref: '#/components/schemas/CheckResult'
                 type: array
           description: successful operation.
-        "402":
-          content:
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
@@ -611,18 +611,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CheckResult'
-          description: successful operation.
         "402":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
@@ -742,18 +742,18 @@ paths:
           type: integer
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration
         "429":
           content:
             application/json:
@@ -812,6 +812,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -821,12 +827,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -856,6 +856,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -865,12 +871,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -893,14 +893,14 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: successful operation.
         "404":
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "204":
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete an AI configuration.
@@ -1389,6 +1389,73 @@ components:
       required:
       - callbackUrl
       type: object
+    AgeEstimationAttribute:
+      description: Attributes qualifying the _ageEstimation_ classification.
+      properties:
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: BaseAttribute
+          type: string
+        age:
+          description: The estimated age of the person in the selfie in years.
+          format: int32
+          type: integer
+        ageMin:
+          description: The estimated minimum age of the person in the selfie in years.
+          format: int32
+          type: integer
+        ageMax:
+          description: The estimated maximum age of the person in the selfie in years.
+          format: int32
+          type: integer
+      type: object
+    AgeEstimationDetection:
+      allOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - properties:
+          checkId:
+            description: The id of the check that lead to the detection
+            type: string
+          faceSimilarity:
+            description: Indicates the similarity-level of whether two faces belong
+              to the same person
+            format: int32
+            type: integer
+          faceLivenessCheckScore:
+            description: Indicates the liveness score of the selfie image
+            format: int32
+            type: integer
+          processedChecks:
+            $ref: '#/components/schemas/AgeEstimationSubChecks'
+          attributes:
+            description: Attributes of the _idDocument_ detection.
+            items:
+              $ref: '#/components/schemas/AgeEstimationAttribute'
+            type: array
+        type: object
+      description: Contains further characteristics particular to _ageEstimation_
+        detection.
+      type: object
+    AgeEstimationSubChecks:
+      description: Contains information on ageEstimation sub-checks
+      properties:
+        faceLivenessCheck:
+          description: Indicates if the selfie image is genuine and not a photo of
+            an image or of a screen
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        ageValidationCheck:
+          description: Indicates if the estimated age is greater than or equal to
+            a predefined minimum accepted age
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+      type: object
     BaseAttribute:
       description: An attribute describes a quality or characteristic that a detection
         object has.
@@ -1416,6 +1483,7 @@ components:
       - $ref: '#/components/schemas/BreastDetection'
       - $ref: '#/components/schemas/HairDetection'
       - $ref: '#/components/schemas/IdDocumentDetection'
+      - $ref: '#/components/schemas/AgeEstimationDetection'
       description: A detection describes the object found with all its details.
       discriminator:
         propertyName: type

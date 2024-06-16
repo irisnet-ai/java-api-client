@@ -11,31 +11,62 @@
  */
 
 
-package de.irisnet.java;
+package de.irisnet.java.client.model;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
-public class Configuration {
-    public static final String VERSION = "3.6.3";
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-    private static ApiClient defaultApiClient = new ApiClient();
+/**
+ * Model tests for AgeEstimationAttribute
+ */
+public class AgeEstimationAttributeTest {
+    private final AgeEstimationAttribute model = new AgeEstimationAttribute();
 
     /**
-     * Get the default API client, which would be used when creating API
-     * instances without providing an API client.
-     *
-     * @return Default API client
+     * Model tests for AgeEstimationAttribute
      */
-    public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+    @Test
+    public void testAgeEstimationAttribute() {
+        // TODO: test AgeEstimationAttribute
     }
 
     /**
-     * Set the default API client, which would be used when creating API
-     * instances without providing an API client.
-     *
-     * @param apiClient API client
+     * Test the property 'type'
      */
-    public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
+
+    /**
+     * Test the property 'age'
+     */
+    @Test
+    public void ageTest() {
+        // TODO: test age
+    }
+
+    /**
+     * Test the property 'ageMin'
+     */
+    @Test
+    public void ageMinTest() {
+        // TODO: test ageMin
+    }
+
+    /**
+     * Test the property 'ageMax'
+     */
+    @Test
+    public void ageMaxTest() {
+        // TODO: test ageMax
+    }
+
 }

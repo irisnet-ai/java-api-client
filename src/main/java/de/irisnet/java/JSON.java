@@ -65,6 +65,15 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+                .registerTypeSelector(de.irisnet.java.client.model.AgeEstimationDetection.class, new TypeSelector<de.irisnet.java.client.model.AgeEstimationDetection>() {
+                    @Override
+                    public Class<? extends de.irisnet.java.client.model.AgeEstimationDetection> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AgeEstimationDetection", de.irisnet.java.client.model.AgeEstimationDetection.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
                 .registerTypeSelector(de.irisnet.java.client.model.BaseAttribute.class, new TypeSelector<de.irisnet.java.client.model.BaseAttribute>() {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.BaseAttribute> getClassForElement(JsonElement readElement) {
@@ -78,6 +87,7 @@ public class JSON {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.BaseDetection> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AgeEstimationDetection", de.irisnet.java.client.model.AgeEstimationDetection.class);
                         classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
                         classByDiscriminatorValue.put("BreastDetection", de.irisnet.java.client.model.BreastDetection.class);
                         classByDiscriminatorValue.put("FaceDetection", de.irisnet.java.client.model.FaceDetection.class);
@@ -159,6 +169,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeEstimationAttribute.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeEstimationDetection.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeEstimationSubChecks.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.ApiNotice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BaseAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BreastDetection.CustomTypeAdapterFactory());

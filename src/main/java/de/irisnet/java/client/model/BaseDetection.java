@@ -19,12 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.irisnet.java.client.model.AgeEstimationAttribute;
+import de.irisnet.java.client.model.AgeEstimationDetection;
+import de.irisnet.java.client.model.AgeEstimationSubChecks;
 import de.irisnet.java.client.model.BreastDetection;
 import de.irisnet.java.client.model.FaceDetection;
 import de.irisnet.java.client.model.HairDetection;
-import de.irisnet.java.client.model.IdDocumentAttribute;
 import de.irisnet.java.client.model.IdDocumentDetection;
-import de.irisnet.java.client.model.IdDocumentSubChecks;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,6 +83,7 @@ public class BaseDetection extends AbstractOpenApiSchema {
             final TypeAdapter<BreastDetection> adapterBreastDetection = gson.getDelegateAdapter(this, TypeToken.get(BreastDetection.class));
             final TypeAdapter<HairDetection> adapterHairDetection = gson.getDelegateAdapter(this, TypeToken.get(HairDetection.class));
             final TypeAdapter<IdDocumentDetection> adapterIdDocumentDetection = gson.getDelegateAdapter(this, TypeToken.get(IdDocumentDetection.class));
+            final TypeAdapter<AgeEstimationDetection> adapterAgeEstimationDetection = gson.getDelegateAdapter(this, TypeToken.get(AgeEstimationDetection.class));
 
             return (TypeAdapter<T>) new TypeAdapter<BaseDetection>() {
                 @Override
@@ -121,7 +123,13 @@ public class BaseDetection extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
+                    // check if the actual instance is of the type `AgeEstimationDetection`
+                    if (value.getActualInstance() instanceof AgeEstimationDetection) {
+                        JsonElement element = adapterAgeEstimationDetection.toJsonTree((AgeEstimationDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: AgeEstimationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
                 }
 
                 @Override
@@ -197,6 +205,19 @@ public class BaseDetection extends AbstractOpenApiSchema {
                         errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'IdDocumentDetection'", e);
                     }
+                    // deserialize AgeEstimationDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        AgeEstimationDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterAgeEstimationDetection;
+                        BaseDetection ret = new BaseDetection();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for AgeEstimationDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'AgeEstimationDetection'", e);
+                    }
 
                     throw new IOException(String.format("Failed deserialization for BaseDetection: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
@@ -222,6 +243,7 @@ public class BaseDetection extends AbstractOpenApiSchema {
         schemas.put("BreastDetection", BreastDetection.class);
         schemas.put("HairDetection", HairDetection.class);
         schemas.put("IdDocumentDetection", IdDocumentDetection.class);
+        schemas.put("AgeEstimationDetection", AgeEstimationDetection.class);
     }
 
     @Override
@@ -232,7 +254,7 @@ public class BaseDetection extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the anyOf child schema, check
      * the instance parameter is valid against the anyOf child schemas:
-     * BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
+     * AgeEstimationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
      *
      * It could be an instance of the 'anyOf' schemas.
      */
@@ -263,14 +285,19 @@ public class BaseDetection extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
+        if (instance instanceof AgeEstimationDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be AgeEstimationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
+     * AgeEstimationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
      *
-     * @return The actual instance (BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection)
+     * @return The actual instance (AgeEstimationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -328,6 +355,16 @@ public class BaseDetection extends AbstractOpenApiSchema {
     public IdDocumentDetection getIdDocumentDetection() throws ClassCastException {
         return (IdDocumentDetection)super.getActualInstance();
     }
+    /**
+     * Get the actual instance of `AgeEstimationDetection`. If the actual instance is not `AgeEstimationDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `AgeEstimationDetection`
+     * @throws ClassCastException if the instance is not `AgeEstimationDetection`
+     */
+    public AgeEstimationDetection getAgeEstimationDetection() throws ClassCastException {
+        return (AgeEstimationDetection)super.getActualInstance();
+    }
 
     /**
      * Validates the JSON Element and throws an exception if issues found
@@ -378,7 +415,15 @@ public class BaseDetection extends AbstractOpenApiSchema {
             errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for BaseDetection with anyOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        // validate the json string with AgeEstimationDetection
+        try {
+            AgeEstimationDetection.validateJsonElement(jsonElement);
+            return;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for AgeEstimationDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        throw new IOException(String.format("The JSON string is invalid for BaseDetection with anyOf schemas: AgeEstimationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**
