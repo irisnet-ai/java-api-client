@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _ageEstimation_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class AgeEstimationDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
   @SerializedName(SERIALIZED_NAME_CHECK_ID)
@@ -85,10 +84,10 @@ public class AgeEstimationDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * The id of the check that lead to the detection
    * @return checkId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCheckId() {
     return checkId;
@@ -104,10 +103,10 @@ public class AgeEstimationDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * Indicates the similarity-level of whether two faces belong to the same person
    * @return faceSimilarity
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getFaceSimilarity() {
     return faceSimilarity;
@@ -123,10 +122,10 @@ public class AgeEstimationDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * Indicates the liveness score of the selfie image
    * @return faceLivenessCheckScore
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getFaceLivenessCheckScore() {
     return faceLivenessCheckScore;
@@ -142,10 +141,10 @@ public class AgeEstimationDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * Get processedChecks
    * @return processedChecks
-  **/
+   */
   @javax.annotation.Nullable
   public AgeEstimationSubChecks getProcessedChecks() {
     return processedChecks;
@@ -169,10 +168,10 @@ public class AgeEstimationDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * Attributes of the _idDocument_ detection.
    * @return attributes
-  **/
+   */
   @javax.annotation.Nullable
   public List<AgeEstimationAttribute> getAttributes() {
     return attributes;
@@ -256,12 +255,12 @@ public class AgeEstimationDetection extends BaseDetection {
     openapiRequiredFields.add("type");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to AgeEstimationDetection
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to AgeEstimationDetection
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AgeEstimationDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -314,22 +313,22 @@ public class AgeEstimationDetection extends BaseDetection {
     }
   }
 
- /**
-  * Create an instance of AgeEstimationDetection given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of AgeEstimationDetection
-  * @throws IOException if the JSON string is invalid with respect to AgeEstimationDetection
-  */
+  /**
+   * Create an instance of AgeEstimationDetection given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of AgeEstimationDetection
+   * @throws IOException if the JSON string is invalid with respect to AgeEstimationDetection
+   */
   public static AgeEstimationDetection fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AgeEstimationDetection.class);
   }
 
- /**
-  * Convert an instance of AgeEstimationDetection to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of AgeEstimationDetection to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes an event that lead to a broken rule.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Event {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -79,10 +78,10 @@ public class Event {
     return this;
   }
 
-   /**
+  /**
    * The classification of the recognized object.
    * @return classification
-  **/
+   */
   @javax.annotation.Nullable
   public String getClassification() {
     return classification;
@@ -98,10 +97,10 @@ public class Event {
     return this;
   }
 
-   /**
+  /**
    * The group of the classification.
    * @return group
-  **/
+   */
   @javax.annotation.Nullable
   public String getGroup() {
     return group;
@@ -117,10 +116,10 @@ public class Event {
     return this;
   }
 
-   /**
+  /**
    * The start in seconds where the classification object is found.
    * @return start
-  **/
+   */
   @javax.annotation.Nullable
   public Float getStart() {
     return start;
@@ -136,10 +135,10 @@ public class Event {
     return this;
   }
 
-   /**
+  /**
    * The duration of the event in seconds until the classification object is no longer in frame. The current event is ongoing if the duration is not set.
    * @return duration
-  **/
+   */
   @javax.annotation.Nullable
   public Float getDuration() {
     return duration;
@@ -155,10 +154,10 @@ public class Event {
     return this;
   }
 
-   /**
+  /**
    * The severity of the classification object set while configuring the AI.
    * @return severity
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getSeverity() {
     return severity;
@@ -232,12 +231,12 @@ public class Event {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Event
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Event
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Event.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -290,22 +289,22 @@ public class Event {
     }
   }
 
- /**
-  * Create an instance of Event given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Event
-  * @throws IOException if the JSON string is invalid with respect to Event
-  */
+  /**
+   * Create an instance of Event given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Event
+   * @throws IOException if the JSON string is invalid with respect to Event
+   */
   public static Event fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Event.class);
   }
 
- /**
-  * Convert an instance of Event to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Event to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

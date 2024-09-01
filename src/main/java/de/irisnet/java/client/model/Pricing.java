@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information about the credit cost of a check operation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Pricing {
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
@@ -63,10 +62,10 @@ public class Pricing {
     return this;
   }
 
-   /**
+  /**
    * Get cost
    * @return cost
-  **/
+   */
   @javax.annotation.Nullable
   public Long getCost() {
     return cost;
@@ -128,12 +127,12 @@ public class Pricing {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Pricing
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Pricing
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Pricing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -180,22 +179,22 @@ public class Pricing {
     }
   }
 
- /**
-  * Create an instance of Pricing given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Pricing
-  * @throws IOException if the JSON string is invalid with respect to Pricing
-  */
+  /**
+   * Create an instance of Pricing given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Pricing
+   * @throws IOException if the JSON string is invalid with respect to Pricing
+   */
   public static Pricing fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Pricing.class);
   }
 
- /**
-  * Convert an instance of Pricing to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Pricing to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

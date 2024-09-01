@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains the resulting media as base64 encoded string or an URL to download that media.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Encoded {
   public static final String SERIALIZED_NAME_NAME = "name";
   @Deprecated
@@ -74,11 +73,11 @@ public class Encoded {
     return this;
   }
 
-   /**
+  /**
    * &lt;s&gt;The original filename of the image or video.&lt;/s&gt; Contains a randomly generated filename. &lt;b&gt;This property will be removed in future releases.&lt;/b&gt;
    * @return name
    * @deprecated
-  **/
+   */
   @Deprecated
   @javax.annotation.Nullable
   public String getName() {
@@ -96,10 +95,10 @@ public class Encoded {
     return this;
   }
 
-   /**
+  /**
    * The encoded image in base64 format.
    * @return data
-  **/
+   */
   @javax.annotation.Nullable
   public File getData() {
     return data;
@@ -115,10 +114,10 @@ public class Encoded {
     return this;
   }
 
-   /**
+  /**
    * A one time URL to download the resulting video. The URL is only valid for 24 hours.
    * @return downloadUrl
-  **/
+   */
   @javax.annotation.Nullable
   public String getDownloadUrl() {
     return downloadUrl;
@@ -186,12 +185,12 @@ public class Encoded {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Encoded
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Encoded
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Encoded.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -244,22 +243,22 @@ public class Encoded {
     }
   }
 
- /**
-  * Create an instance of Encoded given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Encoded
-  * @throws IOException if the JSON string is invalid with respect to Encoded
-  */
+  /**
+   * Create an instance of Encoded given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Encoded
+   * @throws IOException if the JSON string is invalid with respect to Encoded
+   */
   public static Encoded fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Encoded.class);
   }
 
- /**
-  * Convert an instance of Encoded to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Encoded to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

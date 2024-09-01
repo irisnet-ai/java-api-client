@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _hair_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class HairDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -77,10 +76,10 @@ public class HairDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * Contains attributes for the _hair_ classification.
    * @return attributes
-  **/
+   */
   @javax.annotation.Nullable
   public List<HairAttribute> getAttributes() {
     return attributes;
@@ -156,12 +155,12 @@ public class HairDetection extends BaseDetection {
     openapiRequiredFields.add("type");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to HairDetection
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to HairDetection
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!HairDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -214,22 +213,22 @@ public class HairDetection extends BaseDetection {
     }
   }
 
- /**
-  * Create an instance of HairDetection given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of HairDetection
-  * @throws IOException if the JSON string is invalid with respect to HairDetection
-  */
+  /**
+   * Create an instance of HairDetection given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of HairDetection
+   * @throws IOException if the JSON string is invalid with respect to HairDetection
+   */
   public static HairDetection fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, HairDetection.class);
   }
 
- /**
-  * Convert an instance of HairDetection to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of HairDetection to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

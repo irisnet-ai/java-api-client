@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _ageEstimation_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class AgeEstimationAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -75,10 +74,10 @@ public class AgeEstimationAttribute {
     return this;
   }
 
-   /**
+  /**
    * Used as a type discriminator for json to object conversion.
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
   public String getType() {
     return type;
@@ -94,10 +93,10 @@ public class AgeEstimationAttribute {
     return this;
   }
 
-   /**
+  /**
    * The estimated age of the person in the selfie in years.
    * @return age
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getAge() {
     return age;
@@ -113,10 +112,10 @@ public class AgeEstimationAttribute {
     return this;
   }
 
-   /**
+  /**
    * The estimated minimum age of the person in the selfie in years.
    * @return ageMin
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getAgeMin() {
     return ageMin;
@@ -132,10 +131,10 @@ public class AgeEstimationAttribute {
     return this;
   }
 
-   /**
+  /**
    * The estimated maximum age of the person in the selfie in years.
    * @return ageMax
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getAgeMax() {
     return ageMax;
@@ -206,12 +205,12 @@ public class AgeEstimationAttribute {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to AgeEstimationAttribute
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to AgeEstimationAttribute
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AgeEstimationAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -261,22 +260,22 @@ public class AgeEstimationAttribute {
     }
   }
 
- /**
-  * Create an instance of AgeEstimationAttribute given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of AgeEstimationAttribute
-  * @throws IOException if the JSON string is invalid with respect to AgeEstimationAttribute
-  */
+  /**
+   * Create an instance of AgeEstimationAttribute given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of AgeEstimationAttribute
+   * @throws IOException if the JSON string is invalid with respect to AgeEstimationAttribute
+   */
   public static AgeEstimationAttribute fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AgeEstimationAttribute.class);
   }
 
- /**
-  * Convert an instance of AgeEstimationAttribute to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of AgeEstimationAttribute to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

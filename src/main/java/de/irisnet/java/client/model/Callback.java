@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Callback options to send a response to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Callback {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -70,10 +69,10 @@ public class Callback {
     return this;
   }
 
-   /**
+  /**
    * Define a URL where a response should be sent.
    * @return callbackUrl
-  **/
+   */
   @javax.annotation.Nonnull
   public URI getCallbackUrl() {
     return callbackUrl;
@@ -97,10 +96,10 @@ public class Callback {
     return this;
   }
 
-   /**
+  /**
    * Define headers to send to the URL.
    * @return headers
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, String> getHeaders() {
     return headers;
@@ -166,12 +165,12 @@ public class Callback {
     openapiRequiredFields.add("callbackUrl");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Callback
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Callback
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Callback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -228,22 +227,22 @@ public class Callback {
     }
   }
 
- /**
-  * Create an instance of Callback given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Callback
-  * @throws IOException if the JSON string is invalid with respect to Callback
-  */
+  /**
+   * Create an instance of Callback given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Callback
+   * @throws IOException if the JSON string is invalid with respect to Callback
+   */
   public static Callback fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Callback.class);
   }
 
- /**
-  * Convert an instance of Callback to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Callback to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

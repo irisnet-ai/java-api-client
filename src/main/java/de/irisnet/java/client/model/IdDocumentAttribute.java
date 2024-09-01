@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _idDocument_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class IdDocumentAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -252,10 +251,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * Used as a type discriminator for json to object conversion.
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
   public String getType() {
     return type;
@@ -271,10 +270,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The type of the document
    * @return documentType
-  **/
+   */
   @javax.annotation.Nullable
   public DocumentTypeEnum getDocumentType() {
     return documentType;
@@ -290,10 +289,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The number of the document
    * @return documentNumber
-  **/
+   */
   @javax.annotation.Nullable
   public String getDocumentNumber() {
     return documentNumber;
@@ -309,10 +308,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the document is two-sided
    * @return isTwoSided
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getIsTwoSided() {
     return isTwoSided;
@@ -328,10 +327,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The issuing authority
    * @return issuingAuthority
-  **/
+   */
   @javax.annotation.Nullable
   public String getIssuingAuthority() {
     return issuingAuthority;
@@ -347,10 +346,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The issuing date
    * @return issuingDate
-  **/
+   */
   @javax.annotation.Nullable
   public LocalDate getIssuingDate() {
     return issuingDate;
@@ -366,10 +365,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document&#39;s country in ISO 3166-1 alpha-2 format
    * @return issuingCountry
-  **/
+   */
   @javax.annotation.Nullable
   public String getIssuingCountry() {
     return issuingCountry;
@@ -385,10 +384,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The expiration date
    * @return expirationDate
-  **/
+   */
   @javax.annotation.Nullable
   public LocalDate getExpirationDate() {
     return expirationDate;
@@ -404,10 +403,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The access number
    * @return accessNumber
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccessNumber() {
     return accessNumber;
@@ -431,10 +430,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s first name(s)
    * @return firstNames
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getFirstNames() {
     return firstNames;
@@ -458,10 +457,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s last name(s)
    * @return lastNames
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getLastNames() {
     return lastNames;
@@ -477,10 +476,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s birth name
    * @return birthName
-  **/
+   */
   @javax.annotation.Nullable
   public String getBirthName() {
     return birthName;
@@ -496,10 +495,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s date of birth
    * @return dateOfBirth
-  **/
+   */
   @javax.annotation.Nullable
   public LocalDate getDateOfBirth() {
     return dateOfBirth;
@@ -515,10 +514,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s place of birth
    * @return placeOfBirth
-  **/
+   */
   @javax.annotation.Nullable
   public String getPlaceOfBirth() {
     return placeOfBirth;
@@ -534,10 +533,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s nationality in ISO 3166-1 alpha-2 format
    * @return nationality
-  **/
+   */
   @javax.annotation.Nullable
   public String getNationality() {
     return nationality;
@@ -553,10 +552,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s gender
    * @return gender
-  **/
+   */
   @javax.annotation.Nullable
   public GenderEnum getGender() {
     return gender;
@@ -572,10 +571,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s height
    * @return height
-  **/
+   */
   @javax.annotation.Nullable
   public String getHeight() {
     return height;
@@ -591,10 +590,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document holder&#39;s address
    * @return address
-  **/
+   */
   @javax.annotation.Nullable
   public String getAddress() {
     return address;
@@ -618,10 +617,10 @@ public class IdDocumentAttribute {
     return this;
   }
 
-   /**
+  /**
    * The document&#39;s machine readable zone (MRZ), at most 3 lines
    * @return machineReadableZone
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getMachineReadableZone() {
     return machineReadableZone;
@@ -737,12 +736,12 @@ public class IdDocumentAttribute {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to IdDocumentAttribute
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to IdDocumentAttribute
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!IdDocumentAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -845,22 +844,22 @@ public class IdDocumentAttribute {
     }
   }
 
- /**
-  * Create an instance of IdDocumentAttribute given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of IdDocumentAttribute
-  * @throws IOException if the JSON string is invalid with respect to IdDocumentAttribute
-  */
+  /**
+   * Create an instance of IdDocumentAttribute given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of IdDocumentAttribute
+   * @throws IOException if the JSON string is invalid with respect to IdDocumentAttribute
+   */
   public static IdDocumentAttribute fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, IdDocumentAttribute.class);
   }
 
- /**
-  * Convert an instance of IdDocumentAttribute to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of IdDocumentAttribute to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

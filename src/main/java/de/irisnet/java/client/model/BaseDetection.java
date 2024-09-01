@@ -66,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import de.irisnet.java.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class BaseDetection extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(BaseDetection.class.getName());
 

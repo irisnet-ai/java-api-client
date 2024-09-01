@@ -18,17 +18,17 @@ Can be used to set a multitude of pre-defined commonly used rules without the ne
 
 | Name | Value |
 |---- | -----|
-| NUDITYCHECK | &quot;nudityCheck&quot; |
-| AGEVERIFICATION | &quot;ageVerification&quot; |
-| AGEESTIMATION | &quot;ageEstimation&quot; |
-| ILLEGALSYMBOLS | &quot;illegalSymbols&quot; |
-| TEXTRECOGNITION | &quot;textRecognition&quot; |
-| ATTRIBUTESCHECK | &quot;attributesCheck&quot; |
-| BODYATTRIBUTES | &quot;bodyAttributes&quot; |
-| NIPPLECHECK | &quot;nippleCheck&quot; |
-| UNWANTEDSUBSTANCES | &quot;unwantedSubstances&quot; |
-| VIOLENCECHECK | &quot;violenceCheck&quot; |
-| SELFIECHECK | &quot;selfieCheck&quot; |
+| NUDITY_CHECK | &quot;nudityCheck&quot; |
+| AGE_VERIFICATION | &quot;ageVerification&quot; |
+| AGE_ESTIMATION | &quot;ageEstimation&quot; |
+| ILLEGAL_SYMBOLS | &quot;illegalSymbols&quot; |
+| TEXT_RECOGNITION | &quot;textRecognition&quot; |
+| ATTRIBUTES_CHECK | &quot;attributesCheck&quot; |
+| BODY_ATTRIBUTES | &quot;bodyAttributes&quot; |
+| NIPPLE_CHECK | &quot;nippleCheck&quot; |
+| UNWANTED_SUBSTANCES | &quot;unwantedSubstances&quot; |
+| VIOLENCE_CHECK | &quot;violenceCheck&quot; |
+| SELFIE_CHECK | &quot;selfieCheck&quot; |
 
 
 
@@ -36,11 +36,11 @@ Can be used to set a multitude of pre-defined commonly used rules without the ne
 
 | Name | Value |
 |---- | -----|
-| IDENTITYDOCUMENTCHECK | &quot;identityDocumentCheck&quot; |
-| AUTOMATEDDOCUMENTRECOGNITION | &quot;automatedDocumentRecognition&quot; |
-| BIOMETRICCHECK | &quot;biometricCheck&quot; |
-| FORMAUTOFILL | &quot;formAutofill&quot; |
-| AGEESTIMATION | &quot;ageEstimation&quot; |
+| IDENTITY_DOCUMENT_CHECK | &quot;identityDocumentCheck&quot; |
+| AUTOMATED_DOCUMENT_RECOGNITION | &quot;automatedDocumentRecognition&quot; |
+| BIOMETRIC_CHECK | &quot;biometricCheck&quot; |
+| FORM_AUTOFILL | &quot;formAutofill&quot; |
+| AGE_ESTIMATION | &quot;ageEstimation&quot; |
 
 
 

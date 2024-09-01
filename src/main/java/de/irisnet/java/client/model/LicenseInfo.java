@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes the current balance of the given license key. A key has a certain amount of credits that can be used for any kind of AI recognition. The license key is invalid, when all of the credits have been used, the license was disabled or expired.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class LicenseInfo {
   public static final String SERIALIZED_NAME_CREDITS_USED = "creditsUsed";
   @SerializedName(SERIALIZED_NAME_CREDITS_USED)
@@ -81,10 +80,10 @@ public class LicenseInfo {
     return this;
   }
 
-   /**
+  /**
    * Credits used for the license key.
    * @return creditsUsed
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getCreditsUsed() {
     return creditsUsed;
@@ -100,10 +99,10 @@ public class LicenseInfo {
     return this;
   }
 
-   /**
+  /**
    * Credits remaining for the license key.
    * @return creditsRemaining
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getCreditsRemaining() {
     return creditsRemaining;
@@ -119,10 +118,10 @@ public class LicenseInfo {
     return this;
   }
 
-   /**
+  /**
    * Total credits contained within the license key.
    * @return totalCredits
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getTotalCredits() {
     return totalCredits;
@@ -138,10 +137,10 @@ public class LicenseInfo {
     return this;
   }
 
-   /**
+  /**
    * The license key
    * @return licenseKey
-  **/
+   */
   @javax.annotation.Nullable
   public String getLicenseKey() {
     return licenseKey;
@@ -165,10 +164,10 @@ public class LicenseInfo {
     return this;
   }
 
-   /**
+  /**
    * A map of privileges
    * @return privileges
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, String> getPrivileges() {
     return privileges;
@@ -242,12 +241,12 @@ public class LicenseInfo {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LicenseInfo
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to LicenseInfo
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LicenseInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -297,22 +296,22 @@ public class LicenseInfo {
     }
   }
 
- /**
-  * Create an instance of LicenseInfo given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LicenseInfo
-  * @throws IOException if the JSON string is invalid with respect to LicenseInfo
-  */
+  /**
+   * Create an instance of LicenseInfo given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of LicenseInfo
+   * @throws IOException if the JSON string is invalid with respect to LicenseInfo
+   */
   public static LicenseInfo fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LicenseInfo.class);
   }
 
- /**
-  * Convert an instance of LicenseInfo to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of LicenseInfo to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

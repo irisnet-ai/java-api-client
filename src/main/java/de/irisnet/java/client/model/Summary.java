@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Summarizing the result of the AI.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Summary {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -93,10 +92,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * A simple status string that can be either _accept_ or _reject_.
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public String getStatus() {
     return status;
@@ -112,10 +111,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * The amount of broken rules that are contained in the source media.
    * @return brokenRulesCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getBrokenRulesCount() {
     return brokenRulesCount;
@@ -131,10 +130,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * In cases where the AI is uncertain, this attribute is set (1), indication that it could be useful to double check the source media by a human.
    * @return helpSuggested
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getHelpSuggested() {
     return helpSuggested;
@@ -150,10 +149,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * The highest severity value found amongst the broken rules.
    * @return severity
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getSeverity() {
     return severity;
@@ -169,10 +168,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * The amount of credits that was consumed for the check.
    * @return creditsConsumed
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getCreditsConsumed() {
     return creditsConsumed;
@@ -196,10 +195,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * A list of classification names that were found.
    * @return tags
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getTags() {
     return tags;
@@ -223,10 +222,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * A list of classification names that caused a rule to be broken.
    * @return rejectTags
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getRejectTags() {
     return rejectTags;
@@ -250,10 +249,10 @@ public class Summary {
     return this;
   }
 
-   /**
+  /**
    * The names of the classification groups that caused a rule to be broken.
    * @return rejectReasons
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getRejectReasons() {
     return rejectReasons;
@@ -336,12 +335,12 @@ public class Summary {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Summary
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Summary
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Summary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -403,22 +402,22 @@ public class Summary {
     }
   }
 
- /**
-  * Create an instance of Summary given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Summary
-  * @throws IOException if the JSON string is invalid with respect to Summary
-  */
+  /**
+   * Create an instance of Summary given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Summary
+   * @throws IOException if the JSON string is invalid with respect to Summary
+   */
   public static Summary fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Summary.class);
   }
 
- /**
-  * Convert an instance of Summary to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Summary to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -92,6 +92,3 @@ src/main/java/de/irisnet/java/client/model/Param.java
 src/main/java/de/irisnet/java/client/model/ParamSet.java
 src/main/java/de/irisnet/java/client/model/Pricing.java
 src/main/java/de/irisnet/java/client/model/Summary.java
-src/test/java/de/irisnet/java/client/model/AgeEstimationAttributeTest.java
-src/test/java/de/irisnet/java/client/model/AgeEstimationDetectionTest.java
-src/test/java/de/irisnet/java/client/model/AgeEstimationSubChecksTest.java

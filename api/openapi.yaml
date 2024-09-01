@@ -78,6 +78,12 @@ paths:
           type: string
         style: simple
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation.
         "404":
           content:
             application/json:
@@ -85,12 +91,6 @@ paths:
                 $ref: '#/components/schemas/ApiNotice'
           description: configuration with given id not found or parameters for configuration
             not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get the parameters of the AI configuration.
@@ -206,12 +206,20 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
+        "204":
+          description: successful operation. No previously configured parameters exist.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
         "200":
           content:
             application/json:
@@ -219,14 +227,6 @@ paths:
                 $ref: '#/components/schemas/ParamSet'
           description: successful operation. Previous user configured parameters are
             returned.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
-        "204":
-          description: successful operation. No previously configured parameters exist.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -308,12 +308,6 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Config'
-          description: successful operation.
         "403":
           content:
             application/json:
@@ -326,6 +320,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Bad request. Check for badly formatted request body.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -426,6 +426,12 @@ paths:
               $ref: '#/components/schemas/Callback'
         required: true
       responses:
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
         "404":
           content:
             application/json:
@@ -434,12 +440,6 @@ paths:
           description: configId not found.
         "202":
           description: "operation accepted: wait for callback."
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -508,18 +508,18 @@ paths:
           type: integer
         style: form
       responses:
-        "404":
-          content:
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "402":
           content:
             application/x-ndjson:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
+        "404":
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "200":
           content:
             application/x-ndjson:
@@ -605,18 +605,18 @@ paths:
         description: The http(s) url or base64 encoded body uri of the image that
           needs to be checked.
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "402":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "200":
           content:
             application/json:
@@ -748,12 +748,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration
         "429":
           content:
             application/json:
@@ -763,6 +757,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -812,12 +812,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -827,6 +821,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -856,12 +856,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -871,6 +865,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -1967,7 +1967,8 @@ components:
           - not_processed
           type: string
         documentModelIdentification:
-          description: Indicates whether the document model has been identified
+          description: Indicates whether the document model has been identified and
+            whether or not the document conforms to official specifications
           enum:
           - passed
           - failed
@@ -1992,6 +1993,30 @@ components:
         faceLivenessCheck:
           description: Indicates if the selfie image is genuine and not a photo of
             an image or of a screen
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        dataIntegrityCheck:
+          description: Indicates whether the data fields contain the correct type
+            of content
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        dataConsistencyCheck:
+          description: Indicates whether the information on both sides of the document
+            is consistent
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        ageValidationCheck:
+          description: Indicates if the extracted age is greater than or equal to
+            a predefined minimum accepted age
           enum:
           - passed
           - failed
@@ -2082,6 +2107,7 @@ components:
       type: object
     DocumentCheckRequestData:
       example:
+        minimumAcceptedAge: 0
         frontImage: frontImage
         documentType: national_identity_card
         callback:
@@ -2106,6 +2132,11 @@ components:
           description: The base64 encoded selfie image to be checked in either jpg
             or png file format
           type: string
+        minimumAcceptedAge:
+          description: The minimum accepted age in years for a DocumentCheck. Defaults
+            to 18 if not provided
+          format: int32
+          type: integer
         documentType:
           description: The type of the document
           enum:

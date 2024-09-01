@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -63,27 +62,27 @@ public class Config {
    */
   @JsonAdapter(PrototypesEnum.Adapter.class)
   public enum PrototypesEnum {
-    NUDITYCHECK("nudityCheck"),
+    NUDITY_CHECK("nudityCheck"),
     
-    AGEVERIFICATION("ageVerification"),
+    AGE_VERIFICATION("ageVerification"),
     
-    AGEESTIMATION("ageEstimation"),
+    AGE_ESTIMATION("ageEstimation"),
     
-    ILLEGALSYMBOLS("illegalSymbols"),
+    ILLEGAL_SYMBOLS("illegalSymbols"),
     
-    TEXTRECOGNITION("textRecognition"),
+    TEXT_RECOGNITION("textRecognition"),
     
-    ATTRIBUTESCHECK("attributesCheck"),
+    ATTRIBUTES_CHECK("attributesCheck"),
     
-    BODYATTRIBUTES("bodyAttributes"),
+    BODY_ATTRIBUTES("bodyAttributes"),
     
-    NIPPLECHECK("nippleCheck"),
+    NIPPLE_CHECK("nippleCheck"),
     
-    UNWANTEDSUBSTANCES("unwantedSubstances"),
+    UNWANTED_SUBSTANCES("unwantedSubstances"),
     
-    VIOLENCECHECK("violenceCheck"),
+    VIOLENCE_CHECK("violenceCheck"),
     
-    SELFIECHECK("selfieCheck");
+    SELFIE_CHECK("selfieCheck");
 
     private String value;
 
@@ -137,15 +136,15 @@ public class Config {
    */
   @JsonAdapter(KycCheckParametersEnum.Adapter.class)
   public enum KycCheckParametersEnum {
-    IDENTITYDOCUMENTCHECK("identityDocumentCheck"),
+    IDENTITY_DOCUMENT_CHECK("identityDocumentCheck"),
     
-    AUTOMATEDDOCUMENTRECOGNITION("automatedDocumentRecognition"),
+    AUTOMATED_DOCUMENT_RECOGNITION("automatedDocumentRecognition"),
     
-    BIOMETRICCHECK("biometricCheck"),
+    BIOMETRIC_CHECK("biometricCheck"),
     
-    FORMAUTOFILL("formAutofill"),
+    FORM_AUTOFILL("formAutofill"),
     
-    AGEESTIMATION("ageEstimation");
+    AGE_ESTIMATION("ageEstimation");
 
     private String value;
 
@@ -202,10 +201,10 @@ public class Config {
     return this;
   }
 
-   /**
+  /**
    * The unique identifier for the AI configuration. Use this for any check operation to tell the AI how to behave.
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public UUID getId() {
     return id;
@@ -229,10 +228,10 @@ public class Config {
     return this;
   }
 
-   /**
+  /**
    * Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.
    * @return prototypes
-  **/
+   */
   @javax.annotation.Nullable
   public Set<PrototypesEnum> getPrototypes() {
     return prototypes;
@@ -256,10 +255,10 @@ public class Config {
     return this;
   }
 
-   /**
+  /**
    * Configures your kyc checks. You can combine certain parameters to customize a single check operation.
    * @return kycCheckParameters
-  **/
+   */
   @javax.annotation.Nullable
   public Set<KycCheckParametersEnum> getKycCheckParameters() {
     return kycCheckParameters;
@@ -327,12 +326,12 @@ public class Config {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Config
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Config
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Config.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -390,22 +389,22 @@ public class Config {
     }
   }
 
- /**
-  * Create an instance of Config given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Config
-  * @throws IOException if the JSON string is invalid with respect to Config
-  */
+  /**
+   * Create an instance of Config given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Config
+   * @throws IOException if the JSON string is invalid with respect to Config
+   */
   public static Config fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Config.class);
   }
 
- /**
-  * Convert an instance of Config to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Config to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * DocumentCheckRequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class DocumentCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
@@ -67,6 +66,10 @@ public class DocumentCheckRequestData {
   public static final String SERIALIZED_NAME_SELFIE_IMAGE = "selfieImage";
   @SerializedName(SERIALIZED_NAME_SELFIE_IMAGE)
   private String selfieImage;
+
+  public static final String SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE = "minimumAcceptedAge";
+  @SerializedName(SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE)
+  private Integer minimumAcceptedAge;
 
   /**
    * The type of the document
@@ -144,10 +147,10 @@ public class DocumentCheckRequestData {
     return this;
   }
 
-   /**
+  /**
    * Get callback
    * @return callback
-  **/
+   */
   @javax.annotation.Nonnull
   public Callback getCallback() {
     return callback;
@@ -163,10 +166,10 @@ public class DocumentCheckRequestData {
     return this;
   }
 
-   /**
+  /**
    * The base64 encoded front image of the document to be checked in either jpg or png file format
    * @return frontImage
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrontImage() {
     return frontImage;
@@ -182,10 +185,10 @@ public class DocumentCheckRequestData {
     return this;
   }
 
-   /**
+  /**
    * The base64 encoded back image of the document to be checked in either jpg or png file format
    * @return backImage
-  **/
+   */
   @javax.annotation.Nullable
   public String getBackImage() {
     return backImage;
@@ -201,10 +204,10 @@ public class DocumentCheckRequestData {
     return this;
   }
 
-   /**
+  /**
    * The base64 encoded selfie image to be checked in either jpg or png file format
    * @return selfieImage
-  **/
+   */
   @javax.annotation.Nullable
   public String getSelfieImage() {
     return selfieImage;
@@ -215,15 +218,34 @@ public class DocumentCheckRequestData {
   }
 
 
+  public DocumentCheckRequestData minimumAcceptedAge(Integer minimumAcceptedAge) {
+    this.minimumAcceptedAge = minimumAcceptedAge;
+    return this;
+  }
+
+  /**
+   * The minimum accepted age in years for a DocumentCheck. Defaults to 18 if not provided
+   * @return minimumAcceptedAge
+   */
+  @javax.annotation.Nullable
+  public Integer getMinimumAcceptedAge() {
+    return minimumAcceptedAge;
+  }
+
+  public void setMinimumAcceptedAge(Integer minimumAcceptedAge) {
+    this.minimumAcceptedAge = minimumAcceptedAge;
+  }
+
+
   public DocumentCheckRequestData documentType(DocumentTypeEnum documentType) {
     this.documentType = documentType;
     return this;
   }
 
-   /**
+  /**
    * The type of the document
    * @return documentType
-  **/
+   */
   @javax.annotation.Nullable
   public DocumentTypeEnum getDocumentType() {
     return documentType;
@@ -239,10 +261,10 @@ public class DocumentCheckRequestData {
     return this;
   }
 
-   /**
+  /**
    * The document&#39;s country in ISO 3166-1 alpha-2 format
    * @return documentCountry
-  **/
+   */
   @javax.annotation.Nullable
   public String getDocumentCountry() {
     return documentCountry;
@@ -267,13 +289,14 @@ public class DocumentCheckRequestData {
         Objects.equals(this.frontImage, documentCheckRequestData.frontImage) &&
         Objects.equals(this.backImage, documentCheckRequestData.backImage) &&
         Objects.equals(this.selfieImage, documentCheckRequestData.selfieImage) &&
+        Objects.equals(this.minimumAcceptedAge, documentCheckRequestData.minimumAcceptedAge) &&
         Objects.equals(this.documentType, documentCheckRequestData.documentType) &&
         Objects.equals(this.documentCountry, documentCheckRequestData.documentCountry);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(callback, frontImage, backImage, selfieImage, documentType, documentCountry);
+    return Objects.hash(callback, frontImage, backImage, selfieImage, minimumAcceptedAge, documentType, documentCountry);
   }
 
   @Override
@@ -284,6 +307,7 @@ public class DocumentCheckRequestData {
     sb.append("    frontImage: ").append(toIndentedString(frontImage)).append("\n");
     sb.append("    backImage: ").append(toIndentedString(backImage)).append("\n");
     sb.append("    selfieImage: ").append(toIndentedString(selfieImage)).append("\n");
+    sb.append("    minimumAcceptedAge: ").append(toIndentedString(minimumAcceptedAge)).append("\n");
     sb.append("    documentType: ").append(toIndentedString(documentType)).append("\n");
     sb.append("    documentCountry: ").append(toIndentedString(documentCountry)).append("\n");
     sb.append("}");
@@ -312,6 +336,7 @@ public class DocumentCheckRequestData {
     openapiFields.add("frontImage");
     openapiFields.add("backImage");
     openapiFields.add("selfieImage");
+    openapiFields.add("minimumAcceptedAge");
     openapiFields.add("documentType");
     openapiFields.add("documentCountry");
 
@@ -321,12 +346,12 @@ public class DocumentCheckRequestData {
     openapiRequiredFields.add("frontImage");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DocumentCheckRequestData
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to DocumentCheckRequestData
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DocumentCheckRequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -401,22 +426,22 @@ public class DocumentCheckRequestData {
     }
   }
 
- /**
-  * Create an instance of DocumentCheckRequestData given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DocumentCheckRequestData
-  * @throws IOException if the JSON string is invalid with respect to DocumentCheckRequestData
-  */
+  /**
+   * Create an instance of DocumentCheckRequestData given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of DocumentCheckRequestData
+   * @throws IOException if the JSON string is invalid with respect to DocumentCheckRequestData
+   */
   public static DocumentCheckRequestData fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, DocumentCheckRequestData.class);
   }
 
- /**
-  * Convert an instance of DocumentCheckRequestData to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of DocumentCheckRequestData to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

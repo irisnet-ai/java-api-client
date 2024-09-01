@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * A set of parameters/rules that describe how the AI should behave.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ParamSet {
   public static final String SERIALIZED_NAME_THRESH = "thresh";
   @SerializedName(SERIALIZED_NAME_THRESH)
@@ -82,12 +81,12 @@ public class ParamSet {
     return this;
   }
 
-   /**
+  /**
    * Threshold when an object can be recognized. Lowering the value will increase the probability of recognizing objects. A threshold of 0.5 would mean, that 50% of an object like a face must be visible, to be detected.Setting the value too low however, can cause false positives.
    * minimum: 0.0
    * maximum: 1.0
    * @return thresh
-  **/
+   */
   @javax.annotation.Nullable
   public Float getThresh() {
     return thresh;
@@ -103,12 +102,12 @@ public class ParamSet {
     return this;
   }
 
-   /**
+  /**
    * A grey scale color to use for frame or masking. &#39;0&#39; will represent black, while the maximum &#39;255&#39; will be white.
    * minimum: 0
    * maximum: 255
    * @return grey
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getGrey() {
     return grey;
@@ -124,12 +123,12 @@ public class ParamSet {
     return this;
   }
 
-   /**
+  /**
    * Set the overall minimum duration in milliseconds for a rule to be broken in moving images.
    * minimum: 50
    * maximum: 250
    * @return minDuration
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMinDuration() {
     return minDuration;
@@ -145,11 +144,11 @@ public class ParamSet {
     return this;
   }
 
-   /**
+  /**
    * Set a severity on which to automatically stop the check operation. Works with moving images.Use &#39;-1&#39; to ignore this option.
    * minimum: -1
    * @return abortOnSeverity
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getAbortOnSeverity() {
     return abortOnSeverity;
@@ -173,10 +172,10 @@ public class ParamSet {
     return this;
   }
 
-   /**
+  /**
    * A list of parameter sets that describe the rules of the objects.
    * @return params
-  **/
+   */
   @javax.annotation.Nullable
   public List<Param> getParams() {
     return params;
@@ -250,12 +249,12 @@ public class ParamSet {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ParamSet
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ParamSet
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ParamSet.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -316,22 +315,22 @@ public class ParamSet {
     }
   }
 
- /**
-  * Create an instance of ParamSet given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ParamSet
-  * @throws IOException if the JSON string is invalid with respect to ParamSet
-  */
+  /**
+   * Create an instance of ParamSet given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ParamSet
+   * @throws IOException if the JSON string is invalid with respect to ParamSet
+   */
   public static ParamSet fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ParamSet.class);
   }
 
- /**
-  * Convert an instance of ParamSet to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ParamSet to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

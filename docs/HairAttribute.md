@@ -31,8 +31,8 @@ Attributes qualifying the _hair_ classification.
 
 | Name | Value |
 |---- | -----|
-| LONGHAIRED | &quot;longHaired&quot; |
-| SHORTHAIRED | &quot;shortHaired&quot; |
+| LONG_HAIRED | &quot;longHaired&quot; |
+| SHORT_HAIRED | &quot;shortHaired&quot; |
 
 
 

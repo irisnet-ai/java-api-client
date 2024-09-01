@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _face_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class FaceDetection extends BaseDetection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -81,10 +80,10 @@ public class FaceDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * Attributes characterizing the _face_ detection. Mainly contains attributes that were activated with the _ageEstimation_ prototype.
    * @return attributes
-  **/
+   */
   @javax.annotation.Nullable
   public List<BaseAttribute> getAttributes() {
     return attributes;
@@ -108,10 +107,10 @@ public class FaceDetection extends BaseDetection {
     return this;
   }
 
-   /**
+  /**
    * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
    * @return subDetections
-  **/
+   */
   @javax.annotation.Nullable
   public List<BaseDetection> getSubDetections() {
     return subDetections;
@@ -189,12 +188,12 @@ public class FaceDetection extends BaseDetection {
     openapiRequiredFields.add("type");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FaceDetection
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to FaceDetection
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!FaceDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -247,22 +246,22 @@ public class FaceDetection extends BaseDetection {
     }
   }
 
- /**
-  * Create an instance of FaceDetection given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of FaceDetection
-  * @throws IOException if the JSON string is invalid with respect to FaceDetection
-  */
+  /**
+   * Create an instance of FaceDetection given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of FaceDetection
+   * @throws IOException if the JSON string is invalid with respect to FaceDetection
+   */
   public static FaceDetection fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, FaceDetection.class);
   }
 
- /**
-  * Convert an instance of FaceDetection to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of FaceDetection to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

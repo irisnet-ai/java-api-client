@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * ApiNotice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ApiNotice {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -125,10 +124,10 @@ public class ApiNotice {
     return this;
   }
 
-   /**
+  /**
    * The status code of the response.
    * @return code
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getCode() {
     return code;
@@ -144,10 +143,10 @@ public class ApiNotice {
     return this;
   }
 
-   /**
+  /**
    * The severity level of the notice.
    * @return level
-  **/
+   */
   @javax.annotation.Nullable
   public LevelEnum getLevel() {
     return level;
@@ -163,10 +162,10 @@ public class ApiNotice {
     return this;
   }
 
-   /**
+  /**
    * A hopefully detailed message describing what went wrong.
    * @return message
-  **/
+   */
   @javax.annotation.Nullable
   public String getMessage() {
     return message;
@@ -234,12 +233,12 @@ public class ApiNotice {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ApiNotice
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ApiNotice
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ApiNotice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -296,22 +295,22 @@ public class ApiNotice {
     }
   }
 
- /**
-  * Create an instance of ApiNotice given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ApiNotice
-  * @throws IOException if the JSON string is invalid with respect to ApiNotice
-  */
+  /**
+   * Create an instance of ApiNotice given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ApiNotice
+   * @throws IOException if the JSON string is invalid with respect to ApiNotice
+   */
   public static ApiNotice fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ApiNotice.class);
   }
 
- /**
-  * Convert an instance of ApiNotice to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ApiNotice to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

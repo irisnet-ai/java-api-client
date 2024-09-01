@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * The data to be checked.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Data {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -63,10 +62,10 @@ public class Data {
     return this;
   }
 
-   /**
+  /**
    * The http(s) url or base64 encoded data uri of the image that needs to be checked.
    * @return data
-  **/
+   */
   @javax.annotation.Nonnull
   public String getData() {
     return data;
@@ -129,12 +128,12 @@ public class Data {
     openapiRequiredFields.add("data");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Data
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Data
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Data.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -191,22 +190,22 @@ public class Data {
     }
   }
 
- /**
-  * Create an instance of Data given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Data
-  * @throws IOException if the JSON string is invalid with respect to Data
-  */
+  /**
+   * Create an instance of Data given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Data
+   * @throws IOException if the JSON string is invalid with respect to Data
+   */
   public static Data fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Data.class);
   }
 
- /**
-  * Convert an instance of Data to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Data to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

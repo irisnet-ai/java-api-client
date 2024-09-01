@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _hair_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class HairAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -124,9 +123,9 @@ public class HairAttribute {
    */
   @JsonAdapter(StyleEnum.Adapter.class)
   public enum StyleEnum {
-    LONGHAIRED("longHaired"),
+    LONG_HAIRED("longHaired"),
     
-    SHORTHAIRED("shortHaired");
+    SHORT_HAIRED("shortHaired");
 
     private String value;
 
@@ -183,10 +182,10 @@ public class HairAttribute {
     return this;
   }
 
-   /**
+  /**
    * Used as a type discriminator for json to object conversion.
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
   public String getType() {
     return type;
@@ -202,10 +201,10 @@ public class HairAttribute {
     return this;
   }
 
-   /**
+  /**
    * The color of the hair.
    * @return color
-  **/
+   */
   @javax.annotation.Nullable
   public ColorEnum getColor() {
     return color;
@@ -221,10 +220,10 @@ public class HairAttribute {
     return this;
   }
 
-   /**
+  /**
    * The hair style.
    * @return style
-  **/
+   */
   @javax.annotation.Nullable
   public StyleEnum getStyle() {
     return style;
@@ -292,12 +291,12 @@ public class HairAttribute {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to HairAttribute
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to HairAttribute
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!HairAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -361,22 +360,22 @@ public class HairAttribute {
     }
   }
 
- /**
-  * Create an instance of HairAttribute given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of HairAttribute
-  * @throws IOException if the JSON string is invalid with respect to HairAttribute
-  */
+  /**
+   * Create an instance of HairAttribute given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of HairAttribute
+   * @throws IOException if the JSON string is invalid with respect to HairAttribute
+   */
   public static HairAttribute fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, HairAttribute.class);
   }
 
- /**
-  * Convert an instance of HairAttribute to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of HairAttribute to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

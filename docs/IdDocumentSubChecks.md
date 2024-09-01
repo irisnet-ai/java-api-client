@@ -17,10 +17,13 @@ Contains information on idDocument sub-checks
 |**blacklistCheck** | [**BlacklistCheckEnum**](#BlacklistCheckEnum) | Indicates whether a competent authority deny-listed the ID document |  [optional] |
 |**photocopyCheck** | [**PhotocopyCheckEnum**](#PhotocopyCheckEnum) | Indicates whether the document is a photocopy |  [optional] |
 |**specimenCheck** | [**SpecimenCheckEnum**](#SpecimenCheckEnum) | Indicates whether the document has been copied from the Internet |  [optional] |
-|**documentModelIdentification** | [**DocumentModelIdentificationEnum**](#DocumentModelIdentificationEnum) | Indicates whether the document model has been identified |  [optional] |
+|**documentModelIdentification** | [**DocumentModelIdentificationEnum**](#DocumentModelIdentificationEnum) | Indicates whether the document model has been identified and whether or not the document conforms to official specifications |  [optional] |
 |**documentLivenessCheck** | [**DocumentLivenessCheckEnum**](#DocumentLivenessCheckEnum) | Indicates if the document image is genuine and not a photo of an image or of a screen |  [optional] |
 |**spoofedImageAnalysis** | [**SpoofedImageAnalysisEnum**](#SpoofedImageAnalysisEnum) | Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image |  [optional] |
 |**faceLivenessCheck** | [**FaceLivenessCheckEnum**](#FaceLivenessCheckEnum) | Indicates if the selfie image is genuine and not a photo of an image or of a screen |  [optional] |
+|**dataIntegrityCheck** | [**DataIntegrityCheckEnum**](#DataIntegrityCheckEnum) | Indicates whether the data fields contain the correct type of content |  [optional] |
+|**dataConsistencyCheck** | [**DataConsistencyCheckEnum**](#DataConsistencyCheckEnum) | Indicates whether the information on both sides of the document is consistent |  [optional] |
+|**ageValidationCheck** | [**AgeValidationCheckEnum**](#AgeValidationCheckEnum) | Indicates if the extracted age is greater than or equal to a predefined minimum accepted age |  [optional] |
 
 
 
@@ -145,6 +148,36 @@ Contains information on idDocument sub-checks
 
 
 ## Enum: FaceLivenessCheckEnum
+
+| Name | Value |
+|---- | -----|
+| PASSED | &quot;passed&quot; |
+| FAILED | &quot;failed&quot; |
+| NOT_PROCESSED | &quot;not_processed&quot; |
+
+
+
+## Enum: DataIntegrityCheckEnum
+
+| Name | Value |
+|---- | -----|
+| PASSED | &quot;passed&quot; |
+| FAILED | &quot;failed&quot; |
+| NOT_PROCESSED | &quot;not_processed&quot; |
+
+
+
+## Enum: DataConsistencyCheckEnum
+
+| Name | Value |
+|---- | -----|
+| PASSED | &quot;passed&quot; |
+| FAILED | &quot;failed&quot; |
+| NOT_PROCESSED | &quot;not_processed&quot; |
+
+
+
+## Enum: AgeValidationCheckEnum
 
 | Name | Value |
 |---- | -----|

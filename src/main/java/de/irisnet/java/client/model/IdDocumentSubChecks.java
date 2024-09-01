@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information on idDocument sub-checks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class IdDocumentSubChecks {
   /**
    * Indicates whether the MRZ checksum is correct
@@ -574,7 +573,7 @@ public class IdDocumentSubChecks {
   private SpecimenCheckEnum specimenCheck;
 
   /**
-   * Indicates whether the document model has been identified
+   * Indicates whether the document model has been identified and whether or not the document conforms to official specifications
    */
   @JsonAdapter(DocumentModelIdentificationEnum.Adapter.class)
   public enum DocumentModelIdentificationEnum {
@@ -805,6 +804,180 @@ public class IdDocumentSubChecks {
   @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK)
   private FaceLivenessCheckEnum faceLivenessCheck;
 
+  /**
+   * Indicates whether the data fields contain the correct type of content
+   */
+  @JsonAdapter(DataIntegrityCheckEnum.Adapter.class)
+  public enum DataIntegrityCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    DataIntegrityCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DataIntegrityCheckEnum fromValue(String value) {
+      for (DataIntegrityCheckEnum b : DataIntegrityCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DataIntegrityCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DataIntegrityCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DataIntegrityCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DataIntegrityCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DataIntegrityCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DATA_INTEGRITY_CHECK = "dataIntegrityCheck";
+  @SerializedName(SERIALIZED_NAME_DATA_INTEGRITY_CHECK)
+  private DataIntegrityCheckEnum dataIntegrityCheck;
+
+  /**
+   * Indicates whether the information on both sides of the document is consistent
+   */
+  @JsonAdapter(DataConsistencyCheckEnum.Adapter.class)
+  public enum DataConsistencyCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    DataConsistencyCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DataConsistencyCheckEnum fromValue(String value) {
+      for (DataConsistencyCheckEnum b : DataConsistencyCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DataConsistencyCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DataConsistencyCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DataConsistencyCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DataConsistencyCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DataConsistencyCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DATA_CONSISTENCY_CHECK = "dataConsistencyCheck";
+  @SerializedName(SERIALIZED_NAME_DATA_CONSISTENCY_CHECK)
+  private DataConsistencyCheckEnum dataConsistencyCheck;
+
+  /**
+   * Indicates if the extracted age is greater than or equal to a predefined minimum accepted age
+   */
+  @JsonAdapter(AgeValidationCheckEnum.Adapter.class)
+  public enum AgeValidationCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    AgeValidationCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AgeValidationCheckEnum fromValue(String value) {
+      for (AgeValidationCheckEnum b : AgeValidationCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AgeValidationCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AgeValidationCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AgeValidationCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AgeValidationCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      AgeValidationCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AGE_VALIDATION_CHECK = "ageValidationCheck";
+  @SerializedName(SERIALIZED_NAME_AGE_VALIDATION_CHECK)
+  private AgeValidationCheckEnum ageValidationCheck;
+
   public IdDocumentSubChecks() {
   }
 
@@ -813,10 +986,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the MRZ checksum is correct
    * @return mrzChecksum
-  **/
+   */
   @javax.annotation.Nullable
   public MrzChecksumEnum getMrzChecksum() {
     return mrzChecksum;
@@ -832,10 +1005,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the MRZ format is correct
    * @return mrzFormat
-  **/
+   */
   @javax.annotation.Nullable
   public MrzFormatEnum getMrzFormat() {
     return mrzFormat;
@@ -851,10 +1024,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the MRZ is consistent with the document type
    * @return mrzConsistency
-  **/
+   */
   @javax.annotation.Nullable
   public MrzConsistencyEnum getMrzConsistency() {
     return mrzConsistency;
@@ -870,10 +1043,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the expirationDate is valid
    * @return expirationDate
-  **/
+   */
   @javax.annotation.Nullable
   public ExpirationDateEnum getExpirationDate() {
     return expirationDate;
@@ -889,10 +1062,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the document&#39;s security elements are valid
    * @return securityElements
-  **/
+   */
   @javax.annotation.Nullable
   public SecurityElementsEnum getSecurityElements() {
     return securityElements;
@@ -908,10 +1081,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the photo is in the correct location for a given document type
    * @return photoLocation
-  **/
+   */
   @javax.annotation.Nullable
   public PhotoLocationEnum getPhotoLocation() {
     return photoLocation;
@@ -927,10 +1100,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether a competent authority deny-listed the ID document
    * @return blacklistCheck
-  **/
+   */
   @javax.annotation.Nullable
   public BlacklistCheckEnum getBlacklistCheck() {
     return blacklistCheck;
@@ -946,10 +1119,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the document is a photocopy
    * @return photocopyCheck
-  **/
+   */
   @javax.annotation.Nullable
   public PhotocopyCheckEnum getPhotocopyCheck() {
     return photocopyCheck;
@@ -965,10 +1138,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the document has been copied from the Internet
    * @return specimenCheck
-  **/
+   */
   @javax.annotation.Nullable
   public SpecimenCheckEnum getSpecimenCheck() {
     return specimenCheck;
@@ -984,10 +1157,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
-   * Indicates whether the document model has been identified
+  /**
+   * Indicates whether the document model has been identified and whether or not the document conforms to official specifications
    * @return documentModelIdentification
-  **/
+   */
   @javax.annotation.Nullable
   public DocumentModelIdentificationEnum getDocumentModelIdentification() {
     return documentModelIdentification;
@@ -1003,10 +1176,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates if the document image is genuine and not a photo of an image or of a screen
    * @return documentLivenessCheck
-  **/
+   */
   @javax.annotation.Nullable
   public DocumentLivenessCheckEnum getDocumentLivenessCheck() {
     return documentLivenessCheck;
@@ -1022,10 +1195,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
    * @return spoofedImageAnalysis
-  **/
+   */
   @javax.annotation.Nullable
   public SpoofedImageAnalysisEnum getSpoofedImageAnalysis() {
     return spoofedImageAnalysis;
@@ -1041,10 +1214,10 @@ public class IdDocumentSubChecks {
     return this;
   }
 
-   /**
+  /**
    * Indicates if the selfie image is genuine and not a photo of an image or of a screen
    * @return faceLivenessCheck
-  **/
+   */
   @javax.annotation.Nullable
   public FaceLivenessCheckEnum getFaceLivenessCheck() {
     return faceLivenessCheck;
@@ -1052,6 +1225,63 @@ public class IdDocumentSubChecks {
 
   public void setFaceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
     this.faceLivenessCheck = faceLivenessCheck;
+  }
+
+
+  public IdDocumentSubChecks dataIntegrityCheck(DataIntegrityCheckEnum dataIntegrityCheck) {
+    this.dataIntegrityCheck = dataIntegrityCheck;
+    return this;
+  }
+
+  /**
+   * Indicates whether the data fields contain the correct type of content
+   * @return dataIntegrityCheck
+   */
+  @javax.annotation.Nullable
+  public DataIntegrityCheckEnum getDataIntegrityCheck() {
+    return dataIntegrityCheck;
+  }
+
+  public void setDataIntegrityCheck(DataIntegrityCheckEnum dataIntegrityCheck) {
+    this.dataIntegrityCheck = dataIntegrityCheck;
+  }
+
+
+  public IdDocumentSubChecks dataConsistencyCheck(DataConsistencyCheckEnum dataConsistencyCheck) {
+    this.dataConsistencyCheck = dataConsistencyCheck;
+    return this;
+  }
+
+  /**
+   * Indicates whether the information on both sides of the document is consistent
+   * @return dataConsistencyCheck
+   */
+  @javax.annotation.Nullable
+  public DataConsistencyCheckEnum getDataConsistencyCheck() {
+    return dataConsistencyCheck;
+  }
+
+  public void setDataConsistencyCheck(DataConsistencyCheckEnum dataConsistencyCheck) {
+    this.dataConsistencyCheck = dataConsistencyCheck;
+  }
+
+
+  public IdDocumentSubChecks ageValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+    this.ageValidationCheck = ageValidationCheck;
+    return this;
+  }
+
+  /**
+   * Indicates if the extracted age is greater than or equal to a predefined minimum accepted age
+   * @return ageValidationCheck
+   */
+  @javax.annotation.Nullable
+  public AgeValidationCheckEnum getAgeValidationCheck() {
+    return ageValidationCheck;
+  }
+
+  public void setAgeValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+    this.ageValidationCheck = ageValidationCheck;
   }
 
 
@@ -1077,12 +1307,15 @@ public class IdDocumentSubChecks {
         Objects.equals(this.documentModelIdentification, idDocumentSubChecks.documentModelIdentification) &&
         Objects.equals(this.documentLivenessCheck, idDocumentSubChecks.documentLivenessCheck) &&
         Objects.equals(this.spoofedImageAnalysis, idDocumentSubChecks.spoofedImageAnalysis) &&
-        Objects.equals(this.faceLivenessCheck, idDocumentSubChecks.faceLivenessCheck);
+        Objects.equals(this.faceLivenessCheck, idDocumentSubChecks.faceLivenessCheck) &&
+        Objects.equals(this.dataIntegrityCheck, idDocumentSubChecks.dataIntegrityCheck) &&
+        Objects.equals(this.dataConsistencyCheck, idDocumentSubChecks.dataConsistencyCheck) &&
+        Objects.equals(this.ageValidationCheck, idDocumentSubChecks.ageValidationCheck);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, spoofedImageAnalysis, faceLivenessCheck);
+    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, spoofedImageAnalysis, faceLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck);
   }
 
   @Override
@@ -1102,6 +1335,9 @@ public class IdDocumentSubChecks {
     sb.append("    documentLivenessCheck: ").append(toIndentedString(documentLivenessCheck)).append("\n");
     sb.append("    spoofedImageAnalysis: ").append(toIndentedString(spoofedImageAnalysis)).append("\n");
     sb.append("    faceLivenessCheck: ").append(toIndentedString(faceLivenessCheck)).append("\n");
+    sb.append("    dataIntegrityCheck: ").append(toIndentedString(dataIntegrityCheck)).append("\n");
+    sb.append("    dataConsistencyCheck: ").append(toIndentedString(dataConsistencyCheck)).append("\n");
+    sb.append("    ageValidationCheck: ").append(toIndentedString(ageValidationCheck)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1137,17 +1373,20 @@ public class IdDocumentSubChecks {
     openapiFields.add("documentLivenessCheck");
     openapiFields.add("spoofedImageAnalysis");
     openapiFields.add("faceLivenessCheck");
+    openapiFields.add("dataIntegrityCheck");
+    openapiFields.add("dataConsistencyCheck");
+    openapiFields.add("ageValidationCheck");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to IdDocumentSubChecks
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to IdDocumentSubChecks
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!IdDocumentSubChecks.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -1254,6 +1493,27 @@ public class IdDocumentSubChecks {
       if (jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) {
         FaceLivenessCheckEnum.validateJsonElement(jsonObj.get("faceLivenessCheck"));
       }
+      if ((jsonObj.get("dataIntegrityCheck") != null && !jsonObj.get("dataIntegrityCheck").isJsonNull()) && !jsonObj.get("dataIntegrityCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dataIntegrityCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dataIntegrityCheck").toString()));
+      }
+      // validate the optional field `dataIntegrityCheck`
+      if (jsonObj.get("dataIntegrityCheck") != null && !jsonObj.get("dataIntegrityCheck").isJsonNull()) {
+        DataIntegrityCheckEnum.validateJsonElement(jsonObj.get("dataIntegrityCheck"));
+      }
+      if ((jsonObj.get("dataConsistencyCheck") != null && !jsonObj.get("dataConsistencyCheck").isJsonNull()) && !jsonObj.get("dataConsistencyCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dataConsistencyCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dataConsistencyCheck").toString()));
+      }
+      // validate the optional field `dataConsistencyCheck`
+      if (jsonObj.get("dataConsistencyCheck") != null && !jsonObj.get("dataConsistencyCheck").isJsonNull()) {
+        DataConsistencyCheckEnum.validateJsonElement(jsonObj.get("dataConsistencyCheck"));
+      }
+      if ((jsonObj.get("ageValidationCheck") != null && !jsonObj.get("ageValidationCheck").isJsonNull()) && !jsonObj.get("ageValidationCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ageValidationCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ageValidationCheck").toString()));
+      }
+      // validate the optional field `ageValidationCheck`
+      if (jsonObj.get("ageValidationCheck") != null && !jsonObj.get("ageValidationCheck").isJsonNull()) {
+        AgeValidationCheckEnum.validateJsonElement(jsonObj.get("ageValidationCheck"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -1285,22 +1545,22 @@ public class IdDocumentSubChecks {
     }
   }
 
- /**
-  * Create an instance of IdDocumentSubChecks given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of IdDocumentSubChecks
-  * @throws IOException if the JSON string is invalid with respect to IdDocumentSubChecks
-  */
+  /**
+   * Create an instance of IdDocumentSubChecks given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of IdDocumentSubChecks
+   * @throws IOException if the JSON string is invalid with respect to IdDocumentSubChecks
+   */
   public static IdDocumentSubChecks fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, IdDocumentSubChecks.class);
   }
 
- /**
-  * Convert an instance of IdDocumentSubChecks to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of IdDocumentSubChecks to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
