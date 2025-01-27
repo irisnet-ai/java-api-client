@@ -48,16 +48,17 @@ import de.irisnet.java.JSON;
 /**
  * Contains information about the credit cost of a check operation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Pricing {
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
+  @javax.annotation.Nullable
   private Long cost;
 
   public Pricing() {
   }
 
-  public Pricing cost(Long cost) {
+  public Pricing cost(@javax.annotation.Nullable Long cost) {
     this.cost = cost;
     return this;
   }
@@ -71,7 +72,7 @@ public class Pricing {
     return cost;
   }
 
-  public void setCost(Long cost) {
+  public void setCost(@javax.annotation.Nullable Long cost) {
     this.cost = cost;
   }
 

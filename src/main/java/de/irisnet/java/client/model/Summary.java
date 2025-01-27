@@ -50,44 +50,52 @@ import de.irisnet.java.JSON;
 /**
  * Summarizing the result of the AI.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Summary {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_BROKEN_RULES_COUNT = "brokenRulesCount";
   @SerializedName(SERIALIZED_NAME_BROKEN_RULES_COUNT)
+  @javax.annotation.Nullable
   private Integer brokenRulesCount;
 
   public static final String SERIALIZED_NAME_HELP_SUGGESTED = "helpSuggested";
   @SerializedName(SERIALIZED_NAME_HELP_SUGGESTED)
+  @javax.annotation.Nullable
   private Integer helpSuggested;
 
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)
+  @javax.annotation.Nullable
   private Integer severity;
 
   public static final String SERIALIZED_NAME_CREDITS_CONSUMED = "creditsConsumed";
   @SerializedName(SERIALIZED_NAME_CREDITS_CONSUMED)
+  @javax.annotation.Nullable
   private Integer creditsConsumed;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
   private Set<String> tags = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_REJECT_TAGS = "rejectTags";
   @SerializedName(SERIALIZED_NAME_REJECT_TAGS)
+  @javax.annotation.Nullable
   private Set<String> rejectTags = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_REJECT_REASONS = "rejectReasons";
   @SerializedName(SERIALIZED_NAME_REJECT_REASONS)
+  @javax.annotation.Nullable
   private Set<String> rejectReasons = new LinkedHashSet<>();
 
   public Summary() {
   }
 
-  public Summary status(String status) {
+  public Summary status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -101,12 +109,12 @@ public class Summary {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 
 
-  public Summary brokenRulesCount(Integer brokenRulesCount) {
+  public Summary brokenRulesCount(@javax.annotation.Nullable Integer brokenRulesCount) {
     this.brokenRulesCount = brokenRulesCount;
     return this;
   }
@@ -120,12 +128,12 @@ public class Summary {
     return brokenRulesCount;
   }
 
-  public void setBrokenRulesCount(Integer brokenRulesCount) {
+  public void setBrokenRulesCount(@javax.annotation.Nullable Integer brokenRulesCount) {
     this.brokenRulesCount = brokenRulesCount;
   }
 
 
-  public Summary helpSuggested(Integer helpSuggested) {
+  public Summary helpSuggested(@javax.annotation.Nullable Integer helpSuggested) {
     this.helpSuggested = helpSuggested;
     return this;
   }
@@ -139,12 +147,12 @@ public class Summary {
     return helpSuggested;
   }
 
-  public void setHelpSuggested(Integer helpSuggested) {
+  public void setHelpSuggested(@javax.annotation.Nullable Integer helpSuggested) {
     this.helpSuggested = helpSuggested;
   }
 
 
-  public Summary severity(Integer severity) {
+  public Summary severity(@javax.annotation.Nullable Integer severity) {
     this.severity = severity;
     return this;
   }
@@ -158,12 +166,12 @@ public class Summary {
     return severity;
   }
 
-  public void setSeverity(Integer severity) {
+  public void setSeverity(@javax.annotation.Nullable Integer severity) {
     this.severity = severity;
   }
 
 
-  public Summary creditsConsumed(Integer creditsConsumed) {
+  public Summary creditsConsumed(@javax.annotation.Nullable Integer creditsConsumed) {
     this.creditsConsumed = creditsConsumed;
     return this;
   }
@@ -177,12 +185,12 @@ public class Summary {
     return creditsConsumed;
   }
 
-  public void setCreditsConsumed(Integer creditsConsumed) {
+  public void setCreditsConsumed(@javax.annotation.Nullable Integer creditsConsumed) {
     this.creditsConsumed = creditsConsumed;
   }
 
 
-  public Summary tags(Set<String> tags) {
+  public Summary tags(@javax.annotation.Nullable Set<String> tags) {
     this.tags = tags;
     return this;
   }
@@ -204,12 +212,12 @@ public class Summary {
     return tags;
   }
 
-  public void setTags(Set<String> tags) {
+  public void setTags(@javax.annotation.Nullable Set<String> tags) {
     this.tags = tags;
   }
 
 
-  public Summary rejectTags(Set<String> rejectTags) {
+  public Summary rejectTags(@javax.annotation.Nullable Set<String> rejectTags) {
     this.rejectTags = rejectTags;
     return this;
   }
@@ -231,12 +239,12 @@ public class Summary {
     return rejectTags;
   }
 
-  public void setRejectTags(Set<String> rejectTags) {
+  public void setRejectTags(@javax.annotation.Nullable Set<String> rejectTags) {
     this.rejectTags = rejectTags;
   }
 
 
-  public Summary rejectReasons(Set<String> rejectReasons) {
+  public Summary rejectReasons(@javax.annotation.Nullable Set<String> rejectReasons) {
     this.rejectReasons = rejectReasons;
     return this;
   }
@@ -258,7 +266,7 @@ public class Summary {
     return rejectReasons;
   }
 
-  public void setRejectReasons(Set<String> rejectReasons) {
+  public void setRejectReasons(@javax.annotation.Nullable Set<String> rejectReasons) {
     this.rejectReasons = rejectReasons;
   }
 

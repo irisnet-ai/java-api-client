@@ -50,32 +50,37 @@ import de.irisnet.java.JSON;
 /**
  * Describes the current balance of the given license key. A key has a certain amount of credits that can be used for any kind of AI recognition. The license key is invalid, when all of the credits have been used, the license was disabled or expired.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class LicenseInfo {
   public static final String SERIALIZED_NAME_CREDITS_USED = "creditsUsed";
   @SerializedName(SERIALIZED_NAME_CREDITS_USED)
+  @javax.annotation.Nullable
   private Integer creditsUsed;
 
   public static final String SERIALIZED_NAME_CREDITS_REMAINING = "creditsRemaining";
   @SerializedName(SERIALIZED_NAME_CREDITS_REMAINING)
+  @javax.annotation.Nullable
   private Integer creditsRemaining;
 
   public static final String SERIALIZED_NAME_TOTAL_CREDITS = "totalCredits";
   @SerializedName(SERIALIZED_NAME_TOTAL_CREDITS)
+  @javax.annotation.Nullable
   private Integer totalCredits;
 
   public static final String SERIALIZED_NAME_LICENSE_KEY = "licenseKey";
   @SerializedName(SERIALIZED_NAME_LICENSE_KEY)
+  @javax.annotation.Nullable
   private String licenseKey;
 
   public static final String SERIALIZED_NAME_PRIVILEGES = "privileges";
   @SerializedName(SERIALIZED_NAME_PRIVILEGES)
+  @javax.annotation.Nullable
   private Map<String, String> privileges = new HashMap<>();
 
   public LicenseInfo() {
   }
 
-  public LicenseInfo creditsUsed(Integer creditsUsed) {
+  public LicenseInfo creditsUsed(@javax.annotation.Nullable Integer creditsUsed) {
     this.creditsUsed = creditsUsed;
     return this;
   }
@@ -89,12 +94,12 @@ public class LicenseInfo {
     return creditsUsed;
   }
 
-  public void setCreditsUsed(Integer creditsUsed) {
+  public void setCreditsUsed(@javax.annotation.Nullable Integer creditsUsed) {
     this.creditsUsed = creditsUsed;
   }
 
 
-  public LicenseInfo creditsRemaining(Integer creditsRemaining) {
+  public LicenseInfo creditsRemaining(@javax.annotation.Nullable Integer creditsRemaining) {
     this.creditsRemaining = creditsRemaining;
     return this;
   }
@@ -108,12 +113,12 @@ public class LicenseInfo {
     return creditsRemaining;
   }
 
-  public void setCreditsRemaining(Integer creditsRemaining) {
+  public void setCreditsRemaining(@javax.annotation.Nullable Integer creditsRemaining) {
     this.creditsRemaining = creditsRemaining;
   }
 
 
-  public LicenseInfo totalCredits(Integer totalCredits) {
+  public LicenseInfo totalCredits(@javax.annotation.Nullable Integer totalCredits) {
     this.totalCredits = totalCredits;
     return this;
   }
@@ -127,12 +132,12 @@ public class LicenseInfo {
     return totalCredits;
   }
 
-  public void setTotalCredits(Integer totalCredits) {
+  public void setTotalCredits(@javax.annotation.Nullable Integer totalCredits) {
     this.totalCredits = totalCredits;
   }
 
 
-  public LicenseInfo licenseKey(String licenseKey) {
+  public LicenseInfo licenseKey(@javax.annotation.Nullable String licenseKey) {
     this.licenseKey = licenseKey;
     return this;
   }
@@ -146,12 +151,12 @@ public class LicenseInfo {
     return licenseKey;
   }
 
-  public void setLicenseKey(String licenseKey) {
+  public void setLicenseKey(@javax.annotation.Nullable String licenseKey) {
     this.licenseKey = licenseKey;
   }
 
 
-  public LicenseInfo privileges(Map<String, String> privileges) {
+  public LicenseInfo privileges(@javax.annotation.Nullable Map<String, String> privileges) {
     this.privileges = privileges;
     return this;
   }
@@ -173,7 +178,7 @@ public class LicenseInfo {
     return privileges;
   }
 
-  public void setPrivileges(Map<String, String> privileges) {
+  public void setPrivileges(@javax.annotation.Nullable Map<String, String> privileges) {
     this.privileges = privileges;
   }
 

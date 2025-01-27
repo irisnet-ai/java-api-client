@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,107 +48,103 @@ import de.irisnet.java.JSON;
 /**
  * Describes the bounds of a rectangle starting from the center.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Rectangle {
   public static final String SERIALIZED_NAME_X0 = "x0";
   @SerializedName(SERIALIZED_NAME_X0)
+  @javax.annotation.Nullable
   private Float x0;
 
   public static final String SERIALIZED_NAME_Y0 = "y0";
   @SerializedName(SERIALIZED_NAME_Y0)
+  @javax.annotation.Nullable
   private Float y0;
 
   public static final String SERIALIZED_NAME_WIDTH = "width";
   @SerializedName(SERIALIZED_NAME_WIDTH)
+  @javax.annotation.Nullable
   private Float width;
 
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
+  @javax.annotation.Nullable
   private Float height;
 
   public Rectangle() {
   }
 
-  public Rectangle x0(Float x0) {
-    
+  public Rectangle x0(@javax.annotation.Nullable Float x0) {
     this.x0 = x0;
     return this;
   }
 
-   /**
+  /**
    * The center of the rectangle in the horizontal (x) direction.
    * @return x0
-  **/
+   */
   @javax.annotation.Nullable
   public Float getX0() {
     return x0;
   }
 
-
-  public void setX0(Float x0) {
+  public void setX0(@javax.annotation.Nullable Float x0) {
     this.x0 = x0;
   }
 
 
-  public Rectangle y0(Float y0) {
-    
+  public Rectangle y0(@javax.annotation.Nullable Float y0) {
     this.y0 = y0;
     return this;
   }
 
-   /**
+  /**
    * The center of the rectangle in the vertical (y) direction.
    * @return y0
-  **/
+   */
   @javax.annotation.Nullable
   public Float getY0() {
     return y0;
   }
 
-
-  public void setY0(Float y0) {
+  public void setY0(@javax.annotation.Nullable Float y0) {
     this.y0 = y0;
   }
 
 
-  public Rectangle width(Float width) {
-    
+  public Rectangle width(@javax.annotation.Nullable Float width) {
     this.width = width;
     return this;
   }
 
-   /**
+  /**
    * The total width of the rectangle in the horizontal (x) direction. Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges of the rectangle.
    * @return width
-  **/
+   */
   @javax.annotation.Nullable
   public Float getWidth() {
     return width;
   }
 
-
-  public void setWidth(Float width) {
+  public void setWidth(@javax.annotation.Nullable Float width) {
     this.width = width;
   }
 
 
-  public Rectangle height(Float height) {
-    
+  public Rectangle height(@javax.annotation.Nullable Float height) {
     this.height = height;
     return this;
   }
 
-   /**
+  /**
    * The total height of the rectangle in the vertical (y) direction. Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom edges of the rectangle.
    * @return height
-  **/
+   */
   @javax.annotation.Nullable
   public Float getHeight() {
     return height;
   }
 
-
-  public void setHeight(Float height) {
+  public void setHeight(@javax.annotation.Nullable Float height) {
     this.height = height;
   }
 
@@ -214,12 +209,12 @@ public class Rectangle {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Rectangle
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Rectangle
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Rectangle.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -266,22 +261,22 @@ public class Rectangle {
     }
   }
 
- /**
-  * Create an instance of Rectangle given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Rectangle
-  * @throws IOException if the JSON string is invalid with respect to Rectangle
-  */
+  /**
+   * Create an instance of Rectangle given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Rectangle
+   * @throws IOException if the JSON string is invalid with respect to Rectangle
+   */
   public static Rectangle fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Rectangle.class);
   }
 
- /**
-  * Convert an instance of Rectangle to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Rectangle to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

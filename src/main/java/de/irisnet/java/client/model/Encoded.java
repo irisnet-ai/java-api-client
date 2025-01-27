@@ -47,56 +47,54 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Contains the resulting media as base64 encoded string or an URL to download that media.
+ * Contains the resulting media as a data URL (RFC 2397) encoded string or an URL to download that media.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Encoded {
   public static final String SERIALIZED_NAME_NAME = "name";
-  @Deprecated
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private File data;
 
   public static final String SERIALIZED_NAME_DOWNLOAD_URL = "downloadUrl";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD_URL)
+  @javax.annotation.Nullable
   private String downloadUrl;
 
   public Encoded() {
   }
 
-  @Deprecated
-  public Encoded name(String name) {
+  public Encoded name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * &lt;s&gt;The original filename of the image or video.&lt;/s&gt; Contains a randomly generated filename. &lt;b&gt;This property will be removed in future releases.&lt;/b&gt;
+   * Contains a randomly generated filename, might be null.
    * @return name
-   * @deprecated
    */
-  @Deprecated
   @javax.annotation.Nullable
   public String getName() {
     return name;
   }
 
-  @Deprecated
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public Encoded data(File data) {
+  public Encoded data(@javax.annotation.Nullable File data) {
     this.data = data;
     return this;
   }
 
   /**
-   * The encoded image in base64 format.
+   * The encoded image in data URL format (RFC 2397).
    * @return data
    */
   @javax.annotation.Nullable
@@ -104,12 +102,12 @@ public class Encoded {
     return data;
   }
 
-  public void setData(File data) {
+  public void setData(@javax.annotation.Nullable File data) {
     this.data = data;
   }
 
 
-  public Encoded downloadUrl(String downloadUrl) {
+  public Encoded downloadUrl(@javax.annotation.Nullable String downloadUrl) {
     this.downloadUrl = downloadUrl;
     return this;
   }
@@ -123,7 +121,7 @@ public class Encoded {
     return downloadUrl;
   }
 
-  public void setDownloadUrl(String downloadUrl) {
+  public void setDownloadUrl(@javax.annotation.Nullable String downloadUrl) {
     this.downloadUrl = downloadUrl;
   }
 

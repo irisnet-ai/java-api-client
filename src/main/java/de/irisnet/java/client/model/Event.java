@@ -48,32 +48,37 @@ import de.irisnet.java.JSON;
 /**
  * Describes an event that lead to a broken rule.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Event {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
+  @javax.annotation.Nullable
   private String classification;
 
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
+  @javax.annotation.Nullable
   private String group;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
+  @javax.annotation.Nullable
   private Float start;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private Float duration;
 
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)
+  @javax.annotation.Nullable
   private Integer severity;
 
   public Event() {
   }
 
-  public Event classification(String classification) {
+  public Event classification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
     return this;
   }
@@ -87,12 +92,12 @@ public class Event {
     return classification;
   }
 
-  public void setClassification(String classification) {
+  public void setClassification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
   }
 
 
-  public Event group(String group) {
+  public Event group(@javax.annotation.Nullable String group) {
     this.group = group;
     return this;
   }
@@ -106,12 +111,12 @@ public class Event {
     return group;
   }
 
-  public void setGroup(String group) {
+  public void setGroup(@javax.annotation.Nullable String group) {
     this.group = group;
   }
 
 
-  public Event start(Float start) {
+  public Event start(@javax.annotation.Nullable Float start) {
     this.start = start;
     return this;
   }
@@ -125,12 +130,12 @@ public class Event {
     return start;
   }
 
-  public void setStart(Float start) {
+  public void setStart(@javax.annotation.Nullable Float start) {
     this.start = start;
   }
 
 
-  public Event duration(Float duration) {
+  public Event duration(@javax.annotation.Nullable Float duration) {
     this.duration = duration;
     return this;
   }
@@ -144,12 +149,12 @@ public class Event {
     return duration;
   }
 
-  public void setDuration(Float duration) {
+  public void setDuration(@javax.annotation.Nullable Float duration) {
     this.duration = duration;
   }
 
 
-  public Event severity(Integer severity) {
+  public Event severity(@javax.annotation.Nullable Integer severity) {
     this.severity = severity;
     return this;
   }
@@ -163,7 +168,7 @@ public class Event {
     return severity;
   }
 
-  public void setSeverity(Integer severity) {
+  public void setSeverity(@javax.annotation.Nullable Integer severity) {
     this.severity = severity;
   }
 

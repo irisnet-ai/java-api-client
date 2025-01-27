@@ -21,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.AgeEstimationAttribute;
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
-import de.irisnet.java.client.model.BaseDetection;
+import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,33 +55,158 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _ageEstimation_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
-public class AgeEstimationDetection extends BaseDetection {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+public class AgeEstimationDetection extends Detection {
+  public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
+  @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
+  @javax.annotation.Nullable
+  private String classification;
+
+  public static final String SERIALIZED_NAME_GROUP = "group";
+  @SerializedName(SERIALIZED_NAME_GROUP)
+  @javax.annotation.Nullable
+  private String group;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private Integer id;
+
+  public static final String SERIALIZED_NAME_PROBABILITY = "probability";
+  @SerializedName(SERIALIZED_NAME_PROBABILITY)
+  @javax.annotation.Nullable
+  private Integer probability;
+
+  public static final String SERIALIZED_NAME_COORDINATES = "coordinates";
+  @SerializedName(SERIALIZED_NAME_COORDINATES)
+  @javax.annotation.Nullable
+  private Coordinates coordinates;
+
   public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
   @SerializedName(SERIALIZED_NAME_CHECK_ID)
+  @javax.annotation.Nullable
   private String checkId;
 
   public static final String SERIALIZED_NAME_FACE_SIMILARITY = "faceSimilarity";
   @SerializedName(SERIALIZED_NAME_FACE_SIMILARITY)
+  @javax.annotation.Nullable
   private Integer faceSimilarity;
 
   public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE = "faceLivenessCheckScore";
   @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE)
+  @javax.annotation.Nullable
   private Integer faceLivenessCheckScore;
 
   public static final String SERIALIZED_NAME_PROCESSED_CHECKS = "processedChecks";
   @SerializedName(SERIALIZED_NAME_PROCESSED_CHECKS)
+  @javax.annotation.Nullable
   private AgeEstimationSubChecks processedChecks;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nullable
   private List<AgeEstimationAttribute> attributes = new ArrayList<>();
 
   public AgeEstimationDetection() {
     this.type = this.getClass().getSimpleName();
   }
 
-  public AgeEstimationDetection checkId(String checkId) {
+  public AgeEstimationDetection classification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+    return this;
+  }
+
+  /**
+   * The classification of the recognized object.
+   * @return classification
+   */
+  @javax.annotation.Nullable
+  public String getClassification() {
+    return classification;
+  }
+
+  public void setClassification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+  }
+
+
+  public AgeEstimationDetection group(@javax.annotation.Nullable String group) {
+    this.group = group;
+    return this;
+  }
+
+  /**
+   * The group of the classification.
+   * @return group
+   */
+  @javax.annotation.Nullable
+  public String getGroup() {
+    return group;
+  }
+
+  public void setGroup(@javax.annotation.Nullable String group) {
+    this.group = group;
+  }
+
+
+  public AgeEstimationDetection id(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The id of the detection object.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+  }
+
+
+  public AgeEstimationDetection probability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+    return this;
+  }
+
+  /**
+   * The probability that the object found matches the classification.
+   * @return probability
+   */
+  @javax.annotation.Nullable
+  public Integer getProbability() {
+    return probability;
+  }
+
+  public void setProbability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+  }
+
+
+  public AgeEstimationDetection coordinates(@javax.annotation.Nullable Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+  /**
+   * Get coordinates
+   * @return coordinates
+   */
+  @javax.annotation.Nullable
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+  public void setCoordinates(@javax.annotation.Nullable Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
+
+  public AgeEstimationDetection checkId(@javax.annotation.Nullable String checkId) {
     this.checkId = checkId;
     return this;
   }
@@ -93,12 +220,12 @@ public class AgeEstimationDetection extends BaseDetection {
     return checkId;
   }
 
-  public void setCheckId(String checkId) {
+  public void setCheckId(@javax.annotation.Nullable String checkId) {
     this.checkId = checkId;
   }
 
 
-  public AgeEstimationDetection faceSimilarity(Integer faceSimilarity) {
+  public AgeEstimationDetection faceSimilarity(@javax.annotation.Nullable Integer faceSimilarity) {
     this.faceSimilarity = faceSimilarity;
     return this;
   }
@@ -112,12 +239,12 @@ public class AgeEstimationDetection extends BaseDetection {
     return faceSimilarity;
   }
 
-  public void setFaceSimilarity(Integer faceSimilarity) {
+  public void setFaceSimilarity(@javax.annotation.Nullable Integer faceSimilarity) {
     this.faceSimilarity = faceSimilarity;
   }
 
 
-  public AgeEstimationDetection faceLivenessCheckScore(Integer faceLivenessCheckScore) {
+  public AgeEstimationDetection faceLivenessCheckScore(@javax.annotation.Nullable Integer faceLivenessCheckScore) {
     this.faceLivenessCheckScore = faceLivenessCheckScore;
     return this;
   }
@@ -131,12 +258,12 @@ public class AgeEstimationDetection extends BaseDetection {
     return faceLivenessCheckScore;
   }
 
-  public void setFaceLivenessCheckScore(Integer faceLivenessCheckScore) {
+  public void setFaceLivenessCheckScore(@javax.annotation.Nullable Integer faceLivenessCheckScore) {
     this.faceLivenessCheckScore = faceLivenessCheckScore;
   }
 
 
-  public AgeEstimationDetection processedChecks(AgeEstimationSubChecks processedChecks) {
+  public AgeEstimationDetection processedChecks(@javax.annotation.Nullable AgeEstimationSubChecks processedChecks) {
     this.processedChecks = processedChecks;
     return this;
   }
@@ -150,12 +277,12 @@ public class AgeEstimationDetection extends BaseDetection {
     return processedChecks;
   }
 
-  public void setProcessedChecks(AgeEstimationSubChecks processedChecks) {
+  public void setProcessedChecks(@javax.annotation.Nullable AgeEstimationSubChecks processedChecks) {
     this.processedChecks = processedChecks;
   }
 
 
-  public AgeEstimationDetection attributes(List<AgeEstimationAttribute> attributes) {
+  public AgeEstimationDetection attributes(@javax.annotation.Nullable List<AgeEstimationAttribute> attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -177,7 +304,7 @@ public class AgeEstimationDetection extends BaseDetection {
     return attributes;
   }
 
-  public void setAttributes(List<AgeEstimationAttribute> attributes) {
+  public void setAttributes(@javax.annotation.Nullable List<AgeEstimationAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -192,7 +319,12 @@ public class AgeEstimationDetection extends BaseDetection {
       return false;
     }
     AgeEstimationDetection ageEstimationDetection = (AgeEstimationDetection) o;
-    return Objects.equals(this.checkId, ageEstimationDetection.checkId) &&
+    return Objects.equals(this.classification, ageEstimationDetection.classification) &&
+        Objects.equals(this.group, ageEstimationDetection.group) &&
+        Objects.equals(this.id, ageEstimationDetection.id) &&
+        Objects.equals(this.probability, ageEstimationDetection.probability) &&
+        Objects.equals(this.coordinates, ageEstimationDetection.coordinates) &&
+        Objects.equals(this.checkId, ageEstimationDetection.checkId) &&
         Objects.equals(this.faceSimilarity, ageEstimationDetection.faceSimilarity) &&
         Objects.equals(this.faceLivenessCheckScore, ageEstimationDetection.faceLivenessCheckScore) &&
         Objects.equals(this.processedChecks, ageEstimationDetection.processedChecks) &&
@@ -202,7 +334,7 @@ public class AgeEstimationDetection extends BaseDetection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkId, faceSimilarity, faceLivenessCheckScore, processedChecks, attributes, super.hashCode());
+    return Objects.hash(classification, group, id, probability, coordinates, checkId, faceSimilarity, faceLivenessCheckScore, processedChecks, attributes, super.hashCode());
   }
 
   @Override
@@ -210,6 +342,11 @@ public class AgeEstimationDetection extends BaseDetection {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgeEstimationDetection {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
+    sb.append("    group: ").append(toIndentedString(group)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    checkId: ").append(toIndentedString(checkId)).append("\n");
     sb.append("    faceSimilarity: ").append(toIndentedString(faceSimilarity)).append("\n");
     sb.append("    faceLivenessCheckScore: ").append(toIndentedString(faceLivenessCheckScore)).append("\n");
@@ -238,6 +375,11 @@ public class AgeEstimationDetection extends BaseDetection {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
+    openapiFields.add("classification");
+    openapiFields.add("group");
+    openapiFields.add("id");
+    openapiFields.add("probability");
+    openapiFields.add("coordinates");
     openapiFields.add("attributes");
     openapiFields.add("subDetections");
     openapiFields.add("checkId");
@@ -249,10 +391,10 @@ public class AgeEstimationDetection extends BaseDetection {
     openapiFields.add("documentBackLivenessScore");
     openapiFields.add("processedChecks");
     openapiFields.add("documentHolderId");
+    openapiFields.add("knownFaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
   /**
@@ -273,13 +415,6 @@ public class AgeEstimationDetection extends BaseDetection {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AgeEstimationDetection.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgeEstimationDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AgeEstimationDetection.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
   }

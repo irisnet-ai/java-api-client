@@ -32,6 +32,8 @@ import de.irisnet.java.client.model.Callback;
 import de.irisnet.java.client.model.CheckResult;
 import de.irisnet.java.client.model.Data;
 import de.irisnet.java.client.model.DocumentCheckRequestData;
+import de.irisnet.java.client.model.LiveDocumentCheckRequestData;
+import de.irisnet.java.client.model.LiveDocumentCheckResponseData;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -85,7 +87,8 @@ public class AiCheckOperationsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
@@ -155,13 +158,14 @@ public class AiCheckOperationsApi {
 
     /**
      * Check an id document with the AI.
-     * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+     * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param documentCheckRequestData The DocumentCheckRequestData containing data needed for the id document check. (required)
      * @return CheckResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
@@ -174,13 +178,14 @@ public class AiCheckOperationsApi {
 
     /**
      * Check an id document with the AI.
-     * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+     * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param documentCheckRequestData The DocumentCheckRequestData containing data needed for the id document check. (required)
      * @return ApiResponse&lt;CheckResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
@@ -194,14 +199,15 @@ public class AiCheckOperationsApi {
 
     /**
      * Check an id document with the AI. (asynchronously)
-     * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+     * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param documentCheckRequestData The DocumentCheckRequestData containing data needed for the id document check. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
@@ -225,7 +231,8 @@ public class AiCheckOperationsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -312,7 +319,8 @@ public class AiCheckOperationsApi {
      * @return CheckResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -335,7 +343,8 @@ public class AiCheckOperationsApi {
      * @return ApiResponse&lt;CheckResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -360,7 +369,8 @@ public class AiCheckOperationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -385,7 +395,8 @@ public class AiCheckOperationsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -480,7 +491,8 @@ public class AiCheckOperationsApi {
      * @return List&lt;CheckResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -503,7 +515,8 @@ public class AiCheckOperationsApi {
      * @return ApiResponse&lt;List&lt;CheckResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -528,7 +541,8 @@ public class AiCheckOperationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
@@ -554,11 +568,12 @@ public class AiCheckOperationsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoCall(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -655,11 +670,12 @@ public class AiCheckOperationsApi {
      * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. (optional, default to 0)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void checkVideo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
@@ -678,11 +694,12 @@ public class AiCheckOperationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> checkVideoWithHttpInfo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
@@ -703,17 +720,159 @@ public class AiCheckOperationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoAsync(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, callback, detail, imageEncode, checkRate, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for liveDocumentCheck
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param liveDocumentCheckRequestData The LiveDocumentCheckRequestData containing data needed for the live id document check. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call liveDocumentCheckCall(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = liveDocumentCheckRequestData;
+
+        // create path and map variables
+        String localVarPath = "/v2/check-live-id-document/{configId}"
+            .replace("{" + "configId" + "}", localVarApiClient.escapeString(configId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "LICENSE-KEY" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call liveDocumentCheckValidateBeforeCall(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'configId' is set
+        if (configId == null) {
+            throw new ApiException("Missing the required parameter 'configId' when calling liveDocumentCheck(Async)");
+        }
+
+        // verify the required parameter 'liveDocumentCheckRequestData' is set
+        if (liveDocumentCheckRequestData == null) {
+            throw new ApiException("Missing the required parameter 'liveDocumentCheckRequestData' when calling liveDocumentCheck(Async)");
+        }
+
+        return liveDocumentCheckCall(configId, liveDocumentCheckRequestData, _callback);
+
+    }
+
+    /**
+     * Start a guided live id document check with the AI.
+     * The synchronous response (_LiveDocumentCheckResponseData_ schema) contains an eventId, possibly a token and an URL to send the enduser to. The actual result (_CheckResult_ schema) of the document check is sent to the provided _callbackUrl_ after the AI has finished processing.
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param liveDocumentCheckRequestData The LiveDocumentCheckRequestData containing data needed for the live id document check. (required)
+     * @return LiveDocumentCheckResponseData
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+     </table>
+     */
+    public LiveDocumentCheckResponseData liveDocumentCheck(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
+        ApiResponse<LiveDocumentCheckResponseData> localVarResp = liveDocumentCheckWithHttpInfo(configId, liveDocumentCheckRequestData);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Start a guided live id document check with the AI.
+     * The synchronous response (_LiveDocumentCheckResponseData_ schema) contains an eventId, possibly a token and an URL to send the enduser to. The actual result (_CheckResult_ schema) of the document check is sent to the provided _callbackUrl_ after the AI has finished processing.
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param liveDocumentCheckRequestData The LiveDocumentCheckRequestData containing data needed for the live id document check. (required)
+     * @return ApiResponse&lt;LiveDocumentCheckResponseData&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LiveDocumentCheckResponseData> liveDocumentCheckWithHttpInfo(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
+        okhttp3.Call localVarCall = liveDocumentCheckValidateBeforeCall(configId, liveDocumentCheckRequestData, null);
+        Type localVarReturnType = new TypeToken<LiveDocumentCheckResponseData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Start a guided live id document check with the AI. (asynchronously)
+     * The synchronous response (_LiveDocumentCheckResponseData_ schema) contains an eventId, possibly a token and an URL to send the enduser to. The actual result (_CheckResult_ schema) of the document check is sent to the provided _callbackUrl_ after the AI has finished processing.
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param liveDocumentCheckRequestData The LiveDocumentCheckRequestData containing data needed for the live id document check. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call liveDocumentCheckAsync(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback<LiveDocumentCheckResponseData> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = liveDocumentCheckValidateBeforeCall(configId, liveDocumentCheckRequestData, _callback);
+        Type localVarReturnType = new TypeToken<LiveDocumentCheckResponseData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

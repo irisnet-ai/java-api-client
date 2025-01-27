@@ -27,7 +27,7 @@ tags:
   name: Configuration Management
 - description: Configure the AI in detail with specific parameters.
   name: Detailed configuration parameters
-- description: Check images or a moving images with the AI.
+- description: AI related checks.
   name: AI check operations
 - description: Retrieve license key information or find out how many credits a check
     operation will cost.
@@ -48,14 +48,14 @@ paths:
           type: string
         style: simple
       responses:
+        "204":
+          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "204":
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete the parameters of the AI configuration.
@@ -78,12 +78,6 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation.
         "404":
           content:
             application/json:
@@ -91,6 +85,12 @@ paths:
                 $ref: '#/components/schemas/ApiNotice'
           description: configuration with given id not found or parameters for configuration
             not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get the parameters of the AI configuration.
@@ -206,8 +206,6 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
-        "204":
-          description: successful operation. No previously configured parameters exist.
         "404":
           content:
             application/json:
@@ -220,6 +218,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Bad request. Check for badly formatted request body.
+        "204":
+          description: successful operation. No previously configured parameters exist.
         "200":
           content:
             application/json:
@@ -432,14 +432,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
+        "202":
+          description: "operation accepted: wait for callback."
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "202":
-          description: "operation accepted: wait for callback."
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -535,6 +535,64 @@ paths:
       - AI check operations
       x-accepts:
       - application/x-ndjson
+  /v2/check-live-id-document/{configId}:
+    post:
+      description: "The synchronous response (_LiveDocumentCheckResponseData_ schema)\
+        \ contains an eventId, possibly a token and an URL to send the enduser to.\
+        \ The actual result (_CheckResult_ schema) of the document check is sent to\
+        \ the provided _callbackUrl_ after the AI has finished processing."
+      operationId: liveDocumentCheck
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Simple Callback:
+                description: Simple Callback
+                value:
+                  callback:
+                    callbackUrl: https://www.example.com/callback?liveident
+                  endUserRedirectUrl: https://www.example.com/user
+            schema:
+              $ref: '#/components/schemas/LiveDocumentCheckRequestData'
+        description: The LiveDocumentCheckRequestData containing data needed for the
+          live id document check.
+        required: true
+      responses:
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "202":
+          content:
+            application/json:
+              example:
+                identToken: eyJhbGciOiJIUzI1NiJ9.eyJtc2ciOiJ5b3UgYXJlIGFibGUgdG8gZGVjb2RlIGJhc2U2NCJ9.peoj1-UI-1c-3D7Zqc4DwgM4gLIu-6vQgdQc833BC3g
+                eventId: 6b26872e-cb1b-4265-ab1d-198412c44ef7
+                endUserIdentUrl: https://irisidentity.ui/identify?token=eyJhbGciOiJIUzI1NiJ9.eyJtc2ciOiJ5b3UgYXJlIGFibGUgdG8gZGVjb2RlIGJhc2U2NCJ9.peoj1-UI-1c-3D7Zqc4DwgM4gLIu-6vQgdQc833BC3g
+              schema:
+                $ref: '#/components/schemas/LiveDocumentCheckResponseData'
+          description: "Input accepted: Send enduser to endUserIdentUrl and wait for\
+            \ status/callback."
+      security:
+      - LICENSE-KEY: []
+      summary: Start a guided live id document check with the AI.
+      tags:
+      - AI check operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /v2/check-image/{configId}:
     post:
       description: The response (_CheckResult_ schema) is returned immediately after
@@ -635,7 +693,7 @@ paths:
     post:
       description: The response (_CheckResult_ schema) containing only the checkId
         and possibly ApiNotices is returned immediately after the request. The actual
-        body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has
+        body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has
         finished processing.
       operationId: checkIdDocument
       parameters:
@@ -742,12 +800,6 @@ paths:
           type: integer
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "429":
           content:
             application/json:
@@ -763,6 +815,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -806,12 +864,12 @@ paths:
           type: integer
         style: simple
       responses:
-        "404":
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -821,12 +879,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -850,12 +908,12 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+                $ref: '#/components/schemas/Pricing'
+          description: The cost of the given configuration.
         "429":
           content:
             application/json:
@@ -865,12 +923,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "200":
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pricing'
-          description: The cost of the given configuration.
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -893,14 +951,14 @@ paths:
           type: string
         style: simple
       responses:
+        "204":
+          description: successful operation.
         "404":
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "204":
-          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Delete an AI configuration.
@@ -943,452 +1001,6 @@ paths:
       - application/json
 components:
   schemas:
-    Param:
-      description: "A single parameter set for one classification, for example face,\
-        \ describing the behaviour of the AI. Each classification has default parameters\
-        \ that are set if these are empty."
-      example:
-        severity: 100
-        min: 0
-        drawMode: 4
-        max: 0
-        scale: 1.7656269
-        ignore: false
-        classification: face
-        grey: 237
-      properties:
-        classification:
-          description: |-
-            The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of 'min', 'max' and 'drawMode' are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications.
-            ##### nudityCheck
-            > _A prototype containing classifications for basic human attributes and sexual contents. This prototype and the containing classifications are activated by default_
-            * _face_ _(1, 3, 0)_
-            * _hand_ _(0, -1, 0)_
-            * _foot_ _(0, -1, 0)_
-            * _footwear_ _(0, -1, 0)_
-            * _chest_ _(0, -1, 0)_
-            * _breast_ _(0, 0, 2)_
-            * _vulva_ _(0, 0, 2)_
-            * _penis_ _(0, 0, 2)_
-            * _vagina_ _(0, 0, 2)_
-            * _buttocks_ _(0, 0, 2)_
-            * _anus_ _(0, 0, 2)_
-            * _toy_ _(0, -1, 0)_
-            * _oral_ _(0, 0, 2)_
-            * _penetration_ _(0, 0, 2)_
-            * _bondage_ _(0, -1, 0)_
-            * _gag_ _(0, -1, 0)_
-            ##### ageEstimation
-            > _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_
-            * _child (*)_ _(0, 0, 6)_
-            * _adult (*)_ _(0, -1, 0)_
-            * _senior (*)_ _(0, -1, 0)_
-            * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features.
-            ##### attributesCheck
-            > _Contains classification objects for various attributes of the human face. This prototype activates nudityCheck_
-            * _female (*)_ _(0, -1, 0)_
-            * _male (*)_ _(0, -1, 0)_
-            * _hair_ _(0, -1, 0)_
-            * _hairless_ _(0, -1, 0)_
-            * _beard_ _(0, -1, 0)_
-            * _moustache_ _(0, -1, 0)_
-            * _headpiece_ _(0, -1, 0)_
-            * _glasses_ _(0, -1, 0)_
-            * _sunglasses_ _(0, -1, 0)_
-            * _mask_ _(0, -1, 0)_
-            * _slimSizedFace (*)_ _(0, -1, 0)_
-            * _realSizedFace (*)_ _(0, -1, 0)_
-            * _plusSizedFace (*)_ _(0, -1, 0)_
-            ##### nippleCheck
-            > _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_
-            * _noNipple_ _(0, -1, 0)_
-            * _hasNipple_ _(0, 0, 0)_
-            ##### bodyAttributes
-            > _Contains classification objects for determining the body size._
-            * _slimSized_ _(0, -1, 0)_
-            * _realSized_ _(0, -1, 0)_
-            * _plusSized_ _(0, -1, 0)_
-            ##### illegalSymbols
-            > _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_
-            * _illegalSymbols_ _(0, 0, 1)_
-            ##### unwantedSubstances
-            > _Contains classification objects for different substances._
-            * _beer_ _(0, -1, 0)_
-            * _beerBottle_ _(0, -1, 0)_
-            * _beerCan_ _(0, -1, 0)_
-            * _wine_ _(0, -1, 0)_
-            * _wineBottle_ _(0, -1, 0)_
-            * _cocktail_ _(0, -1, 0)_
-            * _alcohol_ _(0, -1, 0)_
-            * _cannabis_ _(0, 0, 0)_
-            * _cigarette_ _(0, 0, 0)_
-            * _cocaine_ _(0, 0, 0)_
-            * _heroine_ _(0, 0, 0)_
-            * _coffee_ _(0, -1, 0)_
-            ##### violenceCheck
-            > _Contains classification objects for violent items or acts._
-            * _camouflage_ _(0, -1, 0)_
-            * _club_ _(0, -1, 0)_
-            * _knife_ _(0, 0, 0)_
-            * _sword_ _(0, 0, 0)_
-            * _pistol_ _(0, 0, 0)_
-            * _rifle_ _(0, 0, 0)_
-            * _cannon_ _(0, 0, 0)_
-            * _fire_ _(0, -1, 0)_
-            ##### selfieCheck
-            > _Classification objects representing various pre-defined poses for the selfie task._
-            * _hand2mouth_ _(0, 1, 0)_
-            * _point2nose_ _(0, 1, 0)_
-            * _relaxed_ _(0, 1, 0)_
-            * _point2chin_ _(0, 1, 0)_
-            * _hand2cheek_ _(0, 1, 0)_
-            * _excellent_ _(0, 1, 0)_
-            * _nice_ _(0, 1, 0)_
-            * _thinking_ _(0, 1, 0)_
-            * _thumbUp_ _(0, 1, 0)_
-            * _victory_ _(0, 1, 0)_
-            * _lookout_ _(0, 1, 0)_
-            * _fingerUp_ _(0, 1, 0)_
-            * _middleFinger_ _(0, 0, 0)_
-            ##### textRecognition
-            > _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_
-            * _textRecognition_ _(0, 6, 6)_
-
-            _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._
-
-            _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
-          enum:
-          - face
-          - hand
-          - foot
-          - footwear
-          - chest
-          - breast
-          - vulva
-          - penis
-          - vagina
-          - buttocks
-          - anus
-          - oral
-          - penetration
-          - toy
-          - bondage
-          - gag
-          - child
-          - adult
-          - senior
-          - pose
-          - female
-          - male
-          - hair
-          - hairless
-          - beard
-          - moustache
-          - headpiece
-          - glasses
-          - sunglasses
-          - mask
-          - slimSizedFace
-          - realSizedFace
-          - plusSizedFace
-          - slimSized
-          - realSized
-          - plusSized
-          - noNipple
-          - hasNipple
-          - beer
-          - beerBottle
-          - beerCan
-          - wine
-          - wineBottle
-          - cocktail
-          - alcohol
-          - cannabis
-          - cigarette
-          - cocaine
-          - heroine
-          - coffee
-          - camouflage
-          - club
-          - knife
-          - sword
-          - pistol
-          - rifle
-          - cannon
-          - fire
-          - hand2mouth
-          - point2nose
-          - relaxed
-          - point2chin
-          - hand2cheek
-          - excellent
-          - nice
-          - thinking
-          - thumbUp
-          - victory
-          - lookout
-          - fingerUp
-          - middleFinger
-          - nudityCheck
-          - ageVerification
-          - ageEstimation
-          - illegalSymbols
-          - textRecognition
-          - attributesCheck
-          - bodyAttributes
-          - nippleCheck
-          - unwantedSubstances
-          - violenceCheck
-          - selfieCheck
-          example: face
-          type: string
-        min:
-          description: The minimum amount of objects allowed on the image. Setting
-            the value to -1 will cause the AI to ignore this rule. For moving images
-            this value is applied to a single frame.
-          format: int32
-          minimum: -1
-          type: integer
-        max:
-          description: The maximum amount of objects allowed on the image. Setting
-            the value to -1 will cause the AI to ignore this rule. For moving images
-            this value is applied to a single frame.
-          format: int32
-          minimum: -1
-          type: integer
-        severity:
-          default: 100
-          description: Set a value to define the severity of a broken rule of the
-            given classification object.
-          example: 100
-          format: int32
-          maximum: 999
-          minimum: 0
-          type: integer
-        drawMode:
-          description: "Set if and how a classification object should be drawn over.\
-            \ \n* _0_ - will draw nothing,\n* _1_ - will draw a frame with class name\
-            \ surrounding the object,\n* _2_ - will draw a filled rectangle that will\
-            \ mask the object,\n* _3_ - is a combination between _1_ and _2_ (frame/name\
-            \ + mask),\n* _6_ - will blur the object and\n* _7_ - is a combination\
-            \ between _1_ and _6_ (frame/name + blur)."
-          format: int32
-          maximum: 7
-          minimum: 0
-          type: integer
-        grey:
-          default: 127
-          description: "A grey scale color used in combination of _drawMode_ '2' or\
-            \ '3'. '0' will represent black, while the maximum '255' will be white."
-          format: int32
-          maximum: 255
-          minimum: 0
-          type: integer
-        scale:
-          default: 1.0
-          description: Scale of the bounds around the classification object. Specify
-            a value to increase or decrease the size of the bounds. This is applied
-            to the resulting media as well as the JSON coordinates.
-          format: float
-          maximum: 4.0
-          minimum: 0.5
-          type: number
-        ignore:
-          default: false
-          description: "A shorthand to ignore the classification object. This is equal\
-            \ to setting _min=0_, _max=-1_ and _drawMode=0_."
-          type: boolean
-      required:
-      - classification
-      type: object
-    ParamSet:
-      description: A set of parameters/rules that describe how the AI should behave.
-      example:
-        minDuration: 79
-        abortOnSeverity: 0
-        params:
-        - severity: 100
-          min: 0
-          drawMode: 4
-          max: 0
-          scale: 1.7656269
-          ignore: false
-          classification: face
-          grey: 237
-        - severity: 100
-          min: 0
-          drawMode: 4
-          max: 0
-          scale: 1.7656269
-          ignore: false
-          classification: face
-          grey: 237
-        thresh: 0.08008282
-        grey: 153
-      properties:
-        thresh:
-          default: 0.5
-          description: "Threshold when an object can be recognized. Lowering the value\
-            \ will increase the probability of recognizing objects. A threshold of\
-            \ 0.5 would mean, that 50% of an object like a face must be visible, to\
-            \ be detected.Setting the value too low however, can cause false positives."
-          format: float
-          maximum: 1.0
-          minimum: 0.0
-          type: number
-        grey:
-          default: 127
-          description: "A grey scale color to use for frame or masking. '0' will represent\
-            \ black, while the maximum '255' will be white."
-          format: int32
-          maximum: 255
-          minimum: 0
-          type: integer
-        minDuration:
-          default: 100
-          description: Set the overall minimum duration in milliseconds for a rule
-            to be broken in moving images.
-          format: int32
-          maximum: 250
-          minimum: 50
-          type: integer
-        abortOnSeverity:
-          default: -1
-          description: Set a severity on which to automatically stop the check operation.
-            Works with moving images.Use '-1' to ignore this option.
-          format: int32
-          minimum: -1
-          type: integer
-        params:
-          description: A list of parameter sets that describe the rules of the objects.
-          items:
-            $ref: '#/components/schemas/Param'
-          type: array
-      type: object
-    ApiNotice:
-      example:
-        code: 418
-        level: WARN
-        message: "Here´s an example of what I can do, I can turn my handle into a\
-          \ spout, Tip me over and pour me out!"
-      properties:
-        code:
-          description: The status code of the response.
-          example: 418
-          format: int32
-          type: integer
-        level:
-          description: The severity level of the notice.
-          enum:
-          - INFO
-          - WARN
-          - ERROR
-          example: WARN
-          type: string
-        message:
-          description: A hopefully detailed message describing what went wrong.
-          example: "Here´s an example of what I can do, I can turn my handle into\
-            \ a spout, Tip me over and pour me out!"
-          type: string
-      type: object
-      xml:
-        name: error
-    Config:
-      description: Can be used to set a multitude of pre-defined commonly used rules
-        without the need of specifying each parameter set.
-      example:
-        prototypes:
-        - nudityCheck
-        - nudityCheck
-        kycCheckParameters:
-        - identityDocumentCheck
-        - identityDocumentCheck
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          description: The unique identifier for the AI configuration. Use this for
-            any check operation to tell the AI how to behave.
-          format: uuid
-          type: string
-        prototypes:
-          description: "Configures your detection. As there are literally hundreds\
-            \ of parameters, prototypes can be used to get useful behaviour. This\
-            \ includes a default setting for parameters and rules that should be applied\
-            \ to the check operations. You can use multiple prototypes for a single\
-            \ check operation."
-          items:
-            description: |
-              Name of commonly used rule sets (prototypes). That can be used to speed up the setup process.
-              * _nudityCheck_ - Commonly used prototype to check for nudity.
-              * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps.
-              * _illegalSymbols_ - Checks for symbols that are not permitted in Germany.
-              * _textRecognition_ - Checks for text occurrences.
-              * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc).
-              * _bodyAttributes_ - Checks for attributes of the persons body.
-              * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple.
-              * _unwantedSubstances_ - Check for undesired or unwanted substances.
-              * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc.
-              * _selfieCheck_ - Checks for pre-defined gestures in a selfie.
-            enum:
-            - nudityCheck
-            - ageVerification
-            - ageEstimation
-            - illegalSymbols
-            - textRecognition
-            - attributesCheck
-            - bodyAttributes
-            - nippleCheck
-            - unwantedSubstances
-            - violenceCheck
-            - selfieCheck
-            type: string
-          type: array
-          uniqueItems: true
-        kycCheckParameters:
-          description: Configures your kyc checks. You can combine certain parameters
-            to customize a single check operation.
-          items:
-            description: |
-              Names of kyc related parameters, that can be used to configure check behaviour.
-              * _identityDocumentCheck_ - Checks for validity and integrity of an official document.
-              * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition.
-              * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck
-              * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check.
-              * _ageEstimation_ - Performs an age estimation for a provided selfie.
-            enum:
-            - identityDocumentCheck
-            - automatedDocumentRecognition
-            - biometricCheck
-            - formAutofill
-            - ageEstimation
-            type: string
-          type: array
-          uniqueItems: true
-      type: object
-    Callback:
-      description: Callback options to send a response to.
-      example:
-        headers:
-          Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
-        callbackUrl: http://www.example.com/callback?video
-      properties:
-        callbackUrl:
-          description: Define a URL where a response should be sent.
-          example: http://www.example.com/callback?video
-          format: uri
-          type: string
-        headers:
-          additionalProperties:
-            description: Define headers to send to the URL.
-            example: "{\"Authorization\":\"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"}"
-            type: string
-          description: Define headers to send to the URL.
-          example:
-            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
-          type: object
-      required:
-      - callbackUrl
-      type: object
     AgeEstimationAttribute:
       description: Attributes qualifying the _ageEstimation_ classification.
       properties:
@@ -1411,8 +1023,28 @@ components:
       type: object
     AgeEstimationDetection:
       allOf:
-      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/Detection'
       - properties:
+          classification:
+            description: The classification of the recognized object.
+            example: face
+            type: string
+          group:
+            description: The group of the classification.
+            example: human
+            type: string
+          id:
+            description: The id of the detection object.
+            example: 1003
+            format: int32
+            type: integer
+          probability:
+            description: The probability that the object found matches the classification.
+            example: 94
+            format: int32
+            type: integer
+          coordinates:
+            $ref: '#/components/schemas/Coordinates'
           checkId:
             description: The id of the check that lead to the detection
             type: string
@@ -1456,12 +1088,42 @@ components:
           - not_processed
           type: string
       type: object
+    ApiNotice:
+      example:
+        code: 418
+        level: WARN
+        message: "Here´s an example of what I can do, I can turn my handle into a\
+          \ spout, Tip me over and pour me out!"
+      properties:
+        code:
+          description: The status code of the response.
+          example: 418
+          format: int32
+          type: integer
+        level:
+          description: The severity level of the notice.
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: WARN
+          type: string
+        message:
+          description: A hopefully detailed message describing what went wrong.
+          example: "Here´s an example of what I can do, I can turn my handle into\
+            \ a spout, Tip me over and pour me out!"
+          type: string
+      type: object
+      xml:
+        name: error
     BaseAttribute:
       description: An attribute describes a quality or characteristic that a detection
         object has.
-      discriminator:
-        propertyName: type
       properties:
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: BaseAttribute
+          type: string
         classification:
           description: The classification of the recognized attribute.
           example: female
@@ -1471,34 +1133,63 @@ components:
           example: 94
           format: int32
           type: integer
-        type:
-          description: Used as a type discriminator for json to object conversion.
-          example: BaseAttribute
-          type: string
       type: object
     BaseDetection:
-      anyOf:
-      - $ref: '#/components/schemas/BaseDetection'
-      - $ref: '#/components/schemas/FaceDetection'
-      - $ref: '#/components/schemas/BreastDetection'
-      - $ref: '#/components/schemas/HairDetection'
-      - $ref: '#/components/schemas/IdDocumentDetection'
-      - $ref: '#/components/schemas/AgeEstimationDetection'
+      allOf:
+      - $ref: '#/components/schemas/Detection'
+      - properties:
+          classification:
+            description: The classification of the recognized object.
+            example: face
+            type: string
+          group:
+            description: The group of the classification.
+            example: human
+            type: string
+          id:
+            description: The id of the detection object.
+            example: 1003
+            format: int32
+            type: integer
+          probability:
+            description: The probability that the object found matches the classification.
+            example: 94
+            format: int32
+            type: integer
+          coordinates:
+            $ref: '#/components/schemas/Coordinates'
+          attributes:
+            description: Attributes characterizing the _base_ detection.
+            items:
+              $ref: '#/components/schemas/BaseAttribute'
+            type: array
+        type: object
       description: A detection describes the object found with all its details.
-      discriminator:
-        propertyName: type
-      example:
-        type: type
-      properties:
-        type:
-          type: string
-      required:
-      - type
       type: object
     BreastDetection:
       allOf:
-      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/Detection'
       - properties:
+          classification:
+            description: The classification of the recognized object.
+            example: face
+            type: string
+          group:
+            description: The group of the classification.
+            example: human
+            type: string
+          id:
+            description: The id of the detection object.
+            example: 1003
+            format: int32
+            type: integer
+          probability:
+            description: The probability that the object found matches the classification.
+            example: 94
+            format: int32
+            type: integer
+          coordinates:
+            $ref: '#/components/schemas/Coordinates'
           attributes:
             description: Attributes characterizing the _breast_ detection. Mainly
               contains attributes that were activated with the _nippleCheck_ prototype.
@@ -1556,6 +1247,30 @@ components:
           example: 8.32
           format: float
           type: number
+      type: object
+    Callback:
+      description: Callback options to send a response to.
+      example:
+        headers:
+          Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+        callbackUrl: http://www.example.com/callback?video
+      properties:
+        callbackUrl:
+          description: Define a URL where a response should be sent.
+          example: http://www.example.com/callback?video
+          format: uri
+          type: string
+        headers:
+          additionalProperties:
+            description: Define headers to send to the URL.
+            example: "{\"Authorization\":\"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh\"}"
+            type: string
+          description: Define headers to send to the URL.
+          example:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          type: object
+      required:
+      - callbackUrl
       type: object
     CheckResult:
       description: The root object returned after a check operation.
@@ -1619,8 +1334,8 @@ components:
           message: "Here´s an example of what I can do, I can turn my handle into\
             \ a spout, Tip me over and pour me out!"
         detections:
-        - type: type
-        - type: type
+        - type: FaceDetection
+        - type: FaceDetection
       properties:
         summary:
           $ref: '#/components/schemas/Summary'
@@ -1634,7 +1349,7 @@ components:
           type: array
         detections:
           items:
-            $ref: '#/components/schemas/BaseDetection'
+            $ref: '#/components/schemas/Detection'
           type: array
         events:
           items:
@@ -1648,22 +1363,203 @@ components:
           description: The id of the async running check
           type: string
       type: object
+    Config:
+      description: Can be used to set a multitude of pre-defined commonly used rules
+        without the need of specifying each parameter set.
+      example:
+        prototypes:
+        - nudityCheck
+        kycCheckParameters:
+        - identityDocumentCheck
+        - identityDocumentCheck
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: The unique identifier for the AI configuration. Use this for
+            any check operation to tell the AI how to behave.
+          format: uuid
+          type: string
+        kycCheckParameters:
+          description: Configures your kyc checks. You can combine certain parameters
+            to customize a single check operation.
+          items:
+            description: |
+              Names of kyc related parameters, that can be used to configure check behaviour.
+              * _identityDocumentCheck_ - Checks for validity and integrity of an official document.
+              * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition.
+              * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck
+              * _considerKnownFaces_ - If this parameter is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration.
+              * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check.
+              * _ageVerificationCheck_ - Performs an age verification check for a provided selfie.
+              * _liveIdentification_ - Performs a guided live identification via an UI.
+              * _liveSelfie_ - Additional parameter for the liveIdentification to take a selfie video instead of a selfie image.
+              * _proofOfAddress_ - Additional parameter for the liveIdentification to also take a proof of address document into consideration.
+              * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI.
+              * _videoUploadIdentification_ - Use a video to perform an identityDocumentCheck and biometricCheck via an UI.
+              * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured.
+              * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured.
+              * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult.
+            enum:
+            - identityDocumentCheck
+            - automatedDocumentRecognition
+            - biometricCheck
+            - considerKnownFaces
+            - formAutofill
+            - liveIdentification
+            - ageVerificationCheck
+            - liveAgeVerificationCheck
+            - liveSelfie
+            - proofOfAddress
+            - videoUploadIdentification
+            - iFrameFlow
+            - redirectFlow
+            - addEncodingsToResult
+            type: string
+          type: array
+          uniqueItems: true
+        prototypes:
+          description: "Configures your detection. As there are literally hundreds\
+            \ of parameters, prototypes can be used to get useful behaviour. This\
+            \ includes a default setting for parameters and rules that should be applied\
+            \ to the check operations. You can use multiple prototypes for a single\
+            \ check operation."
+          example:
+          - nudityCheck
+          items:
+            description: |+
+              Name of commonly used rule sets (prototypes). That can be used to speed up the setup process.
+
+              * _nudityCheck_ - Commonly used prototype to check for nudity.
+              * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps.
+              * _illegalSymbols_ - Checks for symbols that are not permitted in Germany.
+              * _textRecognition_ - Checks for text occurrences.
+              * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc).
+              * _bodyAttributes_ - Checks for attributes of the persons body.
+              * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple.
+              * _unwantedSubstances_ - Check for undesired or unwanted substances.
+              * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc.
+              * _selfieCheck_ - Checks for pre-defined gestures in a selfie.
+
+
+            enum:
+            - nudityCheck
+            - ageEstimation
+            - illegalSymbols
+            - textRecognition
+            - attributesCheck
+            - bodyAttributes
+            - nippleCheck
+            - unwantedSubstances
+            - violenceCheck
+            - selfieCheck
+            example: "[\"nudityCheck\"]"
+            type: string
+          type: array
+          uniqueItems: true
+      type: object
+    Coordinates:
+      description: Describes the position and bounds of the classification object.
+      properties:
+        rectangles:
+          items:
+            $ref: '#/components/schemas/Rectangle'
+          type: array
+      type: object
+    Data:
+      description: The data to be checked.
+      example:
+        data: https://example.com/path/to/your/image.png
+      properties:
+        data:
+          description: The http(s) url or base64 encoded data uri of the image that
+            needs to be checked.
+          example: https://example.com/path/to/your/image.png
+          type: string
+      required:
+      - data
+      type: object
+    Detection:
+      anyOf:
+      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/FaceDetection'
+      - $ref: '#/components/schemas/BreastDetection'
+      - $ref: '#/components/schemas/HairDetection'
+      - $ref: '#/components/schemas/IdDocumentDetection'
+      - $ref: '#/components/schemas/AgeEstimationDetection'
+      discriminator:
+        propertyName: type
+      example:
+        type: FaceDetection
+      properties:
+        type:
+          description: Used as a type discriminator for json to object conversion.
+          example: FaceDetection
+          type: string
+      type: object
+    DocumentCheckRequestData:
+      example:
+        minimumAcceptedAge: 0
+        frontImage: frontImage
+        documentType: national_identity_card
+        callback:
+          headers:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          callbackUrl: http://www.example.com/callback?video
+        documentCountry: DE
+        backImage: backImage
+        selfieImage: selfieImage
+      properties:
+        callback:
+          $ref: '#/components/schemas/Callback'
+        frontImage:
+          description: The base64 encoded front image of the document to be checked
+            in either jpg or png file format
+          type: string
+        backImage:
+          description: The base64 encoded back image of the document to be checked
+            in either jpg or png file format
+          type: string
+        selfieImage:
+          description: The base64 encoded selfie image to be checked in either jpg
+            or png file format
+          type: string
+        minimumAcceptedAge:
+          description: The minimum accepted age in years for a DocumentCheck. Defaults
+            to 18 if not provided
+          format: int32
+          type: integer
+        documentType:
+          description: The type of the document
+          enum:
+          - passport
+          - driving_license
+          - national_identity_card
+          - residence_permit
+          - visa
+          - unknown
+          example: national_identity_card
+          type: string
+        documentCountry:
+          description: The document's country in ISO 3166-1 alpha-2 format
+          example: DE
+          type: string
+      required:
+      - callback
+      - frontImage
+      type: object
     Encoded:
-      description: Contains the resulting media as base64 encoded string or an URL
-        to download that media.
+      description: Contains the resulting media as a data URL (RFC 2397) encoded string
+        or an URL to download that media.
       example:
         data: ""
         name: name
         downloadUrl: downloadUrl
       properties:
         name:
-          deprecated: true
-          description: <s>The original filename of the image or video.</s> Contains
-            a randomly generated filename. <b>This property will be removed in future
-            releases.</b>
+          description: "Contains a randomly generated filename, might be null."
           type: string
         data:
-          description: The encoded image in base64 format.
+          description: The encoded image in data URL format (RFC 2397).
           format: binary
           type: string
         downloadUrl:
@@ -1709,8 +1605,28 @@ components:
       type: object
     FaceDetection:
       allOf:
-      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/Detection'
       - properties:
+          classification:
+            description: The classification of the recognized object.
+            example: face
+            type: string
+          group:
+            description: The group of the classification.
+            example: human
+            type: string
+          id:
+            description: The id of the detection object.
+            example: 1003
+            format: int32
+            type: integer
+          probability:
+            description: The probability that the object found matches the classification.
+            example: 94
+            format: int32
+            type: integer
+          coordinates:
+            $ref: '#/components/schemas/Coordinates'
           attributes:
             description: Attributes characterizing the _face_ detection. Mainly contains
               attributes that were activated with the _ageEstimation_ prototype.
@@ -1722,7 +1638,7 @@ components:
               detection. Mainly contains detections that were activated with the _attributesCheck_
               prototype.
             items:
-              $ref: '#/components/schemas/BaseDetection'
+              $ref: '#/components/schemas/Detection'
             type: array
         type: object
       description: Contains further characteristics particular to _face_ detection.
@@ -1738,10 +1654,15 @@ components:
           description: The color of the hair.
           enum:
           - black
+          - darkBrown
           - brown
+          - lightBrown
+          - darkBlonde
           - blonde
+          - darkGrey
           - grey
           - red
+          - white
           - other
           type: string
         style:
@@ -1753,8 +1674,28 @@ components:
       type: object
     HairDetection:
       allOf:
-      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/Detection'
       - properties:
+          classification:
+            description: The classification of the recognized object.
+            example: face
+            type: string
+          group:
+            description: The group of the classification.
+            example: human
+            type: string
+          id:
+            description: The id of the detection object.
+            example: 1003
+            format: int32
+            type: integer
+          probability:
+            description: The probability that the object found matches the classification.
+            example: 94
+            format: int32
+            type: integer
+          coordinates:
+            $ref: '#/components/schemas/Coordinates'
           attributes:
             description: Contains attributes for the _hair_ classification.
             items:
@@ -1854,8 +1795,28 @@ components:
       type: object
     IdDocumentDetection:
       allOf:
-      - $ref: '#/components/schemas/BaseDetection'
+      - $ref: '#/components/schemas/Detection'
       - properties:
+          classification:
+            description: The classification of the recognized object.
+            example: face
+            type: string
+          group:
+            description: The group of the classification.
+            example: human
+            type: string
+          id:
+            description: The id of the detection object.
+            example: 1003
+            format: int32
+            type: integer
+          probability:
+            description: The probability that the object found matches the classification.
+            example: 94
+            format: int32
+            type: integer
+          coordinates:
+            $ref: '#/components/schemas/Coordinates'
           checkId:
             description: The id of the check that lead to the detection
             type: string
@@ -1895,6 +1856,12 @@ components:
           documentHolderId:
             description: The id of the documentHolder
             type: string
+          knownFaces:
+            description: "A list of known faces, describing which other documentHolders\
+              \ match this documentHolder with a certain similarity"
+            items:
+              $ref: '#/components/schemas/KnownFace'
+            type: array
         type: object
       description: Contains further characteristics particular to _idDocument_ detection.
       type: object
@@ -1982,22 +1949,6 @@ components:
           - failed
           - not_processed
           type: string
-        spoofedImageAnalysis:
-          description: "Indicates whether the selfie image is spoofed, copied from\
-            \ the Internet, or is a known deny-listed image"
-          enum:
-          - passed
-          - failed
-          - not_processed
-          type: string
-        faceLivenessCheck:
-          description: Indicates if the selfie image is genuine and not a photo of
-            an image or of a screen
-          enum:
-          - passed
-          - failed
-          - not_processed
-          type: string
         dataIntegrityCheck:
           description: Indicates whether the data fields contain the correct type
             of content
@@ -2022,6 +1973,559 @@ components:
           - failed
           - not_processed
           type: string
+        spoofedImageAnalysis:
+          description: "Indicates whether the selfie image is spoofed, copied from\
+            \ the Internet, or is a known deny-listed image"
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        faceLivenessCheck:
+          description: Indicates if the selfie image is genuine and not a photo of
+            an image or of a screen
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        voiceChallengeCheck:
+          description: Indicates if the enduser had answered correctly during the
+            voice challenge.
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        actionChallengeCheck:
+          description: Indicates if the enduser had moved correctly during the actions
+            challenge.
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        knownFacesCheck:
+          description: Indicates if the selfie image matches an aready existing client/customer
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+      type: object
+    KnownFace:
+      description: "A list of known faces, describing which other documentHolders\
+        \ match this documentHolder with a certain similarity"
+      properties:
+        documentHolderId:
+          description: The id of the documentHolder
+          type: string
+        faceSimilarity:
+          description: Indicates the similarity-level between the known face and the
+            documentHolder's selfie
+          format: int32
+          type: integer
+      type: object
+    KycUiParameter:
+      description: A collection of parameters that determine the appearance and behaviour
+        of the user interface (UI).
+      example:
+        backgroundColor: "000000"
+        primaryColor: 57a632
+        logo: logo
+        textColor: ffffff
+      properties:
+        primaryColor:
+          default: 57a632
+          description: The primary color of the UI in hex format (rrggbb).
+          type: string
+        backgroundColor:
+          default: "000000"
+          description: The background color of the UI in hex format (rrggbb).
+          type: string
+        textColor:
+          default: ffffff
+          description: The text color of the UI in hex format (rrggbb).
+          type: string
+        logo:
+          description: The company logo for the UI in PNG fileformat (512 px * 512
+            px) as a base64 encoded string.
+          type: string
+      type: object
+    LicenseInfo:
+      description: "Describes the current balance of the given license key. A key\
+        \ has a certain amount of credits that can be used for any kind of AI recognition.\
+        \ The license key is invalid, when all of the credits have been used, the\
+        \ license was disabled or expired."
+      example:
+        creditsUsed: 14
+        creditsRemaining: 86
+        totalCredits: 100
+        licenseKey: ABc-123-DeF-456
+        privileges:
+          has-video-privilege: "true"
+          has-stream-privilege: "false"
+          max-config-storage: "10"
+      properties:
+        creditsUsed:
+          description: Credits used for the license key.
+          example: 14
+          format: int32
+          type: integer
+        creditsRemaining:
+          description: Credits remaining for the license key.
+          example: 86
+          format: int32
+          type: integer
+        totalCredits:
+          description: Total credits contained within the license key.
+          example: 100
+          format: int32
+          type: integer
+        licenseKey:
+          description: The license key
+          type: string
+        privileges:
+          additionalProperties:
+            description: A map of privileges
+            type: string
+          description: A map of privileges
+          type: object
+      title: LicenseInfo
+      type: object
+      xml:
+        name: info
+    LiveDocumentCheckRequestData:
+      description: Data containing neccessary information to handle the enduser live
+        document check.
+      example:
+        endUserRedirectUrl: https://openapi-generator.tech
+        statusUrl: https://openapi-generator.tech
+        callback:
+          headers:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          callbackUrl: http://www.example.com/callback?video
+        tokenValidityInSeconds: 0
+      properties:
+        callback:
+          $ref: '#/components/schemas/Callback'
+        statusUrl:
+          description: "The URL to send the intermediate status requests to. If not\
+            \ set, no intermediate status requests will be sent."
+          format: uri
+          type: string
+        endUserRedirectUrl:
+          description: If set the enduser is being redirected to this URL after the
+            check is finished.
+          format: uri
+          type: string
+        tokenValidityInSeconds:
+          description: The validity duration of a started ident process in seconds.
+            Defaults to 3600 seconds = 60 minutes.
+          format: int64
+          type: integer
+      required:
+      - callback
+      type: object
+    LiveDocumentCheckResponseData:
+      description: Response object containing neccessary information to start the
+        enduser live document check on the client side.
+      example:
+        eventId: eventId
+        endUserIdentUrl: https://openapi-generator.tech
+        identToken: identToken
+      properties:
+        eventId:
+          description: unique id of this live document check
+          type: string
+        identToken:
+          description: "token to secure the live document check, might be null since\
+            \ already incorporated into endUserIdentUrl"
+          type: string
+        endUserIdentUrl:
+          description: "URL to send the enduser to, to start the live document check"
+          format: uri
+          type: string
+      type: object
+    Param:
+      description: "A single parameter set for one classification, for example face,\
+        \ describing the behaviour of the AI. Each classification has default parameters\
+        \ that are set if these are empty."
+      example:
+        severity: 100
+        min: 0
+        drawMode: 4
+        max: 0
+        scale: 1.7656269
+        ignore: false
+        classification: face
+        prototype: prototype
+        grey: 237
+      properties:
+        classification:
+          description: |-
+            The classification of the object, that the element refers to. The following is a tree representation of the prototypes and their containing classifications. Default parameter values are defined per classification object. The default values of 'min', 'max' and 'drawMode' are witten after the name of the classification object in that order. Use the prototype names to set parameters to all of the containing classifications.
+
+            ##### nudityCheck
+            > _A prototype containing classifications for basic human attributes and sexual contents. This prototype and the containing classifications are activated by default_
+            * _face_ _(1, 3, 0)_
+            * _hand_ _(0, -1, 0)_
+            * _foot_ _(0, -1, 0)_
+            * _footwear_ _(0, -1, 0)_
+            * _chest_ _(0, -1, 0)_
+            * _breast_ _(0, 0, 2)_
+            * _vulva_ _(0, 0, 2)_
+            * _penis_ _(0, 0, 2)_
+            * _vagina_ _(0, 0, 2)_
+            * _buttocks_ _(0, 0, 2)_
+            * _anus_ _(0, 0, 2)_
+            * _oral_ _(0, 0, 2)_
+            * _penetration_ _(0, 0, 2)_
+            * _toy_ _(0, -1, 0)_
+            * _bondage_ _(0, -1, 0)_
+            * _gag_ _(0, -1, 0)_
+            ##### ageEstimation
+            > _Contains classification objects for estimating the age of a human face. This prototype activates nudityCheck_
+            * _child (*)_ _(0, 0, 6)_
+            * _adult (*)_ _(0, -1, 0)_
+            * _senior (*)_ _(0, -1, 0)_
+            * _pose (*)_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features.
+            ##### illegalSymbols
+            > _Contains various classification objects of symbols that are prohibited in Germany (e.g. Hakenkreuz, SS, etc). These are grouped under a single name_
+            * _illegalSymbols_ _(0, 0, 1)_
+            ##### textRecognition
+            > _Contains letters, numbers and some symbols (e.g. @, #, etc) as classification objects. These are grouped under a single name_
+            * _textRecognition_ _(0, 6, 6)_
+            ##### attributesCheck
+            > _Contains classification objects for various attributes of the human face. This prototype activates nudityCheck_
+            * _female_ _(0, -1, 0)_
+            * _male_ _(0, -1, 0)_
+            * _hair_ _(0, -1, 0)_
+            * _hairless_ _(0, -1, 0)_
+            * _beard_ _(0, -1, 0)_
+            * _moustache_ _(0, -1, 0)_
+            * _headpiece_ _(0, -1, 0)_
+            * _glasses_ _(0, -1, 0)_
+            * _sunglasses_ _(0, -1, 0)_
+            * _mask_ _(0, -1, 0)_
+            * _slimSizedFace (*)_ _(0, -1, 0)_
+            * _realSizedFace (*)_ _(0, -1, 0)_
+            * _plusSizedFace (*)_ _(0, -1, 0)_
+            ##### bodyAttributes
+            > _Contains classification objects for determining the body size._
+            * _slimSized_ _(0, -1, 0)_
+            * _realSized_ _(0, -1, 0)_
+            * _plusSized_ _(0, -1, 0)_
+            ##### nippleCheck
+            > _Contains classifications for determining if the object recognized as breast has a nipple. This prototype activates nudityCheck_
+            * _noNipple_ _(0, -1, 0)_
+            * _hasNipple_ _(0, 0, 0)_
+            ##### unwantedSubstances
+            > _Contains classification objects for different substances._
+            * _beer_ _(0, -1, 0)_
+            * _beerBottle_ _(0, -1, 0)_
+            * _beerCan_ _(0, -1, 0)_
+            * _wine_ _(0, -1, 0)_
+            * _wineBottle_ _(0, -1, 0)_
+            * _cocktail_ _(0, -1, 0)_
+            * _alcohol_ _(0, -1, 0)_
+            * _cannabis_ _(0, 0, 0)_
+            * _cigarette_ _(0, 0, 0)_
+            * _cocaine_ _(0, 0, 0)_
+            * _heroine_ _(0, 0, 0)_
+            * _coffee_ _(0, -1, 0)_
+            ##### violenceCheck
+            > _Contains classification objects for violent items or acts._
+            * _camouflage_ _(0, -1, 0)_
+            * _club_ _(0, -1, 0)_
+            * _knife_ _(0, 0, 0)_
+            * _sword_ _(0, 0, 0)_
+            * _pistol_ _(0, 0, 0)_
+            * _rifle_ _(0, 0, 0)_
+            * _cannon_ _(0, 0, 0)_
+            * _fire_ _(0, -1, 0)_
+            ##### selfieCheck
+            > _Classification objects representing various pre-defined poses for the selfie task._
+            * _hand2mouth_ _(0, 1, 0)_
+            * _point2nose_ _(0, 1, 0)_
+            * _relaxed_ _(0, 1, 0)_
+            * _point2chin_ _(0, 1, 0)_
+            * _hand2cheek_ _(0, 1, 0)_
+            * _excellent_ _(0, 1, 0)_
+            * _nice_ _(0, 1, 0)_
+            * _thinking_ _(0, 1, 0)_
+            * _thumbUp_ _(0, 1, 0)_
+            * _victory_ _(0, 1, 0)_
+            * _lookout_ _(0, 1, 0)_
+            * _fingerUp_ _(0, 1, 0)_
+            * _middleFinger_ _(0, 0, 0)_
+
+
+            _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._
+
+            _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
+          enum:
+          - nudityCheck
+          - face
+          - hand
+          - foot
+          - footwear
+          - chest
+          - breast
+          - vulva
+          - penis
+          - vagina
+          - buttocks
+          - anus
+          - oral
+          - penetration
+          - toy
+          - bondage
+          - gag
+          - ageEstimation
+          - child
+          - adult
+          - senior
+          - pose
+          - illegalSymbols
+          - textRecognition
+          - attributesCheck
+          - female
+          - male
+          - hair
+          - hairless
+          - beard
+          - moustache
+          - headpiece
+          - glasses
+          - sunglasses
+          - mask
+          - slimSizedFace
+          - realSizedFace
+          - plusSizedFace
+          - bodyAttributes
+          - slimSized
+          - realSized
+          - plusSized
+          - nippleCheck
+          - noNipple
+          - hasNipple
+          - unwantedSubstances
+          - beer
+          - beerBottle
+          - beerCan
+          - wine
+          - wineBottle
+          - cocktail
+          - alcohol
+          - cannabis
+          - cigarette
+          - cocaine
+          - heroine
+          - coffee
+          - violenceCheck
+          - camouflage
+          - club
+          - knife
+          - sword
+          - pistol
+          - rifle
+          - cannon
+          - fire
+          - selfieCheck
+          - hand2mouth
+          - point2nose
+          - relaxed
+          - point2chin
+          - hand2cheek
+          - excellent
+          - nice
+          - thinking
+          - thumbUp
+          - victory
+          - lookout
+          - fingerUp
+          - middleFinger
+          example: face
+          type: string
+        prototype:
+          description: The prototype that the classification object belongs to. Setting
+            the prototype will specify the parameters for the classification belonging
+            to the prototype.
+          type: string
+        min:
+          description: The minimum amount of objects allowed on the image. Setting
+            the value to -1 will cause the AI to ignore this rule. For moving images
+            this value is applied to a single frame.
+          format: int32
+          minimum: -1
+          type: integer
+        max:
+          description: The maximum amount of objects allowed on the image. Setting
+            the value to -1 will cause the AI to ignore this rule. For moving images
+            this value is applied to a single frame.
+          format: int32
+          minimum: -1
+          type: integer
+        severity:
+          default: 100
+          description: Set a value to define the severity of a broken rule of the
+            given classification object.
+          example: 100
+          format: int32
+          maximum: 999
+          minimum: 0
+          type: integer
+        drawMode:
+          description: "Set if and how a classification object should be drawn over.\
+            \ \n* _0_ - will draw nothing,\n* _1_ - will draw a frame with class name\
+            \ surrounding the object,\n* _2_ - will draw a filled rectangle that will\
+            \ mask the object,\n* _3_ - is a combination between _1_ and _2_ (frame/name\
+            \ + mask),\n* _6_ - will blur the object and\n* _7_ - is a combination\
+            \ between _1_ and _6_ (frame/name + blur)."
+          format: int32
+          maximum: 7
+          minimum: 0
+          type: integer
+        grey:
+          default: 127
+          description: "A grey scale color used in combination of _drawMode_ '2' or\
+            \ '3'. '0' will represent black, while the maximum '255' will be white."
+          format: int32
+          maximum: 255
+          minimum: 0
+          type: integer
+        scale:
+          default: 1.0
+          description: Scale of the bounds around the classification object. Specify
+            a value to increase or decrease the size of the bounds. This is applied
+            to the resulting media as well as the JSON coordinates.
+          format: float
+          maximum: 4.0
+          minimum: 0.5
+          type: number
+        ignore:
+          default: false
+          description: "A shorthand to ignore the classification object. This is equal\
+            \ to setting _min=0_, _max=-1_ and _drawMode=0_."
+          type: boolean
+      required:
+      - classification
+      type: object
+    ParamSet:
+      description: A set of parameters/rules that describe how the AI should behave.
+      example:
+        minDuration: 79
+        abortOnSeverity: 0
+        kycUiParameters:
+          backgroundColor: "000000"
+          primaryColor: 57a632
+          logo: logo
+          textColor: ffffff
+        params:
+        - severity: 100
+          min: 0
+          drawMode: 4
+          max: 0
+          scale: 1.7656269
+          ignore: false
+          classification: face
+          prototype: prototype
+          grey: 237
+        - severity: 100
+          min: 0
+          drawMode: 4
+          max: 0
+          scale: 1.7656269
+          ignore: false
+          classification: face
+          prototype: prototype
+          grey: 237
+        thresh: 0.08008282
+        kycDocumentCountryDenyList: kycDocumentCountryDenyList
+        grey: 153
+      properties:
+        thresh:
+          default: 0.5
+          description: "Threshold when an object can be recognized. Lowering the value\
+            \ will increase the probability of recognizing objects. A threshold of\
+            \ 0.5 would mean, that 50% of an object like a face must be visible, to\
+            \ be detected.Setting the value too low however, can cause false positives."
+          format: float
+          maximum: 1.0
+          minimum: 0.0
+          type: number
+        grey:
+          default: 127
+          description: "A grey scale color to use for frame or masking. '0' will represent\
+            \ black, while the maximum '255' will be white."
+          format: int32
+          maximum: 255
+          minimum: 0
+          type: integer
+        minDuration:
+          default: 100
+          description: Set the overall minimum duration in milliseconds for a rule
+            to be broken in moving images.
+          format: int32
+          maximum: 250
+          minimum: 50
+          type: integer
+        abortOnSeverity:
+          default: -1
+          description: Set a severity on which to automatically stop the check operation.
+            Works with moving images.Use '-1' to ignore this option.
+          format: int32
+          minimum: -1
+          type: integer
+        params:
+          description: A list of parameter sets that describe the rules of the objects.
+          items:
+            $ref: '#/components/schemas/Param'
+          type: array
+        kycUiParameters:
+          $ref: '#/components/schemas/KycUiParameter'
+        kycDocumentCountryDenyList:
+          description: A comma separated list of country codes (ISO 3166-1 alpha-2)
+            for which id-documents should be rejected.
+          type: string
+      type: object
+    Pricing:
+      description: Contains information about the credit cost of a check operation.
+      example:
+        cost: 0
+      properties:
+        cost:
+          format: int64
+          type: integer
+      type: object
+    Rectangle:
+      description: Describes the bounds of a rectangle starting from the center.
+      properties:
+        x0:
+          description: The center of the rectangle in the horizontal (x) direction.
+          example: 0.1
+          format: float
+          type: number
+        y0:
+          description: The center of the rectangle in the vertical (y) direction.
+          example: 0.1
+          format: float
+          type: number
+        width:
+          description: The total width of the rectangle in the horizontal (x) direction.
+            Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges
+            of the rectangle.
+          example: 0.1
+          format: float
+          type: number
+        height:
+          description: The total height of the rectangle in the vertical (y) direction.
+            Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom
+            edges of the rectangle.
+          example: 0.1
+          format: float
+          type: number
       type: object
     Summary:
       description: Summarizing the result of the AI.
@@ -2091,122 +2595,6 @@ components:
             type: string
           type: array
           uniqueItems: true
-      type: object
-    Data:
-      description: The data to be checked.
-      example:
-        data: https://example.com/path/to/your/image.png
-      properties:
-        data:
-          description: The http(s) url or base64 encoded data uri of the image that
-            needs to be checked.
-          example: https://example.com/path/to/your/image.png
-          type: string
-      required:
-      - data
-      type: object
-    DocumentCheckRequestData:
-      example:
-        minimumAcceptedAge: 0
-        frontImage: frontImage
-        documentType: national_identity_card
-        callback:
-          headers:
-            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
-          callbackUrl: http://www.example.com/callback?video
-        documentCountry: DE
-        backImage: backImage
-        selfieImage: selfieImage
-      properties:
-        callback:
-          $ref: '#/components/schemas/Callback'
-        frontImage:
-          description: The base64 encoded front image of the document to be checked
-            in either jpg or png file format
-          type: string
-        backImage:
-          description: The base64 encoded back image of the document to be checked
-            in either jpg or png file format
-          type: string
-        selfieImage:
-          description: The base64 encoded selfie image to be checked in either jpg
-            or png file format
-          type: string
-        minimumAcceptedAge:
-          description: The minimum accepted age in years for a DocumentCheck. Defaults
-            to 18 if not provided
-          format: int32
-          type: integer
-        documentType:
-          description: The type of the document
-          enum:
-          - passport
-          - driving_license
-          - national_identity_card
-          - residence_permit
-          - visa
-          - unknown
-          example: national_identity_card
-          type: string
-        documentCountry:
-          description: The document's country in ISO 3166-1 alpha-2 format
-          example: DE
-          type: string
-      required:
-      - callback
-      - frontImage
-      type: object
-    LicenseInfo:
-      description: "Describes the current balance of the given license key. A key\
-        \ has a certain amount of credits that can be used for any kind of AI recognition.\
-        \ The license key is invalid, when all of the credits have been used, the\
-        \ license was disabled or expired."
-      example:
-        creditsUsed: 14
-        creditsRemaining: 86
-        totalCredits: 100
-        licenseKey: ABc-123-DeF-456
-        privileges:
-          has-video-privilege: "true"
-          has-stream-privilege: "false"
-          max-config-storage: "10"
-      properties:
-        creditsUsed:
-          description: Credits used for the license key.
-          example: 14
-          format: int32
-          type: integer
-        creditsRemaining:
-          description: Credits remaining for the license key.
-          example: 86
-          format: int32
-          type: integer
-        totalCredits:
-          description: Total credits contained within the license key.
-          example: 100
-          format: int32
-          type: integer
-        licenseKey:
-          description: The license key
-          type: string
-        privileges:
-          additionalProperties:
-            description: A map of privileges
-            type: string
-          description: A map of privileges
-          type: object
-      title: LicenseInfo
-      type: object
-      xml:
-        name: info
-    Pricing:
-      description: Contains information about the credit cost of a check operation.
-      example:
-        cost: 0
-      properties:
-        cost:
-          format: int64
-          type: integer
       type: object
   securitySchemes:
     LICENSE-KEY:

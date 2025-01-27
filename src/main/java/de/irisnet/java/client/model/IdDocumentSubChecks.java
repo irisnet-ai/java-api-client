@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information on idDocument sub-checks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class IdDocumentSubChecks {
   /**
    * Indicates whether the MRZ checksum is correct
@@ -106,6 +106,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_MRZ_CHECKSUM = "mrzChecksum";
   @SerializedName(SERIALIZED_NAME_MRZ_CHECKSUM)
+  @javax.annotation.Nullable
   private MrzChecksumEnum mrzChecksum;
 
   /**
@@ -164,6 +165,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_MRZ_FORMAT = "mrzFormat";
   @SerializedName(SERIALIZED_NAME_MRZ_FORMAT)
+  @javax.annotation.Nullable
   private MrzFormatEnum mrzFormat;
 
   /**
@@ -222,6 +224,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_MRZ_CONSISTENCY = "mrzConsistency";
   @SerializedName(SERIALIZED_NAME_MRZ_CONSISTENCY)
+  @javax.annotation.Nullable
   private MrzConsistencyEnum mrzConsistency;
 
   /**
@@ -280,6 +283,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expirationDate";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+  @javax.annotation.Nullable
   private ExpirationDateEnum expirationDate;
 
   /**
@@ -338,6 +342,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_SECURITY_ELEMENTS = "securityElements";
   @SerializedName(SERIALIZED_NAME_SECURITY_ELEMENTS)
+  @javax.annotation.Nullable
   private SecurityElementsEnum securityElements;
 
   /**
@@ -396,6 +401,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_PHOTO_LOCATION = "photoLocation";
   @SerializedName(SERIALIZED_NAME_PHOTO_LOCATION)
+  @javax.annotation.Nullable
   private PhotoLocationEnum photoLocation;
 
   /**
@@ -454,6 +460,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_BLACKLIST_CHECK = "blacklistCheck";
   @SerializedName(SERIALIZED_NAME_BLACKLIST_CHECK)
+  @javax.annotation.Nullable
   private BlacklistCheckEnum blacklistCheck;
 
   /**
@@ -512,6 +519,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_PHOTOCOPY_CHECK = "photocopyCheck";
   @SerializedName(SERIALIZED_NAME_PHOTOCOPY_CHECK)
+  @javax.annotation.Nullable
   private PhotocopyCheckEnum photocopyCheck;
 
   /**
@@ -570,6 +578,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_SPECIMEN_CHECK = "specimenCheck";
   @SerializedName(SERIALIZED_NAME_SPECIMEN_CHECK)
+  @javax.annotation.Nullable
   private SpecimenCheckEnum specimenCheck;
 
   /**
@@ -628,6 +637,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_DOCUMENT_MODEL_IDENTIFICATION = "documentModelIdentification";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_MODEL_IDENTIFICATION)
+  @javax.annotation.Nullable
   private DocumentModelIdentificationEnum documentModelIdentification;
 
   /**
@@ -686,123 +696,8 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_DOCUMENT_LIVENESS_CHECK = "documentLivenessCheck";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_LIVENESS_CHECK)
+  @javax.annotation.Nullable
   private DocumentLivenessCheckEnum documentLivenessCheck;
-
-  /**
-   * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
-   */
-  @JsonAdapter(SpoofedImageAnalysisEnum.Adapter.class)
-  public enum SpoofedImageAnalysisEnum {
-    PASSED("passed"),
-    
-    FAILED("failed"),
-    
-    NOT_PROCESSED("not_processed");
-
-    private String value;
-
-    SpoofedImageAnalysisEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SpoofedImageAnalysisEnum fromValue(String value) {
-      for (SpoofedImageAnalysisEnum b : SpoofedImageAnalysisEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SpoofedImageAnalysisEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SpoofedImageAnalysisEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SpoofedImageAnalysisEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SpoofedImageAnalysisEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      SpoofedImageAnalysisEnum.fromValue(value);
-    }
-  }
-
-  public static final String SERIALIZED_NAME_SPOOFED_IMAGE_ANALYSIS = "spoofedImageAnalysis";
-  @SerializedName(SERIALIZED_NAME_SPOOFED_IMAGE_ANALYSIS)
-  private SpoofedImageAnalysisEnum spoofedImageAnalysis;
-
-  /**
-   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
-   */
-  @JsonAdapter(FaceLivenessCheckEnum.Adapter.class)
-  public enum FaceLivenessCheckEnum {
-    PASSED("passed"),
-    
-    FAILED("failed"),
-    
-    NOT_PROCESSED("not_processed");
-
-    private String value;
-
-    FaceLivenessCheckEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static FaceLivenessCheckEnum fromValue(String value) {
-      for (FaceLivenessCheckEnum b : FaceLivenessCheckEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<FaceLivenessCheckEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FaceLivenessCheckEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FaceLivenessCheckEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FaceLivenessCheckEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      FaceLivenessCheckEnum.fromValue(value);
-    }
-  }
-
-  public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK = "faceLivenessCheck";
-  @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK)
-  private FaceLivenessCheckEnum faceLivenessCheck;
 
   /**
    * Indicates whether the data fields contain the correct type of content
@@ -860,6 +755,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_DATA_INTEGRITY_CHECK = "dataIntegrityCheck";
   @SerializedName(SERIALIZED_NAME_DATA_INTEGRITY_CHECK)
+  @javax.annotation.Nullable
   private DataIntegrityCheckEnum dataIntegrityCheck;
 
   /**
@@ -918,6 +814,7 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_DATA_CONSISTENCY_CHECK = "dataConsistencyCheck";
   @SerializedName(SERIALIZED_NAME_DATA_CONSISTENCY_CHECK)
+  @javax.annotation.Nullable
   private DataConsistencyCheckEnum dataConsistencyCheck;
 
   /**
@@ -976,12 +873,308 @@ public class IdDocumentSubChecks {
 
   public static final String SERIALIZED_NAME_AGE_VALIDATION_CHECK = "ageValidationCheck";
   @SerializedName(SERIALIZED_NAME_AGE_VALIDATION_CHECK)
+  @javax.annotation.Nullable
   private AgeValidationCheckEnum ageValidationCheck;
+
+  /**
+   * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
+   */
+  @JsonAdapter(SpoofedImageAnalysisEnum.Adapter.class)
+  public enum SpoofedImageAnalysisEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    SpoofedImageAnalysisEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SpoofedImageAnalysisEnum fromValue(String value) {
+      for (SpoofedImageAnalysisEnum b : SpoofedImageAnalysisEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SpoofedImageAnalysisEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SpoofedImageAnalysisEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SpoofedImageAnalysisEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SpoofedImageAnalysisEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      SpoofedImageAnalysisEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SPOOFED_IMAGE_ANALYSIS = "spoofedImageAnalysis";
+  @SerializedName(SERIALIZED_NAME_SPOOFED_IMAGE_ANALYSIS)
+  @javax.annotation.Nullable
+  private SpoofedImageAnalysisEnum spoofedImageAnalysis;
+
+  /**
+   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
+   */
+  @JsonAdapter(FaceLivenessCheckEnum.Adapter.class)
+  public enum FaceLivenessCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    FaceLivenessCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FaceLivenessCheckEnum fromValue(String value) {
+      for (FaceLivenessCheckEnum b : FaceLivenessCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FaceLivenessCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FaceLivenessCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FaceLivenessCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FaceLivenessCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      FaceLivenessCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK = "faceLivenessCheck";
+  @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK)
+  @javax.annotation.Nullable
+  private FaceLivenessCheckEnum faceLivenessCheck;
+
+  /**
+   * Indicates if the enduser had answered correctly during the voice challenge.
+   */
+  @JsonAdapter(VoiceChallengeCheckEnum.Adapter.class)
+  public enum VoiceChallengeCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    VoiceChallengeCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VoiceChallengeCheckEnum fromValue(String value) {
+      for (VoiceChallengeCheckEnum b : VoiceChallengeCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<VoiceChallengeCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VoiceChallengeCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VoiceChallengeCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VoiceChallengeCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      VoiceChallengeCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VOICE_CHALLENGE_CHECK = "voiceChallengeCheck";
+  @SerializedName(SERIALIZED_NAME_VOICE_CHALLENGE_CHECK)
+  @javax.annotation.Nullable
+  private VoiceChallengeCheckEnum voiceChallengeCheck;
+
+  /**
+   * Indicates if the enduser had moved correctly during the actions challenge.
+   */
+  @JsonAdapter(ActionChallengeCheckEnum.Adapter.class)
+  public enum ActionChallengeCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    ActionChallengeCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ActionChallengeCheckEnum fromValue(String value) {
+      for (ActionChallengeCheckEnum b : ActionChallengeCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ActionChallengeCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ActionChallengeCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ActionChallengeCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ActionChallengeCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ActionChallengeCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ACTION_CHALLENGE_CHECK = "actionChallengeCheck";
+  @SerializedName(SERIALIZED_NAME_ACTION_CHALLENGE_CHECK)
+  @javax.annotation.Nullable
+  private ActionChallengeCheckEnum actionChallengeCheck;
+
+  /**
+   * Indicates if the selfie image matches an aready existing client/customer
+   */
+  @JsonAdapter(KnownFacesCheckEnum.Adapter.class)
+  public enum KnownFacesCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    KnownFacesCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static KnownFacesCheckEnum fromValue(String value) {
+      for (KnownFacesCheckEnum b : KnownFacesCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<KnownFacesCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final KnownFacesCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public KnownFacesCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return KnownFacesCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      KnownFacesCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_KNOWN_FACES_CHECK = "knownFacesCheck";
+  @SerializedName(SERIALIZED_NAME_KNOWN_FACES_CHECK)
+  @javax.annotation.Nullable
+  private KnownFacesCheckEnum knownFacesCheck;
 
   public IdDocumentSubChecks() {
   }
 
-  public IdDocumentSubChecks mrzChecksum(MrzChecksumEnum mrzChecksum) {
+  public IdDocumentSubChecks mrzChecksum(@javax.annotation.Nullable MrzChecksumEnum mrzChecksum) {
     this.mrzChecksum = mrzChecksum;
     return this;
   }
@@ -995,12 +1188,12 @@ public class IdDocumentSubChecks {
     return mrzChecksum;
   }
 
-  public void setMrzChecksum(MrzChecksumEnum mrzChecksum) {
+  public void setMrzChecksum(@javax.annotation.Nullable MrzChecksumEnum mrzChecksum) {
     this.mrzChecksum = mrzChecksum;
   }
 
 
-  public IdDocumentSubChecks mrzFormat(MrzFormatEnum mrzFormat) {
+  public IdDocumentSubChecks mrzFormat(@javax.annotation.Nullable MrzFormatEnum mrzFormat) {
     this.mrzFormat = mrzFormat;
     return this;
   }
@@ -1014,12 +1207,12 @@ public class IdDocumentSubChecks {
     return mrzFormat;
   }
 
-  public void setMrzFormat(MrzFormatEnum mrzFormat) {
+  public void setMrzFormat(@javax.annotation.Nullable MrzFormatEnum mrzFormat) {
     this.mrzFormat = mrzFormat;
   }
 
 
-  public IdDocumentSubChecks mrzConsistency(MrzConsistencyEnum mrzConsistency) {
+  public IdDocumentSubChecks mrzConsistency(@javax.annotation.Nullable MrzConsistencyEnum mrzConsistency) {
     this.mrzConsistency = mrzConsistency;
     return this;
   }
@@ -1033,12 +1226,12 @@ public class IdDocumentSubChecks {
     return mrzConsistency;
   }
 
-  public void setMrzConsistency(MrzConsistencyEnum mrzConsistency) {
+  public void setMrzConsistency(@javax.annotation.Nullable MrzConsistencyEnum mrzConsistency) {
     this.mrzConsistency = mrzConsistency;
   }
 
 
-  public IdDocumentSubChecks expirationDate(ExpirationDateEnum expirationDate) {
+  public IdDocumentSubChecks expirationDate(@javax.annotation.Nullable ExpirationDateEnum expirationDate) {
     this.expirationDate = expirationDate;
     return this;
   }
@@ -1052,12 +1245,12 @@ public class IdDocumentSubChecks {
     return expirationDate;
   }
 
-  public void setExpirationDate(ExpirationDateEnum expirationDate) {
+  public void setExpirationDate(@javax.annotation.Nullable ExpirationDateEnum expirationDate) {
     this.expirationDate = expirationDate;
   }
 
 
-  public IdDocumentSubChecks securityElements(SecurityElementsEnum securityElements) {
+  public IdDocumentSubChecks securityElements(@javax.annotation.Nullable SecurityElementsEnum securityElements) {
     this.securityElements = securityElements;
     return this;
   }
@@ -1071,12 +1264,12 @@ public class IdDocumentSubChecks {
     return securityElements;
   }
 
-  public void setSecurityElements(SecurityElementsEnum securityElements) {
+  public void setSecurityElements(@javax.annotation.Nullable SecurityElementsEnum securityElements) {
     this.securityElements = securityElements;
   }
 
 
-  public IdDocumentSubChecks photoLocation(PhotoLocationEnum photoLocation) {
+  public IdDocumentSubChecks photoLocation(@javax.annotation.Nullable PhotoLocationEnum photoLocation) {
     this.photoLocation = photoLocation;
     return this;
   }
@@ -1090,12 +1283,12 @@ public class IdDocumentSubChecks {
     return photoLocation;
   }
 
-  public void setPhotoLocation(PhotoLocationEnum photoLocation) {
+  public void setPhotoLocation(@javax.annotation.Nullable PhotoLocationEnum photoLocation) {
     this.photoLocation = photoLocation;
   }
 
 
-  public IdDocumentSubChecks blacklistCheck(BlacklistCheckEnum blacklistCheck) {
+  public IdDocumentSubChecks blacklistCheck(@javax.annotation.Nullable BlacklistCheckEnum blacklistCheck) {
     this.blacklistCheck = blacklistCheck;
     return this;
   }
@@ -1109,12 +1302,12 @@ public class IdDocumentSubChecks {
     return blacklistCheck;
   }
 
-  public void setBlacklistCheck(BlacklistCheckEnum blacklistCheck) {
+  public void setBlacklistCheck(@javax.annotation.Nullable BlacklistCheckEnum blacklistCheck) {
     this.blacklistCheck = blacklistCheck;
   }
 
 
-  public IdDocumentSubChecks photocopyCheck(PhotocopyCheckEnum photocopyCheck) {
+  public IdDocumentSubChecks photocopyCheck(@javax.annotation.Nullable PhotocopyCheckEnum photocopyCheck) {
     this.photocopyCheck = photocopyCheck;
     return this;
   }
@@ -1128,12 +1321,12 @@ public class IdDocumentSubChecks {
     return photocopyCheck;
   }
 
-  public void setPhotocopyCheck(PhotocopyCheckEnum photocopyCheck) {
+  public void setPhotocopyCheck(@javax.annotation.Nullable PhotocopyCheckEnum photocopyCheck) {
     this.photocopyCheck = photocopyCheck;
   }
 
 
-  public IdDocumentSubChecks specimenCheck(SpecimenCheckEnum specimenCheck) {
+  public IdDocumentSubChecks specimenCheck(@javax.annotation.Nullable SpecimenCheckEnum specimenCheck) {
     this.specimenCheck = specimenCheck;
     return this;
   }
@@ -1147,12 +1340,12 @@ public class IdDocumentSubChecks {
     return specimenCheck;
   }
 
-  public void setSpecimenCheck(SpecimenCheckEnum specimenCheck) {
+  public void setSpecimenCheck(@javax.annotation.Nullable SpecimenCheckEnum specimenCheck) {
     this.specimenCheck = specimenCheck;
   }
 
 
-  public IdDocumentSubChecks documentModelIdentification(DocumentModelIdentificationEnum documentModelIdentification) {
+  public IdDocumentSubChecks documentModelIdentification(@javax.annotation.Nullable DocumentModelIdentificationEnum documentModelIdentification) {
     this.documentModelIdentification = documentModelIdentification;
     return this;
   }
@@ -1166,12 +1359,12 @@ public class IdDocumentSubChecks {
     return documentModelIdentification;
   }
 
-  public void setDocumentModelIdentification(DocumentModelIdentificationEnum documentModelIdentification) {
+  public void setDocumentModelIdentification(@javax.annotation.Nullable DocumentModelIdentificationEnum documentModelIdentification) {
     this.documentModelIdentification = documentModelIdentification;
   }
 
 
-  public IdDocumentSubChecks documentLivenessCheck(DocumentLivenessCheckEnum documentLivenessCheck) {
+  public IdDocumentSubChecks documentLivenessCheck(@javax.annotation.Nullable DocumentLivenessCheckEnum documentLivenessCheck) {
     this.documentLivenessCheck = documentLivenessCheck;
     return this;
   }
@@ -1185,50 +1378,12 @@ public class IdDocumentSubChecks {
     return documentLivenessCheck;
   }
 
-  public void setDocumentLivenessCheck(DocumentLivenessCheckEnum documentLivenessCheck) {
+  public void setDocumentLivenessCheck(@javax.annotation.Nullable DocumentLivenessCheckEnum documentLivenessCheck) {
     this.documentLivenessCheck = documentLivenessCheck;
   }
 
 
-  public IdDocumentSubChecks spoofedImageAnalysis(SpoofedImageAnalysisEnum spoofedImageAnalysis) {
-    this.spoofedImageAnalysis = spoofedImageAnalysis;
-    return this;
-  }
-
-  /**
-   * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
-   * @return spoofedImageAnalysis
-   */
-  @javax.annotation.Nullable
-  public SpoofedImageAnalysisEnum getSpoofedImageAnalysis() {
-    return spoofedImageAnalysis;
-  }
-
-  public void setSpoofedImageAnalysis(SpoofedImageAnalysisEnum spoofedImageAnalysis) {
-    this.spoofedImageAnalysis = spoofedImageAnalysis;
-  }
-
-
-  public IdDocumentSubChecks faceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
-    this.faceLivenessCheck = faceLivenessCheck;
-    return this;
-  }
-
-  /**
-   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
-   * @return faceLivenessCheck
-   */
-  @javax.annotation.Nullable
-  public FaceLivenessCheckEnum getFaceLivenessCheck() {
-    return faceLivenessCheck;
-  }
-
-  public void setFaceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
-    this.faceLivenessCheck = faceLivenessCheck;
-  }
-
-
-  public IdDocumentSubChecks dataIntegrityCheck(DataIntegrityCheckEnum dataIntegrityCheck) {
+  public IdDocumentSubChecks dataIntegrityCheck(@javax.annotation.Nullable DataIntegrityCheckEnum dataIntegrityCheck) {
     this.dataIntegrityCheck = dataIntegrityCheck;
     return this;
   }
@@ -1242,12 +1397,12 @@ public class IdDocumentSubChecks {
     return dataIntegrityCheck;
   }
 
-  public void setDataIntegrityCheck(DataIntegrityCheckEnum dataIntegrityCheck) {
+  public void setDataIntegrityCheck(@javax.annotation.Nullable DataIntegrityCheckEnum dataIntegrityCheck) {
     this.dataIntegrityCheck = dataIntegrityCheck;
   }
 
 
-  public IdDocumentSubChecks dataConsistencyCheck(DataConsistencyCheckEnum dataConsistencyCheck) {
+  public IdDocumentSubChecks dataConsistencyCheck(@javax.annotation.Nullable DataConsistencyCheckEnum dataConsistencyCheck) {
     this.dataConsistencyCheck = dataConsistencyCheck;
     return this;
   }
@@ -1261,12 +1416,12 @@ public class IdDocumentSubChecks {
     return dataConsistencyCheck;
   }
 
-  public void setDataConsistencyCheck(DataConsistencyCheckEnum dataConsistencyCheck) {
+  public void setDataConsistencyCheck(@javax.annotation.Nullable DataConsistencyCheckEnum dataConsistencyCheck) {
     this.dataConsistencyCheck = dataConsistencyCheck;
   }
 
 
-  public IdDocumentSubChecks ageValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+  public IdDocumentSubChecks ageValidationCheck(@javax.annotation.Nullable AgeValidationCheckEnum ageValidationCheck) {
     this.ageValidationCheck = ageValidationCheck;
     return this;
   }
@@ -1280,8 +1435,103 @@ public class IdDocumentSubChecks {
     return ageValidationCheck;
   }
 
-  public void setAgeValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+  public void setAgeValidationCheck(@javax.annotation.Nullable AgeValidationCheckEnum ageValidationCheck) {
     this.ageValidationCheck = ageValidationCheck;
+  }
+
+
+  public IdDocumentSubChecks spoofedImageAnalysis(@javax.annotation.Nullable SpoofedImageAnalysisEnum spoofedImageAnalysis) {
+    this.spoofedImageAnalysis = spoofedImageAnalysis;
+    return this;
+  }
+
+  /**
+   * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
+   * @return spoofedImageAnalysis
+   */
+  @javax.annotation.Nullable
+  public SpoofedImageAnalysisEnum getSpoofedImageAnalysis() {
+    return spoofedImageAnalysis;
+  }
+
+  public void setSpoofedImageAnalysis(@javax.annotation.Nullable SpoofedImageAnalysisEnum spoofedImageAnalysis) {
+    this.spoofedImageAnalysis = spoofedImageAnalysis;
+  }
+
+
+  public IdDocumentSubChecks faceLivenessCheck(@javax.annotation.Nullable FaceLivenessCheckEnum faceLivenessCheck) {
+    this.faceLivenessCheck = faceLivenessCheck;
+    return this;
+  }
+
+  /**
+   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
+   * @return faceLivenessCheck
+   */
+  @javax.annotation.Nullable
+  public FaceLivenessCheckEnum getFaceLivenessCheck() {
+    return faceLivenessCheck;
+  }
+
+  public void setFaceLivenessCheck(@javax.annotation.Nullable FaceLivenessCheckEnum faceLivenessCheck) {
+    this.faceLivenessCheck = faceLivenessCheck;
+  }
+
+
+  public IdDocumentSubChecks voiceChallengeCheck(@javax.annotation.Nullable VoiceChallengeCheckEnum voiceChallengeCheck) {
+    this.voiceChallengeCheck = voiceChallengeCheck;
+    return this;
+  }
+
+  /**
+   * Indicates if the enduser had answered correctly during the voice challenge.
+   * @return voiceChallengeCheck
+   */
+  @javax.annotation.Nullable
+  public VoiceChallengeCheckEnum getVoiceChallengeCheck() {
+    return voiceChallengeCheck;
+  }
+
+  public void setVoiceChallengeCheck(@javax.annotation.Nullable VoiceChallengeCheckEnum voiceChallengeCheck) {
+    this.voiceChallengeCheck = voiceChallengeCheck;
+  }
+
+
+  public IdDocumentSubChecks actionChallengeCheck(@javax.annotation.Nullable ActionChallengeCheckEnum actionChallengeCheck) {
+    this.actionChallengeCheck = actionChallengeCheck;
+    return this;
+  }
+
+  /**
+   * Indicates if the enduser had moved correctly during the actions challenge.
+   * @return actionChallengeCheck
+   */
+  @javax.annotation.Nullable
+  public ActionChallengeCheckEnum getActionChallengeCheck() {
+    return actionChallengeCheck;
+  }
+
+  public void setActionChallengeCheck(@javax.annotation.Nullable ActionChallengeCheckEnum actionChallengeCheck) {
+    this.actionChallengeCheck = actionChallengeCheck;
+  }
+
+
+  public IdDocumentSubChecks knownFacesCheck(@javax.annotation.Nullable KnownFacesCheckEnum knownFacesCheck) {
+    this.knownFacesCheck = knownFacesCheck;
+    return this;
+  }
+
+  /**
+   * Indicates if the selfie image matches an aready existing client/customer
+   * @return knownFacesCheck
+   */
+  @javax.annotation.Nullable
+  public KnownFacesCheckEnum getKnownFacesCheck() {
+    return knownFacesCheck;
+  }
+
+  public void setKnownFacesCheck(@javax.annotation.Nullable KnownFacesCheckEnum knownFacesCheck) {
+    this.knownFacesCheck = knownFacesCheck;
   }
 
 
@@ -1306,16 +1556,19 @@ public class IdDocumentSubChecks {
         Objects.equals(this.specimenCheck, idDocumentSubChecks.specimenCheck) &&
         Objects.equals(this.documentModelIdentification, idDocumentSubChecks.documentModelIdentification) &&
         Objects.equals(this.documentLivenessCheck, idDocumentSubChecks.documentLivenessCheck) &&
-        Objects.equals(this.spoofedImageAnalysis, idDocumentSubChecks.spoofedImageAnalysis) &&
-        Objects.equals(this.faceLivenessCheck, idDocumentSubChecks.faceLivenessCheck) &&
         Objects.equals(this.dataIntegrityCheck, idDocumentSubChecks.dataIntegrityCheck) &&
         Objects.equals(this.dataConsistencyCheck, idDocumentSubChecks.dataConsistencyCheck) &&
-        Objects.equals(this.ageValidationCheck, idDocumentSubChecks.ageValidationCheck);
+        Objects.equals(this.ageValidationCheck, idDocumentSubChecks.ageValidationCheck) &&
+        Objects.equals(this.spoofedImageAnalysis, idDocumentSubChecks.spoofedImageAnalysis) &&
+        Objects.equals(this.faceLivenessCheck, idDocumentSubChecks.faceLivenessCheck) &&
+        Objects.equals(this.voiceChallengeCheck, idDocumentSubChecks.voiceChallengeCheck) &&
+        Objects.equals(this.actionChallengeCheck, idDocumentSubChecks.actionChallengeCheck) &&
+        Objects.equals(this.knownFacesCheck, idDocumentSubChecks.knownFacesCheck);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, spoofedImageAnalysis, faceLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck);
+    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, knownFacesCheck);
   }
 
   @Override
@@ -1333,11 +1586,14 @@ public class IdDocumentSubChecks {
     sb.append("    specimenCheck: ").append(toIndentedString(specimenCheck)).append("\n");
     sb.append("    documentModelIdentification: ").append(toIndentedString(documentModelIdentification)).append("\n");
     sb.append("    documentLivenessCheck: ").append(toIndentedString(documentLivenessCheck)).append("\n");
-    sb.append("    spoofedImageAnalysis: ").append(toIndentedString(spoofedImageAnalysis)).append("\n");
-    sb.append("    faceLivenessCheck: ").append(toIndentedString(faceLivenessCheck)).append("\n");
     sb.append("    dataIntegrityCheck: ").append(toIndentedString(dataIntegrityCheck)).append("\n");
     sb.append("    dataConsistencyCheck: ").append(toIndentedString(dataConsistencyCheck)).append("\n");
     sb.append("    ageValidationCheck: ").append(toIndentedString(ageValidationCheck)).append("\n");
+    sb.append("    spoofedImageAnalysis: ").append(toIndentedString(spoofedImageAnalysis)).append("\n");
+    sb.append("    faceLivenessCheck: ").append(toIndentedString(faceLivenessCheck)).append("\n");
+    sb.append("    voiceChallengeCheck: ").append(toIndentedString(voiceChallengeCheck)).append("\n");
+    sb.append("    actionChallengeCheck: ").append(toIndentedString(actionChallengeCheck)).append("\n");
+    sb.append("    knownFacesCheck: ").append(toIndentedString(knownFacesCheck)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1371,11 +1627,14 @@ public class IdDocumentSubChecks {
     openapiFields.add("specimenCheck");
     openapiFields.add("documentModelIdentification");
     openapiFields.add("documentLivenessCheck");
-    openapiFields.add("spoofedImageAnalysis");
-    openapiFields.add("faceLivenessCheck");
     openapiFields.add("dataIntegrityCheck");
     openapiFields.add("dataConsistencyCheck");
     openapiFields.add("ageValidationCheck");
+    openapiFields.add("spoofedImageAnalysis");
+    openapiFields.add("faceLivenessCheck");
+    openapiFields.add("voiceChallengeCheck");
+    openapiFields.add("actionChallengeCheck");
+    openapiFields.add("knownFacesCheck");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1479,20 +1738,6 @@ public class IdDocumentSubChecks {
       if (jsonObj.get("documentLivenessCheck") != null && !jsonObj.get("documentLivenessCheck").isJsonNull()) {
         DocumentLivenessCheckEnum.validateJsonElement(jsonObj.get("documentLivenessCheck"));
       }
-      if ((jsonObj.get("spoofedImageAnalysis") != null && !jsonObj.get("spoofedImageAnalysis").isJsonNull()) && !jsonObj.get("spoofedImageAnalysis").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `spoofedImageAnalysis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spoofedImageAnalysis").toString()));
-      }
-      // validate the optional field `spoofedImageAnalysis`
-      if (jsonObj.get("spoofedImageAnalysis") != null && !jsonObj.get("spoofedImageAnalysis").isJsonNull()) {
-        SpoofedImageAnalysisEnum.validateJsonElement(jsonObj.get("spoofedImageAnalysis"));
-      }
-      if ((jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) && !jsonObj.get("faceLivenessCheck").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `faceLivenessCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("faceLivenessCheck").toString()));
-      }
-      // validate the optional field `faceLivenessCheck`
-      if (jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) {
-        FaceLivenessCheckEnum.validateJsonElement(jsonObj.get("faceLivenessCheck"));
-      }
       if ((jsonObj.get("dataIntegrityCheck") != null && !jsonObj.get("dataIntegrityCheck").isJsonNull()) && !jsonObj.get("dataIntegrityCheck").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dataIntegrityCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dataIntegrityCheck").toString()));
       }
@@ -1513,6 +1758,41 @@ public class IdDocumentSubChecks {
       // validate the optional field `ageValidationCheck`
       if (jsonObj.get("ageValidationCheck") != null && !jsonObj.get("ageValidationCheck").isJsonNull()) {
         AgeValidationCheckEnum.validateJsonElement(jsonObj.get("ageValidationCheck"));
+      }
+      if ((jsonObj.get("spoofedImageAnalysis") != null && !jsonObj.get("spoofedImageAnalysis").isJsonNull()) && !jsonObj.get("spoofedImageAnalysis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `spoofedImageAnalysis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spoofedImageAnalysis").toString()));
+      }
+      // validate the optional field `spoofedImageAnalysis`
+      if (jsonObj.get("spoofedImageAnalysis") != null && !jsonObj.get("spoofedImageAnalysis").isJsonNull()) {
+        SpoofedImageAnalysisEnum.validateJsonElement(jsonObj.get("spoofedImageAnalysis"));
+      }
+      if ((jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) && !jsonObj.get("faceLivenessCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `faceLivenessCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("faceLivenessCheck").toString()));
+      }
+      // validate the optional field `faceLivenessCheck`
+      if (jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) {
+        FaceLivenessCheckEnum.validateJsonElement(jsonObj.get("faceLivenessCheck"));
+      }
+      if ((jsonObj.get("voiceChallengeCheck") != null && !jsonObj.get("voiceChallengeCheck").isJsonNull()) && !jsonObj.get("voiceChallengeCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `voiceChallengeCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voiceChallengeCheck").toString()));
+      }
+      // validate the optional field `voiceChallengeCheck`
+      if (jsonObj.get("voiceChallengeCheck") != null && !jsonObj.get("voiceChallengeCheck").isJsonNull()) {
+        VoiceChallengeCheckEnum.validateJsonElement(jsonObj.get("voiceChallengeCheck"));
+      }
+      if ((jsonObj.get("actionChallengeCheck") != null && !jsonObj.get("actionChallengeCheck").isJsonNull()) && !jsonObj.get("actionChallengeCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `actionChallengeCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actionChallengeCheck").toString()));
+      }
+      // validate the optional field `actionChallengeCheck`
+      if (jsonObj.get("actionChallengeCheck") != null && !jsonObj.get("actionChallengeCheck").isJsonNull()) {
+        ActionChallengeCheckEnum.validateJsonElement(jsonObj.get("actionChallengeCheck"));
+      }
+      if ((jsonObj.get("knownFacesCheck") != null && !jsonObj.get("knownFacesCheck").isJsonNull()) && !jsonObj.get("knownFacesCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `knownFacesCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("knownFacesCheck").toString()));
+      }
+      // validate the optional field `knownFacesCheck`
+      if (jsonObj.get("knownFacesCheck") != null && !jsonObj.get("knownFacesCheck").isJsonNull()) {
+        KnownFacesCheckEnum.validateJsonElement(jsonObj.get("knownFacesCheck"));
       }
   }
 

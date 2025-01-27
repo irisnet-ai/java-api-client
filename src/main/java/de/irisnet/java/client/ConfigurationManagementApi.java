@@ -81,10 +81,11 @@ public class ConfigurationManagementApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigCall(UUID configId, final ApiCallback _callback) throws ApiException {
@@ -149,10 +150,11 @@ public class ConfigurationManagementApi {
      * @param configId The id of the configuration that should be deleted. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteConfig(UUID configId) throws ApiException {
@@ -166,10 +168,11 @@ public class ConfigurationManagementApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteConfigWithHttpInfo(UUID configId) throws ApiException {
@@ -185,10 +188,11 @@ public class ConfigurationManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigAsync(UUID configId, final ApiCallback<Void> _callback) throws ApiException {
@@ -203,7 +207,8 @@ public class ConfigurationManagementApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
@@ -264,7 +269,8 @@ public class ConfigurationManagementApi {
      * @return List&lt;Config&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
@@ -280,7 +286,8 @@ public class ConfigurationManagementApi {
      * @return ApiResponse&lt;List&lt;Config&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
@@ -298,7 +305,8 @@ public class ConfigurationManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
@@ -317,7 +325,8 @@ public class ConfigurationManagementApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
@@ -386,7 +395,8 @@ public class ConfigurationManagementApi {
      * @return Config
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
@@ -404,7 +414,8 @@ public class ConfigurationManagementApi {
      * @return ApiResponse&lt;Config&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
@@ -424,7 +435,8 @@ public class ConfigurationManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
@@ -444,7 +456,8 @@ public class ConfigurationManagementApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
@@ -514,7 +527,8 @@ public class ConfigurationManagementApi {
      * @return Config
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
@@ -533,7 +547,8 @@ public class ConfigurationManagementApi {
      * @return ApiResponse&lt;Config&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
@@ -554,7 +569,8 @@ public class ConfigurationManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>

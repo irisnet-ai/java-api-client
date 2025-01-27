@@ -49,26 +49,31 @@ import de.irisnet.java.JSON;
 /**
  * DocumentCheckRequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class DocumentCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
+  @javax.annotation.Nonnull
   private Callback callback;
 
   public static final String SERIALIZED_NAME_FRONT_IMAGE = "frontImage";
   @SerializedName(SERIALIZED_NAME_FRONT_IMAGE)
+  @javax.annotation.Nonnull
   private String frontImage;
 
   public static final String SERIALIZED_NAME_BACK_IMAGE = "backImage";
   @SerializedName(SERIALIZED_NAME_BACK_IMAGE)
+  @javax.annotation.Nullable
   private String backImage;
 
   public static final String SERIALIZED_NAME_SELFIE_IMAGE = "selfieImage";
   @SerializedName(SERIALIZED_NAME_SELFIE_IMAGE)
+  @javax.annotation.Nullable
   private String selfieImage;
 
   public static final String SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE = "minimumAcceptedAge";
   @SerializedName(SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE)
+  @javax.annotation.Nullable
   private Integer minimumAcceptedAge;
 
   /**
@@ -133,16 +138,18 @@ public class DocumentCheckRequestData {
 
   public static final String SERIALIZED_NAME_DOCUMENT_TYPE = "documentType";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_TYPE)
+  @javax.annotation.Nullable
   private DocumentTypeEnum documentType;
 
   public static final String SERIALIZED_NAME_DOCUMENT_COUNTRY = "documentCountry";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_COUNTRY)
+  @javax.annotation.Nullable
   private String documentCountry;
 
   public DocumentCheckRequestData() {
   }
 
-  public DocumentCheckRequestData callback(Callback callback) {
+  public DocumentCheckRequestData callback(@javax.annotation.Nonnull Callback callback) {
     this.callback = callback;
     return this;
   }
@@ -156,12 +163,12 @@ public class DocumentCheckRequestData {
     return callback;
   }
 
-  public void setCallback(Callback callback) {
+  public void setCallback(@javax.annotation.Nonnull Callback callback) {
     this.callback = callback;
   }
 
 
-  public DocumentCheckRequestData frontImage(String frontImage) {
+  public DocumentCheckRequestData frontImage(@javax.annotation.Nonnull String frontImage) {
     this.frontImage = frontImage;
     return this;
   }
@@ -175,12 +182,12 @@ public class DocumentCheckRequestData {
     return frontImage;
   }
 
-  public void setFrontImage(String frontImage) {
+  public void setFrontImage(@javax.annotation.Nonnull String frontImage) {
     this.frontImage = frontImage;
   }
 
 
-  public DocumentCheckRequestData backImage(String backImage) {
+  public DocumentCheckRequestData backImage(@javax.annotation.Nullable String backImage) {
     this.backImage = backImage;
     return this;
   }
@@ -194,12 +201,12 @@ public class DocumentCheckRequestData {
     return backImage;
   }
 
-  public void setBackImage(String backImage) {
+  public void setBackImage(@javax.annotation.Nullable String backImage) {
     this.backImage = backImage;
   }
 
 
-  public DocumentCheckRequestData selfieImage(String selfieImage) {
+  public DocumentCheckRequestData selfieImage(@javax.annotation.Nullable String selfieImage) {
     this.selfieImage = selfieImage;
     return this;
   }
@@ -213,12 +220,12 @@ public class DocumentCheckRequestData {
     return selfieImage;
   }
 
-  public void setSelfieImage(String selfieImage) {
+  public void setSelfieImage(@javax.annotation.Nullable String selfieImage) {
     this.selfieImage = selfieImage;
   }
 
 
-  public DocumentCheckRequestData minimumAcceptedAge(Integer minimumAcceptedAge) {
+  public DocumentCheckRequestData minimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
     this.minimumAcceptedAge = minimumAcceptedAge;
     return this;
   }
@@ -232,12 +239,12 @@ public class DocumentCheckRequestData {
     return minimumAcceptedAge;
   }
 
-  public void setMinimumAcceptedAge(Integer minimumAcceptedAge) {
+  public void setMinimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
     this.minimumAcceptedAge = minimumAcceptedAge;
   }
 
 
-  public DocumentCheckRequestData documentType(DocumentTypeEnum documentType) {
+  public DocumentCheckRequestData documentType(@javax.annotation.Nullable DocumentTypeEnum documentType) {
     this.documentType = documentType;
     return this;
   }
@@ -251,12 +258,12 @@ public class DocumentCheckRequestData {
     return documentType;
   }
 
-  public void setDocumentType(DocumentTypeEnum documentType) {
+  public void setDocumentType(@javax.annotation.Nullable DocumentTypeEnum documentType) {
     this.documentType = documentType;
   }
 
 
-  public DocumentCheckRequestData documentCountry(String documentCountry) {
+  public DocumentCheckRequestData documentCountry(@javax.annotation.Nullable String documentCountry) {
     this.documentCountry = documentCountry;
     return this;
   }
@@ -270,7 +277,7 @@ public class DocumentCheckRequestData {
     return documentCountry;
   }
 
-  public void setDocumentCountry(String documentCountry) {
+  public void setDocumentCountry(@javax.annotation.Nullable String documentCountry) {
     this.documentCountry = documentCountry;
   }
 

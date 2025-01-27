@@ -51,20 +51,100 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private UUID id;
 
   /**
-   * Name of commonly used rule sets (prototypes). That can be used to speed up the setup process. * _nudityCheck_ - Commonly used prototype to check for nudity. * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps. * _illegalSymbols_ - Checks for symbols that are not permitted in Germany. * _textRecognition_ - Checks for text occurrences. * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc). * _bodyAttributes_ - Checks for attributes of the persons body. * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple. * _unwantedSubstances_ - Check for undesired or unwanted substances. * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc. * _selfieCheck_ - Checks for pre-defined gestures in a selfie. 
+   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _considerKnownFaces_ - If this parameter is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration. * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageVerificationCheck_ - Performs an age verification check for a provided selfie. * _liveIdentification_ - Performs a guided live identification via an UI. * _liveSelfie_ - Additional parameter for the liveIdentification to take a selfie video instead of a selfie image. * _proofOfAddress_ - Additional parameter for the liveIdentification to also take a proof of address document into consideration. * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI. * _videoUploadIdentification_ - Use a video to perform an identityDocumentCheck and biometricCheck via an UI. * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult. 
+   */
+  @JsonAdapter(KycCheckParametersEnum.Adapter.class)
+  public enum KycCheckParametersEnum {
+    IDENTITY_DOCUMENT_CHECK("identityDocumentCheck"),
+    
+    AUTOMATED_DOCUMENT_RECOGNITION("automatedDocumentRecognition"),
+    
+    BIOMETRIC_CHECK("biometricCheck"),
+    
+    CONSIDER_KNOWN_FACES("considerKnownFaces"),
+    
+    FORM_AUTOFILL("formAutofill"),
+    
+    LIVE_IDENTIFICATION("liveIdentification"),
+    
+    AGE_VERIFICATION_CHECK("ageVerificationCheck"),
+    
+    LIVE_AGE_VERIFICATION_CHECK("liveAgeVerificationCheck"),
+    
+    LIVE_SELFIE("liveSelfie"),
+    
+    PROOF_OF_ADDRESS("proofOfAddress"),
+    
+    VIDEO_UPLOAD_IDENTIFICATION("videoUploadIdentification"),
+    
+    I_FRAME_FLOW("iFrameFlow"),
+    
+    REDIRECT_FLOW("redirectFlow"),
+    
+    ADD_ENCODINGS_TO_RESULT("addEncodingsToResult");
+
+    private String value;
+
+    KycCheckParametersEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static KycCheckParametersEnum fromValue(String value) {
+      for (KycCheckParametersEnum b : KycCheckParametersEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<KycCheckParametersEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final KycCheckParametersEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public KycCheckParametersEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return KycCheckParametersEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      KycCheckParametersEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_KYC_CHECK_PARAMETERS = "kycCheckParameters";
+  @SerializedName(SERIALIZED_NAME_KYC_CHECK_PARAMETERS)
+  @javax.annotation.Nullable
+  private Set<KycCheckParametersEnum> kycCheckParameters = new LinkedHashSet<>();
+
+  /**
+   * Name of commonly used rule sets (prototypes). That can be used to speed up the setup process.  * _nudityCheck_ - Commonly used prototype to check for nudity. * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps. * _illegalSymbols_ - Checks for symbols that are not permitted in Germany. * _textRecognition_ - Checks for text occurrences. * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc). * _bodyAttributes_ - Checks for attributes of the persons body. * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple. * _unwantedSubstances_ - Check for undesired or unwanted substances. * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc. * _selfieCheck_ - Checks for pre-defined gestures in a selfie.   
    */
   @JsonAdapter(PrototypesEnum.Adapter.class)
   public enum PrototypesEnum {
     NUDITY_CHECK("nudityCheck"),
-    
-    AGE_VERIFICATION("ageVerification"),
     
     AGE_ESTIMATION("ageEstimation"),
     
@@ -129,74 +209,13 @@ public class Config {
 
   public static final String SERIALIZED_NAME_PROTOTYPES = "prototypes";
   @SerializedName(SERIALIZED_NAME_PROTOTYPES)
+  @javax.annotation.Nullable
   private Set<PrototypesEnum> prototypes = new LinkedHashSet<>();
-
-  /**
-   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageEstimation_ - Performs an age estimation for a provided selfie. 
-   */
-  @JsonAdapter(KycCheckParametersEnum.Adapter.class)
-  public enum KycCheckParametersEnum {
-    IDENTITY_DOCUMENT_CHECK("identityDocumentCheck"),
-    
-    AUTOMATED_DOCUMENT_RECOGNITION("automatedDocumentRecognition"),
-    
-    BIOMETRIC_CHECK("biometricCheck"),
-    
-    FORM_AUTOFILL("formAutofill"),
-    
-    AGE_ESTIMATION("ageEstimation");
-
-    private String value;
-
-    KycCheckParametersEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static KycCheckParametersEnum fromValue(String value) {
-      for (KycCheckParametersEnum b : KycCheckParametersEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<KycCheckParametersEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final KycCheckParametersEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public KycCheckParametersEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return KycCheckParametersEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      KycCheckParametersEnum.fromValue(value);
-    }
-  }
-
-  public static final String SERIALIZED_NAME_KYC_CHECK_PARAMETERS = "kycCheckParameters";
-  @SerializedName(SERIALIZED_NAME_KYC_CHECK_PARAMETERS)
-  private Set<KycCheckParametersEnum> kycCheckParameters = new LinkedHashSet<>();
 
   public Config() {
   }
 
-  public Config id(UUID id) {
+  public Config id(@javax.annotation.Nullable UUID id) {
     this.id = id;
     return this;
   }
@@ -210,39 +229,12 @@ public class Config {
     return id;
   }
 
-  public void setId(UUID id) {
+  public void setId(@javax.annotation.Nullable UUID id) {
     this.id = id;
   }
 
 
-  public Config prototypes(Set<PrototypesEnum> prototypes) {
-    this.prototypes = prototypes;
-    return this;
-  }
-
-  public Config addPrototypesItem(PrototypesEnum prototypesItem) {
-    if (this.prototypes == null) {
-      this.prototypes = new LinkedHashSet<>();
-    }
-    this.prototypes.add(prototypesItem);
-    return this;
-  }
-
-  /**
-   * Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.
-   * @return prototypes
-   */
-  @javax.annotation.Nullable
-  public Set<PrototypesEnum> getPrototypes() {
-    return prototypes;
-  }
-
-  public void setPrototypes(Set<PrototypesEnum> prototypes) {
-    this.prototypes = prototypes;
-  }
-
-
-  public Config kycCheckParameters(Set<KycCheckParametersEnum> kycCheckParameters) {
+  public Config kycCheckParameters(@javax.annotation.Nullable Set<KycCheckParametersEnum> kycCheckParameters) {
     this.kycCheckParameters = kycCheckParameters;
     return this;
   }
@@ -264,8 +256,35 @@ public class Config {
     return kycCheckParameters;
   }
 
-  public void setKycCheckParameters(Set<KycCheckParametersEnum> kycCheckParameters) {
+  public void setKycCheckParameters(@javax.annotation.Nullable Set<KycCheckParametersEnum> kycCheckParameters) {
     this.kycCheckParameters = kycCheckParameters;
+  }
+
+
+  public Config prototypes(@javax.annotation.Nullable Set<PrototypesEnum> prototypes) {
+    this.prototypes = prototypes;
+    return this;
+  }
+
+  public Config addPrototypesItem(PrototypesEnum prototypesItem) {
+    if (this.prototypes == null) {
+      this.prototypes = new LinkedHashSet<>();
+    }
+    this.prototypes.add(prototypesItem);
+    return this;
+  }
+
+  /**
+   * Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.
+   * @return prototypes
+   */
+  @javax.annotation.Nullable
+  public Set<PrototypesEnum> getPrototypes() {
+    return prototypes;
+  }
+
+  public void setPrototypes(@javax.annotation.Nullable Set<PrototypesEnum> prototypes) {
+    this.prototypes = prototypes;
   }
 
 
@@ -280,13 +299,13 @@ public class Config {
     }
     Config config = (Config) o;
     return Objects.equals(this.id, config.id) &&
-        Objects.equals(this.prototypes, config.prototypes) &&
-        Objects.equals(this.kycCheckParameters, config.kycCheckParameters);
+        Objects.equals(this.kycCheckParameters, config.kycCheckParameters) &&
+        Objects.equals(this.prototypes, config.prototypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, prototypes, kycCheckParameters);
+    return Objects.hash(id, kycCheckParameters, prototypes);
   }
 
   @Override
@@ -294,8 +313,8 @@ public class Config {
     StringBuilder sb = new StringBuilder();
     sb.append("class Config {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    prototypes: ").append(toIndentedString(prototypes)).append("\n");
     sb.append("    kycCheckParameters: ").append(toIndentedString(kycCheckParameters)).append("\n");
+    sb.append("    prototypes: ").append(toIndentedString(prototypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -319,8 +338,8 @@ public class Config {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
-    openapiFields.add("prototypes");
     openapiFields.add("kycCheckParameters");
+    openapiFields.add("prototypes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -351,12 +370,12 @@ public class Config {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("prototypes") != null && !jsonObj.get("prototypes").isJsonNull() && !jsonObj.get("prototypes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `prototypes` to be an array in the JSON string but got `%s`", jsonObj.get("prototypes").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("kycCheckParameters") != null && !jsonObj.get("kycCheckParameters").isJsonNull() && !jsonObj.get("kycCheckParameters").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `kycCheckParameters` to be an array in the JSON string but got `%s`", jsonObj.get("kycCheckParameters").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("prototypes") != null && !jsonObj.get("prototypes").isJsonNull() && !jsonObj.get("prototypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `prototypes` to be an array in the JSON string but got `%s`", jsonObj.get("prototypes").toString()));
       }
   }
 

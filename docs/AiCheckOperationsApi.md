@@ -8,6 +8,7 @@ All URIs are relative to *https://api.irisnet.de*
 | [**checkImage**](AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI. |
 | [**checkStream**](AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI. |
 | [**checkVideo**](AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI. |
+| [**liveDocumentCheck**](AiCheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI. |
 
 
 <a id="checkIdDocument"></a>
@@ -16,7 +17,7 @@ All URIs are relative to *https://api.irisnet.de*
 
 Check an id document with the AI.
 
-The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
 
 ### Example
 ```java
@@ -317,6 +318,78 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **402** | Not enough credits. |  -  |
-| **404** | configId not found. |  -  |
 | **202** | operation accepted: wait for callback. |  -  |
+| **404** | configId not found. |  -  |
+
+<a id="liveDocumentCheck"></a>
+# **liveDocumentCheck**
+> LiveDocumentCheckResponseData liveDocumentCheck(configId, liveDocumentCheckRequestData)
+
+Start a guided live id document check with the AI.
+
+The synchronous response (_LiveDocumentCheckResponseData_ schema) contains an eventId, possibly a token and an URL to send the enduser to. The actual result (_CheckResult_ schema) of the document check is sent to the provided _callbackUrl_ after the AI has finished processing.
+
+### Example
+```java
+// Import classes:
+import de.irisnet.java.ApiClient;
+import de.irisnet.java.ApiException;
+import de.irisnet.java.Configuration;
+import de.irisnet.java.auth.*;
+import de.irisnet.java.models.*;
+import de.irisnet.java.client.AiCheckOperationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.irisnet.de");
+    
+    // Configure API key authorization: LICENSE-KEY
+    ApiKeyAuth LICENSE-KEY = (ApiKeyAuth) defaultClient.getAuthentication("LICENSE-KEY");
+    LICENSE-KEY.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //LICENSE-KEY.setApiKeyPrefix("Token");
+
+    AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
+    UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
+    LiveDocumentCheckRequestData liveDocumentCheckRequestData = new LiveDocumentCheckRequestData(); // LiveDocumentCheckRequestData | The LiveDocumentCheckRequestData containing data needed for the live id document check.
+    try {
+      LiveDocumentCheckResponseData result = apiInstance.liveDocumentCheck(configId, liveDocumentCheckRequestData);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiCheckOperationsApi#liveDocumentCheck");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
+| **liveDocumentCheckRequestData** | [**LiveDocumentCheckRequestData**](LiveDocumentCheckRequestData.md)| The LiveDocumentCheckRequestData containing data needed for the live id document check. | |
+
+### Return type
+
+[**LiveDocumentCheckResponseData**](LiveDocumentCheckResponseData.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
+| **202** | Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. |  -  |
 

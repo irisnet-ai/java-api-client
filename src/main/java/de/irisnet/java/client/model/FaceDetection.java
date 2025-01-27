@@ -21,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
 import de.irisnet.java.client.model.BaseAttribute;
-import de.irisnet.java.client.model.BaseDetection;
+import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,21 +55,143 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _face_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
-public class FaceDetection extends BaseDetection {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+public class FaceDetection extends Detection {
+  public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
+  @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
+  @javax.annotation.Nullable
+  private String classification;
+
+  public static final String SERIALIZED_NAME_GROUP = "group";
+  @SerializedName(SERIALIZED_NAME_GROUP)
+  @javax.annotation.Nullable
+  private String group;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private Integer id;
+
+  public static final String SERIALIZED_NAME_PROBABILITY = "probability";
+  @SerializedName(SERIALIZED_NAME_PROBABILITY)
+  @javax.annotation.Nullable
+  private Integer probability;
+
+  public static final String SERIALIZED_NAME_COORDINATES = "coordinates";
+  @SerializedName(SERIALIZED_NAME_COORDINATES)
+  @javax.annotation.Nullable
+  private Coordinates coordinates;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nullable
   private List<BaseAttribute> attributes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SUB_DETECTIONS = "subDetections";
   @SerializedName(SERIALIZED_NAME_SUB_DETECTIONS)
-  private List<BaseDetection> subDetections = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<Detection> subDetections = new ArrayList<>();
 
   public FaceDetection() {
     this.type = this.getClass().getSimpleName();
   }
 
-  public FaceDetection attributes(List<BaseAttribute> attributes) {
+  public FaceDetection classification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+    return this;
+  }
+
+  /**
+   * The classification of the recognized object.
+   * @return classification
+   */
+  @javax.annotation.Nullable
+  public String getClassification() {
+    return classification;
+  }
+
+  public void setClassification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+  }
+
+
+  public FaceDetection group(@javax.annotation.Nullable String group) {
+    this.group = group;
+    return this;
+  }
+
+  /**
+   * The group of the classification.
+   * @return group
+   */
+  @javax.annotation.Nullable
+  public String getGroup() {
+    return group;
+  }
+
+  public void setGroup(@javax.annotation.Nullable String group) {
+    this.group = group;
+  }
+
+
+  public FaceDetection id(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The id of the detection object.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+  }
+
+
+  public FaceDetection probability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+    return this;
+  }
+
+  /**
+   * The probability that the object found matches the classification.
+   * @return probability
+   */
+  @javax.annotation.Nullable
+  public Integer getProbability() {
+    return probability;
+  }
+
+  public void setProbability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+  }
+
+
+  public FaceDetection coordinates(@javax.annotation.Nullable Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+  /**
+   * Get coordinates
+   * @return coordinates
+   */
+  @javax.annotation.Nullable
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+  public void setCoordinates(@javax.annotation.Nullable Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
+
+  public FaceDetection attributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -89,17 +213,17 @@ public class FaceDetection extends BaseDetection {
     return attributes;
   }
 
-  public void setAttributes(List<BaseAttribute> attributes) {
+  public void setAttributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
     this.attributes = attributes;
   }
 
 
-  public FaceDetection subDetections(List<BaseDetection> subDetections) {
+  public FaceDetection subDetections(@javax.annotation.Nullable List<Detection> subDetections) {
     this.subDetections = subDetections;
     return this;
   }
 
-  public FaceDetection addSubDetectionsItem(BaseDetection subDetectionsItem) {
+  public FaceDetection addSubDetectionsItem(Detection subDetectionsItem) {
     if (this.subDetections == null) {
       this.subDetections = new ArrayList<>();
     }
@@ -112,11 +236,11 @@ public class FaceDetection extends BaseDetection {
    * @return subDetections
    */
   @javax.annotation.Nullable
-  public List<BaseDetection> getSubDetections() {
+  public List<Detection> getSubDetections() {
     return subDetections;
   }
 
-  public void setSubDetections(List<BaseDetection> subDetections) {
+  public void setSubDetections(@javax.annotation.Nullable List<Detection> subDetections) {
     this.subDetections = subDetections;
   }
 
@@ -131,14 +255,19 @@ public class FaceDetection extends BaseDetection {
       return false;
     }
     FaceDetection faceDetection = (FaceDetection) o;
-    return Objects.equals(this.attributes, faceDetection.attributes) &&
+    return Objects.equals(this.classification, faceDetection.classification) &&
+        Objects.equals(this.group, faceDetection.group) &&
+        Objects.equals(this.id, faceDetection.id) &&
+        Objects.equals(this.probability, faceDetection.probability) &&
+        Objects.equals(this.coordinates, faceDetection.coordinates) &&
+        Objects.equals(this.attributes, faceDetection.attributes) &&
         Objects.equals(this.subDetections, faceDetection.subDetections) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, subDetections, super.hashCode());
+    return Objects.hash(classification, group, id, probability, coordinates, attributes, subDetections, super.hashCode());
   }
 
   @Override
@@ -146,6 +275,11 @@ public class FaceDetection extends BaseDetection {
     StringBuilder sb = new StringBuilder();
     sb.append("class FaceDetection {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
+    sb.append("    group: ").append(toIndentedString(group)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    subDetections: ").append(toIndentedString(subDetections)).append("\n");
     sb.append("}");
@@ -171,6 +305,11 @@ public class FaceDetection extends BaseDetection {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
+    openapiFields.add("classification");
+    openapiFields.add("group");
+    openapiFields.add("id");
+    openapiFields.add("probability");
+    openapiFields.add("coordinates");
     openapiFields.add("attributes");
     openapiFields.add("subDetections");
     openapiFields.add("checkId");
@@ -182,10 +321,10 @@ public class FaceDetection extends BaseDetection {
     openapiFields.add("documentBackLivenessScore");
     openapiFields.add("processedChecks");
     openapiFields.add("documentHolderId");
+    openapiFields.add("knownFaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
   /**
@@ -206,13 +345,6 @@ public class FaceDetection extends BaseDetection {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!FaceDetection.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FaceDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FaceDetection.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
   }

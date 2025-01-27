@@ -48,40 +48,47 @@ import de.irisnet.java.JSON;
 /**
  * Describes what and why a rule was broken according the the applied during the configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class BrokenRule {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
+  @javax.annotation.Nullable
   private String classification;
 
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
+  @javax.annotation.Nullable
   private String group;
 
   public static final String SERIALIZED_NAME_FOUND = "found";
   @SerializedName(SERIALIZED_NAME_FOUND)
+  @javax.annotation.Nullable
   private Integer found;
 
   public static final String SERIALIZED_NAME_MIN = "min";
   @SerializedName(SERIALIZED_NAME_MIN)
+  @javax.annotation.Nullable
   private Integer min;
 
   public static final String SERIALIZED_NAME_MAX = "max";
   @SerializedName(SERIALIZED_NAME_MAX)
+  @javax.annotation.Nullable
   private Integer max;
 
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)
+  @javax.annotation.Nullable
   private Integer severity;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private Float duration;
 
   public BrokenRule() {
   }
 
-  public BrokenRule classification(String classification) {
+  public BrokenRule classification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
     return this;
   }
@@ -95,12 +102,12 @@ public class BrokenRule {
     return classification;
   }
 
-  public void setClassification(String classification) {
+  public void setClassification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
   }
 
 
-  public BrokenRule group(String group) {
+  public BrokenRule group(@javax.annotation.Nullable String group) {
     this.group = group;
     return this;
   }
@@ -114,12 +121,12 @@ public class BrokenRule {
     return group;
   }
 
-  public void setGroup(String group) {
+  public void setGroup(@javax.annotation.Nullable String group) {
     this.group = group;
   }
 
 
-  public BrokenRule found(Integer found) {
+  public BrokenRule found(@javax.annotation.Nullable Integer found) {
     this.found = found;
     return this;
   }
@@ -133,12 +140,12 @@ public class BrokenRule {
     return found;
   }
 
-  public void setFound(Integer found) {
+  public void setFound(@javax.annotation.Nullable Integer found) {
     this.found = found;
   }
 
 
-  public BrokenRule min(Integer min) {
+  public BrokenRule min(@javax.annotation.Nullable Integer min) {
     this.min = min;
     return this;
   }
@@ -152,12 +159,12 @@ public class BrokenRule {
     return min;
   }
 
-  public void setMin(Integer min) {
+  public void setMin(@javax.annotation.Nullable Integer min) {
     this.min = min;
   }
 
 
-  public BrokenRule max(Integer max) {
+  public BrokenRule max(@javax.annotation.Nullable Integer max) {
     this.max = max;
     return this;
   }
@@ -171,12 +178,12 @@ public class BrokenRule {
     return max;
   }
 
-  public void setMax(Integer max) {
+  public void setMax(@javax.annotation.Nullable Integer max) {
     this.max = max;
   }
 
 
-  public BrokenRule severity(Integer severity) {
+  public BrokenRule severity(@javax.annotation.Nullable Integer severity) {
     this.severity = severity;
     return this;
   }
@@ -190,12 +197,12 @@ public class BrokenRule {
     return severity;
   }
 
-  public void setSeverity(Integer severity) {
+  public void setSeverity(@javax.annotation.Nullable Integer severity) {
     this.severity = severity;
   }
 
 
-  public BrokenRule duration(Float duration) {
+  public BrokenRule duration(@javax.annotation.Nullable Float duration) {
     this.duration = duration;
     return this;
   }
@@ -209,7 +216,7 @@ public class BrokenRule {
     return duration;
   }
 
-  public void setDuration(Float duration) {
+  public void setDuration(@javax.annotation.Nullable Float duration) {
     this.duration = duration;
   }
 

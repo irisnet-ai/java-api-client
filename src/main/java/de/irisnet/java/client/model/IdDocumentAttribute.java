@@ -51,10 +51,11 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _idDocument_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class IdDocumentAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   /**
@@ -119,58 +120,72 @@ public class IdDocumentAttribute {
 
   public static final String SERIALIZED_NAME_DOCUMENT_TYPE = "documentType";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_TYPE)
+  @javax.annotation.Nullable
   private DocumentTypeEnum documentType;
 
   public static final String SERIALIZED_NAME_DOCUMENT_NUMBER = "documentNumber";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_NUMBER)
+  @javax.annotation.Nullable
   private String documentNumber;
 
   public static final String SERIALIZED_NAME_IS_TWO_SIDED = "isTwoSided";
   @SerializedName(SERIALIZED_NAME_IS_TWO_SIDED)
+  @javax.annotation.Nullable
   private Boolean isTwoSided;
 
   public static final String SERIALIZED_NAME_ISSUING_AUTHORITY = "issuingAuthority";
   @SerializedName(SERIALIZED_NAME_ISSUING_AUTHORITY)
+  @javax.annotation.Nullable
   private String issuingAuthority;
 
   public static final String SERIALIZED_NAME_ISSUING_DATE = "issuingDate";
   @SerializedName(SERIALIZED_NAME_ISSUING_DATE)
+  @javax.annotation.Nullable
   private LocalDate issuingDate;
 
   public static final String SERIALIZED_NAME_ISSUING_COUNTRY = "issuingCountry";
   @SerializedName(SERIALIZED_NAME_ISSUING_COUNTRY)
+  @javax.annotation.Nullable
   private String issuingCountry;
 
   public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expirationDate";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+  @javax.annotation.Nullable
   private LocalDate expirationDate;
 
   public static final String SERIALIZED_NAME_ACCESS_NUMBER = "accessNumber";
   @SerializedName(SERIALIZED_NAME_ACCESS_NUMBER)
+  @javax.annotation.Nullable
   private String accessNumber;
 
   public static final String SERIALIZED_NAME_FIRST_NAMES = "firstNames";
   @SerializedName(SERIALIZED_NAME_FIRST_NAMES)
+  @javax.annotation.Nullable
   private List<String> firstNames = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LAST_NAMES = "lastNames";
   @SerializedName(SERIALIZED_NAME_LAST_NAMES)
+  @javax.annotation.Nullable
   private List<String> lastNames = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BIRTH_NAME = "birthName";
   @SerializedName(SERIALIZED_NAME_BIRTH_NAME)
+  @javax.annotation.Nullable
   private String birthName;
 
   public static final String SERIALIZED_NAME_DATE_OF_BIRTH = "dateOfBirth";
   @SerializedName(SERIALIZED_NAME_DATE_OF_BIRTH)
+  @javax.annotation.Nullable
   private LocalDate dateOfBirth;
 
   public static final String SERIALIZED_NAME_PLACE_OF_BIRTH = "placeOfBirth";
   @SerializedName(SERIALIZED_NAME_PLACE_OF_BIRTH)
+  @javax.annotation.Nullable
   private String placeOfBirth;
 
   public static final String SERIALIZED_NAME_NATIONALITY = "nationality";
   @SerializedName(SERIALIZED_NAME_NATIONALITY)
+  @javax.annotation.Nullable
   private String nationality;
 
   /**
@@ -229,24 +244,28 @@ public class IdDocumentAttribute {
 
   public static final String SERIALIZED_NAME_GENDER = "gender";
   @SerializedName(SERIALIZED_NAME_GENDER)
+  @javax.annotation.Nullable
   private GenderEnum gender;
 
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
+  @javax.annotation.Nullable
   private String height;
 
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
+  @javax.annotation.Nullable
   private String address;
 
   public static final String SERIALIZED_NAME_MACHINE_READABLE_ZONE = "machineReadableZone";
   @SerializedName(SERIALIZED_NAME_MACHINE_READABLE_ZONE)
+  @javax.annotation.Nullable
   private List<String> machineReadableZone = new ArrayList<>();
 
   public IdDocumentAttribute() {
   }
 
-  public IdDocumentAttribute type(String type) {
+  public IdDocumentAttribute type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -260,12 +279,12 @@ public class IdDocumentAttribute {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public IdDocumentAttribute documentType(DocumentTypeEnum documentType) {
+  public IdDocumentAttribute documentType(@javax.annotation.Nullable DocumentTypeEnum documentType) {
     this.documentType = documentType;
     return this;
   }
@@ -279,12 +298,12 @@ public class IdDocumentAttribute {
     return documentType;
   }
 
-  public void setDocumentType(DocumentTypeEnum documentType) {
+  public void setDocumentType(@javax.annotation.Nullable DocumentTypeEnum documentType) {
     this.documentType = documentType;
   }
 
 
-  public IdDocumentAttribute documentNumber(String documentNumber) {
+  public IdDocumentAttribute documentNumber(@javax.annotation.Nullable String documentNumber) {
     this.documentNumber = documentNumber;
     return this;
   }
@@ -298,12 +317,12 @@ public class IdDocumentAttribute {
     return documentNumber;
   }
 
-  public void setDocumentNumber(String documentNumber) {
+  public void setDocumentNumber(@javax.annotation.Nullable String documentNumber) {
     this.documentNumber = documentNumber;
   }
 
 
-  public IdDocumentAttribute isTwoSided(Boolean isTwoSided) {
+  public IdDocumentAttribute isTwoSided(@javax.annotation.Nullable Boolean isTwoSided) {
     this.isTwoSided = isTwoSided;
     return this;
   }
@@ -317,12 +336,12 @@ public class IdDocumentAttribute {
     return isTwoSided;
   }
 
-  public void setIsTwoSided(Boolean isTwoSided) {
+  public void setIsTwoSided(@javax.annotation.Nullable Boolean isTwoSided) {
     this.isTwoSided = isTwoSided;
   }
 
 
-  public IdDocumentAttribute issuingAuthority(String issuingAuthority) {
+  public IdDocumentAttribute issuingAuthority(@javax.annotation.Nullable String issuingAuthority) {
     this.issuingAuthority = issuingAuthority;
     return this;
   }
@@ -336,12 +355,12 @@ public class IdDocumentAttribute {
     return issuingAuthority;
   }
 
-  public void setIssuingAuthority(String issuingAuthority) {
+  public void setIssuingAuthority(@javax.annotation.Nullable String issuingAuthority) {
     this.issuingAuthority = issuingAuthority;
   }
 
 
-  public IdDocumentAttribute issuingDate(LocalDate issuingDate) {
+  public IdDocumentAttribute issuingDate(@javax.annotation.Nullable LocalDate issuingDate) {
     this.issuingDate = issuingDate;
     return this;
   }
@@ -355,12 +374,12 @@ public class IdDocumentAttribute {
     return issuingDate;
   }
 
-  public void setIssuingDate(LocalDate issuingDate) {
+  public void setIssuingDate(@javax.annotation.Nullable LocalDate issuingDate) {
     this.issuingDate = issuingDate;
   }
 
 
-  public IdDocumentAttribute issuingCountry(String issuingCountry) {
+  public IdDocumentAttribute issuingCountry(@javax.annotation.Nullable String issuingCountry) {
     this.issuingCountry = issuingCountry;
     return this;
   }
@@ -374,12 +393,12 @@ public class IdDocumentAttribute {
     return issuingCountry;
   }
 
-  public void setIssuingCountry(String issuingCountry) {
+  public void setIssuingCountry(@javax.annotation.Nullable String issuingCountry) {
     this.issuingCountry = issuingCountry;
   }
 
 
-  public IdDocumentAttribute expirationDate(LocalDate expirationDate) {
+  public IdDocumentAttribute expirationDate(@javax.annotation.Nullable LocalDate expirationDate) {
     this.expirationDate = expirationDate;
     return this;
   }
@@ -393,12 +412,12 @@ public class IdDocumentAttribute {
     return expirationDate;
   }
 
-  public void setExpirationDate(LocalDate expirationDate) {
+  public void setExpirationDate(@javax.annotation.Nullable LocalDate expirationDate) {
     this.expirationDate = expirationDate;
   }
 
 
-  public IdDocumentAttribute accessNumber(String accessNumber) {
+  public IdDocumentAttribute accessNumber(@javax.annotation.Nullable String accessNumber) {
     this.accessNumber = accessNumber;
     return this;
   }
@@ -412,12 +431,12 @@ public class IdDocumentAttribute {
     return accessNumber;
   }
 
-  public void setAccessNumber(String accessNumber) {
+  public void setAccessNumber(@javax.annotation.Nullable String accessNumber) {
     this.accessNumber = accessNumber;
   }
 
 
-  public IdDocumentAttribute firstNames(List<String> firstNames) {
+  public IdDocumentAttribute firstNames(@javax.annotation.Nullable List<String> firstNames) {
     this.firstNames = firstNames;
     return this;
   }
@@ -439,12 +458,12 @@ public class IdDocumentAttribute {
     return firstNames;
   }
 
-  public void setFirstNames(List<String> firstNames) {
+  public void setFirstNames(@javax.annotation.Nullable List<String> firstNames) {
     this.firstNames = firstNames;
   }
 
 
-  public IdDocumentAttribute lastNames(List<String> lastNames) {
+  public IdDocumentAttribute lastNames(@javax.annotation.Nullable List<String> lastNames) {
     this.lastNames = lastNames;
     return this;
   }
@@ -466,12 +485,12 @@ public class IdDocumentAttribute {
     return lastNames;
   }
 
-  public void setLastNames(List<String> lastNames) {
+  public void setLastNames(@javax.annotation.Nullable List<String> lastNames) {
     this.lastNames = lastNames;
   }
 
 
-  public IdDocumentAttribute birthName(String birthName) {
+  public IdDocumentAttribute birthName(@javax.annotation.Nullable String birthName) {
     this.birthName = birthName;
     return this;
   }
@@ -485,12 +504,12 @@ public class IdDocumentAttribute {
     return birthName;
   }
 
-  public void setBirthName(String birthName) {
+  public void setBirthName(@javax.annotation.Nullable String birthName) {
     this.birthName = birthName;
   }
 
 
-  public IdDocumentAttribute dateOfBirth(LocalDate dateOfBirth) {
+  public IdDocumentAttribute dateOfBirth(@javax.annotation.Nullable LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
     return this;
   }
@@ -504,12 +523,12 @@ public class IdDocumentAttribute {
     return dateOfBirth;
   }
 
-  public void setDateOfBirth(LocalDate dateOfBirth) {
+  public void setDateOfBirth(@javax.annotation.Nullable LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
 
-  public IdDocumentAttribute placeOfBirth(String placeOfBirth) {
+  public IdDocumentAttribute placeOfBirth(@javax.annotation.Nullable String placeOfBirth) {
     this.placeOfBirth = placeOfBirth;
     return this;
   }
@@ -523,12 +542,12 @@ public class IdDocumentAttribute {
     return placeOfBirth;
   }
 
-  public void setPlaceOfBirth(String placeOfBirth) {
+  public void setPlaceOfBirth(@javax.annotation.Nullable String placeOfBirth) {
     this.placeOfBirth = placeOfBirth;
   }
 
 
-  public IdDocumentAttribute nationality(String nationality) {
+  public IdDocumentAttribute nationality(@javax.annotation.Nullable String nationality) {
     this.nationality = nationality;
     return this;
   }
@@ -542,12 +561,12 @@ public class IdDocumentAttribute {
     return nationality;
   }
 
-  public void setNationality(String nationality) {
+  public void setNationality(@javax.annotation.Nullable String nationality) {
     this.nationality = nationality;
   }
 
 
-  public IdDocumentAttribute gender(GenderEnum gender) {
+  public IdDocumentAttribute gender(@javax.annotation.Nullable GenderEnum gender) {
     this.gender = gender;
     return this;
   }
@@ -561,12 +580,12 @@ public class IdDocumentAttribute {
     return gender;
   }
 
-  public void setGender(GenderEnum gender) {
+  public void setGender(@javax.annotation.Nullable GenderEnum gender) {
     this.gender = gender;
   }
 
 
-  public IdDocumentAttribute height(String height) {
+  public IdDocumentAttribute height(@javax.annotation.Nullable String height) {
     this.height = height;
     return this;
   }
@@ -580,12 +599,12 @@ public class IdDocumentAttribute {
     return height;
   }
 
-  public void setHeight(String height) {
+  public void setHeight(@javax.annotation.Nullable String height) {
     this.height = height;
   }
 
 
-  public IdDocumentAttribute address(String address) {
+  public IdDocumentAttribute address(@javax.annotation.Nullable String address) {
     this.address = address;
     return this;
   }
@@ -599,12 +618,12 @@ public class IdDocumentAttribute {
     return address;
   }
 
-  public void setAddress(String address) {
+  public void setAddress(@javax.annotation.Nullable String address) {
     this.address = address;
   }
 
 
-  public IdDocumentAttribute machineReadableZone(List<String> machineReadableZone) {
+  public IdDocumentAttribute machineReadableZone(@javax.annotation.Nullable List<String> machineReadableZone) {
     this.machineReadableZone = machineReadableZone;
     return this;
   }
@@ -626,7 +645,7 @@ public class IdDocumentAttribute {
     return machineReadableZone;
   }
 
-  public void setMachineReadableZone(List<String> machineReadableZone) {
+  public void setMachineReadableZone(@javax.annotation.Nullable List<String> machineReadableZone) {
     this.machineReadableZone = machineReadableZone;
   }
 

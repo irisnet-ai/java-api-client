@@ -48,10 +48,11 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _hair_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class HairAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   /**
@@ -61,13 +62,23 @@ public class HairAttribute {
   public enum ColorEnum {
     BLACK("black"),
     
+    DARK_BROWN("darkBrown"),
+    
     BROWN("brown"),
     
+    LIGHT_BROWN("lightBrown"),
+    
+    DARK_BLONDE("darkBlonde"),
+    
     BLONDE("blonde"),
+    
+    DARK_GREY("darkGrey"),
     
     GREY("grey"),
     
     RED("red"),
+    
+    WHITE("white"),
     
     OTHER("other");
 
@@ -116,6 +127,7 @@ public class HairAttribute {
 
   public static final String SERIALIZED_NAME_COLOR = "color";
   @SerializedName(SERIALIZED_NAME_COLOR)
+  @javax.annotation.Nullable
   private ColorEnum color;
 
   /**
@@ -172,12 +184,13 @@ public class HairAttribute {
 
   public static final String SERIALIZED_NAME_STYLE = "style";
   @SerializedName(SERIALIZED_NAME_STYLE)
+  @javax.annotation.Nullable
   private StyleEnum style;
 
   public HairAttribute() {
   }
 
-  public HairAttribute type(String type) {
+  public HairAttribute type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -191,12 +204,12 @@ public class HairAttribute {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public HairAttribute color(ColorEnum color) {
+  public HairAttribute color(@javax.annotation.Nullable ColorEnum color) {
     this.color = color;
     return this;
   }
@@ -210,12 +223,12 @@ public class HairAttribute {
     return color;
   }
 
-  public void setColor(ColorEnum color) {
+  public void setColor(@javax.annotation.Nullable ColorEnum color) {
     this.color = color;
   }
 
 
-  public HairAttribute style(StyleEnum style) {
+  public HairAttribute style(@javax.annotation.Nullable StyleEnum style) {
     this.style = style;
     return this;
   }
@@ -229,7 +242,7 @@ public class HairAttribute {
     return style;
   }
 
-  public void setStyle(StyleEnum style) {
+  public void setStyle(@javax.annotation.Nullable StyleEnum style) {
     this.style = style;
   }
 

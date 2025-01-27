@@ -48,63 +48,27 @@ import de.irisnet.java.JSON;
 /**
  * An attribute describes a quality or characteristic that a detection object has.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class BaseAttribute {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private String type;
+
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
+  @javax.annotation.Nullable
   private String classification;
 
   public static final String SERIALIZED_NAME_PROBABILITY = "probability";
   @SerializedName(SERIALIZED_NAME_PROBABILITY)
+  @javax.annotation.Nullable
   private Integer probability;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  protected String type;
-
   public BaseAttribute() {
-    this.type = this.getClass().getSimpleName();
   }
 
-  public BaseAttribute classification(String classification) {
-    this.classification = classification;
-    return this;
-  }
-
-  /**
-   * The classification of the recognized attribute.
-   * @return classification
-   */
-  @javax.annotation.Nullable
-  public String getClassification() {
-    return classification;
-  }
-
-  public void setClassification(String classification) {
-    this.classification = classification;
-  }
-
-
-  public BaseAttribute probability(Integer probability) {
-    this.probability = probability;
-    return this;
-  }
-
-  /**
-   * The probability that the attribute found matches the classification.
-   * @return probability
-   */
-  @javax.annotation.Nullable
-  public Integer getProbability() {
-    return probability;
-  }
-
-  public void setProbability(Integer probability) {
-    this.probability = probability;
-  }
-
-
-  public BaseAttribute type(String type) {
+  public BaseAttribute type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -118,8 +82,46 @@ public class BaseAttribute {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
+  }
+
+
+  public BaseAttribute classification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+    return this;
+  }
+
+  /**
+   * The classification of the recognized attribute.
+   * @return classification
+   */
+  @javax.annotation.Nullable
+  public String getClassification() {
+    return classification;
+  }
+
+  public void setClassification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+  }
+
+
+  public BaseAttribute probability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+    return this;
+  }
+
+  /**
+   * The probability that the attribute found matches the classification.
+   * @return probability
+   */
+  @javax.annotation.Nullable
+  public Integer getProbability() {
+    return probability;
+  }
+
+  public void setProbability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
   }
 
 
@@ -133,23 +135,23 @@ public class BaseAttribute {
       return false;
     }
     BaseAttribute baseAttribute = (BaseAttribute) o;
-    return Objects.equals(this.classification, baseAttribute.classification) &&
-        Objects.equals(this.probability, baseAttribute.probability) &&
-        Objects.equals(this.type, baseAttribute.type);
+    return Objects.equals(this.type, baseAttribute.type) &&
+        Objects.equals(this.classification, baseAttribute.classification) &&
+        Objects.equals(this.probability, baseAttribute.probability);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(classification, probability, type);
+    return Objects.hash(type, classification, probability);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseAttribute {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
     sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,9 +174,9 @@ public class BaseAttribute {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("type");
     openapiFields.add("classification");
     openapiFields.add("probability");
-    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -199,6 +201,13 @@ public class BaseAttribute {
         if (!BaseAttribute.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BaseAttribute` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("classification") != null && !jsonObj.get("classification").isJsonNull()) && !jsonObj.get("classification").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `classification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("classification").toString()));
       }
   }
 

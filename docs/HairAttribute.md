@@ -19,10 +19,15 @@ Attributes qualifying the _hair_ classification.
 | Name | Value |
 |---- | -----|
 | BLACK | &quot;black&quot; |
+| DARK_BROWN | &quot;darkBrown&quot; |
 | BROWN | &quot;brown&quot; |
+| LIGHT_BROWN | &quot;lightBrown&quot; |
+| DARK_BLONDE | &quot;darkBlonde&quot; |
 | BLONDE | &quot;blonde&quot; |
+| DARK_GREY | &quot;darkGrey&quot; |
 | GREY | &quot;grey&quot; |
 | RED | &quot;red&quot; |
+| WHITE | &quot;white&quot; |
 | OTHER | &quot;other&quot; |
 
 

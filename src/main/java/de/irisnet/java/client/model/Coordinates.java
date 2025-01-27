@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,17 +51,17 @@ import de.irisnet.java.JSON;
 /**
  * Describes the position and bounds of the classification object.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Coordinates {
   public static final String SERIALIZED_NAME_RECTANGLES = "rectangles";
   @SerializedName(SERIALIZED_NAME_RECTANGLES)
-  private List<Rectangle> rectangles;
+  @javax.annotation.Nullable
+  private List<Rectangle> rectangles = new ArrayList<>();
 
   public Coordinates() {
   }
 
-  public Coordinates rectangles(List<Rectangle> rectangles) {
-    
+  public Coordinates rectangles(@javax.annotation.Nullable List<Rectangle> rectangles) {
     this.rectangles = rectangles;
     return this;
   }
@@ -75,17 +74,16 @@ public class Coordinates {
     return this;
   }
 
-   /**
+  /**
    * Get rectangles
    * @return rectangles
-  **/
+   */
   @javax.annotation.Nullable
   public List<Rectangle> getRectangles() {
     return rectangles;
   }
 
-
-  public void setRectangles(List<Rectangle> rectangles) {
+  public void setRectangles(@javax.annotation.Nullable List<Rectangle> rectangles) {
     this.rectangles = rectangles;
   }
 
@@ -141,12 +139,12 @@ public class Coordinates {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Coordinates
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Coordinates
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Coordinates.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -207,22 +205,22 @@ public class Coordinates {
     }
   }
 
- /**
-  * Create an instance of Coordinates given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Coordinates
-  * @throws IOException if the JSON string is invalid with respect to Coordinates
-  */
+  /**
+   * Create an instance of Coordinates given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Coordinates
+   * @throws IOException if the JSON string is invalid with respect to Coordinates
+   */
   public static Coordinates fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Coordinates.class);
   }
 
- /**
-  * Convert an instance of Coordinates to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Coordinates to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

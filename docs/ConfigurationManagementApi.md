@@ -76,8 +76,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configId not found. |  -  |
 | **204** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
 
 <a id="getAllConfigs"></a>
 # **getAllConfigs**

@@ -51,20 +51,22 @@ import de.irisnet.java.JSON;
 /**
  * Callback options to send a response to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Callback {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
+  @javax.annotation.Nonnull
   private URI callbackUrl;
 
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
+  @javax.annotation.Nullable
   private Map<String, String> headers = new HashMap<>();
 
   public Callback() {
   }
 
-  public Callback callbackUrl(URI callbackUrl) {
+  public Callback callbackUrl(@javax.annotation.Nonnull URI callbackUrl) {
     this.callbackUrl = callbackUrl;
     return this;
   }
@@ -78,12 +80,12 @@ public class Callback {
     return callbackUrl;
   }
 
-  public void setCallbackUrl(URI callbackUrl) {
+  public void setCallbackUrl(@javax.annotation.Nonnull URI callbackUrl) {
     this.callbackUrl = callbackUrl;
   }
 
 
-  public Callback headers(Map<String, String> headers) {
+  public Callback headers(@javax.annotation.Nullable Map<String, String> headers) {
     this.headers = headers;
     return this;
   }
@@ -105,7 +107,7 @@ public class Callback {
     return headers;
   }
 
-  public void setHeaders(Map<String, String> headers) {
+  public void setHeaders(@javax.annotation.Nullable Map<String, String> headers) {
     this.headers = headers;
   }
 

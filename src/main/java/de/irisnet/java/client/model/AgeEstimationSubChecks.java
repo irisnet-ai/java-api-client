@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information on ageEstimation sub-checks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class AgeEstimationSubChecks {
   /**
    * Indicates if the selfie image is genuine and not a photo of an image or of a screen
@@ -106,6 +106,7 @@ public class AgeEstimationSubChecks {
 
   public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK = "faceLivenessCheck";
   @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK)
+  @javax.annotation.Nullable
   private FaceLivenessCheckEnum faceLivenessCheck;
 
   /**
@@ -164,12 +165,13 @@ public class AgeEstimationSubChecks {
 
   public static final String SERIALIZED_NAME_AGE_VALIDATION_CHECK = "ageValidationCheck";
   @SerializedName(SERIALIZED_NAME_AGE_VALIDATION_CHECK)
+  @javax.annotation.Nullable
   private AgeValidationCheckEnum ageValidationCheck;
 
   public AgeEstimationSubChecks() {
   }
 
-  public AgeEstimationSubChecks faceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
+  public AgeEstimationSubChecks faceLivenessCheck(@javax.annotation.Nullable FaceLivenessCheckEnum faceLivenessCheck) {
     this.faceLivenessCheck = faceLivenessCheck;
     return this;
   }
@@ -183,12 +185,12 @@ public class AgeEstimationSubChecks {
     return faceLivenessCheck;
   }
 
-  public void setFaceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
+  public void setFaceLivenessCheck(@javax.annotation.Nullable FaceLivenessCheckEnum faceLivenessCheck) {
     this.faceLivenessCheck = faceLivenessCheck;
   }
 
 
-  public AgeEstimationSubChecks ageValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+  public AgeEstimationSubChecks ageValidationCheck(@javax.annotation.Nullable AgeValidationCheckEnum ageValidationCheck) {
     this.ageValidationCheck = ageValidationCheck;
     return this;
   }
@@ -202,7 +204,7 @@ public class AgeEstimationSubChecks {
     return ageValidationCheck;
   }
 
-  public void setAgeValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+  public void setAgeValidationCheck(@javax.annotation.Nullable AgeValidationCheckEnum ageValidationCheck) {
     this.ageValidationCheck = ageValidationCheck;
   }
 

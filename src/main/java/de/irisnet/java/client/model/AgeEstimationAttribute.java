@@ -48,28 +48,32 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _ageEstimation_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class AgeEstimationAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_AGE = "age";
   @SerializedName(SERIALIZED_NAME_AGE)
+  @javax.annotation.Nullable
   private Integer age;
 
   public static final String SERIALIZED_NAME_AGE_MIN = "ageMin";
   @SerializedName(SERIALIZED_NAME_AGE_MIN)
+  @javax.annotation.Nullable
   private Integer ageMin;
 
   public static final String SERIALIZED_NAME_AGE_MAX = "ageMax";
   @SerializedName(SERIALIZED_NAME_AGE_MAX)
+  @javax.annotation.Nullable
   private Integer ageMax;
 
   public AgeEstimationAttribute() {
   }
 
-  public AgeEstimationAttribute type(String type) {
+  public AgeEstimationAttribute type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -83,12 +87,12 @@ public class AgeEstimationAttribute {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public AgeEstimationAttribute age(Integer age) {
+  public AgeEstimationAttribute age(@javax.annotation.Nullable Integer age) {
     this.age = age;
     return this;
   }
@@ -102,12 +106,12 @@ public class AgeEstimationAttribute {
     return age;
   }
 
-  public void setAge(Integer age) {
+  public void setAge(@javax.annotation.Nullable Integer age) {
     this.age = age;
   }
 
 
-  public AgeEstimationAttribute ageMin(Integer ageMin) {
+  public AgeEstimationAttribute ageMin(@javax.annotation.Nullable Integer ageMin) {
     this.ageMin = ageMin;
     return this;
   }
@@ -121,12 +125,12 @@ public class AgeEstimationAttribute {
     return ageMin;
   }
 
-  public void setAgeMin(Integer ageMin) {
+  public void setAgeMin(@javax.annotation.Nullable Integer ageMin) {
     this.ageMin = ageMin;
   }
 
 
-  public AgeEstimationAttribute ageMax(Integer ageMax) {
+  public AgeEstimationAttribute ageMax(@javax.annotation.Nullable Integer ageMax) {
     this.ageMax = ageMax;
     return this;
   }
@@ -140,7 +144,7 @@ public class AgeEstimationAttribute {
     return ageMax;
   }
 
-  public void setAgeMax(Integer ageMax) {
+  public void setAgeMax(@javax.annotation.Nullable Integer ageMax) {
     this.ageMax = ageMax;
   }
 

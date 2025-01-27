@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.irisnet.java.client.model.KycUiParameter;
 import de.irisnet.java.client.model.Param;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,32 +52,47 @@ import de.irisnet.java.JSON;
 /**
  * A set of parameters/rules that describe how the AI should behave.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ParamSet {
   public static final String SERIALIZED_NAME_THRESH = "thresh";
   @SerializedName(SERIALIZED_NAME_THRESH)
+  @javax.annotation.Nullable
   private Float thresh = 0.5f;
 
   public static final String SERIALIZED_NAME_GREY = "grey";
   @SerializedName(SERIALIZED_NAME_GREY)
+  @javax.annotation.Nullable
   private Integer grey = 127;
 
   public static final String SERIALIZED_NAME_MIN_DURATION = "minDuration";
   @SerializedName(SERIALIZED_NAME_MIN_DURATION)
+  @javax.annotation.Nullable
   private Integer minDuration = 100;
 
   public static final String SERIALIZED_NAME_ABORT_ON_SEVERITY = "abortOnSeverity";
   @SerializedName(SERIALIZED_NAME_ABORT_ON_SEVERITY)
+  @javax.annotation.Nullable
   private Integer abortOnSeverity = -1;
 
   public static final String SERIALIZED_NAME_PARAMS = "params";
   @SerializedName(SERIALIZED_NAME_PARAMS)
+  @javax.annotation.Nullable
   private List<Param> params = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_KYC_UI_PARAMETERS = "kycUiParameters";
+  @SerializedName(SERIALIZED_NAME_KYC_UI_PARAMETERS)
+  @javax.annotation.Nullable
+  private KycUiParameter kycUiParameters;
+
+  public static final String SERIALIZED_NAME_KYC_DOCUMENT_COUNTRY_DENY_LIST = "kycDocumentCountryDenyList";
+  @SerializedName(SERIALIZED_NAME_KYC_DOCUMENT_COUNTRY_DENY_LIST)
+  @javax.annotation.Nullable
+  private String kycDocumentCountryDenyList;
 
   public ParamSet() {
   }
 
-  public ParamSet thresh(Float thresh) {
+  public ParamSet thresh(@javax.annotation.Nullable Float thresh) {
     this.thresh = thresh;
     return this;
   }
@@ -92,12 +108,12 @@ public class ParamSet {
     return thresh;
   }
 
-  public void setThresh(Float thresh) {
+  public void setThresh(@javax.annotation.Nullable Float thresh) {
     this.thresh = thresh;
   }
 
 
-  public ParamSet grey(Integer grey) {
+  public ParamSet grey(@javax.annotation.Nullable Integer grey) {
     this.grey = grey;
     return this;
   }
@@ -113,12 +129,12 @@ public class ParamSet {
     return grey;
   }
 
-  public void setGrey(Integer grey) {
+  public void setGrey(@javax.annotation.Nullable Integer grey) {
     this.grey = grey;
   }
 
 
-  public ParamSet minDuration(Integer minDuration) {
+  public ParamSet minDuration(@javax.annotation.Nullable Integer minDuration) {
     this.minDuration = minDuration;
     return this;
   }
@@ -134,12 +150,12 @@ public class ParamSet {
     return minDuration;
   }
 
-  public void setMinDuration(Integer minDuration) {
+  public void setMinDuration(@javax.annotation.Nullable Integer minDuration) {
     this.minDuration = minDuration;
   }
 
 
-  public ParamSet abortOnSeverity(Integer abortOnSeverity) {
+  public ParamSet abortOnSeverity(@javax.annotation.Nullable Integer abortOnSeverity) {
     this.abortOnSeverity = abortOnSeverity;
     return this;
   }
@@ -154,12 +170,12 @@ public class ParamSet {
     return abortOnSeverity;
   }
 
-  public void setAbortOnSeverity(Integer abortOnSeverity) {
+  public void setAbortOnSeverity(@javax.annotation.Nullable Integer abortOnSeverity) {
     this.abortOnSeverity = abortOnSeverity;
   }
 
 
-  public ParamSet params(List<Param> params) {
+  public ParamSet params(@javax.annotation.Nullable List<Param> params) {
     this.params = params;
     return this;
   }
@@ -181,8 +197,46 @@ public class ParamSet {
     return params;
   }
 
-  public void setParams(List<Param> params) {
+  public void setParams(@javax.annotation.Nullable List<Param> params) {
     this.params = params;
+  }
+
+
+  public ParamSet kycUiParameters(@javax.annotation.Nullable KycUiParameter kycUiParameters) {
+    this.kycUiParameters = kycUiParameters;
+    return this;
+  }
+
+  /**
+   * Get kycUiParameters
+   * @return kycUiParameters
+   */
+  @javax.annotation.Nullable
+  public KycUiParameter getKycUiParameters() {
+    return kycUiParameters;
+  }
+
+  public void setKycUiParameters(@javax.annotation.Nullable KycUiParameter kycUiParameters) {
+    this.kycUiParameters = kycUiParameters;
+  }
+
+
+  public ParamSet kycDocumentCountryDenyList(@javax.annotation.Nullable String kycDocumentCountryDenyList) {
+    this.kycDocumentCountryDenyList = kycDocumentCountryDenyList;
+    return this;
+  }
+
+  /**
+   * A comma separated list of country codes (ISO 3166-1 alpha-2) for which id-documents should be rejected.
+   * @return kycDocumentCountryDenyList
+   */
+  @javax.annotation.Nullable
+  public String getKycDocumentCountryDenyList() {
+    return kycDocumentCountryDenyList;
+  }
+
+  public void setKycDocumentCountryDenyList(@javax.annotation.Nullable String kycDocumentCountryDenyList) {
+    this.kycDocumentCountryDenyList = kycDocumentCountryDenyList;
   }
 
 
@@ -200,12 +254,14 @@ public class ParamSet {
         Objects.equals(this.grey, paramSet.grey) &&
         Objects.equals(this.minDuration, paramSet.minDuration) &&
         Objects.equals(this.abortOnSeverity, paramSet.abortOnSeverity) &&
-        Objects.equals(this.params, paramSet.params);
+        Objects.equals(this.params, paramSet.params) &&
+        Objects.equals(this.kycUiParameters, paramSet.kycUiParameters) &&
+        Objects.equals(this.kycDocumentCountryDenyList, paramSet.kycDocumentCountryDenyList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(thresh, grey, minDuration, abortOnSeverity, params);
+    return Objects.hash(thresh, grey, minDuration, abortOnSeverity, params, kycUiParameters, kycDocumentCountryDenyList);
   }
 
   @Override
@@ -217,6 +273,8 @@ public class ParamSet {
     sb.append("    minDuration: ").append(toIndentedString(minDuration)).append("\n");
     sb.append("    abortOnSeverity: ").append(toIndentedString(abortOnSeverity)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
+    sb.append("    kycUiParameters: ").append(toIndentedString(kycUiParameters)).append("\n");
+    sb.append("    kycDocumentCountryDenyList: ").append(toIndentedString(kycDocumentCountryDenyList)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -244,6 +302,8 @@ public class ParamSet {
     openapiFields.add("minDuration");
     openapiFields.add("abortOnSeverity");
     openapiFields.add("params");
+    openapiFields.add("kycUiParameters");
+    openapiFields.add("kycDocumentCountryDenyList");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -283,6 +343,13 @@ public class ParamSet {
             Param.validateJsonElement(jsonArrayparams.get(i));
           };
         }
+      }
+      // validate the optional field `kycUiParameters`
+      if (jsonObj.get("kycUiParameters") != null && !jsonObj.get("kycUiParameters").isJsonNull()) {
+        KycUiParameter.validateJsonElement(jsonObj.get("kycUiParameters"));
+      }
+      if ((jsonObj.get("kycDocumentCountryDenyList") != null && !jsonObj.get("kycDocumentCountryDenyList").isJsonNull()) && !jsonObj.get("kycDocumentCountryDenyList").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `kycDocumentCountryDenyList` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kycDocumentCountryDenyList").toString()));
       }
   }
 

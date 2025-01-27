@@ -48,10 +48,11 @@ import de.irisnet.java.JSON;
 /**
  * ApiNotice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ApiNotice {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
   private Integer code;
 
   /**
@@ -110,16 +111,18 @@ public class ApiNotice {
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
+  @javax.annotation.Nullable
   private LevelEnum level;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public ApiNotice() {
   }
 
-  public ApiNotice code(Integer code) {
+  public ApiNotice code(@javax.annotation.Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -133,12 +136,12 @@ public class ApiNotice {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@javax.annotation.Nullable Integer code) {
     this.code = code;
   }
 
 
-  public ApiNotice level(LevelEnum level) {
+  public ApiNotice level(@javax.annotation.Nullable LevelEnum level) {
     this.level = level;
     return this;
   }
@@ -152,12 +155,12 @@ public class ApiNotice {
     return level;
   }
 
-  public void setLevel(LevelEnum level) {
+  public void setLevel(@javax.annotation.Nullable LevelEnum level) {
     this.level = level;
   }
 
 
-  public ApiNotice message(String message) {
+  public ApiNotice message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -171,7 +174,7 @@ public class ApiNotice {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 

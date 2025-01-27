@@ -19,9 +19,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.BaseDetection;
+import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
 import de.irisnet.java.client.model.IdDocumentAttribute;
 import de.irisnet.java.client.model.IdDocumentSubChecks;
+import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,53 +55,188 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _idDocument_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
-public class IdDocumentDetection extends BaseDetection {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+public class IdDocumentDetection extends Detection {
+  public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
+  @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
+  @javax.annotation.Nullable
+  private String classification;
+
+  public static final String SERIALIZED_NAME_GROUP = "group";
+  @SerializedName(SERIALIZED_NAME_GROUP)
+  @javax.annotation.Nullable
+  private String group;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private Integer id;
+
+  public static final String SERIALIZED_NAME_PROBABILITY = "probability";
+  @SerializedName(SERIALIZED_NAME_PROBABILITY)
+  @javax.annotation.Nullable
+  private Integer probability;
+
+  public static final String SERIALIZED_NAME_COORDINATES = "coordinates";
+  @SerializedName(SERIALIZED_NAME_COORDINATES)
+  @javax.annotation.Nullable
+  private Coordinates coordinates;
+
   public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
   @SerializedName(SERIALIZED_NAME_CHECK_ID)
+  @javax.annotation.Nullable
   private String checkId;
 
   public static final String SERIALIZED_NAME_HAS_OFFICIAL_DOCUMENT = "hasOfficialDocument";
   @SerializedName(SERIALIZED_NAME_HAS_OFFICIAL_DOCUMENT)
+  @javax.annotation.Nullable
   private Boolean hasOfficialDocument;
 
   public static final String SERIALIZED_NAME_COMPARABLE = "comparable";
   @SerializedName(SERIALIZED_NAME_COMPARABLE)
+  @javax.annotation.Nullable
   private Boolean comparable;
 
   public static final String SERIALIZED_NAME_FACE_SIMILARITY = "faceSimilarity";
   @SerializedName(SERIALIZED_NAME_FACE_SIMILARITY)
+  @javax.annotation.Nullable
   private Integer faceSimilarity;
 
   public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE = "faceLivenessCheckScore";
   @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE)
+  @javax.annotation.Nullable
   private Integer faceLivenessCheckScore;
 
   public static final String SERIALIZED_NAME_DOCUMENT_FRONT_LIVENESS_SCORE = "documentFrontLivenessScore";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_FRONT_LIVENESS_SCORE)
+  @javax.annotation.Nullable
   private Integer documentFrontLivenessScore;
 
   public static final String SERIALIZED_NAME_DOCUMENT_BACK_LIVENESS_SCORE = "documentBackLivenessScore";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_BACK_LIVENESS_SCORE)
+  @javax.annotation.Nullable
   private Integer documentBackLivenessScore;
 
   public static final String SERIALIZED_NAME_PROCESSED_CHECKS = "processedChecks";
   @SerializedName(SERIALIZED_NAME_PROCESSED_CHECKS)
+  @javax.annotation.Nullable
   private IdDocumentSubChecks processedChecks;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  @javax.annotation.Nullable
   private List<IdDocumentAttribute> attributes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
+  @javax.annotation.Nullable
   private String documentHolderId;
+
+  public static final String SERIALIZED_NAME_KNOWN_FACES = "knownFaces";
+  @SerializedName(SERIALIZED_NAME_KNOWN_FACES)
+  @javax.annotation.Nullable
+  private List<KnownFace> knownFaces = new ArrayList<>();
 
   public IdDocumentDetection() {
     this.type = this.getClass().getSimpleName();
   }
 
-  public IdDocumentDetection checkId(String checkId) {
+  public IdDocumentDetection classification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+    return this;
+  }
+
+  /**
+   * The classification of the recognized object.
+   * @return classification
+   */
+  @javax.annotation.Nullable
+  public String getClassification() {
+    return classification;
+  }
+
+  public void setClassification(@javax.annotation.Nullable String classification) {
+    this.classification = classification;
+  }
+
+
+  public IdDocumentDetection group(@javax.annotation.Nullable String group) {
+    this.group = group;
+    return this;
+  }
+
+  /**
+   * The group of the classification.
+   * @return group
+   */
+  @javax.annotation.Nullable
+  public String getGroup() {
+    return group;
+  }
+
+  public void setGroup(@javax.annotation.Nullable String group) {
+    this.group = group;
+  }
+
+
+  public IdDocumentDetection id(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The id of the detection object.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+  }
+
+
+  public IdDocumentDetection probability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+    return this;
+  }
+
+  /**
+   * The probability that the object found matches the classification.
+   * @return probability
+   */
+  @javax.annotation.Nullable
+  public Integer getProbability() {
+    return probability;
+  }
+
+  public void setProbability(@javax.annotation.Nullable Integer probability) {
+    this.probability = probability;
+  }
+
+
+  public IdDocumentDetection coordinates(@javax.annotation.Nullable Coordinates coordinates) {
+    this.coordinates = coordinates;
+    return this;
+  }
+
+  /**
+   * Get coordinates
+   * @return coordinates
+   */
+  @javax.annotation.Nullable
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+  public void setCoordinates(@javax.annotation.Nullable Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
+
+  public IdDocumentDetection checkId(@javax.annotation.Nullable String checkId) {
     this.checkId = checkId;
     return this;
   }
@@ -113,12 +250,12 @@ public class IdDocumentDetection extends BaseDetection {
     return checkId;
   }
 
-  public void setCheckId(String checkId) {
+  public void setCheckId(@javax.annotation.Nullable String checkId) {
     this.checkId = checkId;
   }
 
 
-  public IdDocumentDetection hasOfficialDocument(Boolean hasOfficialDocument) {
+  public IdDocumentDetection hasOfficialDocument(@javax.annotation.Nullable Boolean hasOfficialDocument) {
     this.hasOfficialDocument = hasOfficialDocument;
     return this;
   }
@@ -132,12 +269,12 @@ public class IdDocumentDetection extends BaseDetection {
     return hasOfficialDocument;
   }
 
-  public void setHasOfficialDocument(Boolean hasOfficialDocument) {
+  public void setHasOfficialDocument(@javax.annotation.Nullable Boolean hasOfficialDocument) {
     this.hasOfficialDocument = hasOfficialDocument;
   }
 
 
-  public IdDocumentDetection comparable(Boolean comparable) {
+  public IdDocumentDetection comparable(@javax.annotation.Nullable Boolean comparable) {
     this.comparable = comparable;
     return this;
   }
@@ -151,12 +288,12 @@ public class IdDocumentDetection extends BaseDetection {
     return comparable;
   }
 
-  public void setComparable(Boolean comparable) {
+  public void setComparable(@javax.annotation.Nullable Boolean comparable) {
     this.comparable = comparable;
   }
 
 
-  public IdDocumentDetection faceSimilarity(Integer faceSimilarity) {
+  public IdDocumentDetection faceSimilarity(@javax.annotation.Nullable Integer faceSimilarity) {
     this.faceSimilarity = faceSimilarity;
     return this;
   }
@@ -170,12 +307,12 @@ public class IdDocumentDetection extends BaseDetection {
     return faceSimilarity;
   }
 
-  public void setFaceSimilarity(Integer faceSimilarity) {
+  public void setFaceSimilarity(@javax.annotation.Nullable Integer faceSimilarity) {
     this.faceSimilarity = faceSimilarity;
   }
 
 
-  public IdDocumentDetection faceLivenessCheckScore(Integer faceLivenessCheckScore) {
+  public IdDocumentDetection faceLivenessCheckScore(@javax.annotation.Nullable Integer faceLivenessCheckScore) {
     this.faceLivenessCheckScore = faceLivenessCheckScore;
     return this;
   }
@@ -189,12 +326,12 @@ public class IdDocumentDetection extends BaseDetection {
     return faceLivenessCheckScore;
   }
 
-  public void setFaceLivenessCheckScore(Integer faceLivenessCheckScore) {
+  public void setFaceLivenessCheckScore(@javax.annotation.Nullable Integer faceLivenessCheckScore) {
     this.faceLivenessCheckScore = faceLivenessCheckScore;
   }
 
 
-  public IdDocumentDetection documentFrontLivenessScore(Integer documentFrontLivenessScore) {
+  public IdDocumentDetection documentFrontLivenessScore(@javax.annotation.Nullable Integer documentFrontLivenessScore) {
     this.documentFrontLivenessScore = documentFrontLivenessScore;
     return this;
   }
@@ -208,12 +345,12 @@ public class IdDocumentDetection extends BaseDetection {
     return documentFrontLivenessScore;
   }
 
-  public void setDocumentFrontLivenessScore(Integer documentFrontLivenessScore) {
+  public void setDocumentFrontLivenessScore(@javax.annotation.Nullable Integer documentFrontLivenessScore) {
     this.documentFrontLivenessScore = documentFrontLivenessScore;
   }
 
 
-  public IdDocumentDetection documentBackLivenessScore(Integer documentBackLivenessScore) {
+  public IdDocumentDetection documentBackLivenessScore(@javax.annotation.Nullable Integer documentBackLivenessScore) {
     this.documentBackLivenessScore = documentBackLivenessScore;
     return this;
   }
@@ -227,12 +364,12 @@ public class IdDocumentDetection extends BaseDetection {
     return documentBackLivenessScore;
   }
 
-  public void setDocumentBackLivenessScore(Integer documentBackLivenessScore) {
+  public void setDocumentBackLivenessScore(@javax.annotation.Nullable Integer documentBackLivenessScore) {
     this.documentBackLivenessScore = documentBackLivenessScore;
   }
 
 
-  public IdDocumentDetection processedChecks(IdDocumentSubChecks processedChecks) {
+  public IdDocumentDetection processedChecks(@javax.annotation.Nullable IdDocumentSubChecks processedChecks) {
     this.processedChecks = processedChecks;
     return this;
   }
@@ -246,12 +383,12 @@ public class IdDocumentDetection extends BaseDetection {
     return processedChecks;
   }
 
-  public void setProcessedChecks(IdDocumentSubChecks processedChecks) {
+  public void setProcessedChecks(@javax.annotation.Nullable IdDocumentSubChecks processedChecks) {
     this.processedChecks = processedChecks;
   }
 
 
-  public IdDocumentDetection attributes(List<IdDocumentAttribute> attributes) {
+  public IdDocumentDetection attributes(@javax.annotation.Nullable List<IdDocumentAttribute> attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -273,12 +410,12 @@ public class IdDocumentDetection extends BaseDetection {
     return attributes;
   }
 
-  public void setAttributes(List<IdDocumentAttribute> attributes) {
+  public void setAttributes(@javax.annotation.Nullable List<IdDocumentAttribute> attributes) {
     this.attributes = attributes;
   }
 
 
-  public IdDocumentDetection documentHolderId(String documentHolderId) {
+  public IdDocumentDetection documentHolderId(@javax.annotation.Nullable String documentHolderId) {
     this.documentHolderId = documentHolderId;
     return this;
   }
@@ -292,8 +429,35 @@ public class IdDocumentDetection extends BaseDetection {
     return documentHolderId;
   }
 
-  public void setDocumentHolderId(String documentHolderId) {
+  public void setDocumentHolderId(@javax.annotation.Nullable String documentHolderId) {
     this.documentHolderId = documentHolderId;
+  }
+
+
+  public IdDocumentDetection knownFaces(@javax.annotation.Nullable List<KnownFace> knownFaces) {
+    this.knownFaces = knownFaces;
+    return this;
+  }
+
+  public IdDocumentDetection addKnownFacesItem(KnownFace knownFacesItem) {
+    if (this.knownFaces == null) {
+      this.knownFaces = new ArrayList<>();
+    }
+    this.knownFaces.add(knownFacesItem);
+    return this;
+  }
+
+  /**
+   * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
+   * @return knownFaces
+   */
+  @javax.annotation.Nullable
+  public List<KnownFace> getKnownFaces() {
+    return knownFaces;
+  }
+
+  public void setKnownFaces(@javax.annotation.Nullable List<KnownFace> knownFaces) {
+    this.knownFaces = knownFaces;
   }
 
 
@@ -307,7 +471,12 @@ public class IdDocumentDetection extends BaseDetection {
       return false;
     }
     IdDocumentDetection idDocumentDetection = (IdDocumentDetection) o;
-    return Objects.equals(this.checkId, idDocumentDetection.checkId) &&
+    return Objects.equals(this.classification, idDocumentDetection.classification) &&
+        Objects.equals(this.group, idDocumentDetection.group) &&
+        Objects.equals(this.id, idDocumentDetection.id) &&
+        Objects.equals(this.probability, idDocumentDetection.probability) &&
+        Objects.equals(this.coordinates, idDocumentDetection.coordinates) &&
+        Objects.equals(this.checkId, idDocumentDetection.checkId) &&
         Objects.equals(this.hasOfficialDocument, idDocumentDetection.hasOfficialDocument) &&
         Objects.equals(this.comparable, idDocumentDetection.comparable) &&
         Objects.equals(this.faceSimilarity, idDocumentDetection.faceSimilarity) &&
@@ -317,12 +486,13 @@ public class IdDocumentDetection extends BaseDetection {
         Objects.equals(this.processedChecks, idDocumentDetection.processedChecks) &&
         Objects.equals(this.attributes, idDocumentDetection.attributes) &&
         Objects.equals(this.documentHolderId, idDocumentDetection.documentHolderId) &&
+        Objects.equals(this.knownFaces, idDocumentDetection.knownFaces) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkId, hasOfficialDocument, comparable, faceSimilarity, faceLivenessCheckScore, documentFrontLivenessScore, documentBackLivenessScore, processedChecks, attributes, documentHolderId, super.hashCode());
+    return Objects.hash(classification, group, id, probability, coordinates, checkId, hasOfficialDocument, comparable, faceSimilarity, faceLivenessCheckScore, documentFrontLivenessScore, documentBackLivenessScore, processedChecks, attributes, documentHolderId, knownFaces, super.hashCode());
   }
 
   @Override
@@ -330,6 +500,11 @@ public class IdDocumentDetection extends BaseDetection {
     StringBuilder sb = new StringBuilder();
     sb.append("class IdDocumentDetection {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
+    sb.append("    group: ").append(toIndentedString(group)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
+    sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
     sb.append("    checkId: ").append(toIndentedString(checkId)).append("\n");
     sb.append("    hasOfficialDocument: ").append(toIndentedString(hasOfficialDocument)).append("\n");
     sb.append("    comparable: ").append(toIndentedString(comparable)).append("\n");
@@ -340,6 +515,7 @@ public class IdDocumentDetection extends BaseDetection {
     sb.append("    processedChecks: ").append(toIndentedString(processedChecks)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    documentHolderId: ").append(toIndentedString(documentHolderId)).append("\n");
+    sb.append("    knownFaces: ").append(toIndentedString(knownFaces)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -363,6 +539,11 @@ public class IdDocumentDetection extends BaseDetection {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
+    openapiFields.add("classification");
+    openapiFields.add("group");
+    openapiFields.add("id");
+    openapiFields.add("probability");
+    openapiFields.add("coordinates");
     openapiFields.add("attributes");
     openapiFields.add("subDetections");
     openapiFields.add("checkId");
@@ -374,10 +555,10 @@ public class IdDocumentDetection extends BaseDetection {
     openapiFields.add("documentBackLivenessScore");
     openapiFields.add("processedChecks");
     openapiFields.add("documentHolderId");
+    openapiFields.add("knownFaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
   /**
@@ -398,13 +579,6 @@ public class IdDocumentDetection extends BaseDetection {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!IdDocumentDetection.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IdDocumentDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IdDocumentDetection.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
   }

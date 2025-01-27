@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.ApiNotice;
-import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.BrokenRule;
+import de.irisnet.java.client.model.Detection;
 import de.irisnet.java.client.model.Encoded;
 import de.irisnet.java.client.model.Event;
 import de.irisnet.java.client.model.Summary;
@@ -56,40 +56,47 @@ import de.irisnet.java.JSON;
 /**
  * The root object returned after a check operation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class CheckResult {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
+  @javax.annotation.Nullable
   private Summary summary;
 
   public static final String SERIALIZED_NAME_ENCODINGS = "encodings";
   @SerializedName(SERIALIZED_NAME_ENCODINGS)
+  @javax.annotation.Nullable
   private List<Encoded> encodings = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BROKEN_RULES = "brokenRules";
   @SerializedName(SERIALIZED_NAME_BROKEN_RULES)
+  @javax.annotation.Nullable
   private List<BrokenRule> brokenRules = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DETECTIONS = "detections";
   @SerializedName(SERIALIZED_NAME_DETECTIONS)
-  private List<BaseDetection> detections = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<Detection> detections = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
+  @javax.annotation.Nullable
   private List<Event> events = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NOTIFICATIONS = "notifications";
   @SerializedName(SERIALIZED_NAME_NOTIFICATIONS)
+  @javax.annotation.Nullable
   private List<ApiNotice> notifications = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
   @SerializedName(SERIALIZED_NAME_CHECK_ID)
+  @javax.annotation.Nullable
   private String checkId;
 
   public CheckResult() {
   }
 
-  public CheckResult summary(Summary summary) {
+  public CheckResult summary(@javax.annotation.Nullable Summary summary) {
     this.summary = summary;
     return this;
   }
@@ -103,12 +110,12 @@ public class CheckResult {
     return summary;
   }
 
-  public void setSummary(Summary summary) {
+  public void setSummary(@javax.annotation.Nullable Summary summary) {
     this.summary = summary;
   }
 
 
-  public CheckResult encodings(List<Encoded> encodings) {
+  public CheckResult encodings(@javax.annotation.Nullable List<Encoded> encodings) {
     this.encodings = encodings;
     return this;
   }
@@ -130,12 +137,12 @@ public class CheckResult {
     return encodings;
   }
 
-  public void setEncodings(List<Encoded> encodings) {
+  public void setEncodings(@javax.annotation.Nullable List<Encoded> encodings) {
     this.encodings = encodings;
   }
 
 
-  public CheckResult brokenRules(List<BrokenRule> brokenRules) {
+  public CheckResult brokenRules(@javax.annotation.Nullable List<BrokenRule> brokenRules) {
     this.brokenRules = brokenRules;
     return this;
   }
@@ -157,17 +164,17 @@ public class CheckResult {
     return brokenRules;
   }
 
-  public void setBrokenRules(List<BrokenRule> brokenRules) {
+  public void setBrokenRules(@javax.annotation.Nullable List<BrokenRule> brokenRules) {
     this.brokenRules = brokenRules;
   }
 
 
-  public CheckResult detections(List<BaseDetection> detections) {
+  public CheckResult detections(@javax.annotation.Nullable List<Detection> detections) {
     this.detections = detections;
     return this;
   }
 
-  public CheckResult addDetectionsItem(BaseDetection detectionsItem) {
+  public CheckResult addDetectionsItem(Detection detectionsItem) {
     if (this.detections == null) {
       this.detections = new ArrayList<>();
     }
@@ -180,16 +187,16 @@ public class CheckResult {
    * @return detections
    */
   @javax.annotation.Nullable
-  public List<BaseDetection> getDetections() {
+  public List<Detection> getDetections() {
     return detections;
   }
 
-  public void setDetections(List<BaseDetection> detections) {
+  public void setDetections(@javax.annotation.Nullable List<Detection> detections) {
     this.detections = detections;
   }
 
 
-  public CheckResult events(List<Event> events) {
+  public CheckResult events(@javax.annotation.Nullable List<Event> events) {
     this.events = events;
     return this;
   }
@@ -211,12 +218,12 @@ public class CheckResult {
     return events;
   }
 
-  public void setEvents(List<Event> events) {
+  public void setEvents(@javax.annotation.Nullable List<Event> events) {
     this.events = events;
   }
 
 
-  public CheckResult notifications(List<ApiNotice> notifications) {
+  public CheckResult notifications(@javax.annotation.Nullable List<ApiNotice> notifications) {
     this.notifications = notifications;
     return this;
   }
@@ -238,12 +245,12 @@ public class CheckResult {
     return notifications;
   }
 
-  public void setNotifications(List<ApiNotice> notifications) {
+  public void setNotifications(@javax.annotation.Nullable List<ApiNotice> notifications) {
     this.notifications = notifications;
   }
 
 
-  public CheckResult checkId(String checkId) {
+  public CheckResult checkId(@javax.annotation.Nullable String checkId) {
     this.checkId = checkId;
     return this;
   }
@@ -257,7 +264,7 @@ public class CheckResult {
     return checkId;
   }
 
-  public void setCheckId(String checkId) {
+  public void setCheckId(@javax.annotation.Nullable String checkId) {
     this.checkId = checkId;
   }
 
@@ -394,7 +401,7 @@ public class CheckResult {
 
           // validate the optional field `detections` (array)
           for (int i = 0; i < jsonArraydetections.size(); i++) {
-            BaseDetection.validateJsonElement(jsonArraydetections.get(i));
+            Detection.validateJsonElement(jsonArraydetections.get(i));
           };
         }
       }
