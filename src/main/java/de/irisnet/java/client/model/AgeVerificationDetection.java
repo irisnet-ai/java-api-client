@@ -19,8 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.irisnet.java.client.model.AgeVerificationAttribute;
 import de.irisnet.java.client.model.AgeVerificationSubChecks;
-import de.irisnet.java.client.model.BaseAttribute;
 import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.Detection;
 import de.irisnet.java.client.model.KnownFace;
@@ -53,10 +53,10 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Contains further characteristics particular to _face_ detection.
+ * Contains other features specific to _ageVerification_ detection.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class FaceDetection extends Detection {
+public class AgeVerificationDetection extends Detection {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
   @javax.annotation.Nullable
@@ -82,21 +82,36 @@ public class FaceDetection extends Detection {
   @javax.annotation.Nullable
   private Coordinates coordinates;
 
+  public static final String SERIALIZED_NAME_CHECK_ID = "checkId";
+  @SerializedName(SERIALIZED_NAME_CHECK_ID)
+  @javax.annotation.Nullable
+  private String checkId;
+
+  public static final String SERIALIZED_NAME_FACE_SIMILARITY = "faceSimilarity";
+  @SerializedName(SERIALIZED_NAME_FACE_SIMILARITY)
+  @javax.annotation.Nullable
+  private Integer faceSimilarity;
+
+  public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE = "faceLivenessCheckScore";
+  @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK_SCORE)
+  @javax.annotation.Nullable
+  private Integer faceLivenessCheckScore;
+
+  public static final String SERIALIZED_NAME_PROCESSED_CHECKS = "processedChecks";
+  @SerializedName(SERIALIZED_NAME_PROCESSED_CHECKS)
+  @javax.annotation.Nullable
+  private AgeVerificationSubChecks processedChecks;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<BaseAttribute> attributes = new ArrayList<>();
+  private List<AgeVerificationAttribute> attributes = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_SUB_DETECTIONS = "subDetections";
-  @SerializedName(SERIALIZED_NAME_SUB_DETECTIONS)
-  @javax.annotation.Nullable
-  private List<Detection> subDetections = new ArrayList<>();
-
-  public FaceDetection() {
+  public AgeVerificationDetection() {
     this.type = this.getClass().getSimpleName();
   }
 
-  public FaceDetection classification(@javax.annotation.Nullable String classification) {
+  public AgeVerificationDetection classification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
     return this;
   }
@@ -115,7 +130,7 @@ public class FaceDetection extends Detection {
   }
 
 
-  public FaceDetection group(@javax.annotation.Nullable String group) {
+  public AgeVerificationDetection group(@javax.annotation.Nullable String group) {
     this.group = group;
     return this;
   }
@@ -134,7 +149,7 @@ public class FaceDetection extends Detection {
   }
 
 
-  public FaceDetection id(@javax.annotation.Nullable Integer id) {
+  public AgeVerificationDetection id(@javax.annotation.Nullable Integer id) {
     this.id = id;
     return this;
   }
@@ -153,7 +168,7 @@ public class FaceDetection extends Detection {
   }
 
 
-  public FaceDetection probability(@javax.annotation.Nullable Integer probability) {
+  public AgeVerificationDetection probability(@javax.annotation.Nullable Integer probability) {
     this.probability = probability;
     return this;
   }
@@ -172,7 +187,7 @@ public class FaceDetection extends Detection {
   }
 
 
-  public FaceDetection coordinates(@javax.annotation.Nullable Coordinates coordinates) {
+  public AgeVerificationDetection coordinates(@javax.annotation.Nullable Coordinates coordinates) {
     this.coordinates = coordinates;
     return this;
   }
@@ -191,12 +206,88 @@ public class FaceDetection extends Detection {
   }
 
 
-  public FaceDetection attributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
+  public AgeVerificationDetection checkId(@javax.annotation.Nullable String checkId) {
+    this.checkId = checkId;
+    return this;
+  }
+
+  /**
+   * The id of the check that lead to the detection
+   * @return checkId
+   */
+  @javax.annotation.Nullable
+  public String getCheckId() {
+    return checkId;
+  }
+
+  public void setCheckId(@javax.annotation.Nullable String checkId) {
+    this.checkId = checkId;
+  }
+
+
+  public AgeVerificationDetection faceSimilarity(@javax.annotation.Nullable Integer faceSimilarity) {
+    this.faceSimilarity = faceSimilarity;
+    return this;
+  }
+
+  /**
+   * Indicates the similarity-level of whether two faces belong to the same person
+   * @return faceSimilarity
+   */
+  @javax.annotation.Nullable
+  public Integer getFaceSimilarity() {
+    return faceSimilarity;
+  }
+
+  public void setFaceSimilarity(@javax.annotation.Nullable Integer faceSimilarity) {
+    this.faceSimilarity = faceSimilarity;
+  }
+
+
+  public AgeVerificationDetection faceLivenessCheckScore(@javax.annotation.Nullable Integer faceLivenessCheckScore) {
+    this.faceLivenessCheckScore = faceLivenessCheckScore;
+    return this;
+  }
+
+  /**
+   * Indicates the liveness score of the selfie image
+   * @return faceLivenessCheckScore
+   */
+  @javax.annotation.Nullable
+  public Integer getFaceLivenessCheckScore() {
+    return faceLivenessCheckScore;
+  }
+
+  public void setFaceLivenessCheckScore(@javax.annotation.Nullable Integer faceLivenessCheckScore) {
+    this.faceLivenessCheckScore = faceLivenessCheckScore;
+  }
+
+
+  public AgeVerificationDetection processedChecks(@javax.annotation.Nullable AgeVerificationSubChecks processedChecks) {
+    this.processedChecks = processedChecks;
+    return this;
+  }
+
+  /**
+   * Get processedChecks
+   * @return processedChecks
+   */
+  @javax.annotation.Nullable
+  public AgeVerificationSubChecks getProcessedChecks() {
+    return processedChecks;
+  }
+
+  public void setProcessedChecks(@javax.annotation.Nullable AgeVerificationSubChecks processedChecks) {
+    this.processedChecks = processedChecks;
+  }
+
+
+  public AgeVerificationDetection attributes(@javax.annotation.Nullable List<AgeVerificationAttribute> attributes) {
     this.attributes = attributes;
     return this;
   }
 
-  public FaceDetection addAttributesItem(BaseAttribute attributesItem) {
+  public AgeVerificationDetection addAttributesItem(AgeVerificationAttribute attributesItem) {
     if (this.attributes == null) {
       this.attributes = new ArrayList<>();
     }
@@ -205,43 +296,16 @@ public class FaceDetection extends Detection {
   }
 
   /**
-   * Attributes characterizing the _face_ detection. Mainly contains attributes that were activated with the _ageEstimation_ prototype.
+   * Attributes of the _ageVerification_ detection.
    * @return attributes
    */
   @javax.annotation.Nullable
-  public List<BaseAttribute> getAttributes() {
+  public List<AgeVerificationAttribute> getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
+  public void setAttributes(@javax.annotation.Nullable List<AgeVerificationAttribute> attributes) {
     this.attributes = attributes;
-  }
-
-
-  public FaceDetection subDetections(@javax.annotation.Nullable List<Detection> subDetections) {
-    this.subDetections = subDetections;
-    return this;
-  }
-
-  public FaceDetection addSubDetectionsItem(Detection subDetectionsItem) {
-    if (this.subDetections == null) {
-      this.subDetections = new ArrayList<>();
-    }
-    this.subDetections.add(subDetectionsItem);
-    return this;
-  }
-
-  /**
-   * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
-   * @return subDetections
-   */
-  @javax.annotation.Nullable
-  public List<Detection> getSubDetections() {
-    return subDetections;
-  }
-
-  public void setSubDetections(@javax.annotation.Nullable List<Detection> subDetections) {
-    this.subDetections = subDetections;
   }
 
 
@@ -254,34 +318,40 @@ public class FaceDetection extends Detection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FaceDetection faceDetection = (FaceDetection) o;
-    return Objects.equals(this.classification, faceDetection.classification) &&
-        Objects.equals(this.group, faceDetection.group) &&
-        Objects.equals(this.id, faceDetection.id) &&
-        Objects.equals(this.probability, faceDetection.probability) &&
-        Objects.equals(this.coordinates, faceDetection.coordinates) &&
-        Objects.equals(this.attributes, faceDetection.attributes) &&
-        Objects.equals(this.subDetections, faceDetection.subDetections) &&
+    AgeVerificationDetection ageVerificationDetection = (AgeVerificationDetection) o;
+    return Objects.equals(this.classification, ageVerificationDetection.classification) &&
+        Objects.equals(this.group, ageVerificationDetection.group) &&
+        Objects.equals(this.id, ageVerificationDetection.id) &&
+        Objects.equals(this.probability, ageVerificationDetection.probability) &&
+        Objects.equals(this.coordinates, ageVerificationDetection.coordinates) &&
+        Objects.equals(this.checkId, ageVerificationDetection.checkId) &&
+        Objects.equals(this.faceSimilarity, ageVerificationDetection.faceSimilarity) &&
+        Objects.equals(this.faceLivenessCheckScore, ageVerificationDetection.faceLivenessCheckScore) &&
+        Objects.equals(this.processedChecks, ageVerificationDetection.processedChecks) &&
+        Objects.equals(this.attributes, ageVerificationDetection.attributes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(classification, group, id, probability, coordinates, attributes, subDetections, super.hashCode());
+    return Objects.hash(classification, group, id, probability, coordinates, checkId, faceSimilarity, faceLivenessCheckScore, processedChecks, attributes, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FaceDetection {\n");
+    sb.append("class AgeVerificationDetection {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
     sb.append("    group: ").append(toIndentedString(group)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
     sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+    sb.append("    checkId: ").append(toIndentedString(checkId)).append("\n");
+    sb.append("    faceSimilarity: ").append(toIndentedString(faceSimilarity)).append("\n");
+    sb.append("    faceLivenessCheckScore: ").append(toIndentedString(faceLivenessCheckScore)).append("\n");
+    sb.append("    processedChecks: ").append(toIndentedString(processedChecks)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    subDetections: ").append(toIndentedString(subDetections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -331,20 +401,20 @@ public class FaceDetection extends Detection {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to FaceDetection
+   * @throws IOException if the JSON Element is invalid with respect to AgeVerificationDetection
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!FaceDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FaceDetection is not found in the empty JSON string", FaceDetection.openapiRequiredFields.toString()));
+        if (!AgeVerificationDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AgeVerificationDetection is not found in the empty JSON string", AgeVerificationDetection.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!FaceDetection.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FaceDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AgeVerificationDetection.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgeVerificationDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
   }
@@ -353,22 +423,22 @@ public class FaceDetection extends Detection {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FaceDetection.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FaceDetection' and its subtypes
+       if (!AgeVerificationDetection.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AgeVerificationDetection' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FaceDetection> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FaceDetection.class));
+       final TypeAdapter<AgeVerificationDetection> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AgeVerificationDetection.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<FaceDetection>() {
+       return (TypeAdapter<T>) new TypeAdapter<AgeVerificationDetection>() {
            @Override
-           public void write(JsonWriter out, FaceDetection value) throws IOException {
+           public void write(JsonWriter out, AgeVerificationDetection value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public FaceDetection read(JsonReader in) throws IOException {
+           public AgeVerificationDetection read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -379,18 +449,18 @@ public class FaceDetection extends Detection {
   }
 
   /**
-   * Create an instance of FaceDetection given an JSON string
+   * Create an instance of AgeVerificationDetection given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of FaceDetection
-   * @throws IOException if the JSON string is invalid with respect to FaceDetection
+   * @return An instance of AgeVerificationDetection
+   * @throws IOException if the JSON string is invalid with respect to AgeVerificationDetection
    */
-  public static FaceDetection fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FaceDetection.class);
+  public static AgeVerificationDetection fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AgeVerificationDetection.class);
   }
 
   /**
-   * Convert an instance of FaceDetection to an JSON string
+   * Convert an instance of AgeVerificationDetection to an JSON string
    *
    * @return JSON string
    */

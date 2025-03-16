@@ -265,7 +265,7 @@ public class ConfigurationManagementApi {
 
     /**
      * List all saved AI configurations.
-     * Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+     * Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
      * @return List&lt;Config&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -282,7 +282,7 @@ public class ConfigurationManagementApi {
 
     /**
      * List all saved AI configurations.
-     * Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+     * Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
      * @return ApiResponse&lt;List&lt;Config&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -300,7 +300,7 @@ public class ConfigurationManagementApi {
 
     /**
      * List all saved AI configurations. (asynchronously)
-     * Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+     * Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -459,9 +459,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setConfigCall(Config config, final ApiCallback _callback) throws ApiException {
@@ -530,9 +530,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
      </table>
      */
     public Config setConfig(Config config) throws ApiException {
@@ -550,9 +550,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Config> setConfigWithHttpInfo(Config config) throws ApiException {
@@ -572,9 +572,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setConfigAsync(Config config, final ApiCallback<Config> _callback) throws ApiException {

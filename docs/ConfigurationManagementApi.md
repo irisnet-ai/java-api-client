@@ -85,7 +85,7 @@ null (empty response body)
 
 List all saved AI configurations.
 
-Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
 
 ### Example
 ```java
@@ -281,7 +281,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **403** | Maximum number of stored AI configurations reached. |  -  |
-| **400** | Bad request. Check for badly formatted request body. |  -  |
 | **200** | successful operation. |  -  |
+| **400** | Bad request. Check for a badly formatted request body. |  -  |
+| **403** | Maximum number of stored AI configurations reached. |  -  |
 

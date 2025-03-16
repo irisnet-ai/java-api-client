@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class KnownFace {
   public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)

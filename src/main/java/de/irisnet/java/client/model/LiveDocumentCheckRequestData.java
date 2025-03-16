@@ -48,9 +48,9 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Data containing neccessary information to handle the enduser live document check.
+ * Data containing neccessary information to handle the enduser live check.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class LiveDocumentCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
@@ -71,6 +71,16 @@ public class LiveDocumentCheckRequestData {
   @SerializedName(SERIALIZED_NAME_TOKEN_VALIDITY_IN_SECONDS)
   @javax.annotation.Nullable
   private Long tokenValidityInSeconds;
+
+  public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
+  @javax.annotation.Nullable
+  private String documentHolderId;
+
+  public static final String SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE = "minimumAcceptedAge";
+  @SerializedName(SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE)
+  @javax.annotation.Nullable
+  private Integer minimumAcceptedAge;
 
   public LiveDocumentCheckRequestData() {
   }
@@ -151,6 +161,44 @@ public class LiveDocumentCheckRequestData {
   }
 
 
+  public LiveDocumentCheckRequestData documentHolderId(@javax.annotation.Nullable String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+    return this;
+  }
+
+  /**
+   * The documentHolderId from a previous successful live identification
+   * @return documentHolderId
+   */
+  @javax.annotation.Nullable
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+
+  public void setDocumentHolderId(@javax.annotation.Nullable String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
+
+  public LiveDocumentCheckRequestData minimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
+    this.minimumAcceptedAge = minimumAcceptedAge;
+    return this;
+  }
+
+  /**
+   * The minimum accepted age in years for a check. Defaults to 18 if not provided
+   * @return minimumAcceptedAge
+   */
+  @javax.annotation.Nullable
+  public Integer getMinimumAcceptedAge() {
+    return minimumAcceptedAge;
+  }
+
+  public void setMinimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
+    this.minimumAcceptedAge = minimumAcceptedAge;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -164,12 +212,14 @@ public class LiveDocumentCheckRequestData {
     return Objects.equals(this.callback, liveDocumentCheckRequestData.callback) &&
         Objects.equals(this.statusUrl, liveDocumentCheckRequestData.statusUrl) &&
         Objects.equals(this.endUserRedirectUrl, liveDocumentCheckRequestData.endUserRedirectUrl) &&
-        Objects.equals(this.tokenValidityInSeconds, liveDocumentCheckRequestData.tokenValidityInSeconds);
+        Objects.equals(this.tokenValidityInSeconds, liveDocumentCheckRequestData.tokenValidityInSeconds) &&
+        Objects.equals(this.documentHolderId, liveDocumentCheckRequestData.documentHolderId) &&
+        Objects.equals(this.minimumAcceptedAge, liveDocumentCheckRequestData.minimumAcceptedAge);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(callback, statusUrl, endUserRedirectUrl, tokenValidityInSeconds);
+    return Objects.hash(callback, statusUrl, endUserRedirectUrl, tokenValidityInSeconds, documentHolderId, minimumAcceptedAge);
   }
 
   @Override
@@ -180,6 +230,8 @@ public class LiveDocumentCheckRequestData {
     sb.append("    statusUrl: ").append(toIndentedString(statusUrl)).append("\n");
     sb.append("    endUserRedirectUrl: ").append(toIndentedString(endUserRedirectUrl)).append("\n");
     sb.append("    tokenValidityInSeconds: ").append(toIndentedString(tokenValidityInSeconds)).append("\n");
+    sb.append("    documentHolderId: ").append(toIndentedString(documentHolderId)).append("\n");
+    sb.append("    minimumAcceptedAge: ").append(toIndentedString(minimumAcceptedAge)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -206,6 +258,8 @@ public class LiveDocumentCheckRequestData {
     openapiFields.add("statusUrl");
     openapiFields.add("endUserRedirectUrl");
     openapiFields.add("tokenValidityInSeconds");
+    openapiFields.add("documentHolderId");
+    openapiFields.add("minimumAcceptedAge");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -247,6 +301,9 @@ public class LiveDocumentCheckRequestData {
       }
       if ((jsonObj.get("endUserRedirectUrl") != null && !jsonObj.get("endUserRedirectUrl").isJsonNull()) && !jsonObj.get("endUserRedirectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endUserRedirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endUserRedirectUrl").toString()));
+      }
+      if ((jsonObj.get("documentHolderId") != null && !jsonObj.get("documentHolderId").isJsonNull()) && !jsonObj.get("documentHolderId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `documentHolderId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentHolderId").toString()));
       }
   }
 

@@ -46,45 +46,24 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Attributes qualifying the _hair_ classification.
+ * Contains information on ageVerification sub-checks
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class HairAttribute {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nullable
-  private String type;
-
+public class AgeVerificationSubChecks {
   /**
-   * The color of the hair.
+   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
    */
-  @JsonAdapter(ColorEnum.Adapter.class)
-  public enum ColorEnum {
-    BLACK("black"),
+  @JsonAdapter(FaceLivenessCheckEnum.Adapter.class)
+  public enum FaceLivenessCheckEnum {
+    PASSED("passed"),
     
-    DARK_BROWN("darkBrown"),
+    FAILED("failed"),
     
-    BROWN("brown"),
-    
-    LIGHT_BROWN("lightBrown"),
-    
-    DARK_BLONDE("darkBlonde"),
-    
-    BLONDE("blonde"),
-    
-    DARK_GREY("darkGrey"),
-    
-    GREY("grey"),
-    
-    RED("red"),
-    
-    WHITE("white"),
-    
-    OTHER("other");
+    NOT_PROCESSED("not_processed");
 
     private String value;
 
-    ColorEnum(String value) {
+    FaceLivenessCheckEnum(String value) {
       this.value = value;
     }
 
@@ -97,8 +76,8 @@ public class HairAttribute {
       return String.valueOf(value);
     }
 
-    public static ColorEnum fromValue(String value) {
-      for (ColorEnum b : ColorEnum.values()) {
+    public static FaceLivenessCheckEnum fromValue(String value) {
+      for (FaceLivenessCheckEnum b : FaceLivenessCheckEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -106,42 +85,44 @@ public class HairAttribute {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<ColorEnum> {
+    public static class Adapter extends TypeAdapter<FaceLivenessCheckEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ColorEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final FaceLivenessCheckEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ColorEnum read(final JsonReader jsonReader) throws IOException {
+      public FaceLivenessCheckEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ColorEnum.fromValue(value);
+        return FaceLivenessCheckEnum.fromValue(value);
       }
     }
 
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       String value = jsonElement.getAsString();
-      ColorEnum.fromValue(value);
+      FaceLivenessCheckEnum.fromValue(value);
     }
   }
 
-  public static final String SERIALIZED_NAME_COLOR = "color";
-  @SerializedName(SERIALIZED_NAME_COLOR)
+  public static final String SERIALIZED_NAME_FACE_LIVENESS_CHECK = "faceLivenessCheck";
+  @SerializedName(SERIALIZED_NAME_FACE_LIVENESS_CHECK)
   @javax.annotation.Nullable
-  private ColorEnum color;
+  private FaceLivenessCheckEnum faceLivenessCheck;
 
   /**
-   * The hair style.
+   * Indicates if the estimated age is greater than or equal to a predefined minimum accepted age
    */
-  @JsonAdapter(StyleEnum.Adapter.class)
-  public enum StyleEnum {
-    LONG_HAIRED("longHaired"),
+  @JsonAdapter(AgeValidationCheckEnum.Adapter.class)
+  public enum AgeValidationCheckEnum {
+    PASSED("passed"),
     
-    SHORT_HAIRED("shortHaired");
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
 
     private String value;
 
-    StyleEnum(String value) {
+    AgeValidationCheckEnum(String value) {
       this.value = value;
     }
 
@@ -154,8 +135,8 @@ public class HairAttribute {
       return String.valueOf(value);
     }
 
-    public static StyleEnum fromValue(String value) {
-      for (StyleEnum b : StyleEnum.values()) {
+    public static AgeValidationCheckEnum fromValue(String value) {
+      for (AgeValidationCheckEnum b : AgeValidationCheckEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -163,87 +144,68 @@ public class HairAttribute {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<StyleEnum> {
+    public static class Adapter extends TypeAdapter<AgeValidationCheckEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final StyleEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final AgeValidationCheckEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public StyleEnum read(final JsonReader jsonReader) throws IOException {
+      public AgeValidationCheckEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return StyleEnum.fromValue(value);
+        return AgeValidationCheckEnum.fromValue(value);
       }
     }
 
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       String value = jsonElement.getAsString();
-      StyleEnum.fromValue(value);
+      AgeValidationCheckEnum.fromValue(value);
     }
   }
 
-  public static final String SERIALIZED_NAME_STYLE = "style";
-  @SerializedName(SERIALIZED_NAME_STYLE)
+  public static final String SERIALIZED_NAME_AGE_VALIDATION_CHECK = "ageValidationCheck";
+  @SerializedName(SERIALIZED_NAME_AGE_VALIDATION_CHECK)
   @javax.annotation.Nullable
-  private StyleEnum style;
+  private AgeValidationCheckEnum ageValidationCheck;
 
-  public HairAttribute() {
+  public AgeVerificationSubChecks() {
   }
 
-  public HairAttribute type(@javax.annotation.Nullable String type) {
-    this.type = type;
+  public AgeVerificationSubChecks faceLivenessCheck(@javax.annotation.Nullable FaceLivenessCheckEnum faceLivenessCheck) {
+    this.faceLivenessCheck = faceLivenessCheck;
     return this;
   }
 
   /**
-   * Used as a type discriminator for json to object conversion.
-   * @return type
+   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
+   * @return faceLivenessCheck
    */
   @javax.annotation.Nullable
-  public String getType() {
-    return type;
+  public FaceLivenessCheckEnum getFaceLivenessCheck() {
+    return faceLivenessCheck;
   }
 
-  public void setType(@javax.annotation.Nullable String type) {
-    this.type = type;
+  public void setFaceLivenessCheck(@javax.annotation.Nullable FaceLivenessCheckEnum faceLivenessCheck) {
+    this.faceLivenessCheck = faceLivenessCheck;
   }
 
 
-  public HairAttribute color(@javax.annotation.Nullable ColorEnum color) {
-    this.color = color;
+  public AgeVerificationSubChecks ageValidationCheck(@javax.annotation.Nullable AgeValidationCheckEnum ageValidationCheck) {
+    this.ageValidationCheck = ageValidationCheck;
     return this;
   }
 
   /**
-   * The color of the hair.
-   * @return color
+   * Indicates if the estimated age is greater than or equal to a predefined minimum accepted age
+   * @return ageValidationCheck
    */
   @javax.annotation.Nullable
-  public ColorEnum getColor() {
-    return color;
+  public AgeValidationCheckEnum getAgeValidationCheck() {
+    return ageValidationCheck;
   }
 
-  public void setColor(@javax.annotation.Nullable ColorEnum color) {
-    this.color = color;
-  }
-
-
-  public HairAttribute style(@javax.annotation.Nullable StyleEnum style) {
-    this.style = style;
-    return this;
-  }
-
-  /**
-   * The hair style.
-   * @return style
-   */
-  @javax.annotation.Nullable
-  public StyleEnum getStyle() {
-    return style;
-  }
-
-  public void setStyle(@javax.annotation.Nullable StyleEnum style) {
-    this.style = style;
+  public void setAgeValidationCheck(@javax.annotation.Nullable AgeValidationCheckEnum ageValidationCheck) {
+    this.ageValidationCheck = ageValidationCheck;
   }
 
 
@@ -256,24 +218,22 @@ public class HairAttribute {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HairAttribute hairAttribute = (HairAttribute) o;
-    return Objects.equals(this.type, hairAttribute.type) &&
-        Objects.equals(this.color, hairAttribute.color) &&
-        Objects.equals(this.style, hairAttribute.style);
+    AgeVerificationSubChecks ageVerificationSubChecks = (AgeVerificationSubChecks) o;
+    return Objects.equals(this.faceLivenessCheck, ageVerificationSubChecks.faceLivenessCheck) &&
+        Objects.equals(this.ageValidationCheck, ageVerificationSubChecks.ageValidationCheck);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, color, style);
+    return Objects.hash(faceLivenessCheck, ageValidationCheck);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HairAttribute {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    color: ").append(toIndentedString(color)).append("\n");
-    sb.append("    style: ").append(toIndentedString(style)).append("\n");
+    sb.append("class AgeVerificationSubChecks {\n");
+    sb.append("    faceLivenessCheck: ").append(toIndentedString(faceLivenessCheck)).append("\n");
+    sb.append("    ageValidationCheck: ").append(toIndentedString(ageValidationCheck)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -296,9 +256,8 @@ public class HairAttribute {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("color");
-    openapiFields.add("style");
+    openapiFields.add("faceLivenessCheck");
+    openapiFields.add("ageValidationCheck");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -308,39 +267,36 @@ public class HairAttribute {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to HairAttribute
+   * @throws IOException if the JSON Element is invalid with respect to AgeVerificationSubChecks
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!HairAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in HairAttribute is not found in the empty JSON string", HairAttribute.openapiRequiredFields.toString()));
+        if (!AgeVerificationSubChecks.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AgeVerificationSubChecks is not found in the empty JSON string", AgeVerificationSubChecks.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!HairAttribute.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HairAttribute` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AgeVerificationSubChecks.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgeVerificationSubChecks` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) && !jsonObj.get("faceLivenessCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `faceLivenessCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("faceLivenessCheck").toString()));
       }
-      if ((jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) && !jsonObj.get("color").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("color").toString()));
+      // validate the optional field `faceLivenessCheck`
+      if (jsonObj.get("faceLivenessCheck") != null && !jsonObj.get("faceLivenessCheck").isJsonNull()) {
+        FaceLivenessCheckEnum.validateJsonElement(jsonObj.get("faceLivenessCheck"));
       }
-      // validate the optional field `color`
-      if (jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) {
-        ColorEnum.validateJsonElement(jsonObj.get("color"));
+      if ((jsonObj.get("ageValidationCheck") != null && !jsonObj.get("ageValidationCheck").isJsonNull()) && !jsonObj.get("ageValidationCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ageValidationCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ageValidationCheck").toString()));
       }
-      if ((jsonObj.get("style") != null && !jsonObj.get("style").isJsonNull()) && !jsonObj.get("style").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `style` to be a primitive type in the JSON string but got `%s`", jsonObj.get("style").toString()));
-      }
-      // validate the optional field `style`
-      if (jsonObj.get("style") != null && !jsonObj.get("style").isJsonNull()) {
-        StyleEnum.validateJsonElement(jsonObj.get("style"));
+      // validate the optional field `ageValidationCheck`
+      if (jsonObj.get("ageValidationCheck") != null && !jsonObj.get("ageValidationCheck").isJsonNull()) {
+        AgeValidationCheckEnum.validateJsonElement(jsonObj.get("ageValidationCheck"));
       }
   }
 
@@ -348,22 +304,22 @@ public class HairAttribute {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!HairAttribute.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'HairAttribute' and its subtypes
+       if (!AgeVerificationSubChecks.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AgeVerificationSubChecks' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<HairAttribute> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(HairAttribute.class));
+       final TypeAdapter<AgeVerificationSubChecks> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AgeVerificationSubChecks.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<HairAttribute>() {
+       return (TypeAdapter<T>) new TypeAdapter<AgeVerificationSubChecks>() {
            @Override
-           public void write(JsonWriter out, HairAttribute value) throws IOException {
+           public void write(JsonWriter out, AgeVerificationSubChecks value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public HairAttribute read(JsonReader in) throws IOException {
+           public AgeVerificationSubChecks read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -374,18 +330,18 @@ public class HairAttribute {
   }
 
   /**
-   * Create an instance of HairAttribute given an JSON string
+   * Create an instance of AgeVerificationSubChecks given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of HairAttribute
-   * @throws IOException if the JSON string is invalid with respect to HairAttribute
+   * @return An instance of AgeVerificationSubChecks
+   * @throws IOException if the JSON string is invalid with respect to AgeVerificationSubChecks
    */
-  public static HairAttribute fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, HairAttribute.class);
+  public static AgeVerificationSubChecks fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AgeVerificationSubChecks.class);
   }
 
   /**
-   * Convert an instance of HairAttribute to an JSON string
+   * Convert an instance of AgeVerificationSubChecks to an JSON string
    *
    * @return JSON string
    */

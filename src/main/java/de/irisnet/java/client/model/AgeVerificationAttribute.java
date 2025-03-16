@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -47,82 +46,106 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Response object containing neccessary information to start the enduser live document check on the client side.
+ * Attributes qualifying the _ageVerification_ classification.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class LiveDocumentCheckResponseData {
-  public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
-  @SerializedName(SERIALIZED_NAME_EVENT_ID)
+public class AgeVerificationAttribute {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nullable
-  private String eventId;
+  private String type;
 
-  public static final String SERIALIZED_NAME_IDENT_TOKEN = "identToken";
-  @SerializedName(SERIALIZED_NAME_IDENT_TOKEN)
+  public static final String SERIALIZED_NAME_AGE = "age";
+  @SerializedName(SERIALIZED_NAME_AGE)
   @javax.annotation.Nullable
-  private String identToken;
+  private Integer age;
 
-  public static final String SERIALIZED_NAME_END_USER_IDENT_URL = "endUserIdentUrl";
-  @SerializedName(SERIALIZED_NAME_END_USER_IDENT_URL)
+  public static final String SERIALIZED_NAME_AGE_MIN = "ageMin";
+  @SerializedName(SERIALIZED_NAME_AGE_MIN)
   @javax.annotation.Nullable
-  private URI endUserIdentUrl;
+  private Integer ageMin;
 
-  public LiveDocumentCheckResponseData() {
+  public static final String SERIALIZED_NAME_AGE_MAX = "ageMax";
+  @SerializedName(SERIALIZED_NAME_AGE_MAX)
+  @javax.annotation.Nullable
+  private Integer ageMax;
+
+  public AgeVerificationAttribute() {
   }
 
-  public LiveDocumentCheckResponseData eventId(@javax.annotation.Nullable String eventId) {
-    this.eventId = eventId;
+  public AgeVerificationAttribute type(@javax.annotation.Nullable String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * unique id of this live document check
-   * @return eventId
+   * Used as a type discriminator for json to object conversion.
+   * @return type
    */
   @javax.annotation.Nullable
-  public String getEventId() {
-    return eventId;
+  public String getType() {
+    return type;
   }
 
-  public void setEventId(@javax.annotation.Nullable String eventId) {
-    this.eventId = eventId;
+  public void setType(@javax.annotation.Nullable String type) {
+    this.type = type;
   }
 
 
-  public LiveDocumentCheckResponseData identToken(@javax.annotation.Nullable String identToken) {
-    this.identToken = identToken;
+  public AgeVerificationAttribute age(@javax.annotation.Nullable Integer age) {
+    this.age = age;
     return this;
   }
 
   /**
-   * token to secure the live document check, might be null since already incorporated into endUserIdentUrl
-   * @return identToken
+   * The estimated age of the person in the selfie in years.
+   * @return age
    */
   @javax.annotation.Nullable
-  public String getIdentToken() {
-    return identToken;
+  public Integer getAge() {
+    return age;
   }
 
-  public void setIdentToken(@javax.annotation.Nullable String identToken) {
-    this.identToken = identToken;
+  public void setAge(@javax.annotation.Nullable Integer age) {
+    this.age = age;
   }
 
 
-  public LiveDocumentCheckResponseData endUserIdentUrl(@javax.annotation.Nullable URI endUserIdentUrl) {
-    this.endUserIdentUrl = endUserIdentUrl;
+  public AgeVerificationAttribute ageMin(@javax.annotation.Nullable Integer ageMin) {
+    this.ageMin = ageMin;
     return this;
   }
 
   /**
-   * URL to send the enduser to, to start the live document check
-   * @return endUserIdentUrl
+   * The estimated minimum age of the person in the selfie in years.
+   * @return ageMin
    */
   @javax.annotation.Nullable
-  public URI getEndUserIdentUrl() {
-    return endUserIdentUrl;
+  public Integer getAgeMin() {
+    return ageMin;
   }
 
-  public void setEndUserIdentUrl(@javax.annotation.Nullable URI endUserIdentUrl) {
-    this.endUserIdentUrl = endUserIdentUrl;
+  public void setAgeMin(@javax.annotation.Nullable Integer ageMin) {
+    this.ageMin = ageMin;
+  }
+
+
+  public AgeVerificationAttribute ageMax(@javax.annotation.Nullable Integer ageMax) {
+    this.ageMax = ageMax;
+    return this;
+  }
+
+  /**
+   * The estimated maximum age of the person in the selfie in years.
+   * @return ageMax
+   */
+  @javax.annotation.Nullable
+  public Integer getAgeMax() {
+    return ageMax;
+  }
+
+  public void setAgeMax(@javax.annotation.Nullable Integer ageMax) {
+    this.ageMax = ageMax;
   }
 
 
@@ -135,24 +158,26 @@ public class LiveDocumentCheckResponseData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LiveDocumentCheckResponseData liveDocumentCheckResponseData = (LiveDocumentCheckResponseData) o;
-    return Objects.equals(this.eventId, liveDocumentCheckResponseData.eventId) &&
-        Objects.equals(this.identToken, liveDocumentCheckResponseData.identToken) &&
-        Objects.equals(this.endUserIdentUrl, liveDocumentCheckResponseData.endUserIdentUrl);
+    AgeVerificationAttribute ageVerificationAttribute = (AgeVerificationAttribute) o;
+    return Objects.equals(this.type, ageVerificationAttribute.type) &&
+        Objects.equals(this.age, ageVerificationAttribute.age) &&
+        Objects.equals(this.ageMin, ageVerificationAttribute.ageMin) &&
+        Objects.equals(this.ageMax, ageVerificationAttribute.ageMax);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventId, identToken, endUserIdentUrl);
+    return Objects.hash(type, age, ageMin, ageMax);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LiveDocumentCheckResponseData {\n");
-    sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
-    sb.append("    identToken: ").append(toIndentedString(identToken)).append("\n");
-    sb.append("    endUserIdentUrl: ").append(toIndentedString(endUserIdentUrl)).append("\n");
+    sb.append("class AgeVerificationAttribute {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    age: ").append(toIndentedString(age)).append("\n");
+    sb.append("    ageMin: ").append(toIndentedString(ageMin)).append("\n");
+    sb.append("    ageMax: ").append(toIndentedString(ageMax)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -175,9 +200,10 @@ public class LiveDocumentCheckResponseData {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("eventId");
-    openapiFields.add("identToken");
-    openapiFields.add("endUserIdentUrl");
+    openapiFields.add("type");
+    openapiFields.add("age");
+    openapiFields.add("ageMin");
+    openapiFields.add("ageMax");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -187,31 +213,25 @@ public class LiveDocumentCheckResponseData {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LiveDocumentCheckResponseData
+   * @throws IOException if the JSON Element is invalid with respect to AgeVerificationAttribute
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LiveDocumentCheckResponseData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LiveDocumentCheckResponseData is not found in the empty JSON string", LiveDocumentCheckResponseData.openapiRequiredFields.toString()));
+        if (!AgeVerificationAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AgeVerificationAttribute is not found in the empty JSON string", AgeVerificationAttribute.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LiveDocumentCheckResponseData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LiveDocumentCheckResponseData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AgeVerificationAttribute.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AgeVerificationAttribute` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("eventId") != null && !jsonObj.get("eventId").isJsonNull()) && !jsonObj.get("eventId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `eventId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventId").toString()));
-      }
-      if ((jsonObj.get("identToken") != null && !jsonObj.get("identToken").isJsonNull()) && !jsonObj.get("identToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identToken").toString()));
-      }
-      if ((jsonObj.get("endUserIdentUrl") != null && !jsonObj.get("endUserIdentUrl").isJsonNull()) && !jsonObj.get("endUserIdentUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endUserIdentUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endUserIdentUrl").toString()));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -219,22 +239,22 @@ public class LiveDocumentCheckResponseData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LiveDocumentCheckResponseData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LiveDocumentCheckResponseData' and its subtypes
+       if (!AgeVerificationAttribute.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AgeVerificationAttribute' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LiveDocumentCheckResponseData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LiveDocumentCheckResponseData.class));
+       final TypeAdapter<AgeVerificationAttribute> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AgeVerificationAttribute.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LiveDocumentCheckResponseData>() {
+       return (TypeAdapter<T>) new TypeAdapter<AgeVerificationAttribute>() {
            @Override
-           public void write(JsonWriter out, LiveDocumentCheckResponseData value) throws IOException {
+           public void write(JsonWriter out, AgeVerificationAttribute value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LiveDocumentCheckResponseData read(JsonReader in) throws IOException {
+           public AgeVerificationAttribute read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -245,18 +265,18 @@ public class LiveDocumentCheckResponseData {
   }
 
   /**
-   * Create an instance of LiveDocumentCheckResponseData given an JSON string
+   * Create an instance of AgeVerificationAttribute given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LiveDocumentCheckResponseData
-   * @throws IOException if the JSON string is invalid with respect to LiveDocumentCheckResponseData
+   * @return An instance of AgeVerificationAttribute
+   * @throws IOException if the JSON string is invalid with respect to AgeVerificationAttribute
    */
-  public static LiveDocumentCheckResponseData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LiveDocumentCheckResponseData.class);
+  public static AgeVerificationAttribute fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AgeVerificationAttribute.class);
   }
 
   /**
-   * Convert an instance of LiveDocumentCheckResponseData to an JSON string
+   * Convert an instance of AgeVerificationAttribute to an JSON string
    *
    * @return JSON string
    */

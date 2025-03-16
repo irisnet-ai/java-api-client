@@ -2,7 +2,7 @@
 
 Irisnet API
 - API version: v2
-  - Generator version: 7.11.0
+  - Generator version: 7.12.0
 
 Artificial Intelligence (AI) for image- and video-processing in real-time. This is an interactive documentation where you can quickly look up the endpoints and their schemas, while having the opportunity to try things out for yourself.
 
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>3.7.0</version>
+  <version>3.7.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:3.7.0"
+     implementation "de.irisnet.java.client:irisnet-java-client:3.7.1"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-3.7.0.jar`
+* `target/irisnet-java-client-3.7.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -153,9 +153,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [AgeEstimationAttribute](docs/AgeEstimationAttribute.md)
- - [AgeEstimationDetection](docs/AgeEstimationDetection.md)
- - [AgeEstimationSubChecks](docs/AgeEstimationSubChecks.md)
+ - [AgeVerificationAttribute](docs/AgeVerificationAttribute.md)
+ - [AgeVerificationDetection](docs/AgeVerificationDetection.md)
+ - [AgeVerificationSubChecks](docs/AgeVerificationSubChecks.md)
  - [ApiNotice](docs/ApiNotice.md)
  - [BaseAttribute](docs/BaseAttribute.md)
  - [BaseDetection](docs/BaseDetection.md)

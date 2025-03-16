@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * A collection of parameters that determine the appearance and behaviour of the user interface (UI).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class KycUiParameter {
   public static final String SERIALIZED_NAME_PRIMARY_COLOR = "primaryColor";
   @SerializedName(SERIALIZED_NAME_PRIMARY_COLOR)

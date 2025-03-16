@@ -11,70 +11,62 @@
  */
 
 
-package de.irisnet.java.auth;
+package de.irisnet.java.client.model;
 
-import de.irisnet.java.ApiException;
-import de.irisnet.java.Pair;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import java.net.URI;
-import java.util.Map;
-import java.util.List;
+/**
+ * Model tests for AgeVerificationAttribute
+ */
+public class AgeVerificationAttributeTest {
+    private final AgeVerificationAttribute model = new AgeVerificationAttribute();
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class ApiKeyAuth implements Authentication {
-  private final String location;
-  private final String paramName;
-
-  private String apiKey;
-  private String apiKeyPrefix;
-
-  public ApiKeyAuth(String location, String paramName) {
-    this.location = location;
-    this.paramName = paramName;
-  }
-
-  public String getLocation() {
-    return location;
-  }
-
-  public String getParamName() {
-    return paramName;
-  }
-
-  public String getApiKey() {
-    return apiKey;
-  }
-
-  public void setApiKey(String apiKey) {
-    this.apiKey = apiKey;
-  }
-
-  public String getApiKeyPrefix() {
-    return apiKeyPrefix;
-  }
-
-  public void setApiKeyPrefix(String apiKeyPrefix) {
-    this.apiKeyPrefix = apiKeyPrefix;
-  }
-
-  @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
-                           String payload, String method, URI uri) throws ApiException {
-    if (apiKey == null) {
-      return;
+    /**
+     * Model tests for AgeVerificationAttribute
+     */
+    @Test
+    public void testAgeVerificationAttribute() {
+        // TODO: test AgeVerificationAttribute
     }
-    String value;
-    if (apiKeyPrefix != null) {
-      value = apiKeyPrefix + " " + apiKey;
-    } else {
-      value = apiKey;
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
-    if ("query".equals(location)) {
-      queryParams.add(new Pair(paramName, value));
-    } else if ("header".equals(location)) {
-      headerParams.put(paramName, value);
-    } else if ("cookie".equals(location)) {
-      cookieParams.put(paramName, value);
+
+    /**
+     * Test the property 'age'
+     */
+    @Test
+    public void ageTest() {
+        // TODO: test age
     }
-  }
+
+    /**
+     * Test the property 'ageMin'
+     */
+    @Test
+    public void ageMinTest() {
+        // TODO: test ageMin
+    }
+
+    /**
+     * Test the property 'ageMax'
+     */
+    @Test
+    public void ageMaxTest() {
+        // TODO: test ageMax
+    }
+
 }

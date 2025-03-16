@@ -86,8 +86,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCostCall(UUID configId, final ApiCallback _callback) throws ApiException {
@@ -157,8 +157,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public Pricing getCost(UUID configId) throws ApiException {
@@ -177,8 +177,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Pricing> getCostWithHttpInfo(UUID configId) throws ApiException {
@@ -199,8 +199,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCostAsync(UUID configId, final ApiCallback<Pricing> _callback) throws ApiException {
@@ -342,9 +342,9 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getVideoCostCall(UUID configId, Long frames, final ApiCallback _callback) throws ApiException {
@@ -420,9 +420,9 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public Pricing getVideoCost(UUID configId, Long frames) throws ApiException {
@@ -441,9 +441,9 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Pricing> getVideoCostWithHttpInfo(UUID configId, Long frames) throws ApiException {
@@ -464,9 +464,9 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getVideoCostAsync(UUID configId, Long frames, final ApiCallback<Pricing> _callback) throws ApiException {
@@ -489,8 +489,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getVideoCost1Call(UUID configId, Integer fps, Long duration, final ApiCallback _callback) throws ApiException {
@@ -574,8 +574,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public Pricing getVideoCost1(UUID configId, Integer fps, Long duration) throws ApiException {
@@ -596,8 +596,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Pricing> getVideoCost1WithHttpInfo(UUID configId, Integer fps, Long duration) throws ApiException {
@@ -620,8 +620,8 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getVideoCost1Async(UUID configId, Integer fps, Long duration, final ApiCallback<Pricing> _callback) throws ApiException {

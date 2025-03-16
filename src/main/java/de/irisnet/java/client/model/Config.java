@@ -51,15 +51,20 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private UUID id;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
+  private String name;
+
   /**
-   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _automatedDocumentRecognition_ - Additional parameter for the identityDocumentCheck to enable automated document recognition. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _considerKnownFaces_ - If this parameter is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration. * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageVerificationCheck_ - Performs an age verification check for a provided selfie. * _liveIdentification_ - Performs a guided live identification via an UI. * _liveSelfie_ - Additional parameter for the liveIdentification to take a selfie video instead of a selfie image. * _proofOfAddress_ - Additional parameter for the liveIdentification to also take a proof of address document into consideration. * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI. * _videoUploadIdentification_ - Use a video to perform an identityDocumentCheck and biometricCheck via an UI. * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult. 
+   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _considerKnownFaces_ - If this flag is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration. * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageVerificationCheck_ - Performs an age verification check for a provided selfie. * _liveIdentification_ - Performs a guided live identification via an UI resulting in an identityDocumentCheck and biometricCheck. * _liveIdentityDocumentCheck_ - Performs a guided live identification via an UI resulting in an identityDocumentCheck. * _liveSelfie_ - Flag for the liveIdentification signaling to take a selfie video instead of a selfie image. * _liveProofOfAddress_ - Can be used standalone or as a flag for the liveIdentification to also take a proof of address document into account. * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI. * _videoUploadIdentification_ - Upload a video to perform an identityDocumentCheck and biometricCheck via an UI. * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult. 
    */
   @JsonAdapter(KycCheckParametersEnum.Adapter.class)
   public enum KycCheckParametersEnum {
@@ -69,27 +74,37 @@ public class Config {
     
     BIOMETRIC_CHECK("biometricCheck"),
     
-    CONSIDER_KNOWN_FACES("considerKnownFaces"),
-    
     FORM_AUTOFILL("formAutofill"),
-    
-    LIVE_IDENTIFICATION("liveIdentification"),
     
     AGE_VERIFICATION_CHECK("ageVerificationCheck"),
     
-    LIVE_AGE_VERIFICATION_CHECK("liveAgeVerificationCheck"),
+    PROOF_OF_ADDRESS_CHECK("proofOfAddressCheck"),
+    
+    FACE_AUTHENTICATION("faceAuthentication"),
+    
+    LIVE_IDENTIFICATION("liveIdentification"),
+    
+    LIVE_IDENTITY_DOCUMENT_CHECK("liveIdentityDocumentCheck"),
     
     LIVE_SELFIE("liveSelfie"),
     
-    PROOF_OF_ADDRESS("proofOfAddress"),
+    LIVE_PROOF_OF_ADDRESS_CHECK("liveProofOfAddressCheck"),
+    
+    LIVE_AGE_VERIFICATION_CHECK("liveAgeVerificationCheck"),
+    
+    LIVE_FACE_AUTHENTICATION("liveFaceAuthentication"),
     
     VIDEO_UPLOAD_IDENTIFICATION("videoUploadIdentification"),
+    
+    CONSIDER_KNOWN_FACES("considerKnownFaces"),
+    
+    ADD_ENCODINGS_TO_RESULT("addEncodingsToResult"),
     
     I_FRAME_FLOW("iFrameFlow"),
     
     REDIRECT_FLOW("redirectFlow"),
     
-    ADD_ENCODINGS_TO_RESULT("addEncodingsToResult");
+    REDIRECT_ON_MOBILE("redirectOnMobile");
 
     private String value;
 
@@ -234,6 +249,25 @@ public class Config {
   }
 
 
+  public Config name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * The name of the AI configuration.
+   * @return name
+   */
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
+  }
+
+
   public Config kycCheckParameters(@javax.annotation.Nullable Set<KycCheckParametersEnum> kycCheckParameters) {
     this.kycCheckParameters = kycCheckParameters;
     return this;
@@ -299,13 +333,14 @@ public class Config {
     }
     Config config = (Config) o;
     return Objects.equals(this.id, config.id) &&
+        Objects.equals(this.name, config.name) &&
         Objects.equals(this.kycCheckParameters, config.kycCheckParameters) &&
         Objects.equals(this.prototypes, config.prototypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, kycCheckParameters, prototypes);
+    return Objects.hash(id, name, kycCheckParameters, prototypes);
   }
 
   @Override
@@ -313,6 +348,7 @@ public class Config {
     StringBuilder sb = new StringBuilder();
     sb.append("class Config {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    kycCheckParameters: ").append(toIndentedString(kycCheckParameters)).append("\n");
     sb.append("    prototypes: ").append(toIndentedString(prototypes)).append("\n");
     sb.append("}");
@@ -338,6 +374,7 @@ public class Config {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("name");
     openapiFields.add("kycCheckParameters");
     openapiFields.add("prototypes");
 
@@ -368,6 +405,9 @@ public class Config {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("kycCheckParameters") != null && !jsonObj.get("kycCheckParameters").isJsonNull() && !jsonObj.get("kycCheckParameters").isJsonArray()) {
