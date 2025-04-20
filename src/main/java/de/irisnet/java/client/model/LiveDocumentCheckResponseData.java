@@ -47,7 +47,7 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Response object containing neccessary information to start the enduser live document check on the client side.
+ * Response object containing necessary information to start the enduser live document check on the client side.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class LiveDocumentCheckResponseData {

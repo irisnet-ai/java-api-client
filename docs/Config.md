@@ -37,7 +37,6 @@ Can be used to set a multitude of pre-defined commonly used rules without the ne
 | ADD_ENCODINGS_TO_RESULT | &quot;addEncodingsToResult&quot; |
 | I_FRAME_FLOW | &quot;iFrameFlow&quot; |
 | REDIRECT_FLOW | &quot;redirectFlow&quot; |
-| REDIRECT_ON_MOBILE | &quot;redirectOnMobile&quot; |
 
 
 

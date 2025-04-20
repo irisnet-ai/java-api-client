@@ -343,10 +343,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setParametersCall(UUID configId, ParamSet paramSet, final ApiCallback _callback) throws ApiException {
@@ -422,10 +422,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ParamSet setParameters(UUID configId, ParamSet paramSet) throws ApiException {
@@ -444,10 +444,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ParamSet> setParametersWithHttpInfo(UUID configId, ParamSet paramSet) throws ApiException {
@@ -468,10 +468,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setParametersAsync(UUID configId, ParamSet paramSet, final ApiCallback<ParamSet> _callback) throws ApiException {

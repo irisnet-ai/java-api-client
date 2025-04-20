@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.Callback;
 import java.io.IOException;
-import java.net.URI;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -48,44 +47,39 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Data containing neccessary information to handle the enduser live check.
+ * BiometricCheckRequestData
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class LiveDocumentCheckRequestData {
+public class BiometricCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
   @javax.annotation.Nonnull
   private Callback callback;
 
-  public static final String SERIALIZED_NAME_STATUS_URL = "statusUrl";
-  @SerializedName(SERIALIZED_NAME_STATUS_URL)
+  public static final String SERIALIZED_NAME_FRONT_IMAGE = "frontImage";
+  @SerializedName(SERIALIZED_NAME_FRONT_IMAGE)
   @javax.annotation.Nullable
-  private URI statusUrl;
+  private String frontImage;
 
-  public static final String SERIALIZED_NAME_END_USER_REDIRECT_URL = "endUserRedirectUrl";
-  @SerializedName(SERIALIZED_NAME_END_USER_REDIRECT_URL)
-  @javax.annotation.Nullable
-  private URI endUserRedirectUrl;
-
-  public static final String SERIALIZED_NAME_TOKEN_VALIDITY_IN_SECONDS = "tokenValidityInSeconds";
-  @SerializedName(SERIALIZED_NAME_TOKEN_VALIDITY_IN_SECONDS)
-  @javax.annotation.Nullable
-  private Long tokenValidityInSeconds;
-
-  public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
-  @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
-  @javax.annotation.Nullable
-  private String documentHolderId;
+  public static final String SERIALIZED_NAME_SELFIE_IMAGE = "selfieImage";
+  @SerializedName(SERIALIZED_NAME_SELFIE_IMAGE)
+  @javax.annotation.Nonnull
+  private String selfieImage;
 
   public static final String SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE = "minimumAcceptedAge";
   @SerializedName(SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE)
   @javax.annotation.Nullable
   private Integer minimumAcceptedAge;
 
-  public LiveDocumentCheckRequestData() {
+  public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
+  @javax.annotation.Nullable
+  private String documentHolderId;
+
+  public BiometricCheckRequestData() {
   }
 
-  public LiveDocumentCheckRequestData callback(@javax.annotation.Nonnull Callback callback) {
+  public BiometricCheckRequestData callback(@javax.annotation.Nonnull Callback callback) {
     this.callback = callback;
     return this;
   }
@@ -104,89 +98,51 @@ public class LiveDocumentCheckRequestData {
   }
 
 
-  public LiveDocumentCheckRequestData statusUrl(@javax.annotation.Nullable URI statusUrl) {
-    this.statusUrl = statusUrl;
+  public BiometricCheckRequestData frontImage(@javax.annotation.Nullable String frontImage) {
+    this.frontImage = frontImage;
     return this;
   }
 
   /**
-   * The URL to send the intermediate status requests to. If not set, no intermediate status requests will be sent.
-   * @return statusUrl
+   * The base64-encoded front image of the document to be checked in either jpg or png file format.
+   * @return frontImage
    */
   @javax.annotation.Nullable
-  public URI getStatusUrl() {
-    return statusUrl;
+  public String getFrontImage() {
+    return frontImage;
   }
 
-  public void setStatusUrl(@javax.annotation.Nullable URI statusUrl) {
-    this.statusUrl = statusUrl;
+  public void setFrontImage(@javax.annotation.Nullable String frontImage) {
+    this.frontImage = frontImage;
   }
 
 
-  public LiveDocumentCheckRequestData endUserRedirectUrl(@javax.annotation.Nullable URI endUserRedirectUrl) {
-    this.endUserRedirectUrl = endUserRedirectUrl;
+  public BiometricCheckRequestData selfieImage(@javax.annotation.Nonnull String selfieImage) {
+    this.selfieImage = selfieImage;
     return this;
   }
 
   /**
-   * If set the enduser is being redirected to this URL after the check is finished.
-   * @return endUserRedirectUrl
+   * The base64-encoded selfie image to be checked in either jpg or png file format.
+   * @return selfieImage
    */
-  @javax.annotation.Nullable
-  public URI getEndUserRedirectUrl() {
-    return endUserRedirectUrl;
+  @javax.annotation.Nonnull
+  public String getSelfieImage() {
+    return selfieImage;
   }
 
-  public void setEndUserRedirectUrl(@javax.annotation.Nullable URI endUserRedirectUrl) {
-    this.endUserRedirectUrl = endUserRedirectUrl;
-  }
-
-
-  public LiveDocumentCheckRequestData tokenValidityInSeconds(@javax.annotation.Nullable Long tokenValidityInSeconds) {
-    this.tokenValidityInSeconds = tokenValidityInSeconds;
-    return this;
-  }
-
-  /**
-   * The validity duration of a started ident process in seconds. Defaults to 3600 seconds &#x3D; 60 minutes.
-   * @return tokenValidityInSeconds
-   */
-  @javax.annotation.Nullable
-  public Long getTokenValidityInSeconds() {
-    return tokenValidityInSeconds;
-  }
-
-  public void setTokenValidityInSeconds(@javax.annotation.Nullable Long tokenValidityInSeconds) {
-    this.tokenValidityInSeconds = tokenValidityInSeconds;
+  public void setSelfieImage(@javax.annotation.Nonnull String selfieImage) {
+    this.selfieImage = selfieImage;
   }
 
 
-  public LiveDocumentCheckRequestData documentHolderId(@javax.annotation.Nullable String documentHolderId) {
-    this.documentHolderId = documentHolderId;
-    return this;
-  }
-
-  /**
-   * The documentHolderId from a previous successful live identification.
-   * @return documentHolderId
-   */
-  @javax.annotation.Nullable
-  public String getDocumentHolderId() {
-    return documentHolderId;
-  }
-
-  public void setDocumentHolderId(@javax.annotation.Nullable String documentHolderId) {
-    this.documentHolderId = documentHolderId;
-  }
-
-
-  public LiveDocumentCheckRequestData minimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
+  public BiometricCheckRequestData minimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
     this.minimumAcceptedAge = minimumAcceptedAge;
     return this;
   }
 
   /**
-   * The minimum age in years accepted for a check, if applicable. Defaults to 18 if not specified.
+   * The minimum age in years accepted for a DocumentCheck, if applicable. Defaults to 18 if not specified.
    * @return minimumAcceptedAge
    */
   @javax.annotation.Nullable
@@ -199,6 +155,25 @@ public class LiveDocumentCheckRequestData {
   }
 
 
+  public BiometricCheckRequestData documentHolderId(@javax.annotation.Nullable String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+    return this;
+  }
+
+  /**
+   * The documentHolderId from a previous successful DocumentCheck.
+   * @return documentHolderId
+   */
+  @javax.annotation.Nullable
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+
+  public void setDocumentHolderId(@javax.annotation.Nullable String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -208,30 +183,28 @@ public class LiveDocumentCheckRequestData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LiveDocumentCheckRequestData liveDocumentCheckRequestData = (LiveDocumentCheckRequestData) o;
-    return Objects.equals(this.callback, liveDocumentCheckRequestData.callback) &&
-        Objects.equals(this.statusUrl, liveDocumentCheckRequestData.statusUrl) &&
-        Objects.equals(this.endUserRedirectUrl, liveDocumentCheckRequestData.endUserRedirectUrl) &&
-        Objects.equals(this.tokenValidityInSeconds, liveDocumentCheckRequestData.tokenValidityInSeconds) &&
-        Objects.equals(this.documentHolderId, liveDocumentCheckRequestData.documentHolderId) &&
-        Objects.equals(this.minimumAcceptedAge, liveDocumentCheckRequestData.minimumAcceptedAge);
+    BiometricCheckRequestData biometricCheckRequestData = (BiometricCheckRequestData) o;
+    return Objects.equals(this.callback, biometricCheckRequestData.callback) &&
+        Objects.equals(this.frontImage, biometricCheckRequestData.frontImage) &&
+        Objects.equals(this.selfieImage, biometricCheckRequestData.selfieImage) &&
+        Objects.equals(this.minimumAcceptedAge, biometricCheckRequestData.minimumAcceptedAge) &&
+        Objects.equals(this.documentHolderId, biometricCheckRequestData.documentHolderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(callback, statusUrl, endUserRedirectUrl, tokenValidityInSeconds, documentHolderId, minimumAcceptedAge);
+    return Objects.hash(callback, frontImage, selfieImage, minimumAcceptedAge, documentHolderId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LiveDocumentCheckRequestData {\n");
+    sb.append("class BiometricCheckRequestData {\n");
     sb.append("    callback: ").append(toIndentedString(callback)).append("\n");
-    sb.append("    statusUrl: ").append(toIndentedString(statusUrl)).append("\n");
-    sb.append("    endUserRedirectUrl: ").append(toIndentedString(endUserRedirectUrl)).append("\n");
-    sb.append("    tokenValidityInSeconds: ").append(toIndentedString(tokenValidityInSeconds)).append("\n");
-    sb.append("    documentHolderId: ").append(toIndentedString(documentHolderId)).append("\n");
+    sb.append("    frontImage: ").append(toIndentedString(frontImage)).append("\n");
+    sb.append("    selfieImage: ").append(toIndentedString(selfieImage)).append("\n");
     sb.append("    minimumAcceptedAge: ").append(toIndentedString(minimumAcceptedAge)).append("\n");
+    sb.append("    documentHolderId: ").append(toIndentedString(documentHolderId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,40 +228,40 @@ public class LiveDocumentCheckRequestData {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("callback");
-    openapiFields.add("statusUrl");
-    openapiFields.add("endUserRedirectUrl");
-    openapiFields.add("tokenValidityInSeconds");
-    openapiFields.add("documentHolderId");
+    openapiFields.add("frontImage");
+    openapiFields.add("selfieImage");
     openapiFields.add("minimumAcceptedAge");
+    openapiFields.add("documentHolderId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("callback");
+    openapiRequiredFields.add("selfieImage");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LiveDocumentCheckRequestData
+   * @throws IOException if the JSON Element is invalid with respect to BiometricCheckRequestData
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LiveDocumentCheckRequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LiveDocumentCheckRequestData is not found in the empty JSON string", LiveDocumentCheckRequestData.openapiRequiredFields.toString()));
+        if (!BiometricCheckRequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BiometricCheckRequestData is not found in the empty JSON string", BiometricCheckRequestData.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LiveDocumentCheckRequestData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LiveDocumentCheckRequestData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!BiometricCheckRequestData.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BiometricCheckRequestData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LiveDocumentCheckRequestData.openapiRequiredFields) {
+      for (String requiredField : BiometricCheckRequestData.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -296,11 +269,11 @@ public class LiveDocumentCheckRequestData {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `callback`
       Callback.validateJsonElement(jsonObj.get("callback"));
-      if ((jsonObj.get("statusUrl") != null && !jsonObj.get("statusUrl").isJsonNull()) && !jsonObj.get("statusUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusUrl").toString()));
+      if ((jsonObj.get("frontImage") != null && !jsonObj.get("frontImage").isJsonNull()) && !jsonObj.get("frontImage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `frontImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("frontImage").toString()));
       }
-      if ((jsonObj.get("endUserRedirectUrl") != null && !jsonObj.get("endUserRedirectUrl").isJsonNull()) && !jsonObj.get("endUserRedirectUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endUserRedirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endUserRedirectUrl").toString()));
+      if (!jsonObj.get("selfieImage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `selfieImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("selfieImage").toString()));
       }
       if ((jsonObj.get("documentHolderId") != null && !jsonObj.get("documentHolderId").isJsonNull()) && !jsonObj.get("documentHolderId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `documentHolderId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentHolderId").toString()));
@@ -311,22 +284,22 @@ public class LiveDocumentCheckRequestData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LiveDocumentCheckRequestData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LiveDocumentCheckRequestData' and its subtypes
+       if (!BiometricCheckRequestData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BiometricCheckRequestData' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LiveDocumentCheckRequestData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LiveDocumentCheckRequestData.class));
+       final TypeAdapter<BiometricCheckRequestData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BiometricCheckRequestData.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LiveDocumentCheckRequestData>() {
+       return (TypeAdapter<T>) new TypeAdapter<BiometricCheckRequestData>() {
            @Override
-           public void write(JsonWriter out, LiveDocumentCheckRequestData value) throws IOException {
+           public void write(JsonWriter out, BiometricCheckRequestData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LiveDocumentCheckRequestData read(JsonReader in) throws IOException {
+           public BiometricCheckRequestData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -337,18 +310,18 @@ public class LiveDocumentCheckRequestData {
   }
 
   /**
-   * Create an instance of LiveDocumentCheckRequestData given an JSON string
+   * Create an instance of BiometricCheckRequestData given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LiveDocumentCheckRequestData
-   * @throws IOException if the JSON string is invalid with respect to LiveDocumentCheckRequestData
+   * @return An instance of BiometricCheckRequestData
+   * @throws IOException if the JSON string is invalid with respect to BiometricCheckRequestData
    */
-  public static LiveDocumentCheckRequestData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LiveDocumentCheckRequestData.class);
+  public static BiometricCheckRequestData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BiometricCheckRequestData.class);
   }
 
   /**
-   * Convert an instance of LiveDocumentCheckRequestData to an JSON string
+   * Convert an instance of BiometricCheckRequestData to an JSON string
    *
    * @return JSON string
    */

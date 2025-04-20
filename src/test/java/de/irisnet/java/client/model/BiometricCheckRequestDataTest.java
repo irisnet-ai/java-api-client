@@ -11,31 +11,71 @@
  */
 
 
-package de.irisnet.java;
+package de.irisnet.java.client.model;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class Configuration {
-    public static final String VERSION = "3.7.2";
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import de.irisnet.java.client.model.Callback;
+import java.io.IOException;
+import java.util.Arrays;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-    private static volatile ApiClient defaultApiClient = new ApiClient();
+/**
+ * Model tests for BiometricCheckRequestData
+ */
+public class BiometricCheckRequestDataTest {
+    private final BiometricCheckRequestData model = new BiometricCheckRequestData();
 
     /**
-     * Get the default API client, which would be used when creating API
-     * instances without providing an API client.
-     *
-     * @return Default API client
+     * Model tests for BiometricCheckRequestData
      */
-    public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+    @Test
+    public void testBiometricCheckRequestData() {
+        // TODO: test BiometricCheckRequestData
     }
 
     /**
-     * Set the default API client, which would be used when creating API
-     * instances without providing an API client.
-     *
-     * @param apiClient API client
+     * Test the property 'callback'
      */
-    public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+    @Test
+    public void callbackTest() {
+        // TODO: test callback
     }
+
+    /**
+     * Test the property 'frontImage'
+     */
+    @Test
+    public void frontImageTest() {
+        // TODO: test frontImage
+    }
+
+    /**
+     * Test the property 'selfieImage'
+     */
+    @Test
+    public void selfieImageTest() {
+        // TODO: test selfieImage
+    }
+
+    /**
+     * Test the property 'minimumAcceptedAge'
+     */
+    @Test
+    public void minimumAcceptedAgeTest() {
+        // TODO: test minimumAcceptedAge
+    }
+
+    /**
+     * Test the property 'documentHolderId'
+     */
+    @Test
+    public void documentHolderIdTest() {
+        // TODO: test documentHolderId
+    }
+
 }

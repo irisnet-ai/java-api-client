@@ -73,6 +73,14 @@ public class IdDocumentAttribute {
     
     VISA("visa"),
     
+    BANK_STATEMENT("bank_statement"),
+    
+    UTILITY_BILL("utility_bill"),
+    
+    TAX_DOCUMENT("tax_document"),
+    
+    UNIDENTIFIED("unidentified"),
+    
     UNKNOWN("unknown");
 
     private String value;

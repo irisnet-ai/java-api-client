@@ -33,6 +33,63 @@ tags:
     operation will cost.
   name: Balance endpoints
 paths:
+  /v2/face-authentication/{configId}:
+    post:
+      description: The response (_CheckResult_ schema) containing only the checkId
+        and possibly ApiNotices is returned immediately after the request. The actual
+        body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has
+        finished processing.
+      operationId: faceAuthentication
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Selfie:
+                description: Selfie
+                value:
+                  callback:
+                    callbackUrl: https://www.example.com/callback?ageestimation
+                  selfieImage: /9j/4AAQSkZJRgABAQEASABIAAD...
+            schema:
+              $ref: '#/components/schemas/BiometricCheckRequestData'
+        description: The BiometricCheckRequestData containing data needed for the
+          face authentication.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                checkId: 1a8ee62a-41a6-4319-a14e-0b97dac21faf
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: "Input accepted: Wait for callback."
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+      security:
+      - LICENSE-KEY: []
+      summary: Perform a face authentication for a given selfie with the AI.
+      tags:
+      - AI check operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    x-api-brand:
+    - IDENT
   /v2/config/parameters/{configId}:
     delete:
       description: Clears the parameters and restores the defaults for all classifications.
@@ -214,6 +271,15 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamSet'
+          description: successful operation. Previous user configured parameters are
+            returned.
+        "204":
+          description: successful operation. No previously configured parameters exist.
         "400":
           content:
             application/json:
@@ -226,15 +292,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ParamSet'
-          description: successful operation. Previous user configured parameters are
-            returned.
-        "204":
-          description: successful operation. No previously configured parameters exist.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -331,24 +388,24 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Config'
-          description: successful operation.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for a badly formatted request body.
         "403":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Maximum number of stored AI configurations reached.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for a badly formatted request body.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Create a new AI configuration.
@@ -449,14 +506,14 @@ paths:
               $ref: '#/components/schemas/Callback'
         required: true
       responses:
+        "202":
+          description: "operation accepted: wait for callback."
         "402":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "202":
-          description: "operation accepted: wait for callback."
         "404":
           content:
             application/json:
@@ -471,6 +528,8 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+    x-api-brand:
+    - PROTECT
   /v2/check-stream/{configId}:
     post:
       description: |-
@@ -537,12 +596,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "404":
-          content:
-            application/x-ndjson:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/x-ndjson:
@@ -551,6 +604,12 @@ paths:
                   $ref: '#/components/schemas/CheckResult'
                 type: array
           description: successful operation.
+        "404":
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
@@ -558,6 +617,67 @@ paths:
       - AI check operations
       x-accepts:
       - application/x-ndjson
+    x-api-brand:
+    - PROTECT
+  /v2/check-poa-document/{configId}:
+    post:
+      description: The response (_CheckResult_ schema) containing only the checkId
+        and possibly ApiNotices is returned immediately after the request. The actual
+        body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has
+        finished processing.
+      operationId: checkPoaDocument
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              PoA with utility bill:
+                description: PoA with utility bill
+                value:
+                  callback:
+                    callbackUrl: https://www.example.com/callback?poacheck
+                  documentType: utility_bill
+                  frontImage: /9j/4AAQSkZJRgABAQEASABIAAD...
+            schema:
+              $ref: '#/components/schemas/PoaCheckRequestData'
+        description: The PoaCheckRequestData containing data needed for the proof
+          of address check. The DocumentType in the request data must be either 'utility_bill'
+          or 'bank_statement'.
+        required: true
+      responses:
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+        "202":
+          content:
+            application/json:
+              example:
+                checkId: caa14daf-287e-4729-85cb-62c1dd212e07
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: "Input accepted: Wait for callback."
+      security:
+      - LICENSE-KEY: []
+      summary: Perform an proof of address check with the AI.
+      tags:
+      - AI check operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    x-api-brand:
+    - IDENT
   /v2/check-live-id-document/{configId}:
     post:
       description: "The synchronous response (_LiveDocumentCheckResponseData_ schema)\
@@ -591,12 +711,6 @@ paths:
           live id document check.
         required: true
       responses:
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "202":
           content:
             application/json:
@@ -608,6 +722,12 @@ paths:
                 $ref: '#/components/schemas/LiveDocumentCheckResponseData'
           description: "Input accepted: Send enduser to endUserIdentUrl and wait for\
             \ status/callback."
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Start a guided live id document check with the AI.
@@ -616,6 +736,8 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+    x-api-brand:
+    - IDENT
   /v2/check-image/{configId}:
     post:
       description: The response (_CheckResult_ schema) is returned immediately after
@@ -692,18 +814,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Not enough credits.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckResult'
           description: successful operation.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
@@ -712,6 +834,8 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+    x-api-brand:
+    - PROTECT
   /v2/check-id-document/{configId}:
     post:
       description: The response (_CheckResult_ schema) containing only the checkId
@@ -749,12 +873,6 @@ paths:
           document check.
         required: true
       responses:
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "202":
           content:
             application/json:
@@ -763,6 +881,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CheckResult'
           description: "Input accepted: Wait for callback."
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check an id document with the AI.
@@ -771,6 +895,65 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+    x-api-brand:
+    - IDENT
+  /v2/age-verification/{configId}:
+    post:
+      description: The response (_CheckResult_ schema) containing only the checkId
+        and possibly ApiNotices is returned immediately after the request. The actual
+        body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has
+        finished processing.
+      operationId: ageVerification
+      parameters:
+      - description: The configuration id from the Basic Configuration operations.
+        explode: false
+        in: path
+        name: configId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Selfie:
+                description: Selfie
+                value:
+                  callback:
+                    callbackUrl: https://www.example.com/callback?ageestimation
+                  selfieImage: /9j/4AAQSkZJRgABAQEASABIAAD...
+            schema:
+              $ref: '#/components/schemas/BiometricCheckRequestData'
+        description: The BiometricCheckRequestData containing data needed for the
+          age verification check.
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                checkId: 1a8ee62a-41a6-4319-a14e-0b97dac21faf
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: "Input accepted: Wait for callback."
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
+      security:
+      - LICENSE-KEY: []
+      summary: Perform an age verfication check for a given selfie with the AI.
+      tags:
+      - AI check operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    x-api-brand:
+    - IDENT
   /v2/info/:
     get:
       description: Get the LicenseInfo schema for the given license key in the authorization
@@ -829,12 +1012,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "429":
           content:
             application/json:
@@ -844,6 +1021,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -893,12 +1076,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "429":
           content:
             application/json:
@@ -908,6 +1085,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -937,12 +1120,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "429":
           content:
             application/json:
@@ -952,6 +1129,12 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -1003,18 +1186,18 @@ paths:
           type: string
         style: simple
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
           description: successful operation.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get a specific AI configuration.
@@ -1187,6 +1370,39 @@ components:
             type: array
         type: object
       description: A detection describes the object found with all its details.
+      type: object
+    BiometricCheckRequestData:
+      example:
+        minimumAcceptedAge: 0
+        frontImage: frontImage
+        callback:
+          headers:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          callbackUrl: http://www.example.com/callback?video
+        documentHolderId: documentHolderId
+        selfieImage: selfieImage
+      properties:
+        callback:
+          $ref: '#/components/schemas/Callback'
+        frontImage:
+          description: The base64-encoded front image of the document to be checked
+            in either jpg or png file format.
+          type: string
+        selfieImage:
+          description: The base64-encoded selfie image to be checked in either jpg
+            or png file format.
+          type: string
+        minimumAcceptedAge:
+          description: "The minimum age in years accepted for a DocumentCheck, if\
+            \ applicable. Defaults to 18 if not specified."
+          format: int32
+          type: integer
+        documentHolderId:
+          description: The documentHolderId from a previous successful DocumentCheck.
+          type: string
+      required:
+      - callback
+      - selfieImage
       type: object
     BreastDetection:
       allOf:
@@ -1419,11 +1635,12 @@ components:
               * _considerKnownFaces_ - If this flag is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration.
               * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check.
               * _ageVerificationCheck_ - Performs an age verification check for a provided selfie.
+              * _proofOfAddressCheck_ - Performs a proof of address check for a document.
               * _liveIdentification_ - Performs a guided live identification via an UI resulting in an identityDocumentCheck and biometricCheck.
               * _liveIdentityDocumentCheck_ - Performs a guided live identification via an UI resulting in an identityDocumentCheck.
               * _liveSelfie_ - Flag for the liveIdentification signaling to take a selfie video instead of a selfie image.
               * _liveProofOfAddress_ - Can be used standalone or as a flag for the liveIdentification to also take a proof of address document into account.
-              * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI. * _videoUploadIdentification_ - Upload a video to perform an identityDocumentCheck and biometricCheck via an UI.
+              * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI. If used together with liveIdentification or liveIdentityDocumentCheck, liveAgeVerificationCheck will run first and if age is too low an liveIdentification or liveIdentityDocumentCheck is made as well.* _videoUploadIdentification_ - Upload a video to perform an identityDocumentCheck and biometricCheck via an UI.
               * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured.
               * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured.
               * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult.
@@ -1446,7 +1663,6 @@ components:
             - addEncodingsToResult
             - iFrameFlow
             - redirectFlow
-            - redirectOnMobile
             type: string
           type: array
           uniqueItems: true
@@ -1545,20 +1761,20 @@ components:
         callback:
           $ref: '#/components/schemas/Callback'
         frontImage:
-          description: The base64 encoded front image of the document to be checked
-            in either jpg or png file format
+          description: The base64-encoded front image of the document to be checked
+            in either jpg or png file format.
           type: string
         backImage:
-          description: The base64 encoded back image of the document to be checked
-            in either jpg or png file format
+          description: The base64-encoded back image of the document to be checked
+            in either jpg or png file format.
           type: string
         selfieImage:
-          description: The base64 encoded selfie image to be checked in either jpg
-            or png file format
+          description: The base64-encoded selfie image to be checked in either jpg
+            or png file format.
           type: string
         minimumAcceptedAge:
-          description: The minimum accepted age in years for a DocumentCheck. Defaults
-            to 18 if not provided
+          description: "The minimum age in years accepted for a DocumentCheck, if\
+            \ applicable. Defaults to 18 if not specified."
           format: int32
           type: integer
         documentType:
@@ -1569,11 +1785,15 @@ components:
           - national_identity_card
           - residence_permit
           - visa
+          - bank_statement
+          - utility_bill
+          - tax_document
+          - unidentified
           - unknown
           example: national_identity_card
           type: string
         documentCountry:
-          description: The document's country in ISO 3166-1 alpha-2 format
+          description: The country of the document in ISO 3166-1 alpha-2 format.
           example: DE
           type: string
       required:
@@ -1752,6 +1972,10 @@ components:
           - national_identity_card
           - residence_permit
           - visa
+          - bank_statement
+          - utility_bill
+          - tax_document
+          - unidentified
           - unknown
           example: national_identity_card
           type: string
@@ -2160,19 +2384,19 @@ components:
           format: int64
           type: integer
         documentHolderId:
-          description: The documentHolderId from a previous successful live identification
+          description: The documentHolderId from a previous successful live identification.
           type: string
         minimumAcceptedAge:
-          description: The minimum accepted age in years for a check. Defaults to
-            18 if not provided
+          description: "The minimum age in years accepted for a check, if applicable.\
+            \ Defaults to 18 if not specified."
           format: int32
           type: integer
       required:
       - callback
       type: object
     LiveDocumentCheckResponseData:
-      description: Response object containing neccessary information to start the
-        enduser live document check on the client side.
+      description: Response object containing necessary information to start the enduser
+        live document check on the client side.
       example:
         eventId: eventId
         endUserIdentUrl: https://openapi-generator.tech
@@ -2532,6 +2756,44 @@ components:
           description: A comma separated list of country codes (ISO 3166-1 alpha-2)
             for which id-documents should be rejected.
           type: string
+      type: object
+    PoaCheckRequestData:
+      example:
+        frontImage: frontImage
+        documentType: national_identity_card
+        callback:
+          headers:
+            Authorization: Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh
+          callbackUrl: http://www.example.com/callback?video
+        documentHolderId: documentHolderId
+      properties:
+        callback:
+          $ref: '#/components/schemas/Callback'
+        frontImage:
+          description: The base64-encoded front image of the document to be checked
+            in either jpg or png file format.
+          type: string
+        documentType:
+          description: The type of the document
+          enum:
+          - passport
+          - driving_license
+          - national_identity_card
+          - residence_permit
+          - visa
+          - bank_statement
+          - utility_bill
+          - tax_document
+          - unidentified
+          - unknown
+          example: national_identity_card
+          type: string
+        documentHolderId:
+          description: The documentHolderId from a previous successful check.
+          type: string
+      required:
+      - callback
+      - documentType
       type: object
     Pricing:
       description: Contains information about the credit cost of a check operation.

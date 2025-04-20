@@ -91,6 +91,14 @@ public class DocumentCheckRequestData {
     
     VISA("visa"),
     
+    BANK_STATEMENT("bank_statement"),
+    
+    UTILITY_BILL("utility_bill"),
+    
+    TAX_DOCUMENT("tax_document"),
+    
+    UNIDENTIFIED("unidentified"),
+    
     UNKNOWN("unknown");
 
     private String value;
@@ -174,7 +182,7 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The base64 encoded front image of the document to be checked in either jpg or png file format
+   * The base64-encoded front image of the document to be checked in either jpg or png file format.
    * @return frontImage
    */
   @javax.annotation.Nonnull
@@ -193,7 +201,7 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The base64 encoded back image of the document to be checked in either jpg or png file format
+   * The base64-encoded back image of the document to be checked in either jpg or png file format.
    * @return backImage
    */
   @javax.annotation.Nullable
@@ -212,7 +220,7 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The base64 encoded selfie image to be checked in either jpg or png file format
+   * The base64-encoded selfie image to be checked in either jpg or png file format.
    * @return selfieImage
    */
   @javax.annotation.Nullable
@@ -231,7 +239,7 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The minimum accepted age in years for a DocumentCheck. Defaults to 18 if not provided
+   * The minimum age in years accepted for a DocumentCheck, if applicable. Defaults to 18 if not specified.
    * @return minimumAcceptedAge
    */
   @javax.annotation.Nullable
@@ -269,7 +277,7 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The document&#39;s country in ISO 3166-1 alpha-2 format
+   * The country of the document in ISO 3166-1 alpha-2 format.
    * @return documentCountry
    */
   @javax.annotation.Nullable

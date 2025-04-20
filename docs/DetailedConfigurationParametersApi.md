@@ -217,8 +217,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** | Bad request. Check for badly formatted request body. |  -  |
-| **404** | configId not found. |  -  |
 | **200** | successful operation. Previous user configured parameters are returned. |  -  |
 | **204** | successful operation. No previously configured parameters exist. |  -  |
+| **400** | Bad request. Check for badly formatted request body. |  -  |
+| **404** | configId not found. |  -  |
 

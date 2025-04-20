@@ -39,6 +39,10 @@ Attributes qualifying the _idDocument_ classification.
 | NATIONAL_IDENTITY_CARD | &quot;national_identity_card&quot; |
 | RESIDENCE_PERMIT | &quot;residence_permit&quot; |
 | VISA | &quot;visa&quot; |
+| BANK_STATEMENT | &quot;bank_statement&quot; |
+| UTILITY_BILL | &quot;utility_bill&quot; |
+| TAX_DOCUMENT | &quot;tax_document&quot; |
+| UNIDENTIFIED | &quot;unidentified&quot; |
 | UNKNOWN | &quot;unknown&quot; |
 
 

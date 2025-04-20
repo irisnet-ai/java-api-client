@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.Callback;
 import java.io.IOException;
-import java.net.URI;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -48,44 +47,102 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * Data containing neccessary information to handle the enduser live check.
+ * PoaCheckRequestData
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class LiveDocumentCheckRequestData {
+public class PoaCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
   @javax.annotation.Nonnull
   private Callback callback;
 
-  public static final String SERIALIZED_NAME_STATUS_URL = "statusUrl";
-  @SerializedName(SERIALIZED_NAME_STATUS_URL)
+  public static final String SERIALIZED_NAME_FRONT_IMAGE = "frontImage";
+  @SerializedName(SERIALIZED_NAME_FRONT_IMAGE)
   @javax.annotation.Nullable
-  private URI statusUrl;
+  private String frontImage;
 
-  public static final String SERIALIZED_NAME_END_USER_REDIRECT_URL = "endUserRedirectUrl";
-  @SerializedName(SERIALIZED_NAME_END_USER_REDIRECT_URL)
-  @javax.annotation.Nullable
-  private URI endUserRedirectUrl;
+  /**
+   * The type of the document
+   */
+  @JsonAdapter(DocumentTypeEnum.Adapter.class)
+  public enum DocumentTypeEnum {
+    PASSPORT("passport"),
+    
+    DRIVING_LICENSE("driving_license"),
+    
+    NATIONAL_IDENTITY_CARD("national_identity_card"),
+    
+    RESIDENCE_PERMIT("residence_permit"),
+    
+    VISA("visa"),
+    
+    BANK_STATEMENT("bank_statement"),
+    
+    UTILITY_BILL("utility_bill"),
+    
+    TAX_DOCUMENT("tax_document"),
+    
+    UNIDENTIFIED("unidentified"),
+    
+    UNKNOWN("unknown");
 
-  public static final String SERIALIZED_NAME_TOKEN_VALIDITY_IN_SECONDS = "tokenValidityInSeconds";
-  @SerializedName(SERIALIZED_NAME_TOKEN_VALIDITY_IN_SECONDS)
-  @javax.annotation.Nullable
-  private Long tokenValidityInSeconds;
+    private String value;
+
+    DocumentTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DocumentTypeEnum fromValue(String value) {
+      for (DocumentTypeEnum b : DocumentTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DocumentTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DocumentTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DocumentTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DocumentTypeEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DocumentTypeEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DOCUMENT_TYPE = "documentType";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_TYPE)
+  @javax.annotation.Nonnull
+  private DocumentTypeEnum documentType;
 
   public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
   @javax.annotation.Nullable
   private String documentHolderId;
 
-  public static final String SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE = "minimumAcceptedAge";
-  @SerializedName(SERIALIZED_NAME_MINIMUM_ACCEPTED_AGE)
-  @javax.annotation.Nullable
-  private Integer minimumAcceptedAge;
-
-  public LiveDocumentCheckRequestData() {
+  public PoaCheckRequestData() {
   }
 
-  public LiveDocumentCheckRequestData callback(@javax.annotation.Nonnull Callback callback) {
+  public PoaCheckRequestData callback(@javax.annotation.Nonnull Callback callback) {
     this.callback = callback;
     return this;
   }
@@ -104,70 +161,51 @@ public class LiveDocumentCheckRequestData {
   }
 
 
-  public LiveDocumentCheckRequestData statusUrl(@javax.annotation.Nullable URI statusUrl) {
-    this.statusUrl = statusUrl;
+  public PoaCheckRequestData frontImage(@javax.annotation.Nullable String frontImage) {
+    this.frontImage = frontImage;
     return this;
   }
 
   /**
-   * The URL to send the intermediate status requests to. If not set, no intermediate status requests will be sent.
-   * @return statusUrl
+   * The base64-encoded front image of the document to be checked in either jpg or png file format.
+   * @return frontImage
    */
   @javax.annotation.Nullable
-  public URI getStatusUrl() {
-    return statusUrl;
+  public String getFrontImage() {
+    return frontImage;
   }
 
-  public void setStatusUrl(@javax.annotation.Nullable URI statusUrl) {
-    this.statusUrl = statusUrl;
+  public void setFrontImage(@javax.annotation.Nullable String frontImage) {
+    this.frontImage = frontImage;
   }
 
 
-  public LiveDocumentCheckRequestData endUserRedirectUrl(@javax.annotation.Nullable URI endUserRedirectUrl) {
-    this.endUserRedirectUrl = endUserRedirectUrl;
+  public PoaCheckRequestData documentType(@javax.annotation.Nonnull DocumentTypeEnum documentType) {
+    this.documentType = documentType;
     return this;
   }
 
   /**
-   * If set the enduser is being redirected to this URL after the check is finished.
-   * @return endUserRedirectUrl
+   * The type of the document
+   * @return documentType
    */
-  @javax.annotation.Nullable
-  public URI getEndUserRedirectUrl() {
-    return endUserRedirectUrl;
+  @javax.annotation.Nonnull
+  public DocumentTypeEnum getDocumentType() {
+    return documentType;
   }
 
-  public void setEndUserRedirectUrl(@javax.annotation.Nullable URI endUserRedirectUrl) {
-    this.endUserRedirectUrl = endUserRedirectUrl;
-  }
-
-
-  public LiveDocumentCheckRequestData tokenValidityInSeconds(@javax.annotation.Nullable Long tokenValidityInSeconds) {
-    this.tokenValidityInSeconds = tokenValidityInSeconds;
-    return this;
-  }
-
-  /**
-   * The validity duration of a started ident process in seconds. Defaults to 3600 seconds &#x3D; 60 minutes.
-   * @return tokenValidityInSeconds
-   */
-  @javax.annotation.Nullable
-  public Long getTokenValidityInSeconds() {
-    return tokenValidityInSeconds;
-  }
-
-  public void setTokenValidityInSeconds(@javax.annotation.Nullable Long tokenValidityInSeconds) {
-    this.tokenValidityInSeconds = tokenValidityInSeconds;
+  public void setDocumentType(@javax.annotation.Nonnull DocumentTypeEnum documentType) {
+    this.documentType = documentType;
   }
 
 
-  public LiveDocumentCheckRequestData documentHolderId(@javax.annotation.Nullable String documentHolderId) {
+  public PoaCheckRequestData documentHolderId(@javax.annotation.Nullable String documentHolderId) {
     this.documentHolderId = documentHolderId;
     return this;
   }
 
   /**
-   * The documentHolderId from a previous successful live identification.
+   * The documentHolderId from a previous successful check.
    * @return documentHolderId
    */
   @javax.annotation.Nullable
@@ -180,25 +218,6 @@ public class LiveDocumentCheckRequestData {
   }
 
 
-  public LiveDocumentCheckRequestData minimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
-    this.minimumAcceptedAge = minimumAcceptedAge;
-    return this;
-  }
-
-  /**
-   * The minimum age in years accepted for a check, if applicable. Defaults to 18 if not specified.
-   * @return minimumAcceptedAge
-   */
-  @javax.annotation.Nullable
-  public Integer getMinimumAcceptedAge() {
-    return minimumAcceptedAge;
-  }
-
-  public void setMinimumAcceptedAge(@javax.annotation.Nullable Integer minimumAcceptedAge) {
-    this.minimumAcceptedAge = minimumAcceptedAge;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -208,30 +227,26 @@ public class LiveDocumentCheckRequestData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LiveDocumentCheckRequestData liveDocumentCheckRequestData = (LiveDocumentCheckRequestData) o;
-    return Objects.equals(this.callback, liveDocumentCheckRequestData.callback) &&
-        Objects.equals(this.statusUrl, liveDocumentCheckRequestData.statusUrl) &&
-        Objects.equals(this.endUserRedirectUrl, liveDocumentCheckRequestData.endUserRedirectUrl) &&
-        Objects.equals(this.tokenValidityInSeconds, liveDocumentCheckRequestData.tokenValidityInSeconds) &&
-        Objects.equals(this.documentHolderId, liveDocumentCheckRequestData.documentHolderId) &&
-        Objects.equals(this.minimumAcceptedAge, liveDocumentCheckRequestData.minimumAcceptedAge);
+    PoaCheckRequestData poaCheckRequestData = (PoaCheckRequestData) o;
+    return Objects.equals(this.callback, poaCheckRequestData.callback) &&
+        Objects.equals(this.frontImage, poaCheckRequestData.frontImage) &&
+        Objects.equals(this.documentType, poaCheckRequestData.documentType) &&
+        Objects.equals(this.documentHolderId, poaCheckRequestData.documentHolderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(callback, statusUrl, endUserRedirectUrl, tokenValidityInSeconds, documentHolderId, minimumAcceptedAge);
+    return Objects.hash(callback, frontImage, documentType, documentHolderId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LiveDocumentCheckRequestData {\n");
+    sb.append("class PoaCheckRequestData {\n");
     sb.append("    callback: ").append(toIndentedString(callback)).append("\n");
-    sb.append("    statusUrl: ").append(toIndentedString(statusUrl)).append("\n");
-    sb.append("    endUserRedirectUrl: ").append(toIndentedString(endUserRedirectUrl)).append("\n");
-    sb.append("    tokenValidityInSeconds: ").append(toIndentedString(tokenValidityInSeconds)).append("\n");
+    sb.append("    frontImage: ").append(toIndentedString(frontImage)).append("\n");
+    sb.append("    documentType: ").append(toIndentedString(documentType)).append("\n");
     sb.append("    documentHolderId: ").append(toIndentedString(documentHolderId)).append("\n");
-    sb.append("    minimumAcceptedAge: ").append(toIndentedString(minimumAcceptedAge)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,40 +270,39 @@ public class LiveDocumentCheckRequestData {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("callback");
-    openapiFields.add("statusUrl");
-    openapiFields.add("endUserRedirectUrl");
-    openapiFields.add("tokenValidityInSeconds");
+    openapiFields.add("frontImage");
+    openapiFields.add("documentType");
     openapiFields.add("documentHolderId");
-    openapiFields.add("minimumAcceptedAge");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("callback");
+    openapiRequiredFields.add("documentType");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LiveDocumentCheckRequestData
+   * @throws IOException if the JSON Element is invalid with respect to PoaCheckRequestData
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LiveDocumentCheckRequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LiveDocumentCheckRequestData is not found in the empty JSON string", LiveDocumentCheckRequestData.openapiRequiredFields.toString()));
+        if (!PoaCheckRequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PoaCheckRequestData is not found in the empty JSON string", PoaCheckRequestData.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LiveDocumentCheckRequestData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LiveDocumentCheckRequestData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PoaCheckRequestData.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PoaCheckRequestData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LiveDocumentCheckRequestData.openapiRequiredFields) {
+      for (String requiredField : PoaCheckRequestData.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -296,12 +310,14 @@ public class LiveDocumentCheckRequestData {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `callback`
       Callback.validateJsonElement(jsonObj.get("callback"));
-      if ((jsonObj.get("statusUrl") != null && !jsonObj.get("statusUrl").isJsonNull()) && !jsonObj.get("statusUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusUrl").toString()));
+      if ((jsonObj.get("frontImage") != null && !jsonObj.get("frontImage").isJsonNull()) && !jsonObj.get("frontImage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `frontImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("frontImage").toString()));
       }
-      if ((jsonObj.get("endUserRedirectUrl") != null && !jsonObj.get("endUserRedirectUrl").isJsonNull()) && !jsonObj.get("endUserRedirectUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endUserRedirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endUserRedirectUrl").toString()));
+      if (!jsonObj.get("documentType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `documentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentType").toString()));
       }
+      // validate the required field `documentType`
+      DocumentTypeEnum.validateJsonElement(jsonObj.get("documentType"));
       if ((jsonObj.get("documentHolderId") != null && !jsonObj.get("documentHolderId").isJsonNull()) && !jsonObj.get("documentHolderId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `documentHolderId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentHolderId").toString()));
       }
@@ -311,22 +327,22 @@ public class LiveDocumentCheckRequestData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LiveDocumentCheckRequestData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LiveDocumentCheckRequestData' and its subtypes
+       if (!PoaCheckRequestData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PoaCheckRequestData' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LiveDocumentCheckRequestData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LiveDocumentCheckRequestData.class));
+       final TypeAdapter<PoaCheckRequestData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PoaCheckRequestData.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LiveDocumentCheckRequestData>() {
+       return (TypeAdapter<T>) new TypeAdapter<PoaCheckRequestData>() {
            @Override
-           public void write(JsonWriter out, LiveDocumentCheckRequestData value) throws IOException {
+           public void write(JsonWriter out, PoaCheckRequestData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LiveDocumentCheckRequestData read(JsonReader in) throws IOException {
+           public PoaCheckRequestData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -337,18 +353,18 @@ public class LiveDocumentCheckRequestData {
   }
 
   /**
-   * Create an instance of LiveDocumentCheckRequestData given an JSON string
+   * Create an instance of PoaCheckRequestData given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LiveDocumentCheckRequestData
-   * @throws IOException if the JSON string is invalid with respect to LiveDocumentCheckRequestData
+   * @return An instance of PoaCheckRequestData
+   * @throws IOException if the JSON string is invalid with respect to PoaCheckRequestData
    */
-  public static LiveDocumentCheckRequestData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LiveDocumentCheckRequestData.class);
+  public static PoaCheckRequestData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PoaCheckRequestData.class);
   }
 
   /**
-   * Convert an instance of LiveDocumentCheckRequestData to an JSON string
+   * Convert an instance of PoaCheckRequestData to an JSON string
    *
    * @return JSON string
    */

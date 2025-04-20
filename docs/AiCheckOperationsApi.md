@@ -4,12 +4,87 @@ All URIs are relative to *https://api.irisnet.de*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**ageVerification**](AiCheckOperationsApi.md#ageVerification) | **POST** /v2/age-verification/{configId} | Perform an age verfication check for a given selfie with the AI. |
 | [**checkIdDocument**](AiCheckOperationsApi.md#checkIdDocument) | **POST** /v2/check-id-document/{configId} | Check an id document with the AI. |
 | [**checkImage**](AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI. |
+| [**checkPoaDocument**](AiCheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform an proof of address check with the AI. |
 | [**checkStream**](AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI. |
 | [**checkVideo**](AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI. |
+| [**faceAuthentication**](AiCheckOperationsApi.md#faceAuthentication) | **POST** /v2/face-authentication/{configId} | Perform a face authentication for a given selfie with the AI. |
 | [**liveDocumentCheck**](AiCheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI. |
 
+
+<a id="ageVerification"></a>
+# **ageVerification**
+> CheckResult ageVerification(configId, biometricCheckRequestData)
+
+Perform an age verfication check for a given selfie with the AI.
+
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+
+### Example
+```java
+// Import classes:
+import de.irisnet.java.ApiClient;
+import de.irisnet.java.ApiException;
+import de.irisnet.java.Configuration;
+import de.irisnet.java.auth.*;
+import de.irisnet.java.models.*;
+import de.irisnet.java.client.AiCheckOperationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.irisnet.de");
+    
+    // Configure API key authorization: LICENSE-KEY
+    ApiKeyAuth LICENSE-KEY = (ApiKeyAuth) defaultClient.getAuthentication("LICENSE-KEY");
+    LICENSE-KEY.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //LICENSE-KEY.setApiKeyPrefix("Token");
+
+    AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
+    UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
+    BiometricCheckRequestData biometricCheckRequestData = new BiometricCheckRequestData(); // BiometricCheckRequestData | The BiometricCheckRequestData containing data needed for the age verification check.
+    try {
+      CheckResult result = apiInstance.ageVerification(configId, biometricCheckRequestData);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiCheckOperationsApi#ageVerification");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
+| **biometricCheckRequestData** | [**BiometricCheckRequestData**](BiometricCheckRequestData.md)| The BiometricCheckRequestData containing data needed for the age verification check. | |
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkIdDocument"></a>
 # **checkIdDocument**
@@ -80,8 +155,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkImage"></a>
 # **checkImage**
@@ -159,8 +234,80 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **402** | Not enough credits. |  -  |
-| **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
+
+<a id="checkPoaDocument"></a>
+# **checkPoaDocument**
+> CheckResult checkPoaDocument(configId, poaCheckRequestData)
+
+Perform an proof of address check with the AI.
+
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+
+### Example
+```java
+// Import classes:
+import de.irisnet.java.ApiClient;
+import de.irisnet.java.ApiException;
+import de.irisnet.java.Configuration;
+import de.irisnet.java.auth.*;
+import de.irisnet.java.models.*;
+import de.irisnet.java.client.AiCheckOperationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.irisnet.de");
+    
+    // Configure API key authorization: LICENSE-KEY
+    ApiKeyAuth LICENSE-KEY = (ApiKeyAuth) defaultClient.getAuthentication("LICENSE-KEY");
+    LICENSE-KEY.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //LICENSE-KEY.setApiKeyPrefix("Token");
+
+    AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
+    UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
+    PoaCheckRequestData poaCheckRequestData = new PoaCheckRequestData(); // PoaCheckRequestData | The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either 'utility_bill' or 'bank_statement'.
+    try {
+      CheckResult result = apiInstance.checkPoaDocument(configId, poaCheckRequestData);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiCheckOperationsApi#checkPoaDocument");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
+| **poaCheckRequestData** | [**PoaCheckRequestData**](PoaCheckRequestData.md)| The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either &#39;utility_bill&#39; or &#39;bank_statement&#39;. | |
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **402** | Not enough credits. |  -  |
+| **202** | Input accepted: Wait for callback. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -238,8 +385,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **402** | Not enough credits. |  -  |
-| **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
@@ -317,9 +464,81 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | operation accepted: wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
+
+<a id="faceAuthentication"></a>
+# **faceAuthentication**
+> CheckResult faceAuthentication(configId, biometricCheckRequestData)
+
+Perform a face authentication for a given selfie with the AI.
+
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+
+### Example
+```java
+// Import classes:
+import de.irisnet.java.ApiClient;
+import de.irisnet.java.ApiException;
+import de.irisnet.java.Configuration;
+import de.irisnet.java.auth.*;
+import de.irisnet.java.models.*;
+import de.irisnet.java.client.AiCheckOperationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.irisnet.de");
+    
+    // Configure API key authorization: LICENSE-KEY
+    ApiKeyAuth LICENSE-KEY = (ApiKeyAuth) defaultClient.getAuthentication("LICENSE-KEY");
+    LICENSE-KEY.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //LICENSE-KEY.setApiKeyPrefix("Token");
+
+    AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
+    UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
+    BiometricCheckRequestData biometricCheckRequestData = new BiometricCheckRequestData(); // BiometricCheckRequestData | The BiometricCheckRequestData containing data needed for the face authentication.
+    try {
+      CheckResult result = apiInstance.faceAuthentication(configId, biometricCheckRequestData);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiCheckOperationsApi#faceAuthentication");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
+| **biometricCheckRequestData** | [**BiometricCheckRequestData**](BiometricCheckRequestData.md)| The BiometricCheckRequestData containing data needed for the face authentication. | |
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="liveDocumentCheck"></a>
 # **liveDocumentCheck**
@@ -390,6 +609,6 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
