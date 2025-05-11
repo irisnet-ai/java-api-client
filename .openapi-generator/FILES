@@ -110,5 +110,3 @@ src/main/java/de/irisnet/java/client/model/PoaCheckRequestData.java
 src/main/java/de/irisnet/java/client/model/Pricing.java
 src/main/java/de/irisnet/java/client/model/Rectangle.java
 src/main/java/de/irisnet/java/client/model/Summary.java
-src/test/java/de/irisnet/java/client/model/BiometricCheckRequestDataTest.java
-src/test/java/de/irisnet/java/client/model/PoaCheckRequestDataTest.java

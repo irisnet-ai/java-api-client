@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * ApiNotice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ApiNotice {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

@@ -52,7 +52,7 @@ import de.irisnet.java.JSON;
 /**
  * A set of parameters/rules that describe how the AI should behave.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ParamSet {
   public static final String SERIALIZED_NAME_THRESH = "thresh";
   @SerializedName(SERIALIZED_NAME_THRESH)

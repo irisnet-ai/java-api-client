@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information on ageVerification sub-checks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AgeVerificationSubChecks {
   /**
    * Indicates if the selfie image is genuine and not a photo of an image or of a screen

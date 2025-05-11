@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * The data to be checked.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Data {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)

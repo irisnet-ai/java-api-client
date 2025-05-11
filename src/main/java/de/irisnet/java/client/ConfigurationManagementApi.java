@@ -88,7 +88,7 @@ public class ConfigurationManagementApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteConfigCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteConfigCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,7 +134,7 @@ public class ConfigurationManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteConfigValidateBeforeCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteConfigValidateBeforeCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling deleteConfig(Async)");
@@ -157,7 +157,7 @@ public class ConfigurationManagementApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteConfig(UUID configId) throws ApiException {
+    public void deleteConfig(@javax.annotation.Nonnull UUID configId) throws ApiException {
         deleteConfigWithHttpInfo(configId);
     }
 
@@ -175,7 +175,7 @@ public class ConfigurationManagementApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteConfigWithHttpInfo(UUID configId) throws ApiException {
+    public ApiResponse<Void> deleteConfigWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
         okhttp3.Call localVarCall = deleteConfigValidateBeforeCall(configId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -195,7 +195,7 @@ public class ConfigurationManagementApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteConfigAsync(UUID configId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteConfigAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteConfigValidateBeforeCall(configId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -328,11 +328,11 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConfigCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConfigCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -378,7 +378,7 @@ public class ConfigurationManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConfigValidateBeforeCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConfigValidateBeforeCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling getConfig(Async)");
@@ -398,11 +398,11 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public Config getConfig(UUID configId) throws ApiException {
+    public Config getConfig(@javax.annotation.Nonnull UUID configId) throws ApiException {
         ApiResponse<Config> localVarResp = getConfigWithHttpInfo(configId);
         return localVarResp.getData();
     }
@@ -417,11 +417,11 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Config> getConfigWithHttpInfo(UUID configId) throws ApiException {
+    public ApiResponse<Config> getConfigWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
         okhttp3.Call localVarCall = getConfigValidateBeforeCall(configId, null);
         Type localVarReturnType = new TypeToken<Config>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -438,11 +438,11 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConfigAsync(UUID configId, final ApiCallback<Config> _callback) throws ApiException {
+    public okhttp3.Call getConfigAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Config> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getConfigValidateBeforeCall(configId, _callback);
         Type localVarReturnType = new TypeToken<Config>(){}.getType();
@@ -459,12 +459,12 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setConfigCall(Config config, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call setConfigCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -510,7 +510,7 @@ public class ConfigurationManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setConfigValidateBeforeCall(Config config, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setConfigValidateBeforeCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'config' is set
         if (config == null) {
             throw new ApiException("Missing the required parameter 'config' when calling setConfig(Async)");
@@ -530,12 +530,12 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public Config setConfig(Config config) throws ApiException {
+    public Config setConfig(@javax.annotation.Nonnull Config config) throws ApiException {
         ApiResponse<Config> localVarResp = setConfigWithHttpInfo(config);
         return localVarResp.getData();
     }
@@ -550,12 +550,12 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Config> setConfigWithHttpInfo(Config config) throws ApiException {
+    public ApiResponse<Config> setConfigWithHttpInfo(@javax.annotation.Nonnull Config config) throws ApiException {
         okhttp3.Call localVarCall = setConfigValidateBeforeCall(config, null);
         Type localVarReturnType = new TypeToken<Config>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -572,12 +572,12 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setConfigAsync(Config config, final ApiCallback<Config> _callback) throws ApiException {
+    public okhttp3.Call setConfigAsync(@javax.annotation.Nonnull Config config, final ApiCallback<Config> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setConfigValidateBeforeCall(config, _callback);
         Type localVarReturnType = new TypeToken<Config>(){}.getType();

@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes what and why a rule was broken according the the applied during the configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BrokenRule {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)

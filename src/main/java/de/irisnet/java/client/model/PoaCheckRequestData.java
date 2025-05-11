@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * PoaCheckRequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PoaCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)

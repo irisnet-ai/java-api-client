@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

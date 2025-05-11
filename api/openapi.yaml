@@ -271,6 +271,20 @@ paths:
           the _ParamSet_ and _Param_ schema to see the available parameters.
         required: true
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Bad request. Check for badly formatted request body.
+        "204":
+          description: successful operation. No previously configured parameters exist.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "200":
           content:
             application/json:
@@ -278,20 +292,6 @@ paths:
                 $ref: '#/components/schemas/ParamSet'
           description: successful operation. Previous user configured parameters are
             returned.
-        "204":
-          description: successful operation. No previously configured parameters exist.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Bad request. Check for badly formatted request body.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Set parameters to the given AI configuration.
@@ -388,18 +388,18 @@ paths:
           the _Config_ schema to see the available prototypes.
         required: true
       responses:
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Maximum number of stored AI configurations reached.
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: Bad request. Check for a badly formatted request body.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Maximum number of stored AI configurations reached.
         "200":
           content:
             application/json:
@@ -508,18 +508,18 @@ paths:
       responses:
         "202":
           description: "operation accepted: wait for callback."
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a video with the AI.
@@ -590,12 +590,12 @@ paths:
           type: integer
         style: form
       responses:
-        "402":
+        "404":
           content:
             application/x-ndjson:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
+          description: configId not found.
         "200":
           content:
             application/x-ndjson:
@@ -604,12 +604,12 @@ paths:
                   $ref: '#/components/schemas/CheckResult'
                 type: array
           description: successful operation.
-        "404":
+        "402":
           content:
             application/x-ndjson:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check a stream with the AI.
@@ -654,12 +654,6 @@ paths:
           or 'bank_statement'.
         required: true
       responses:
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
         "202":
           content:
             application/json:
@@ -668,6 +662,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CheckResult'
           description: "Input accepted: Wait for callback."
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Perform an proof of address check with the AI.
@@ -808,24 +808,24 @@ paths:
         description: The http(s) url or base64 encoded body uri of the image that
           needs to be checked.
       responses:
-        "402":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: Not enough credits.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CheckResult'
-          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckResult'
+          description: successful operation.
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: Not enough credits.
       security:
       - LICENSE-KEY: []
       summary: Check an image with the AI.
@@ -960,18 +960,18 @@ paths:
         header.
       operationId: getLicenseInfo
       responses:
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: The entered license key was not found.
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LicenseInfo'
           description: successful operation.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: The entered license key was not found.
       security:
       - LICENSE-KEY: []
       summary: Get information for the given license key.
@@ -1012,6 +1012,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
             application/json:
@@ -1021,12 +1027,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -1076,6 +1076,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
             application/json:
@@ -1085,12 +1091,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for moving images.
@@ -1120,6 +1120,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pricing'
           description: The cost of the given configuration.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiNotice'
+          description: configId not found.
         "429":
           content:
             application/json:
@@ -1129,12 +1135,6 @@ paths:
             or currently down for maintenance. This is a temporary state. A 'Retry-After'
             Header is included in the response to signal the client to retry after
             a certain amount of seconds.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiNotice'
-          description: configId not found.
       security:
       - LICENSE-KEY: []
       summary: Get the cost of the configuration for a single image.
@@ -1186,18 +1186,18 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Config'
-          description: successful operation.
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiNotice'
           description: configId not found.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+          description: successful operation.
       security:
       - LICENSE-KEY: []
       summary: Get a specific AI configuration.
@@ -2290,6 +2290,7 @@ components:
         backgroundColor: "000000"
         primaryColor: 57a632
         logo: logo
+        language: language
         textColor: ffffff
       properties:
         primaryColor:
@@ -2307,6 +2308,9 @@ components:
         logo:
           description: The company logo for the UI in PNG fileformat (512 px * 512
             px) as a base64 encoded string.
+          type: string
+        language:
+          description: The language related settings for the UI as a JSON.
           type: string
       type: object
     LicenseInfo:
@@ -2688,6 +2692,7 @@ components:
           backgroundColor: "000000"
           primaryColor: 57a632
           logo: logo
+          language: language
           textColor: ffffff
         params:
         - severity: 100

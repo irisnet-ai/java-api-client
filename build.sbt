@@ -2,11 +2,11 @@ lazy val root = (project in file(".")).
   settings(
     organization := "de.irisnet.java.client",
     name := "irisnet-java-client",
-    version := "3.7.2",
-    scalaVersion := "2.11.4",
+    version := "3.7.3",
+    scalaVersion := "2.11.12",
     scalacOptions ++= Seq("-feature"),
-    javacOptions in compile ++= Seq("-Xlint:deprecation"),
-    publishArtifact in (Compile, packageDoc) := false,
+    compile / javacOptions ++= Seq("-Xlint:deprecation"),
+    Compile / packageDoc / publishArtifact := false,
     resolvers += Resolver.mavenLocal,
     libraryDependencies ++= Seq(
       "io.swagger" % "swagger-annotations" % "1.6.5",

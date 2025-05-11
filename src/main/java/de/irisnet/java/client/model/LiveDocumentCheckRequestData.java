@@ -50,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Data containing neccessary information to handle the enduser live check.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LiveDocumentCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)

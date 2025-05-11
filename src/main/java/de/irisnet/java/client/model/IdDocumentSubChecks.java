@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information on idDocument sub-checks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdDocumentSubChecks {
   /**
    * Indicates whether the MRZ checksum is correct

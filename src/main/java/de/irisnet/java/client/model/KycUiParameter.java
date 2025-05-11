@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * A collection of parameters that determine the appearance and behaviour of the user interface (UI).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class KycUiParameter {
   public static final String SERIALIZED_NAME_PRIMARY_COLOR = "primaryColor";
   @SerializedName(SERIALIZED_NAME_PRIMARY_COLOR)
@@ -69,6 +69,11 @@ public class KycUiParameter {
   @SerializedName(SERIALIZED_NAME_LOGO)
   @javax.annotation.Nullable
   private String logo;
+
+  public static final String SERIALIZED_NAME_LANGUAGE = "language";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nullable
+  private String language;
 
   public KycUiParameter() {
   }
@@ -149,6 +154,25 @@ public class KycUiParameter {
   }
 
 
+  public KycUiParameter language(@javax.annotation.Nullable String language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * The language related settings for the UI as a JSON.
+   * @return language
+   */
+  @javax.annotation.Nullable
+  public String getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(@javax.annotation.Nullable String language) {
+    this.language = language;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,12 +186,13 @@ public class KycUiParameter {
     return Objects.equals(this.primaryColor, kycUiParameter.primaryColor) &&
         Objects.equals(this.backgroundColor, kycUiParameter.backgroundColor) &&
         Objects.equals(this.textColor, kycUiParameter.textColor) &&
-        Objects.equals(this.logo, kycUiParameter.logo);
+        Objects.equals(this.logo, kycUiParameter.logo) &&
+        Objects.equals(this.language, kycUiParameter.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(primaryColor, backgroundColor, textColor, logo);
+    return Objects.hash(primaryColor, backgroundColor, textColor, logo, language);
   }
 
   @Override
@@ -178,6 +203,7 @@ public class KycUiParameter {
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    textColor: ").append(toIndentedString(textColor)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -204,6 +230,7 @@ public class KycUiParameter {
     openapiFields.add("backgroundColor");
     openapiFields.add("textColor");
     openapiFields.add("logo");
+    openapiFields.add("language");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -241,6 +268,9 @@ public class KycUiParameter {
       }
       if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
+      }
+      if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
       }
   }
 

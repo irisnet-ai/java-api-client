@@ -55,7 +55,7 @@ import de.irisnet.java.JSON;
 /**
  * A detection describes the object found with all its details.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BaseDetection extends Detection {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)

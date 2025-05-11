@@ -233,9 +233,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
-| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **200** | successful operation. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkPoaDocument"></a>
 # **checkPoaDocument**
@@ -306,8 +306,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -384,9 +384,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
-| **200** | successful operation. |  -  |
 | **404** | configId not found. |  -  |
+| **200** | successful operation. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
@@ -465,8 +465,8 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | operation accepted: wait for callback. |  -  |
-| **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="faceAuthentication"></a>
 # **faceAuthentication**

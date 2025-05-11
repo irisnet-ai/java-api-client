@@ -96,7 +96,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ageVerificationCall(UUID configId, BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ageVerificationCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,7 +143,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ageVerificationValidateBeforeCall(UUID configId, BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ageVerificationValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling ageVerification(Async)");
@@ -173,7 +173,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckResult ageVerification(UUID configId, BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
+    public CheckResult ageVerification(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
         ApiResponse<CheckResult> localVarResp = ageVerificationWithHttpInfo(configId, biometricCheckRequestData);
         return localVarResp.getData();
     }
@@ -193,7 +193,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckResult> ageVerificationWithHttpInfo(UUID configId, BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
+    public ApiResponse<CheckResult> ageVerificationWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
         okhttp3.Call localVarCall = ageVerificationValidateBeforeCall(configId, biometricCheckRequestData, null);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -215,7 +215,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ageVerificationAsync(UUID configId, BiometricCheckRequestData biometricCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
+    public okhttp3.Call ageVerificationAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ageVerificationValidateBeforeCall(configId, biometricCheckRequestData, _callback);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
@@ -237,7 +237,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkIdDocumentCall(UUID configId, DocumentCheckRequestData documentCheckRequestData, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkIdDocumentCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -284,7 +284,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkIdDocumentValidateBeforeCall(UUID configId, DocumentCheckRequestData documentCheckRequestData, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkIdDocumentValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkIdDocument(Async)");
@@ -314,7 +314,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckResult checkIdDocument(UUID configId, DocumentCheckRequestData documentCheckRequestData) throws ApiException {
+    public CheckResult checkIdDocument(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData) throws ApiException {
         ApiResponse<CheckResult> localVarResp = checkIdDocumentWithHttpInfo(configId, documentCheckRequestData);
         return localVarResp.getData();
     }
@@ -334,7 +334,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckResult> checkIdDocumentWithHttpInfo(UUID configId, DocumentCheckRequestData documentCheckRequestData) throws ApiException {
+    public ApiResponse<CheckResult> checkIdDocumentWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData) throws ApiException {
         okhttp3.Call localVarCall = checkIdDocumentValidateBeforeCall(configId, documentCheckRequestData, null);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -356,7 +356,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkIdDocumentAsync(UUID configId, DocumentCheckRequestData documentCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
+    public okhttp3.Call checkIdDocumentAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkIdDocumentValidateBeforeCall(configId, documentCheckRequestData, _callback);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
@@ -377,12 +377,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageCall(UUID configId, String url, Integer detail, Boolean imageEncode, Data data, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkImageCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -441,7 +441,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkImageValidateBeforeCall(UUID configId, String url, Integer detail, Boolean imageEncode, Data data, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkImageValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkImage(Async)");
@@ -465,12 +465,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckResult checkImage(UUID configId, String url, Integer detail, Boolean imageEncode, Data data) throws ApiException {
+    public CheckResult checkImage(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data) throws ApiException {
         ApiResponse<CheckResult> localVarResp = checkImageWithHttpInfo(configId, url, detail, imageEncode, data);
         return localVarResp.getData();
     }
@@ -489,12 +489,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckResult> checkImageWithHttpInfo(UUID configId, String url, Integer detail, Boolean imageEncode, Data data) throws ApiException {
+    public ApiResponse<CheckResult> checkImageWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data) throws ApiException {
         okhttp3.Call localVarCall = checkImageValidateBeforeCall(configId, url, detail, imageEncode, data, null);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -515,12 +515,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkImageAsync(UUID configId, String url, Integer detail, Boolean imageEncode, Data data, final ApiCallback<CheckResult> _callback) throws ApiException {
+    public okhttp3.Call checkImageAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data, final ApiCallback<CheckResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkImageValidateBeforeCall(configId, url, detail, imageEncode, data, _callback);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
@@ -538,11 +538,11 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkPoaDocumentCall(UUID configId, PoaCheckRequestData poaCheckRequestData, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkPoaDocumentCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -589,7 +589,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkPoaDocumentValidateBeforeCall(UUID configId, PoaCheckRequestData poaCheckRequestData, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkPoaDocumentValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkPoaDocument(Async)");
@@ -615,11 +615,11 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckResult checkPoaDocument(UUID configId, PoaCheckRequestData poaCheckRequestData) throws ApiException {
+    public CheckResult checkPoaDocument(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData) throws ApiException {
         ApiResponse<CheckResult> localVarResp = checkPoaDocumentWithHttpInfo(configId, poaCheckRequestData);
         return localVarResp.getData();
     }
@@ -635,11 +635,11 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckResult> checkPoaDocumentWithHttpInfo(UUID configId, PoaCheckRequestData poaCheckRequestData) throws ApiException {
+    public ApiResponse<CheckResult> checkPoaDocumentWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData) throws ApiException {
         okhttp3.Call localVarCall = checkPoaDocumentValidateBeforeCall(configId, poaCheckRequestData, null);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -657,11 +657,11 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkPoaDocumentAsync(UUID configId, PoaCheckRequestData poaCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
+    public okhttp3.Call checkPoaDocumentAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkPoaDocumentValidateBeforeCall(configId, poaCheckRequestData, _callback);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
@@ -682,12 +682,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkStreamCall(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkStreamCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -749,7 +749,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkStreamValidateBeforeCall(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkStreamValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkStream(Async)");
@@ -778,12 +778,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public List<CheckResult> checkStream(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate) throws ApiException {
+    public List<CheckResult> checkStream(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate) throws ApiException {
         ApiResponse<List<CheckResult>> localVarResp = checkStreamWithHttpInfo(configId, inUrl, outUrl, cycleLength, checkRate);
         return localVarResp.getData();
     }
@@ -802,12 +802,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CheckResult>> checkStreamWithHttpInfo(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate) throws ApiException {
+    public ApiResponse<List<CheckResult>> checkStreamWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate) throws ApiException {
         okhttp3.Call localVarCall = checkStreamValidateBeforeCall(configId, inUrl, outUrl, cycleLength, checkRate, null);
         Type localVarReturnType = new TypeToken<List<CheckResult>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -828,12 +828,12 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkStreamAsync(UUID configId, String inUrl, String outUrl, Integer cycleLength, Integer checkRate, final ApiCallback<List<CheckResult>> _callback) throws ApiException {
+    public okhttp3.Call checkStreamAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate, final ApiCallback<List<CheckResult>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkStreamValidateBeforeCall(configId, inUrl, outUrl, cycleLength, checkRate, _callback);
         Type localVarReturnType = new TypeToken<List<CheckResult>>(){}.getType();
@@ -856,11 +856,11 @@ public class AiCheckOperationsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkVideoCall(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkVideoCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -923,7 +923,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkVideoValidateBeforeCall(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkVideoValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling checkVideo(Async)");
@@ -958,11 +958,11 @@ public class AiCheckOperationsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public void checkVideo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
+    public void checkVideo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate) throws ApiException {
         checkVideoWithHttpInfo(configId, url, callback, detail, imageEncode, checkRate);
     }
 
@@ -982,11 +982,11 @@ public class AiCheckOperationsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> checkVideoWithHttpInfo(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws ApiException {
+    public ApiResponse<Void> checkVideoWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate) throws ApiException {
         okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, callback, detail, imageEncode, checkRate, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1008,11 +1008,11 @@ public class AiCheckOperationsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkVideoAsync(UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call checkVideoAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkVideoValidateBeforeCall(configId, url, callback, detail, imageEncode, checkRate, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1033,7 +1033,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call faceAuthenticationCall(UUID configId, BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call faceAuthenticationCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1080,7 +1080,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call faceAuthenticationValidateBeforeCall(UUID configId, BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call faceAuthenticationValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling faceAuthentication(Async)");
@@ -1110,7 +1110,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckResult faceAuthentication(UUID configId, BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
+    public CheckResult faceAuthentication(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
         ApiResponse<CheckResult> localVarResp = faceAuthenticationWithHttpInfo(configId, biometricCheckRequestData);
         return localVarResp.getData();
     }
@@ -1130,7 +1130,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckResult> faceAuthenticationWithHttpInfo(UUID configId, BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
+    public ApiResponse<CheckResult> faceAuthenticationWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
         okhttp3.Call localVarCall = faceAuthenticationValidateBeforeCall(configId, biometricCheckRequestData, null);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1152,7 +1152,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call faceAuthenticationAsync(UUID configId, BiometricCheckRequestData biometricCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
+    public okhttp3.Call faceAuthenticationAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = faceAuthenticationValidateBeforeCall(configId, biometricCheckRequestData, _callback);
         Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
@@ -1174,7 +1174,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call liveDocumentCheckCall(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call liveDocumentCheckCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1221,7 +1221,7 @@ public class AiCheckOperationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call liveDocumentCheckValidateBeforeCall(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call liveDocumentCheckValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling liveDocumentCheck(Async)");
@@ -1251,7 +1251,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public LiveDocumentCheckResponseData liveDocumentCheck(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
+    public LiveDocumentCheckResponseData liveDocumentCheck(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
         ApiResponse<LiveDocumentCheckResponseData> localVarResp = liveDocumentCheckWithHttpInfo(configId, liveDocumentCheckRequestData);
         return localVarResp.getData();
     }
@@ -1271,7 +1271,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LiveDocumentCheckResponseData> liveDocumentCheckWithHttpInfo(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
+    public ApiResponse<LiveDocumentCheckResponseData> liveDocumentCheckWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
         okhttp3.Call localVarCall = liveDocumentCheckValidateBeforeCall(configId, liveDocumentCheckRequestData, null);
         Type localVarReturnType = new TypeToken<LiveDocumentCheckResponseData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1293,7 +1293,7 @@ public class AiCheckOperationsApi {
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call liveDocumentCheckAsync(UUID configId, LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback<LiveDocumentCheckResponseData> _callback) throws ApiException {
+    public okhttp3.Call liveDocumentCheckAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback<LiveDocumentCheckResponseData> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = liveDocumentCheckValidateBeforeCall(configId, liveDocumentCheckRequestData, _callback);
         Type localVarReturnType = new TypeToken<LiveDocumentCheckResponseData>(){}.getType();

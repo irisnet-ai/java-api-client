@@ -88,7 +88,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call clearParametersCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call clearParametersCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,7 +134,7 @@ public class DetailedConfigurationParametersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call clearParametersValidateBeforeCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call clearParametersValidateBeforeCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling clearParameters(Async)");
@@ -157,7 +157,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public void clearParameters(UUID configId) throws ApiException {
+    public void clearParameters(@javax.annotation.Nonnull UUID configId) throws ApiException {
         clearParametersWithHttpInfo(configId);
     }
 
@@ -175,7 +175,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> clearParametersWithHttpInfo(UUID configId) throws ApiException {
+    public ApiResponse<Void> clearParametersWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
         okhttp3.Call localVarCall = clearParametersValidateBeforeCall(configId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -195,7 +195,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call clearParametersAsync(UUID configId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call clearParametersAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = clearParametersValidateBeforeCall(configId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -215,7 +215,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getParametersCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getParametersCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -261,7 +261,7 @@ public class DetailedConfigurationParametersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getParametersValidateBeforeCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getParametersValidateBeforeCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling getParameters(Async)");
@@ -285,7 +285,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public ParamSet getParameters(UUID configId) throws ApiException {
+    public ParamSet getParameters(@javax.annotation.Nonnull UUID configId) throws ApiException {
         ApiResponse<ParamSet> localVarResp = getParametersWithHttpInfo(configId);
         return localVarResp.getData();
     }
@@ -304,7 +304,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ParamSet> getParametersWithHttpInfo(UUID configId) throws ApiException {
+    public ApiResponse<ParamSet> getParametersWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
         okhttp3.Call localVarCall = getParametersValidateBeforeCall(configId, null);
         Type localVarReturnType = new TypeToken<ParamSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -325,7 +325,7 @@ public class DetailedConfigurationParametersApi {
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getParametersAsync(UUID configId, final ApiCallback<ParamSet> _callback) throws ApiException {
+    public okhttp3.Call getParametersAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<ParamSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getParametersValidateBeforeCall(configId, _callback);
         Type localVarReturnType = new TypeToken<ParamSet>(){}.getType();
@@ -343,13 +343,13 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setParametersCall(UUID configId, ParamSet paramSet, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call setParametersCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -396,7 +396,7 @@ public class DetailedConfigurationParametersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setParametersValidateBeforeCall(UUID configId, ParamSet paramSet, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setParametersValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling setParameters(Async)");
@@ -422,13 +422,13 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
-    public ParamSet setParameters(UUID configId, ParamSet paramSet) throws ApiException {
+    public ParamSet setParameters(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet) throws ApiException {
         ApiResponse<ParamSet> localVarResp = setParametersWithHttpInfo(configId, paramSet);
         return localVarResp.getData();
     }
@@ -444,13 +444,13 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ParamSet> setParametersWithHttpInfo(UUID configId, ParamSet paramSet) throws ApiException {
+    public ApiResponse<ParamSet> setParametersWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet) throws ApiException {
         okhttp3.Call localVarCall = setParametersValidateBeforeCall(configId, paramSet, null);
         Type localVarReturnType = new TypeToken<ParamSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -468,13 +468,13 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setParametersAsync(UUID configId, ParamSet paramSet, final ApiCallback<ParamSet> _callback) throws ApiException {
+    public okhttp3.Call setParametersAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet, final ApiCallback<ParamSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = setParametersValidateBeforeCall(configId, paramSet, _callback);
         Type localVarReturnType = new TypeToken<ParamSet>(){}.getType();

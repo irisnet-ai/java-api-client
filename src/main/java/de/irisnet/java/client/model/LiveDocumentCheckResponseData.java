@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * Response object containing necessary information to start the enduser live document check on the client side.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LiveDocumentCheckResponseData {
   public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
   @SerializedName(SERIALIZED_NAME_EVENT_ID)

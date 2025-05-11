@@ -50,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Summarizing the result of the AI.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Summary {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

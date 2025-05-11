@@ -86,11 +86,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCostCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCostCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,7 +136,7 @@ public class BalanceEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCostValidateBeforeCall(UUID configId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCostValidateBeforeCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling getCost(Async)");
@@ -157,11 +157,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public Pricing getCost(UUID configId) throws ApiException {
+    public Pricing getCost(@javax.annotation.Nonnull UUID configId) throws ApiException {
         ApiResponse<Pricing> localVarResp = getCostWithHttpInfo(configId);
         return localVarResp.getData();
     }
@@ -177,11 +177,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pricing> getCostWithHttpInfo(UUID configId) throws ApiException {
+    public ApiResponse<Pricing> getCostWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
         okhttp3.Call localVarCall = getCostValidateBeforeCall(configId, null);
         Type localVarReturnType = new TypeToken<Pricing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -199,11 +199,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCostAsync(UUID configId, final ApiCallback<Pricing> _callback) throws ApiException {
+    public okhttp3.Call getCostAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Pricing> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCostValidateBeforeCall(configId, _callback);
         Type localVarReturnType = new TypeToken<Pricing>(){}.getType();
@@ -219,8 +219,8 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoCall(final ApiCallback _callback) throws ApiException {
@@ -282,8 +282,8 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public LicenseInfo getLicenseInfo() throws ApiException {
@@ -300,8 +300,8 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicenseInfo> getLicenseInfoWithHttpInfo() throws ApiException {
@@ -320,8 +320,8 @@ public class BalanceEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The entered license key was not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicenseInfoAsync(final ApiCallback<LicenseInfo> _callback) throws ApiException {
@@ -343,11 +343,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVideoCostCall(UUID configId, Long frames, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVideoCostCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Long frames, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -394,7 +394,7 @@ public class BalanceEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVideoCostValidateBeforeCall(UUID configId, Long frames, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVideoCostValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Long frames, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling getVideoCost(Async)");
@@ -421,11 +421,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public Pricing getVideoCost(UUID configId, Long frames) throws ApiException {
+    public Pricing getVideoCost(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Long frames) throws ApiException {
         ApiResponse<Pricing> localVarResp = getVideoCostWithHttpInfo(configId, frames);
         return localVarResp.getData();
     }
@@ -442,11 +442,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pricing> getVideoCostWithHttpInfo(UUID configId, Long frames) throws ApiException {
+    public ApiResponse<Pricing> getVideoCostWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Long frames) throws ApiException {
         okhttp3.Call localVarCall = getVideoCostValidateBeforeCall(configId, frames, null);
         Type localVarReturnType = new TypeToken<Pricing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -465,11 +465,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVideoCostAsync(UUID configId, Long frames, final ApiCallback<Pricing> _callback) throws ApiException {
+    public okhttp3.Call getVideoCostAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Long frames, final ApiCallback<Pricing> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getVideoCostValidateBeforeCall(configId, frames, _callback);
         Type localVarReturnType = new TypeToken<Pricing>(){}.getType();
@@ -489,11 +489,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVideoCost1Call(UUID configId, Integer fps, Long duration, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVideoCost1Call(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Integer fps, @javax.annotation.Nonnull Long duration, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -541,7 +541,7 @@ public class BalanceEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVideoCost1ValidateBeforeCall(UUID configId, Integer fps, Long duration, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVideoCost1ValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Integer fps, @javax.annotation.Nonnull Long duration, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'configId' is set
         if (configId == null) {
             throw new ApiException("Missing the required parameter 'configId' when calling getVideoCost1(Async)");
@@ -574,11 +574,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public Pricing getVideoCost1(UUID configId, Integer fps, Long duration) throws ApiException {
+    public Pricing getVideoCost1(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Integer fps, @javax.annotation.Nonnull Long duration) throws ApiException {
         ApiResponse<Pricing> localVarResp = getVideoCost1WithHttpInfo(configId, fps, duration);
         return localVarResp.getData();
     }
@@ -596,11 +596,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pricing> getVideoCost1WithHttpInfo(UUID configId, Integer fps, Long duration) throws ApiException {
+    public ApiResponse<Pricing> getVideoCost1WithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Integer fps, @javax.annotation.Nonnull Long duration) throws ApiException {
         okhttp3.Call localVarCall = getVideoCost1ValidateBeforeCall(configId, fps, duration, null);
         Type localVarReturnType = new TypeToken<Pricing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -620,11 +620,11 @@ public class BalanceEndpointsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The cost of the given configuration. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> The ai could not handle the request because it is either overloaded or currently down for maintenance. This is a temporary state. A &#39;Retry-After&#39; Header is included in the response to signal the client to retry after a certain amount of seconds. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVideoCost1Async(UUID configId, Integer fps, Long duration, final ApiCallback<Pricing> _callback) throws ApiException {
+    public okhttp3.Call getVideoCost1Async(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Integer fps, @javax.annotation.Nonnull Long duration, final ApiCallback<Pricing> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getVideoCost1ValidateBeforeCall(configId, fps, duration, _callback);
         Type localVarReturnType = new TypeToken<Pricing>(){}.getType();
