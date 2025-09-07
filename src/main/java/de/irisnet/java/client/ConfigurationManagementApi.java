@@ -84,8 +84,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
@@ -153,8 +153,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteConfig(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -171,8 +171,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteConfigWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -191,8 +191,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Void> _callback) throws ApiException {

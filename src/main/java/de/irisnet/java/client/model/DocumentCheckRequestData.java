@@ -49,7 +49,7 @@ import de.irisnet.java.JSON;
 /**
  * DocumentCheckRequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class DocumentCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
@@ -346,19 +346,10 @@ public class DocumentCheckRequestData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("callback");
-    openapiFields.add("frontImage");
-    openapiFields.add("backImage");
-    openapiFields.add("selfieImage");
-    openapiFields.add("minimumAcceptedAge");
-    openapiFields.add("documentType");
-    openapiFields.add("documentCountry");
+    openapiFields = new HashSet<String>(Arrays.asList("callback", "frontImage", "backImage", "selfieImage", "minimumAcceptedAge", "documentType", "documentCountry"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("callback");
-    openapiRequiredFields.add("frontImage");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("callback", "frontImage"));
   }
 
   /**

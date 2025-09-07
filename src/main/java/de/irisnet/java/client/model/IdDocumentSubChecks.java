@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains information on idDocument sub-checks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class IdDocumentSubChecks {
   /**
    * Indicates whether the MRZ checksum is correct
@@ -995,7 +995,7 @@ public class IdDocumentSubChecks {
   private FaceLivenessCheckEnum faceLivenessCheck;
 
   /**
-   * Indicates if the enduser had answered correctly during the voice challenge.
+   * Indicates if the enduser had answered correctly during the voice challenge
    */
   @JsonAdapter(VoiceChallengeCheckEnum.Adapter.class)
   public enum VoiceChallengeCheckEnum {
@@ -1054,7 +1054,7 @@ public class IdDocumentSubChecks {
   private VoiceChallengeCheckEnum voiceChallengeCheck;
 
   /**
-   * Indicates if the enduser had moved correctly during the actions challenge.
+   * Indicates if the enduser had moved correctly during the actions challenge
    */
   @JsonAdapter(ActionChallengeCheckEnum.Adapter.class)
   public enum ActionChallengeCheckEnum {
@@ -1111,6 +1111,360 @@ public class IdDocumentSubChecks {
   @SerializedName(SERIALIZED_NAME_ACTION_CHALLENGE_CHECK)
   @javax.annotation.Nullable
   private ActionChallengeCheckEnum actionChallengeCheck;
+
+  /**
+   * Indicates if the first name on the document and the MRZ are consistent
+   */
+  @JsonAdapter(FirstNameConsistencyEnum.Adapter.class)
+  public enum FirstNameConsistencyEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    FirstNameConsistencyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FirstNameConsistencyEnum fromValue(String value) {
+      for (FirstNameConsistencyEnum b : FirstNameConsistencyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FirstNameConsistencyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FirstNameConsistencyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FirstNameConsistencyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FirstNameConsistencyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      FirstNameConsistencyEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FIRST_NAME_CONSISTENCY = "firstNameConsistency";
+  @SerializedName(SERIALIZED_NAME_FIRST_NAME_CONSISTENCY)
+  @javax.annotation.Nullable
+  private FirstNameConsistencyEnum firstNameConsistency;
+
+  /**
+   * Indicates if the last name on the document and the MRZ are consistent
+   */
+  @JsonAdapter(LastNameConsistencyEnum.Adapter.class)
+  public enum LastNameConsistencyEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    LastNameConsistencyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LastNameConsistencyEnum fromValue(String value) {
+      for (LastNameConsistencyEnum b : LastNameConsistencyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LastNameConsistencyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LastNameConsistencyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LastNameConsistencyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LastNameConsistencyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      LastNameConsistencyEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_LAST_NAME_CONSISTENCY = "lastNameConsistency";
+  @SerializedName(SERIALIZED_NAME_LAST_NAME_CONSISTENCY)
+  @javax.annotation.Nullable
+  private LastNameConsistencyEnum lastNameConsistency;
+
+  /**
+   * Indicates if the date of birth on the document and the MRZ are consistent
+   */
+  @JsonAdapter(DobConsistencyEnum.Adapter.class)
+  public enum DobConsistencyEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    DobConsistencyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DobConsistencyEnum fromValue(String value) {
+      for (DobConsistencyEnum b : DobConsistencyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DobConsistencyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DobConsistencyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DobConsistencyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DobConsistencyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DobConsistencyEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DOB_CONSISTENCY = "dobConsistency";
+  @SerializedName(SERIALIZED_NAME_DOB_CONSISTENCY)
+  @javax.annotation.Nullable
+  private DobConsistencyEnum dobConsistency;
+
+  /**
+   * Indicates if the document number on the document and the MRZ are consistent
+   */
+  @JsonAdapter(DocumentNumberConsistencyEnum.Adapter.class)
+  public enum DocumentNumberConsistencyEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    DocumentNumberConsistencyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DocumentNumberConsistencyEnum fromValue(String value) {
+      for (DocumentNumberConsistencyEnum b : DocumentNumberConsistencyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DocumentNumberConsistencyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DocumentNumberConsistencyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DocumentNumberConsistencyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DocumentNumberConsistencyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DocumentNumberConsistencyEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DOCUMENT_NUMBER_CONSISTENCY = "documentNumberConsistency";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_NUMBER_CONSISTENCY)
+  @javax.annotation.Nullable
+  private DocumentNumberConsistencyEnum documentNumberConsistency;
+
+  /**
+   * Indicates if the issuing date on the document and the MRZ are consistent
+   */
+  @JsonAdapter(IssuingDateConsistencyEnum.Adapter.class)
+  public enum IssuingDateConsistencyEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    IssuingDateConsistencyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static IssuingDateConsistencyEnum fromValue(String value) {
+      for (IssuingDateConsistencyEnum b : IssuingDateConsistencyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<IssuingDateConsistencyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final IssuingDateConsistencyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public IssuingDateConsistencyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return IssuingDateConsistencyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      IssuingDateConsistencyEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ISSUING_DATE_CONSISTENCY = "issuingDateConsistency";
+  @SerializedName(SERIALIZED_NAME_ISSUING_DATE_CONSISTENCY)
+  @javax.annotation.Nullable
+  private IssuingDateConsistencyEnum issuingDateConsistency;
+
+  /**
+   * Indicates if the expiration date on the document and the MRZ are consistent
+   */
+  @JsonAdapter(ExpirationDateConsistencyEnum.Adapter.class)
+  public enum ExpirationDateConsistencyEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    ExpirationDateConsistencyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ExpirationDateConsistencyEnum fromValue(String value) {
+      for (ExpirationDateConsistencyEnum b : ExpirationDateConsistencyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ExpirationDateConsistencyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ExpirationDateConsistencyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ExpirationDateConsistencyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ExpirationDateConsistencyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ExpirationDateConsistencyEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_EXPIRATION_DATE_CONSISTENCY = "expirationDateConsistency";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE_CONSISTENCY)
+  @javax.annotation.Nullable
+  private ExpirationDateConsistencyEnum expirationDateConsistency;
 
   /**
    * Indicates if the selfie image matches an aready existing client/customer
@@ -1484,7 +1838,7 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates if the enduser had answered correctly during the voice challenge.
+   * Indicates if the enduser had answered correctly during the voice challenge
    * @return voiceChallengeCheck
    */
   @javax.annotation.Nullable
@@ -1503,7 +1857,7 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates if the enduser had moved correctly during the actions challenge.
+   * Indicates if the enduser had moved correctly during the actions challenge
    * @return actionChallengeCheck
    */
   @javax.annotation.Nullable
@@ -1513,6 +1867,120 @@ public class IdDocumentSubChecks {
 
   public void setActionChallengeCheck(@javax.annotation.Nullable ActionChallengeCheckEnum actionChallengeCheck) {
     this.actionChallengeCheck = actionChallengeCheck;
+  }
+
+
+  public IdDocumentSubChecks firstNameConsistency(@javax.annotation.Nullable FirstNameConsistencyEnum firstNameConsistency) {
+    this.firstNameConsistency = firstNameConsistency;
+    return this;
+  }
+
+  /**
+   * Indicates if the first name on the document and the MRZ are consistent
+   * @return firstNameConsistency
+   */
+  @javax.annotation.Nullable
+  public FirstNameConsistencyEnum getFirstNameConsistency() {
+    return firstNameConsistency;
+  }
+
+  public void setFirstNameConsistency(@javax.annotation.Nullable FirstNameConsistencyEnum firstNameConsistency) {
+    this.firstNameConsistency = firstNameConsistency;
+  }
+
+
+  public IdDocumentSubChecks lastNameConsistency(@javax.annotation.Nullable LastNameConsistencyEnum lastNameConsistency) {
+    this.lastNameConsistency = lastNameConsistency;
+    return this;
+  }
+
+  /**
+   * Indicates if the last name on the document and the MRZ are consistent
+   * @return lastNameConsistency
+   */
+  @javax.annotation.Nullable
+  public LastNameConsistencyEnum getLastNameConsistency() {
+    return lastNameConsistency;
+  }
+
+  public void setLastNameConsistency(@javax.annotation.Nullable LastNameConsistencyEnum lastNameConsistency) {
+    this.lastNameConsistency = lastNameConsistency;
+  }
+
+
+  public IdDocumentSubChecks dobConsistency(@javax.annotation.Nullable DobConsistencyEnum dobConsistency) {
+    this.dobConsistency = dobConsistency;
+    return this;
+  }
+
+  /**
+   * Indicates if the date of birth on the document and the MRZ are consistent
+   * @return dobConsistency
+   */
+  @javax.annotation.Nullable
+  public DobConsistencyEnum getDobConsistency() {
+    return dobConsistency;
+  }
+
+  public void setDobConsistency(@javax.annotation.Nullable DobConsistencyEnum dobConsistency) {
+    this.dobConsistency = dobConsistency;
+  }
+
+
+  public IdDocumentSubChecks documentNumberConsistency(@javax.annotation.Nullable DocumentNumberConsistencyEnum documentNumberConsistency) {
+    this.documentNumberConsistency = documentNumberConsistency;
+    return this;
+  }
+
+  /**
+   * Indicates if the document number on the document and the MRZ are consistent
+   * @return documentNumberConsistency
+   */
+  @javax.annotation.Nullable
+  public DocumentNumberConsistencyEnum getDocumentNumberConsistency() {
+    return documentNumberConsistency;
+  }
+
+  public void setDocumentNumberConsistency(@javax.annotation.Nullable DocumentNumberConsistencyEnum documentNumberConsistency) {
+    this.documentNumberConsistency = documentNumberConsistency;
+  }
+
+
+  public IdDocumentSubChecks issuingDateConsistency(@javax.annotation.Nullable IssuingDateConsistencyEnum issuingDateConsistency) {
+    this.issuingDateConsistency = issuingDateConsistency;
+    return this;
+  }
+
+  /**
+   * Indicates if the issuing date on the document and the MRZ are consistent
+   * @return issuingDateConsistency
+   */
+  @javax.annotation.Nullable
+  public IssuingDateConsistencyEnum getIssuingDateConsistency() {
+    return issuingDateConsistency;
+  }
+
+  public void setIssuingDateConsistency(@javax.annotation.Nullable IssuingDateConsistencyEnum issuingDateConsistency) {
+    this.issuingDateConsistency = issuingDateConsistency;
+  }
+
+
+  public IdDocumentSubChecks expirationDateConsistency(@javax.annotation.Nullable ExpirationDateConsistencyEnum expirationDateConsistency) {
+    this.expirationDateConsistency = expirationDateConsistency;
+    return this;
+  }
+
+  /**
+   * Indicates if the expiration date on the document and the MRZ are consistent
+   * @return expirationDateConsistency
+   */
+  @javax.annotation.Nullable
+  public ExpirationDateConsistencyEnum getExpirationDateConsistency() {
+    return expirationDateConsistency;
+  }
+
+  public void setExpirationDateConsistency(@javax.annotation.Nullable ExpirationDateConsistencyEnum expirationDateConsistency) {
+    this.expirationDateConsistency = expirationDateConsistency;
   }
 
 
@@ -1563,12 +2031,18 @@ public class IdDocumentSubChecks {
         Objects.equals(this.faceLivenessCheck, idDocumentSubChecks.faceLivenessCheck) &&
         Objects.equals(this.voiceChallengeCheck, idDocumentSubChecks.voiceChallengeCheck) &&
         Objects.equals(this.actionChallengeCheck, idDocumentSubChecks.actionChallengeCheck) &&
+        Objects.equals(this.firstNameConsistency, idDocumentSubChecks.firstNameConsistency) &&
+        Objects.equals(this.lastNameConsistency, idDocumentSubChecks.lastNameConsistency) &&
+        Objects.equals(this.dobConsistency, idDocumentSubChecks.dobConsistency) &&
+        Objects.equals(this.documentNumberConsistency, idDocumentSubChecks.documentNumberConsistency) &&
+        Objects.equals(this.issuingDateConsistency, idDocumentSubChecks.issuingDateConsistency) &&
+        Objects.equals(this.expirationDateConsistency, idDocumentSubChecks.expirationDateConsistency) &&
         Objects.equals(this.knownFacesCheck, idDocumentSubChecks.knownFacesCheck);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, knownFacesCheck);
+    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, firstNameConsistency, lastNameConsistency, dobConsistency, documentNumberConsistency, issuingDateConsistency, expirationDateConsistency, knownFacesCheck);
   }
 
   @Override
@@ -1593,6 +2067,12 @@ public class IdDocumentSubChecks {
     sb.append("    faceLivenessCheck: ").append(toIndentedString(faceLivenessCheck)).append("\n");
     sb.append("    voiceChallengeCheck: ").append(toIndentedString(voiceChallengeCheck)).append("\n");
     sb.append("    actionChallengeCheck: ").append(toIndentedString(actionChallengeCheck)).append("\n");
+    sb.append("    firstNameConsistency: ").append(toIndentedString(firstNameConsistency)).append("\n");
+    sb.append("    lastNameConsistency: ").append(toIndentedString(lastNameConsistency)).append("\n");
+    sb.append("    dobConsistency: ").append(toIndentedString(dobConsistency)).append("\n");
+    sb.append("    documentNumberConsistency: ").append(toIndentedString(documentNumberConsistency)).append("\n");
+    sb.append("    issuingDateConsistency: ").append(toIndentedString(issuingDateConsistency)).append("\n");
+    sb.append("    expirationDateConsistency: ").append(toIndentedString(expirationDateConsistency)).append("\n");
     sb.append("    knownFacesCheck: ").append(toIndentedString(knownFacesCheck)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1615,29 +2095,10 @@ public class IdDocumentSubChecks {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("mrzChecksum");
-    openapiFields.add("mrzFormat");
-    openapiFields.add("mrzConsistency");
-    openapiFields.add("expirationDate");
-    openapiFields.add("securityElements");
-    openapiFields.add("photoLocation");
-    openapiFields.add("blacklistCheck");
-    openapiFields.add("photocopyCheck");
-    openapiFields.add("specimenCheck");
-    openapiFields.add("documentModelIdentification");
-    openapiFields.add("documentLivenessCheck");
-    openapiFields.add("dataIntegrityCheck");
-    openapiFields.add("dataConsistencyCheck");
-    openapiFields.add("ageValidationCheck");
-    openapiFields.add("spoofedImageAnalysis");
-    openapiFields.add("faceLivenessCheck");
-    openapiFields.add("voiceChallengeCheck");
-    openapiFields.add("actionChallengeCheck");
-    openapiFields.add("knownFacesCheck");
+    openapiFields = new HashSet<String>(Arrays.asList("mrzChecksum", "mrzFormat", "mrzConsistency", "expirationDate", "securityElements", "photoLocation", "blacklistCheck", "photocopyCheck", "specimenCheck", "documentModelIdentification", "documentLivenessCheck", "dataIntegrityCheck", "dataConsistencyCheck", "ageValidationCheck", "spoofedImageAnalysis", "faceLivenessCheck", "voiceChallengeCheck", "actionChallengeCheck", "firstNameConsistency", "lastNameConsistency", "dobConsistency", "documentNumberConsistency", "issuingDateConsistency", "expirationDateConsistency", "knownFacesCheck"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -1786,6 +2247,48 @@ public class IdDocumentSubChecks {
       // validate the optional field `actionChallengeCheck`
       if (jsonObj.get("actionChallengeCheck") != null && !jsonObj.get("actionChallengeCheck").isJsonNull()) {
         ActionChallengeCheckEnum.validateJsonElement(jsonObj.get("actionChallengeCheck"));
+      }
+      if ((jsonObj.get("firstNameConsistency") != null && !jsonObj.get("firstNameConsistency").isJsonNull()) && !jsonObj.get("firstNameConsistency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `firstNameConsistency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("firstNameConsistency").toString()));
+      }
+      // validate the optional field `firstNameConsistency`
+      if (jsonObj.get("firstNameConsistency") != null && !jsonObj.get("firstNameConsistency").isJsonNull()) {
+        FirstNameConsistencyEnum.validateJsonElement(jsonObj.get("firstNameConsistency"));
+      }
+      if ((jsonObj.get("lastNameConsistency") != null && !jsonObj.get("lastNameConsistency").isJsonNull()) && !jsonObj.get("lastNameConsistency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lastNameConsistency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastNameConsistency").toString()));
+      }
+      // validate the optional field `lastNameConsistency`
+      if (jsonObj.get("lastNameConsistency") != null && !jsonObj.get("lastNameConsistency").isJsonNull()) {
+        LastNameConsistencyEnum.validateJsonElement(jsonObj.get("lastNameConsistency"));
+      }
+      if ((jsonObj.get("dobConsistency") != null && !jsonObj.get("dobConsistency").isJsonNull()) && !jsonObj.get("dobConsistency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dobConsistency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dobConsistency").toString()));
+      }
+      // validate the optional field `dobConsistency`
+      if (jsonObj.get("dobConsistency") != null && !jsonObj.get("dobConsistency").isJsonNull()) {
+        DobConsistencyEnum.validateJsonElement(jsonObj.get("dobConsistency"));
+      }
+      if ((jsonObj.get("documentNumberConsistency") != null && !jsonObj.get("documentNumberConsistency").isJsonNull()) && !jsonObj.get("documentNumberConsistency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `documentNumberConsistency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentNumberConsistency").toString()));
+      }
+      // validate the optional field `documentNumberConsistency`
+      if (jsonObj.get("documentNumberConsistency") != null && !jsonObj.get("documentNumberConsistency").isJsonNull()) {
+        DocumentNumberConsistencyEnum.validateJsonElement(jsonObj.get("documentNumberConsistency"));
+      }
+      if ((jsonObj.get("issuingDateConsistency") != null && !jsonObj.get("issuingDateConsistency").isJsonNull()) && !jsonObj.get("issuingDateConsistency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `issuingDateConsistency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuingDateConsistency").toString()));
+      }
+      // validate the optional field `issuingDateConsistency`
+      if (jsonObj.get("issuingDateConsistency") != null && !jsonObj.get("issuingDateConsistency").isJsonNull()) {
+        IssuingDateConsistencyEnum.validateJsonElement(jsonObj.get("issuingDateConsistency"));
+      }
+      if ((jsonObj.get("expirationDateConsistency") != null && !jsonObj.get("expirationDateConsistency").isJsonNull()) && !jsonObj.get("expirationDateConsistency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `expirationDateConsistency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expirationDateConsistency").toString()));
+      }
+      // validate the optional field `expirationDateConsistency`
+      if (jsonObj.get("expirationDateConsistency") != null && !jsonObj.get("expirationDateConsistency").isJsonNull()) {
+        ExpirationDateConsistencyEnum.validateJsonElement(jsonObj.get("expirationDateConsistency"));
       }
       if ((jsonObj.get("knownFacesCheck") != null && !jsonObj.get("knownFacesCheck").isJsonNull()) && !jsonObj.get("knownFacesCheck").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `knownFacesCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("knownFacesCheck").toString()));

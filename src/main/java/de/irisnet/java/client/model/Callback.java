@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Callback options to send a response to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Callback {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -158,13 +158,10 @@ public class Callback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("callbackUrl");
-    openapiFields.add("headers");
+    openapiFields = new HashSet<String>(Arrays.asList("callbackUrl", "headers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("callbackUrl");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("callbackUrl"));
   }
 
   /**

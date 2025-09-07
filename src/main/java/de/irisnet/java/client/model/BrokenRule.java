@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes what and why a rule was broken according the the applied during the configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class BrokenRule {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -277,17 +277,10 @@ public class BrokenRule {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("classification");
-    openapiFields.add("group");
-    openapiFields.add("found");
-    openapiFields.add("min");
-    openapiFields.add("max");
-    openapiFields.add("severity");
-    openapiFields.add("duration");
+    openapiFields = new HashSet<String>(Arrays.asList("classification", "group", "found", "min", "max", "severity", "duration"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

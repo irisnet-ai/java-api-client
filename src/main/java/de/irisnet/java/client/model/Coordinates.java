@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes the position and bounds of the classification object.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Coordinates {
   public static final String SERIALIZED_NAME_RECTANGLES = "rectangles";
   @SerializedName(SERIALIZED_NAME_RECTANGLES)
@@ -132,11 +132,10 @@ public class Coordinates {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("rectangles");
+    openapiFields = new HashSet<String>(Arrays.asList("rectangles"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

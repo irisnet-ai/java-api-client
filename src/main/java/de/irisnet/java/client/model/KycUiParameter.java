@@ -48,22 +48,22 @@ import de.irisnet.java.JSON;
 /**
  * A collection of parameters that determine the appearance and behaviour of the user interface (UI).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class KycUiParameter {
   public static final String SERIALIZED_NAME_PRIMARY_COLOR = "primaryColor";
   @SerializedName(SERIALIZED_NAME_PRIMARY_COLOR)
   @javax.annotation.Nullable
-  private String primaryColor = "57a632";
+  private String primaryColor = "4caf50";
 
   public static final String SERIALIZED_NAME_BACKGROUND_COLOR = "backgroundColor";
   @SerializedName(SERIALIZED_NAME_BACKGROUND_COLOR)
   @javax.annotation.Nullable
-  private String backgroundColor = "000000";
+  private String backgroundColor = "333333";
 
   public static final String SERIALIZED_NAME_TEXT_COLOR = "textColor";
   @SerializedName(SERIALIZED_NAME_TEXT_COLOR)
   @javax.annotation.Nullable
-  private String textColor = "ffffff";
+  private String textColor = "000000";
 
   public static final String SERIALIZED_NAME_LOGO = "logo";
   @SerializedName(SERIALIZED_NAME_LOGO)
@@ -225,15 +225,10 @@ public class KycUiParameter {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("primaryColor");
-    openapiFields.add("backgroundColor");
-    openapiFields.add("textColor");
-    openapiFields.add("logo");
-    openapiFields.add("language");
+    openapiFields = new HashSet<String>(Arrays.asList("primaryColor", "backgroundColor", "textColor", "logo", "language"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

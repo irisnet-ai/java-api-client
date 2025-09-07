@@ -50,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Summarizing the result of the AI.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Summary {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -329,18 +329,10 @@ public class Summary {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("status");
-    openapiFields.add("brokenRulesCount");
-    openapiFields.add("helpSuggested");
-    openapiFields.add("severity");
-    openapiFields.add("creditsConsumed");
-    openapiFields.add("tags");
-    openapiFields.add("rejectTags");
-    openapiFields.add("rejectReasons");
+    openapiFields = new HashSet<String>(Arrays.asList("status", "brokenRulesCount", "helpSuggested", "severity", "creditsConsumed", "tags", "rejectTags", "rejectReasons"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

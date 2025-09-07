@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "de.irisnet.java.client",
     name := "irisnet-java-client",
-    version := "3.7.3",
+    version := "3.7.6",
     scalaVersion := "2.11.12",
     scalacOptions ++= Seq("-feature"),
     compile / javacOptions ++= Seq("-Xlint:deprecation"),

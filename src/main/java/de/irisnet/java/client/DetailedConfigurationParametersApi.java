@@ -84,8 +84,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call clearParametersCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
@@ -153,8 +153,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public void clearParameters(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -171,8 +171,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> clearParametersWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -191,8 +191,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call clearParametersAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Void> _callback) throws ApiException {
@@ -211,8 +211,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getParametersCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
@@ -281,8 +281,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public ParamSet getParameters(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -300,8 +300,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ParamSet> getParametersWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -321,8 +321,8 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configuration with given id not found or parameters for configuration not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getParametersAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<ParamSet> _callback) throws ApiException {
@@ -343,10 +343,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setParametersCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet, final ApiCallback _callback) throws ApiException {
@@ -422,10 +422,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
      </table>
      */
     public ParamSet setParameters(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet) throws ApiException {
@@ -444,10 +444,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ParamSet> setParametersWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet) throws ApiException {
@@ -468,10 +468,10 @@ public class DetailedConfigurationParametersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request. Check for badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. Previous user configured parameters are returned. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> successful operation. No previously configured parameters exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setParametersAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull ParamSet paramSet, final ApiCallback<ParamSet> _callback) throws ApiException {

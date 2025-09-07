@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes an event that lead to a broken rule.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Event {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -225,15 +225,10 @@ public class Event {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("classification");
-    openapiFields.add("group");
-    openapiFields.add("start");
-    openapiFields.add("duration");
-    openapiFields.add("severity");
+    openapiFields = new HashSet<String>(Arrays.asList("classification", "group", "start", "duration", "severity"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

@@ -56,7 +56,7 @@ import de.irisnet.java.JSON;
 /**
  * The root object returned after a check operation.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class CheckResult {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
@@ -325,17 +325,10 @@ public class CheckResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("summary");
-    openapiFields.add("encodings");
-    openapiFields.add("brokenRules");
-    openapiFields.add("detections");
-    openapiFields.add("events");
-    openapiFields.add("notifications");
-    openapiFields.add("checkId");
+    openapiFields = new HashSet<String>(Arrays.asList("summary", "encodings", "brokenRules", "detections", "events", "notifications", "checkId"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

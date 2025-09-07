@@ -50,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Data containing neccessary information to handle the enduser live check.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class LiveDocumentCheckRequestData {
   public static final String SERIALIZED_NAME_CALLBACK = "callback";
   @SerializedName(SERIALIZED_NAME_CALLBACK)
@@ -253,17 +253,10 @@ public class LiveDocumentCheckRequestData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("callback");
-    openapiFields.add("statusUrl");
-    openapiFields.add("endUserRedirectUrl");
-    openapiFields.add("tokenValidityInSeconds");
-    openapiFields.add("documentHolderId");
-    openapiFields.add("minimumAcceptedAge");
+    openapiFields = new HashSet<String>(Arrays.asList("callback", "statusUrl", "endUserRedirectUrl", "tokenValidityInSeconds", "documentHolderId", "minimumAcceptedAge"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("callback");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("callback"));
   }
 
   /**

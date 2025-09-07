@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes the bounds of a rectangle starting from the center.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Rectangle {
   public static final String SERIALIZED_NAME_X0 = "x0";
   @SerializedName(SERIALIZED_NAME_X0)
@@ -199,14 +199,10 @@ public class Rectangle {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("x0");
-    openapiFields.add("y0");
-    openapiFields.add("width");
-    openapiFields.add("height");
+    openapiFields = new HashSet<String>(Arrays.asList("x0", "y0", "width", "height"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

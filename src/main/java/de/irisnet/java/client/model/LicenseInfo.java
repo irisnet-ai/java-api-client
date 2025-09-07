@@ -50,7 +50,7 @@ import de.irisnet.java.JSON;
 /**
  * Describes the current balance of the given license key. A key has a certain amount of credits that can be used for any kind of AI recognition. The license key is invalid, when all of the credits have been used, the license was disabled or expired.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class LicenseInfo {
   public static final String SERIALIZED_NAME_CREDITS_USED = "creditsUsed";
   @SerializedName(SERIALIZED_NAME_CREDITS_USED)
@@ -235,15 +235,10 @@ public class LicenseInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("creditsUsed");
-    openapiFields.add("creditsRemaining");
-    openapiFields.add("totalCredits");
-    openapiFields.add("licenseKey");
-    openapiFields.add("privileges");
+    openapiFields = new HashSet<String>(Arrays.asList("creditsUsed", "creditsRemaining", "totalCredits", "licenseKey", "privileges"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

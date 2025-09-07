@@ -48,7 +48,7 @@ import de.irisnet.java.JSON;
 /**
  * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class KnownFace {
   public static final String SERIALIZED_NAME_DOCUMENT_HOLDER_ID = "documentHolderId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_HOLDER_ID)
@@ -147,12 +147,10 @@ public class KnownFace {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("documentHolderId");
-    openapiFields.add("faceSimilarity");
+    openapiFields = new HashSet<String>(Arrays.asList("documentHolderId", "faceSimilarity"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

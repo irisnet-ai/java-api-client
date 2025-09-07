@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Attributes qualifying the _idDocument_ classification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class IdDocumentAttribute {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -738,29 +738,10 @@ public class IdDocumentAttribute {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("documentType");
-    openapiFields.add("documentNumber");
-    openapiFields.add("isTwoSided");
-    openapiFields.add("issuingAuthority");
-    openapiFields.add("issuingDate");
-    openapiFields.add("issuingCountry");
-    openapiFields.add("expirationDate");
-    openapiFields.add("accessNumber");
-    openapiFields.add("firstNames");
-    openapiFields.add("lastNames");
-    openapiFields.add("birthName");
-    openapiFields.add("dateOfBirth");
-    openapiFields.add("placeOfBirth");
-    openapiFields.add("nationality");
-    openapiFields.add("gender");
-    openapiFields.add("height");
-    openapiFields.add("address");
-    openapiFields.add("machineReadableZone");
+    openapiFields = new HashSet<String>(Arrays.asList("type", "documentType", "documentNumber", "isTwoSided", "issuingAuthority", "issuingDate", "issuingCountry", "expirationDate", "accessNumber", "firstNames", "lastNames", "birthName", "dateOfBirth", "placeOfBirth", "nationality", "gender", "height", "address", "machineReadableZone"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

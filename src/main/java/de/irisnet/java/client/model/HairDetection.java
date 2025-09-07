@@ -55,7 +55,7 @@ import de.irisnet.java.JSON;
 /**
  * Contains further characteristics particular to _hair_ detection.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class HairDetection extends Detection {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
@@ -269,28 +269,10 @@ public class HairDetection extends Detection {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("classification");
-    openapiFields.add("group");
-    openapiFields.add("id");
-    openapiFields.add("probability");
-    openapiFields.add("coordinates");
-    openapiFields.add("attributes");
-    openapiFields.add("subDetections");
-    openapiFields.add("checkId");
-    openapiFields.add("hasOfficialDocument");
-    openapiFields.add("comparable");
-    openapiFields.add("faceSimilarity");
-    openapiFields.add("faceLivenessCheckScore");
-    openapiFields.add("documentFrontLivenessScore");
-    openapiFields.add("documentBackLivenessScore");
-    openapiFields.add("processedChecks");
-    openapiFields.add("documentHolderId");
-    openapiFields.add("knownFaces");
+    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes", "subDetections", "checkId", "hasOfficialDocument", "comparable", "faceSimilarity", "faceLivenessCheckScore", "documentFrontLivenessScore", "documentBackLivenessScore", "processedChecks", "documentHolderId", "knownFaces"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

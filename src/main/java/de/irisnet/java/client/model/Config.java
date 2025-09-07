@@ -51,7 +51,7 @@ import de.irisnet.java.JSON;
 /**
  * Can be used to set a multitude of pre-defined commonly used rules without the need of specifying each parameter set.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Config {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,7 +64,7 @@ public class Config {
   private String name;
 
   /**
-   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _considerKnownFaces_ - If this flag is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration. * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageVerificationCheck_ - Performs an age verification check for a provided selfie. * _proofOfAddressCheck_ - Performs a proof of address check for a document. * _liveIdentification_ - Performs a guided live identification via an UI resulting in an identityDocumentCheck and biometricCheck. * _liveIdentityDocumentCheck_ - Performs a guided live identification via an UI resulting in an identityDocumentCheck. * _liveSelfie_ - Flag for the liveIdentification signaling to take a selfie video instead of a selfie image. * _liveProofOfAddress_ - Can be used standalone or as a flag for the liveIdentification to also take a proof of address document into account. * _liveAgeVerificationCheck_ - Performs a guided live age verification check via an UI. If used together with liveIdentification or liveIdentityDocumentCheck, liveAgeVerificationCheck will run first and if age is too low an liveIdentification or liveIdentityDocumentCheck is made as well.* _videoUploadIdentification_ - Upload a video to perform an identityDocumentCheck and biometricCheck via an UI. * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult. 
+   * Names of kyc related parameters, that can be used to configure check behaviour. * _identityDocumentCheck_ - Checks for validity and integrity of an official document. * _biometricCheck_ - Checks if the provided selfie matches the provided document. If used stand-alone the document holder has to be previously identified by an identityDocumentCheck * _considerKnownFaces_ - If this flag is present, the identityDocumentChecks, the biometricChecks and the liveIdentification would take already known selfies from documentHolders into consideration. * _formAutoFill_ - Performs an autofill for a given document image without performing a validity or integrity check. * _ageVerificationCheck_ - Performs an age verification check for a provided selfie. * _proofOfAddressCheck_ - Performs a proof of address check for a document. * _liveIdentification_ - Performs a guided live identification via a UI resulting in an identityDocumentCheck and biometricCheck. * _liveIdentityDocumentCheck_ - Performs a guided live identification via a UI resulting in an identityDocumentCheck. * _liveSelfie_ - Flag for the liveIdentification signaling to take a selfie video instead of a selfie image. * _liveProofOfAddress_ - Can be used standalone or as a flag for the liveIdentification to also take a proof of address document into account. * _liveAgeVerificationCheck_ - Performs a guided live age verification check via a UI. If used together with liveIdentification or liveIdentityDocumentCheck, liveAgeVerificationCheck will run first and if age is too low a liveIdentification or liveIdentityDocumentCheck is made as well.* _videoUploadIdentification_ - Upload a video to perform an identityDocumentCheck and biometricCheck via a UI. * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured. * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult. 
    */
   @JsonAdapter(KycCheckParametersEnum.Adapter.class)
   public enum KycCheckParametersEnum {
@@ -370,14 +370,10 @@ public class Config {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("name");
-    openapiFields.add("kycCheckParameters");
-    openapiFields.add("prototypes");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "name", "kycCheckParameters", "prototypes"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**

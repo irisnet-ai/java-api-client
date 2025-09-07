@@ -52,7 +52,7 @@ import de.irisnet.java.JSON;
 /**
  * A set of parameters/rules that describe how the AI should behave.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ParamSet {
   public static final String SERIALIZED_NAME_THRESH = "thresh";
   @SerializedName(SERIALIZED_NAME_THRESH)
@@ -296,17 +296,10 @@ public class ParamSet {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("thresh");
-    openapiFields.add("grey");
-    openapiFields.add("minDuration");
-    openapiFields.add("abortOnSeverity");
-    openapiFields.add("params");
-    openapiFields.add("kycUiParameters");
-    openapiFields.add("kycDocumentCountryDenyList");
+    openapiFields = new HashSet<String>(Arrays.asList("thresh", "grey", "minDuration", "abortOnSeverity", "params", "kycUiParameters", "kycDocumentCountryDenyList"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
