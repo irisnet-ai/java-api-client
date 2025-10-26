@@ -91,7 +91,7 @@ public class LiveDocumentCheckRequestData {
   }
 
   /**
-   * Get callback
+   * The URL the final check result is being sent to.
    * @return callback
    */
   @javax.annotation.Nonnull

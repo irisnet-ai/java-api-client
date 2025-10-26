@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.Rectangle;
+import de.irisnet.java.client.model.Segment;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +59,11 @@ public class Coordinates {
   @javax.annotation.Nullable
   private List<Rectangle> rectangles = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_SEGMENTS = "segments";
+  @SerializedName(SERIALIZED_NAME_SEGMENTS)
+  @javax.annotation.Nullable
+  private List<Segment> segments = new ArrayList<>();
+
   public Coordinates() {
   }
 
@@ -88,6 +94,33 @@ public class Coordinates {
   }
 
 
+  public Coordinates segments(@javax.annotation.Nullable List<Segment> segments) {
+    this.segments = segments;
+    return this;
+  }
+
+  public Coordinates addSegmentsItem(Segment segmentsItem) {
+    if (this.segments == null) {
+      this.segments = new ArrayList<>();
+    }
+    this.segments.add(segmentsItem);
+    return this;
+  }
+
+  /**
+   * Get segments
+   * @return segments
+   */
+  @javax.annotation.Nullable
+  public List<Segment> getSegments() {
+    return segments;
+  }
+
+  public void setSegments(@javax.annotation.Nullable List<Segment> segments) {
+    this.segments = segments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -98,12 +131,13 @@ public class Coordinates {
       return false;
     }
     Coordinates coordinates = (Coordinates) o;
-    return Objects.equals(this.rectangles, coordinates.rectangles);
+    return Objects.equals(this.rectangles, coordinates.rectangles) &&
+        Objects.equals(this.segments, coordinates.segments);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rectangles);
+    return Objects.hash(rectangles, segments);
   }
 
   @Override
@@ -111,6 +145,7 @@ public class Coordinates {
     StringBuilder sb = new StringBuilder();
     sb.append("class Coordinates {\n");
     sb.append("    rectangles: ").append(toIndentedString(rectangles)).append("\n");
+    sb.append("    segments: ").append(toIndentedString(segments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -132,7 +167,7 @@ public class Coordinates {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("rectangles"));
+    openapiFields = new HashSet<String>(Arrays.asList("rectangles", "segments"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -170,6 +205,20 @@ public class Coordinates {
           // validate the optional field `rectangles` (array)
           for (int i = 0; i < jsonArrayrectangles.size(); i++) {
             Rectangle.validateJsonElement(jsonArrayrectangles.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("segments") != null && !jsonObj.get("segments").isJsonNull()) {
+        JsonArray jsonArraysegments = jsonObj.getAsJsonArray("segments");
+        if (jsonArraysegments != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("segments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `segments` to be an array in the JSON string but got `%s`", jsonObj.get("segments").toString()));
+          }
+
+          // validate the optional field `segments` (array)
+          for (int i = 0; i < jsonArraysegments.size(); i++) {
+            Segment.validateJsonElement(jsonArraysegments.get(i));
           };
         }
       }

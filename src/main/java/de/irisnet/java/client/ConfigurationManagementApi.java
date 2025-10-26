@@ -84,8 +84,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
@@ -153,8 +153,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteConfig(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -171,8 +171,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteConfigWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -191,8 +191,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteConfigAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Void> _callback) throws ApiException {
@@ -230,7 +230,7 @@ public class ConfigurationManagementApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/config/";
+        String localVarPath = "/v2/config";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -328,8 +328,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getConfigCall(@javax.annotation.Nonnull UUID configId, final ApiCallback _callback) throws ApiException {
@@ -398,8 +398,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public Config getConfig(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -417,8 +417,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Config> getConfigWithHttpInfo(@javax.annotation.Nonnull UUID configId) throws ApiException {
@@ -438,8 +438,8 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getConfigAsync(@javax.annotation.Nonnull UUID configId, final ApiCallback<Config> _callback) throws ApiException {
@@ -459,9 +459,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setConfigCall(@javax.annotation.Nonnull Config config, final ApiCallback _callback) throws ApiException {
@@ -481,7 +481,7 @@ public class ConfigurationManagementApi {
         Object localVarPostBody = config;
 
         // create path and map variables
-        String localVarPath = "/v2/config/";
+        String localVarPath = "/v2/config";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -530,9 +530,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public Config setConfig(@javax.annotation.Nonnull Config config) throws ApiException {
@@ -550,9 +550,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Config> setConfigWithHttpInfo(@javax.annotation.Nonnull Config config) throws ApiException {
@@ -572,9 +572,9 @@ public class ConfigurationManagementApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request. Check for a badly formatted request body. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Maximum number of stored AI configurations reached. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setConfigAsync(@javax.annotation.Nonnull Config config, final ApiCallback<Config> _callback) throws ApiException {

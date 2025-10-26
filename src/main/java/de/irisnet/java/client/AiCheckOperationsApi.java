@@ -92,8 +92,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call ageVerificationCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
@@ -169,8 +169,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult ageVerification(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
@@ -189,8 +189,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> ageVerificationWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
@@ -211,8 +211,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call ageVerificationAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -233,8 +233,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkIdDocumentCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData, final ApiCallback _callback) throws ApiException {
@@ -310,8 +310,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult checkIdDocument(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData) throws ApiException {
@@ -330,8 +330,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> checkIdDocumentWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData) throws ApiException {
@@ -352,8 +352,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkIdDocumentAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull DocumentCheckRequestData documentCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -377,9 +377,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data, final ApiCallback _callback) throws ApiException {
@@ -465,9 +465,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult checkImage(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data) throws ApiException {
@@ -489,9 +489,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> checkImageWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data) throws ApiException {
@@ -515,9 +515,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkImageAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nullable String url, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Data data, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -538,8 +538,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkPoaDocumentCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData, final ApiCallback _callback) throws ApiException {
@@ -615,8 +615,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult checkPoaDocument(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData) throws ApiException {
@@ -635,8 +635,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> checkPoaDocumentWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData) throws ApiException {
@@ -657,8 +657,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkPoaDocumentAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull PoaCheckRequestData poaCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -682,9 +682,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkStreamCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -778,9 +778,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public List<CheckResult> checkStream(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate) throws ApiException {
@@ -802,9 +802,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<CheckResult>> checkStreamWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate) throws ApiException {
@@ -828,15 +828,168 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkStreamAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String inUrl, @javax.annotation.Nullable String outUrl, @javax.annotation.Nullable Integer cycleLength, @javax.annotation.Nullable Integer checkRate, final ApiCallback<List<CheckResult>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkStreamValidateBeforeCall(configId, inUrl, outUrl, cycleLength, checkRate, _callback);
         Type localVarReturnType = new TypeToken<List<CheckResult>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for checkText
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param data The text that needs to be checked. (required)
+     * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call checkTextCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Data data, @javax.annotation.Nullable Integer detail, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = data;
+
+        // create path and map variables
+        String localVarPath = "/v2/check-text/{configId}"
+            .replace("{" + "configId" + "}", localVarApiClient.escapeString(configId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (detail != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("detail", detail));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "LICENSE-KEY" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call checkTextValidateBeforeCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Data data, @javax.annotation.Nullable Integer detail, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'configId' is set
+        if (configId == null) {
+            throw new ApiException("Missing the required parameter 'configId' when calling checkText(Async)");
+        }
+
+        // verify the required parameter 'data' is set
+        if (data == null) {
+            throw new ApiException("Missing the required parameter 'data' when calling checkText(Async)");
+        }
+
+        return checkTextCall(configId, data, detail, _callback);
+
+    }
+
+    /**
+     * Check a text with the AI.
+     * The response (_CheckResult_ schema) is returned immediately after the request.
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param data The text that needs to be checked. (required)
+     * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
+     * @return CheckResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CheckResult checkText(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Data data, @javax.annotation.Nullable Integer detail) throws ApiException {
+        ApiResponse<CheckResult> localVarResp = checkTextWithHttpInfo(configId, data, detail);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Check a text with the AI.
+     * The response (_CheckResult_ schema) is returned immediately after the request.
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param data The text that needs to be checked. (required)
+     * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
+     * @return ApiResponse&lt;CheckResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CheckResult> checkTextWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Data data, @javax.annotation.Nullable Integer detail) throws ApiException {
+        okhttp3.Call localVarCall = checkTextValidateBeforeCall(configId, data, detail, null);
+        Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Check a text with the AI. (asynchronously)
+     * The response (_CheckResult_ schema) is returned immediately after the request.
+     * @param configId The configuration id from the Basic Configuration operations. (required)
+     * @param data The text that needs to be checked. (required)
+     * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. (optional, default to 1)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call checkTextAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull Data data, @javax.annotation.Nullable Integer detail, final ApiCallback<CheckResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = checkTextValidateBeforeCall(configId, data, detail, _callback);
+        Type localVarReturnType = new TypeToken<CheckResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -855,9 +1008,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate, final ApiCallback _callback) throws ApiException {
@@ -957,9 +1110,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
     public void checkVideo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate) throws ApiException {
@@ -981,9 +1134,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> checkVideoWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate) throws ApiException {
@@ -1007,9 +1160,9 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> configId not found. </td><td>  -  </td></tr>
-        <tr><td> 202 </td><td> operation accepted: wait for callback. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call checkVideoAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull String url, @javax.annotation.Nonnull Callback callback, @javax.annotation.Nullable Integer detail, @javax.annotation.Nullable Boolean imageEncode, @javax.annotation.Nullable Integer checkRate, final ApiCallback<Void> _callback) throws ApiException {
@@ -1029,8 +1182,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call faceAuthenticationCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback _callback) throws ApiException {
@@ -1106,8 +1259,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public CheckResult faceAuthentication(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
@@ -1126,8 +1279,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CheckResult> faceAuthenticationWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData) throws ApiException {
@@ -1148,8 +1301,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Wait for callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call faceAuthenticationAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull BiometricCheckRequestData biometricCheckRequestData, final ApiCallback<CheckResult> _callback) throws ApiException {
@@ -1170,8 +1323,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call liveDocumentCheckCall(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback _callback) throws ApiException {
@@ -1247,8 +1400,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public LiveDocumentCheckResponseData liveDocumentCheck(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
@@ -1267,8 +1420,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LiveDocumentCheckResponseData> liveDocumentCheckWithHttpInfo(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData) throws ApiException {
@@ -1289,8 +1442,8 @@ public class AiCheckOperationsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
         <tr><td> 202 </td><td> Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td> Not enough credits. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call liveDocumentCheckAsync(@javax.annotation.Nonnull UUID configId, @javax.annotation.Nonnull LiveDocumentCheckRequestData liveDocumentCheckRequestData, final ApiCallback<LiveDocumentCheckResponseData> _callback) throws ApiException {

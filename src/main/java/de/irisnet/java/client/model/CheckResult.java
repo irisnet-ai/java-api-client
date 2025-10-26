@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.ApiNotice;
 import de.irisnet.java.client.model.BrokenRule;
-import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.CheckResultDetectionsInner;
 import de.irisnet.java.client.model.Encoded;
 import de.irisnet.java.client.model.Event;
 import de.irisnet.java.client.model.Summary;
@@ -76,7 +76,7 @@ public class CheckResult {
   public static final String SERIALIZED_NAME_DETECTIONS = "detections";
   @SerializedName(SERIALIZED_NAME_DETECTIONS)
   @javax.annotation.Nullable
-  private List<Detection> detections = new ArrayList<>();
+  private List<CheckResultDetectionsInner> detections = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
@@ -169,12 +169,12 @@ public class CheckResult {
   }
 
 
-  public CheckResult detections(@javax.annotation.Nullable List<Detection> detections) {
+  public CheckResult detections(@javax.annotation.Nullable List<CheckResultDetectionsInner> detections) {
     this.detections = detections;
     return this;
   }
 
-  public CheckResult addDetectionsItem(Detection detectionsItem) {
+  public CheckResult addDetectionsItem(CheckResultDetectionsInner detectionsItem) {
     if (this.detections == null) {
       this.detections = new ArrayList<>();
     }
@@ -187,11 +187,11 @@ public class CheckResult {
    * @return detections
    */
   @javax.annotation.Nullable
-  public List<Detection> getDetections() {
+  public List<CheckResultDetectionsInner> getDetections() {
     return detections;
   }
 
-  public void setDetections(@javax.annotation.Nullable List<Detection> detections) {
+  public void setDetections(@javax.annotation.Nullable List<CheckResultDetectionsInner> detections) {
     this.detections = detections;
   }
 
@@ -394,7 +394,7 @@ public class CheckResult {
 
           // validate the optional field `detections` (array)
           for (int i = 0; i < jsonArraydetections.size(); i++) {
-            Detection.validateJsonElement(jsonArraydetections.get(i));
+            CheckResultDetectionsInner.validateJsonElement(jsonArraydetections.get(i));
           };
         }
       }

@@ -19,13 +19,19 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import de.irisnet.java.client.model.AgeVerificationDetection;
+import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.BreastDetection;
+import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.FaceDetection;
 import de.irisnet.java.client.model.HairDetection;
-import de.irisnet.java.client.model.IdDocumentAttribute;
 import de.irisnet.java.client.model.IdDocumentDetection;
-import de.irisnet.java.client.model.IdDocumentSubChecks;
+import de.irisnet.java.client.model.ImageAnalysisDetection;
+import de.irisnet.java.client.model.KnownFace;
+import de.irisnet.java.client.model.PoaDocumentDetection;
+import de.irisnet.java.client.model.PoaDocumentSubChecks;
+import de.irisnet.java.client.model.TextDetection;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,7 +72,7 @@ import com.google.gson.JsonParseException;
 
 import de.irisnet.java.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CheckResultDetectionsInner.class.getName());
 
@@ -78,11 +84,14 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'CheckResultDetectionsInner' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<BaseDetection> adapterBaseDetection = gson.getDelegateAdapter(this, TypeToken.get(BaseDetection.class));
+            final TypeAdapter<AgeVerificationDetection> adapterAgeVerificationDetection = gson.getDelegateAdapter(this, TypeToken.get(AgeVerificationDetection.class));
             final TypeAdapter<BreastDetection> adapterBreastDetection = gson.getDelegateAdapter(this, TypeToken.get(BreastDetection.class));
             final TypeAdapter<FaceDetection> adapterFaceDetection = gson.getDelegateAdapter(this, TypeToken.get(FaceDetection.class));
             final TypeAdapter<HairDetection> adapterHairDetection = gson.getDelegateAdapter(this, TypeToken.get(HairDetection.class));
             final TypeAdapter<IdDocumentDetection> adapterIdDocumentDetection = gson.getDelegateAdapter(this, TypeToken.get(IdDocumentDetection.class));
+            final TypeAdapter<ImageAnalysisDetection> adapterImageAnalysisDetection = gson.getDelegateAdapter(this, TypeToken.get(ImageAnalysisDetection.class));
+            final TypeAdapter<PoaDocumentDetection> adapterPoaDocumentDetection = gson.getDelegateAdapter(this, TypeToken.get(PoaDocumentDetection.class));
+            final TypeAdapter<TextDetection> adapterTextDetection = gson.getDelegateAdapter(this, TypeToken.get(TextDetection.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CheckResultDetectionsInner>() {
                 @Override
@@ -92,9 +101,9 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `BaseDetection`
-                    if (value.getActualInstance() instanceof BaseDetection) {
-                        JsonElement element = adapterBaseDetection.toJsonTree((BaseDetection)value.getActualInstance());
+                    // check if the actual instance is of the type `AgeVerificationDetection`
+                    if (value.getActualInstance() instanceof AgeVerificationDetection) {
+                        JsonElement element = adapterAgeVerificationDetection.toJsonTree((AgeVerificationDetection)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -122,7 +131,25 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
+                    // check if the actual instance is of the type `ImageAnalysisDetection`
+                    if (value.getActualInstance() instanceof ImageAnalysisDetection) {
+                        JsonElement element = adapterImageAnalysisDetection.toJsonTree((ImageAnalysisDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `PoaDocumentDetection`
+                    if (value.getActualInstance() instanceof PoaDocumentDetection) {
+                        JsonElement element = adapterPoaDocumentDetection.toJsonTree((PoaDocumentDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `TextDetection`
+                    if (value.getActualInstance() instanceof TextDetection) {
+                        JsonElement element = adapterTextDetection.toJsonTree((TextDetection)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: AgeVerificationDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection, ImageAnalysisDetection, PoaDocumentDetection, TextDetection");
                 }
 
                 @Override
@@ -134,17 +161,17 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize BaseDetection
+                    // deserialize AgeVerificationDetection
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        BaseDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterBaseDetection;
+                        AgeVerificationDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterAgeVerificationDetection;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'BaseDetection'");
+                        log.log(Level.FINER, "Input data matches schema 'AgeVerificationDetection'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BaseDetection'", e);
+                        errorMessages.add(String.format("Deserialization for AgeVerificationDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'AgeVerificationDetection'", e);
                     }
                     // deserialize BreastDetection
                     try {
@@ -194,6 +221,42 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
                         errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'IdDocumentDetection'", e);
                     }
+                    // deserialize ImageAnalysisDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        ImageAnalysisDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterImageAnalysisDetection;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'ImageAnalysisDetection'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for ImageAnalysisDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'ImageAnalysisDetection'", e);
+                    }
+                    // deserialize PoaDocumentDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        PoaDocumentDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterPoaDocumentDetection;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'PoaDocumentDetection'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for PoaDocumentDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'PoaDocumentDetection'", e);
+                    }
+                    // deserialize TextDetection
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        TextDetection.validateJsonElement(jsonElement);
+                        actualAdapter = adapterTextDetection;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'TextDetection'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for TextDetection failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'TextDetection'", e);
+                    }
 
                     if (match == 1) {
                         CheckResultDetectionsInner ret = new CheckResultDetectionsInner();
@@ -214,37 +277,20 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
         super("oneOf", Boolean.FALSE);
     }
 
-    public CheckResultDetectionsInner(BaseDetection o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CheckResultDetectionsInner(BreastDetection o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CheckResultDetectionsInner(FaceDetection o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CheckResultDetectionsInner(HairDetection o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CheckResultDetectionsInner(IdDocumentDetection o) {
+    public CheckResultDetectionsInner(Object o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
     static {
-        schemas.put("BaseDetection", BaseDetection.class);
+        schemas.put("AgeVerificationDetection", AgeVerificationDetection.class);
         schemas.put("BreastDetection", BreastDetection.class);
         schemas.put("FaceDetection", FaceDetection.class);
         schemas.put("HairDetection", HairDetection.class);
         schemas.put("IdDocumentDetection", IdDocumentDetection.class);
+        schemas.put("ImageAnalysisDetection", ImageAnalysisDetection.class);
+        schemas.put("PoaDocumentDetection", PoaDocumentDetection.class);
+        schemas.put("TextDetection", TextDetection.class);
     }
 
     @Override
@@ -255,13 +301,13 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
+     * AgeVerificationDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection, ImageAnalysisDetection, PoaDocumentDetection, TextDetection
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof BaseDetection) {
+        if (instance instanceof AgeVerificationDetection) {
             super.setActualInstance(instance);
             return;
         }
@@ -286,14 +332,29 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
+        if (instance instanceof ImageAnalysisDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof PoaDocumentDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof TextDetection) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be AgeVerificationDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection, ImageAnalysisDetection, PoaDocumentDetection, TextDetection");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
+     * AgeVerificationDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection, ImageAnalysisDetection, PoaDocumentDetection, TextDetection
      *
-     * @return The actual instance (BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection)
+     * @return The actual instance (AgeVerificationDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection, ImageAnalysisDetection, PoaDocumentDetection, TextDetection)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -302,15 +363,16 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `BaseDetection`. If the actual instance is not `BaseDetection`,
+     * Get the actual instance of `AgeVerificationDetection`. If the actual instance is not `AgeVerificationDetection`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `BaseDetection`
-     * @throws ClassCastException if the instance is not `BaseDetection`
+     * @return The actual instance of `AgeVerificationDetection`
+     * @throws ClassCastException if the instance is not `AgeVerificationDetection`
      */
-    public BaseDetection getBaseDetection() throws ClassCastException {
-        return (BaseDetection)super.getActualInstance();
+    public AgeVerificationDetection getAgeVerificationDetection() throws ClassCastException {
+        return (AgeVerificationDetection)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `BreastDetection`. If the actual instance is not `BreastDetection`,
      * the ClassCastException will be thrown.
@@ -321,6 +383,7 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     public BreastDetection getBreastDetection() throws ClassCastException {
         return (BreastDetection)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `FaceDetection`. If the actual instance is not `FaceDetection`,
      * the ClassCastException will be thrown.
@@ -331,6 +394,7 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     public FaceDetection getFaceDetection() throws ClassCastException {
         return (FaceDetection)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `HairDetection`. If the actual instance is not `HairDetection`,
      * the ClassCastException will be thrown.
@@ -341,6 +405,7 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     public HairDetection getHairDetection() throws ClassCastException {
         return (HairDetection)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `IdDocumentDetection`. If the actual instance is not `IdDocumentDetection`,
      * the ClassCastException will be thrown.
@@ -353,6 +418,39 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `ImageAnalysisDetection`. If the actual instance is not `ImageAnalysisDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ImageAnalysisDetection`
+     * @throws ClassCastException if the instance is not `ImageAnalysisDetection`
+     */
+    public ImageAnalysisDetection getImageAnalysisDetection() throws ClassCastException {
+        return (ImageAnalysisDetection)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `PoaDocumentDetection`. If the actual instance is not `PoaDocumentDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `PoaDocumentDetection`
+     * @throws ClassCastException if the instance is not `PoaDocumentDetection`
+     */
+    public PoaDocumentDetection getPoaDocumentDetection() throws ClassCastException {
+        return (PoaDocumentDetection)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `TextDetection`. If the actual instance is not `TextDetection`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `TextDetection`
+     * @throws ClassCastException if the instance is not `TextDetection`
+     */
+    public TextDetection getTextDetection() throws ClassCastException {
+        return (TextDetection)super.getActualInstance();
+    }
+
+    /**
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
@@ -362,12 +460,12 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
         // validate oneOf schemas one by one
         int validCount = 0;
         ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with BaseDetection
+        // validate the json string with AgeVerificationDetection
         try {
-            BaseDetection.validateJsonElement(jsonElement);
+            AgeVerificationDetection.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format("Deserialization for AgeVerificationDetection failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with BreastDetection
@@ -402,8 +500,32 @@ public class CheckResultDetectionsInner extends AbstractOpenApiSchema {
             errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with ImageAnalysisDetection
+        try {
+            ImageAnalysisDetection.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for ImageAnalysisDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with PoaDocumentDetection
+        try {
+            PoaDocumentDetection.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for PoaDocumentDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with TextDetection
+        try {
+            TextDetection.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for TextDetection failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CheckResultDetectionsInner with oneOf schemas: BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for CheckResultDetectionsInner with oneOf schemas: AgeVerificationDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection, ImageAnalysisDetection, PoaDocumentDetection, TextDetection. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

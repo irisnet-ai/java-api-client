@@ -5,9 +5,9 @@ All URIs are relative to *https://api.irisnet.de*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteConfig**](ConfigurationManagementApi.md#deleteConfig) | **DELETE** /v2/config/{configId} | Delete an AI configuration. |
-| [**getAllConfigs**](ConfigurationManagementApi.md#getAllConfigs) | **GET** /v2/config/ | List all saved AI configurations. |
+| [**getAllConfigs**](ConfigurationManagementApi.md#getAllConfigs) | **GET** /v2/config | List all saved AI configurations. |
 | [**getConfig**](ConfigurationManagementApi.md#getConfig) | **GET** /v2/config/{configId} | Get a specific AI configuration. |
-| [**setConfig**](ConfigurationManagementApi.md#setConfig) | **POST** /v2/config/ | Create a new AI configuration. |
+| [**setConfig**](ConfigurationManagementApi.md#setConfig) | **POST** /v2/config | Create a new AI configuration. |
 
 
 <a id="deleteConfig"></a>
@@ -76,8 +76,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configId not found. |  -  |
 | **204** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
 
 <a id="getAllConfigs"></a>
 # **getAllConfigs**
@@ -211,8 +211,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **404** | configId not found. |  -  |
 | **200** | successful operation. |  -  |
+| **404** | configId not found. |  -  |
 
 <a id="setConfig"></a>
 # **setConfig**
@@ -281,7 +281,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | successful operation. |  -  |
 | **400** | Bad request. Check for a badly formatted request body. |  -  |
 | **403** | Maximum number of stored AI configurations reached. |  -  |
-| **200** | successful operation. |  -  |
 

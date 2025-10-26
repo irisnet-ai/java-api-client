@@ -16,7 +16,7 @@ Contains other features specific to _ageVerification_ detection.
 |**checkId** | **String** | The id of the check that lead to the detection |  [optional] |
 |**faceSimilarity** | **Integer** | Indicates the similarity-level of whether two faces belong to the same person |  [optional] |
 |**faceLivenessCheckScore** | **Integer** | Indicates the liveness score of the selfie image |  [optional] |
-|**processedChecks** | [**AgeVerificationSubChecks**](AgeVerificationSubChecks.md) |  |  [optional] |
+|**processedChecks** | [**AgeVerificationSubChecks**](AgeVerificationSubChecks.md) | The sub-checks that were processed |  [optional] |
 |**attributes** | [**List&lt;AgeVerificationAttribute&gt;**](AgeVerificationAttribute.md) | Attributes of the _ageVerification_ detection. |  [optional] |
 
 

@@ -23,7 +23,6 @@ import de.irisnet.java.client.model.AgeVerificationAttribute;
 import de.irisnet.java.client.model.AgeVerificationSubChecks;
 import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.Detection;
-import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -269,7 +268,7 @@ public class AgeVerificationDetection extends Detection {
   }
 
   /**
-   * Get processedChecks
+   * The sub-checks that were processed
    * @return processedChecks
    */
   @javax.annotation.Nullable
@@ -373,7 +372,7 @@ public class AgeVerificationDetection extends Detection {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes", "subDetections", "checkId", "hasOfficialDocument", "comparable", "faceSimilarity", "faceLivenessCheckScore", "documentFrontLivenessScore", "documentBackLivenessScore", "processedChecks", "documentHolderId", "knownFaces"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "checkId", "faceSimilarity", "faceLivenessCheckScore", "processedChecks", "attributes"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

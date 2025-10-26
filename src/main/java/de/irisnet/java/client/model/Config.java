@@ -152,78 +152,10 @@ public class Config {
   @javax.annotation.Nullable
   private Set<KycCheckParametersEnum> kycCheckParameters = new LinkedHashSet<>();
 
-  /**
-   * Name of commonly used rule sets (prototypes). That can be used to speed up the setup process.  * _nudityCheck_ - Commonly used prototype to check for nudity. * _ageEstimation_ - Checks if there are children, adults or seniors recognizable. This is intended to be a suggestion to help you implement further steps. * _illegalSymbols_ - Checks for symbols that are not permitted in Germany. * _textRecognition_ - Checks for text occurrences. * _attributesCheck_ - Checks for attributes of a person (e.g. female, male, glasses, hair, etc). * _bodyAttributes_ - Checks for attributes of the persons body. * _nippleCheck_ - Check for determining if the object recognized as breast has a nipple. * _unwantedSubstances_ - Check for undesired or unwanted substances. * _violenceCheck_ - Checks for recognizing weapons, camouflage, etc. * _selfieCheck_ - Checks for pre-defined gestures in a selfie.   
-   */
-  @JsonAdapter(PrototypesEnum.Adapter.class)
-  public enum PrototypesEnum {
-    NUDITY_CHECK("nudityCheck"),
-    
-    AGE_ESTIMATION("ageEstimation"),
-    
-    ILLEGAL_SYMBOLS("illegalSymbols"),
-    
-    TEXT_RECOGNITION("textRecognition"),
-    
-    ATTRIBUTES_CHECK("attributesCheck"),
-    
-    BODY_ATTRIBUTES("bodyAttributes"),
-    
-    NIPPLE_CHECK("nippleCheck"),
-    
-    UNWANTED_SUBSTANCES("unwantedSubstances"),
-    
-    VIOLENCE_CHECK("violenceCheck"),
-    
-    SELFIE_CHECK("selfieCheck");
-
-    private String value;
-
-    PrototypesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PrototypesEnum fromValue(String value) {
-      for (PrototypesEnum b : PrototypesEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PrototypesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PrototypesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PrototypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PrototypesEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      PrototypesEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_PROTOTYPES = "prototypes";
   @SerializedName(SERIALIZED_NAME_PROTOTYPES)
   @javax.annotation.Nullable
-  private Set<PrototypesEnum> prototypes = new LinkedHashSet<>();
+  private Set<String> prototypes = new LinkedHashSet<>();
 
   public Config() {
   }
@@ -293,12 +225,12 @@ public class Config {
   }
 
 
-  public Config prototypes(@javax.annotation.Nullable Set<PrototypesEnum> prototypes) {
+  public Config prototypes(@javax.annotation.Nullable Set<String> prototypes) {
     this.prototypes = prototypes;
     return this;
   }
 
-  public Config addPrototypesItem(PrototypesEnum prototypesItem) {
+  public Config addPrototypesItem(String prototypesItem) {
     if (this.prototypes == null) {
       this.prototypes = new LinkedHashSet<>();
     }
@@ -311,11 +243,11 @@ public class Config {
    * @return prototypes
    */
   @javax.annotation.Nullable
-  public Set<PrototypesEnum> getPrototypes() {
+  public Set<String> getPrototypes() {
     return prototypes;
   }
 
-  public void setPrototypes(@javax.annotation.Nullable Set<PrototypesEnum> prototypes) {
+  public void setPrototypes(@javax.annotation.Nullable Set<String> prototypes) {
     this.prototypes = prototypes;
   }
 

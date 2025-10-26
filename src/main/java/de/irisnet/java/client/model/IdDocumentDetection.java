@@ -375,7 +375,7 @@ public class IdDocumentDetection extends Detection {
   }
 
   /**
-   * Get processedChecks
+   * The sub-checks that were processed
    * @return processedChecks
    */
   @javax.annotation.Nullable
@@ -537,7 +537,7 @@ public class IdDocumentDetection extends Detection {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes", "subDetections", "checkId", "hasOfficialDocument", "comparable", "faceSimilarity", "faceLivenessCheckScore", "documentFrontLivenessScore", "documentBackLivenessScore", "processedChecks", "documentHolderId", "knownFaces"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "checkId", "hasOfficialDocument", "comparable", "faceSimilarity", "faceLivenessCheckScore", "documentFrontLivenessScore", "documentBackLivenessScore", "processedChecks", "attributes", "documentHolderId", "knownFaces"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

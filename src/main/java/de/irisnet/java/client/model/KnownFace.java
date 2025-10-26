@@ -46,7 +46,7 @@ import java.util.Set;
 import de.irisnet.java.JSON;
 
 /**
- * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
+ * KnownFace
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class KnownFace {

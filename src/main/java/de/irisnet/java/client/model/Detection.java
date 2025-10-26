@@ -19,439 +19,178 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.AgeVerificationAttribute;
-import de.irisnet.java.client.model.AgeVerificationDetection;
-import de.irisnet.java.client.model.AgeVerificationSubChecks;
-import de.irisnet.java.client.model.BaseDetection;
-import de.irisnet.java.client.model.BreastDetection;
-import de.irisnet.java.client.model.Coordinates;
-import de.irisnet.java.client.model.FaceDetection;
-import de.irisnet.java.client.model.HairDetection;
-import de.irisnet.java.client.model.IdDocumentDetection;
-import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import de.irisnet.java.JSON;
 
+/**
+ * Detection
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Detection extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(Detection.class.getName());
+public class Detection {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  protected String type;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!Detection.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'Detection' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<BaseDetection> adapterBaseDetection = gson.getDelegateAdapter(this, TypeToken.get(BaseDetection.class));
-            final TypeAdapter<FaceDetection> adapterFaceDetection = gson.getDelegateAdapter(this, TypeToken.get(FaceDetection.class));
-            final TypeAdapter<BreastDetection> adapterBreastDetection = gson.getDelegateAdapter(this, TypeToken.get(BreastDetection.class));
-            final TypeAdapter<HairDetection> adapterHairDetection = gson.getDelegateAdapter(this, TypeToken.get(HairDetection.class));
-            final TypeAdapter<IdDocumentDetection> adapterIdDocumentDetection = gson.getDelegateAdapter(this, TypeToken.get(IdDocumentDetection.class));
-            final TypeAdapter<AgeVerificationDetection> adapterAgeVerificationDetection = gson.getDelegateAdapter(this, TypeToken.get(AgeVerificationDetection.class));
+  public Detection() {
+    this.type = this.getClass().getSimpleName();
+  }
 
-            return (TypeAdapter<T>) new TypeAdapter<Detection>() {
-                @Override
-                public void write(JsonWriter out, Detection value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public Detection type(@javax.annotation.Nullable String type) {
+    this.type = type;
+    return this;
+  }
 
-                    // check if the actual instance is of the type `BaseDetection`
-                    if (value.getActualInstance() instanceof BaseDetection) {
-                        JsonElement element = adapterBaseDetection.toJsonTree((BaseDetection)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `FaceDetection`
-                    if (value.getActualInstance() instanceof FaceDetection) {
-                        JsonElement element = adapterFaceDetection.toJsonTree((FaceDetection)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `BreastDetection`
-                    if (value.getActualInstance() instanceof BreastDetection) {
-                        JsonElement element = adapterBreastDetection.toJsonTree((BreastDetection)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `HairDetection`
-                    if (value.getActualInstance() instanceof HairDetection) {
-                        JsonElement element = adapterHairDetection.toJsonTree((HairDetection)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `IdDocumentDetection`
-                    if (value.getActualInstance() instanceof IdDocumentDetection) {
-                        JsonElement element = adapterIdDocumentDetection.toJsonTree((IdDocumentDetection)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `AgeVerificationDetection`
-                    if (value.getActualInstance() instanceof AgeVerificationDetection) {
-                        JsonElement element = adapterAgeVerificationDetection.toJsonTree((AgeVerificationDetection)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: AgeVerificationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
-                }
+  /**
+   * Used as a type discriminator for json to object conversion.
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public String getType() {
+    return type;
+  }
 
-                @Override
-                public Detection read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public void setType(@javax.annotation.Nullable String type) {
+    this.type = type;
+  }
 
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize BaseDetection
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        BaseDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterBaseDetection;
-                        Detection ret = new Detection();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BaseDetection'", e);
-                    }
-                    // deserialize FaceDetection
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        FaceDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterFaceDetection;
-                        Detection ret = new Detection();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'FaceDetection'", e);
-                    }
-                    // deserialize BreastDetection
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        BreastDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterBreastDetection;
-                        Detection ret = new Detection();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BreastDetection'", e);
-                    }
-                    // deserialize HairDetection
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        HairDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterHairDetection;
-                        Detection ret = new Detection();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'HairDetection'", e);
-                    }
-                    // deserialize IdDocumentDetection
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        IdDocumentDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterIdDocumentDetection;
-                        Detection ret = new Detection();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'IdDocumentDetection'", e);
-                    }
-                    // deserialize AgeVerificationDetection
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        AgeVerificationDetection.validateJsonElement(jsonElement);
-                        actualAdapter = adapterAgeVerificationDetection;
-                        Detection ret = new Detection();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AgeVerificationDetection failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'AgeVerificationDetection'", e);
-                    }
 
-                    throw new IOException(String.format("Failed deserialization for Detection: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Detection detection = (Detection) o;
+    return Objects.equals(this.type, detection.type);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Detection {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>(Arrays.asList("type"));
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>(0);
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Detection
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Detection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Detection is not found in the empty JSON string", Detection.openapiRequiredFields.toString()));
         }
-    }
+      }
 
-    // store a list of schema names defined in anyOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+      String discriminatorValue = jsonElement.getAsJsonObject().get("type").getAsString();
+      switch (discriminatorValue) {
+        case "AgeVerificationDetection":
+          AgeVerificationDetection.validateJsonElement(jsonElement);
+          break;
+        case "BreastDetection":
+          BreastDetection.validateJsonElement(jsonElement);
+          break;
+        case "FaceDetection":
+          FaceDetection.validateJsonElement(jsonElement);
+          break;
+        case "HairDetection":
+          HairDetection.validateJsonElement(jsonElement);
+          break;
+        case "IdDocumentDetection":
+          IdDocumentDetection.validateJsonElement(jsonElement);
+          break;
+        case "ImageAnalysisDetection":
+          ImageAnalysisDetection.validateJsonElement(jsonElement);
+          break;
+        case "PoaDocumentDetection":
+          PoaDocumentDetection.validateJsonElement(jsonElement);
+          break;
+        case "TextDetection":
+          TextDetection.validateJsonElement(jsonElement);
+          break;
+        default:
+          throw new IllegalArgumentException(String.format("The value of the `type` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
+      }
+  }
 
-    public Detection() {
-        super("anyOf", Boolean.FALSE);
-    }
 
-    public Detection(Object o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
+  /**
+   * Create an instance of Detection given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Detection
+   * @throws IOException if the JSON string is invalid with respect to Detection
+   */
+  public static Detection fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Detection.class);
+  }
 
-    static {
-        schemas.put("BaseDetection", BaseDetection.class);
-        schemas.put("FaceDetection", FaceDetection.class);
-        schemas.put("BreastDetection", BreastDetection.class);
-        schemas.put("HairDetection", HairDetection.class);
-        schemas.put("IdDocumentDetection", IdDocumentDetection.class);
-        schemas.put("AgeVerificationDetection", AgeVerificationDetection.class);
-    }
-
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return Detection.schemas;
-    }
-
-    /**
-     * Set the instance that matches the anyOf child schema, check
-     * the instance parameter is valid against the anyOf child schemas:
-     * AgeVerificationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
-     *
-     * It could be an instance of the 'anyOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof BaseDetection) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof FaceDetection) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof BreastDetection) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof HairDetection) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof IdDocumentDetection) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof AgeVerificationDetection) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be AgeVerificationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * AgeVerificationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection
-     *
-     * @return The actual instance (AgeVerificationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `BaseDetection`. If the actual instance is not `BaseDetection`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `BaseDetection`
-     * @throws ClassCastException if the instance is not `BaseDetection`
-     */
-    public BaseDetection getBaseDetection() throws ClassCastException {
-        return (BaseDetection)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `FaceDetection`. If the actual instance is not `FaceDetection`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `FaceDetection`
-     * @throws ClassCastException if the instance is not `FaceDetection`
-     */
-    public FaceDetection getFaceDetection() throws ClassCastException {
-        return (FaceDetection)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `BreastDetection`. If the actual instance is not `BreastDetection`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `BreastDetection`
-     * @throws ClassCastException if the instance is not `BreastDetection`
-     */
-    public BreastDetection getBreastDetection() throws ClassCastException {
-        return (BreastDetection)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `HairDetection`. If the actual instance is not `HairDetection`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `HairDetection`
-     * @throws ClassCastException if the instance is not `HairDetection`
-     */
-    public HairDetection getHairDetection() throws ClassCastException {
-        return (HairDetection)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `IdDocumentDetection`. If the actual instance is not `IdDocumentDetection`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `IdDocumentDetection`
-     * @throws ClassCastException if the instance is not `IdDocumentDetection`
-     */
-    public IdDocumentDetection getIdDocumentDetection() throws ClassCastException {
-        return (IdDocumentDetection)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `AgeVerificationDetection`. If the actual instance is not `AgeVerificationDetection`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `AgeVerificationDetection`
-     * @throws ClassCastException if the instance is not `AgeVerificationDetection`
-     */
-    public AgeVerificationDetection getAgeVerificationDetection() throws ClassCastException {
-        return (AgeVerificationDetection)super.getActualInstance();
-    }
-
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to Detection
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate anyOf schemas one by one
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with BaseDetection
-        try {
-            BaseDetection.validateJsonElement(jsonElement);
-            return;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BaseDetection failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with FaceDetection
-        try {
-            FaceDetection.validateJsonElement(jsonElement);
-            return;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FaceDetection failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with BreastDetection
-        try {
-            BreastDetection.validateJsonElement(jsonElement);
-            return;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BreastDetection failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with HairDetection
-        try {
-            HairDetection.validateJsonElement(jsonElement);
-            return;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for HairDetection failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with IdDocumentDetection
-        try {
-            IdDocumentDetection.validateJsonElement(jsonElement);
-            return;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for IdDocumentDetection failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with AgeVerificationDetection
-        try {
-            AgeVerificationDetection.validateJsonElement(jsonElement);
-            return;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AgeVerificationDetection failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        throw new IOException(String.format("The JSON string is invalid for Detection with anyOf schemas: AgeVerificationDetection, BaseDetection, BreastDetection, FaceDetection, HairDetection, IdDocumentDetection. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
-    }
-
-    /**
-     * Create an instance of Detection given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of Detection
-     * @throws IOException if the JSON string is invalid with respect to Detection
-     */
-    public static Detection fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, Detection.class);
-    }
-
-    /**
-     * Convert an instance of Detection to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
-    }
+  /**
+   * Convert an instance of Detection to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

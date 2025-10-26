@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>3.7.6</version>
+  <version>4.1.3</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:3.7.6"
+     implementation "de.irisnet.java.client:irisnet-java-client:4.1.3"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-3.7.6.jar`
+* `target/irisnet-java-client-4.1.3.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -138,17 +138,18 @@ Class | Method | HTTP request | Description
 *AiCheckOperationsApi* | [**checkImage**](docs/AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
 *AiCheckOperationsApi* | [**checkPoaDocument**](docs/AiCheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform an proof of address check with the AI.
 *AiCheckOperationsApi* | [**checkStream**](docs/AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
+*AiCheckOperationsApi* | [**checkText**](docs/AiCheckOperationsApi.md#checkText) | **POST** /v2/check-text/{configId} | Check a text with the AI.
 *AiCheckOperationsApi* | [**checkVideo**](docs/AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
 *AiCheckOperationsApi* | [**faceAuthentication**](docs/AiCheckOperationsApi.md#faceAuthentication) | **POST** /v2/face-authentication/{configId} | Perform a face authentication for a given selfie with the AI.
 *AiCheckOperationsApi* | [**liveDocumentCheck**](docs/AiCheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI.
 *BalanceEndpointsApi* | [**getCost**](docs/BalanceEndpointsApi.md#getCost) | **GET** /v2/cost/{configId} | Get the cost of the configuration for a single image.
-*BalanceEndpointsApi* | [**getLicenseInfo**](docs/BalanceEndpointsApi.md#getLicenseInfo) | **GET** /v2/info/ | Get information for the given license key.
+*BalanceEndpointsApi* | [**getLicenseInfo**](docs/BalanceEndpointsApi.md#getLicenseInfo) | **GET** /v2/info | Get information for the given license key.
 *BalanceEndpointsApi* | [**getVideoCost**](docs/BalanceEndpointsApi.md#getVideoCost) | **GET** /v2/cost/{configId}/{frames} | Get the cost of the configuration for moving images.
 *BalanceEndpointsApi* | [**getVideoCost1**](docs/BalanceEndpointsApi.md#getVideoCost1) | **GET** /v2/cost/{configId}/{fps}/{duration} | Get the cost of the configuration for moving images.
 *ConfigurationManagementApi* | [**deleteConfig**](docs/ConfigurationManagementApi.md#deleteConfig) | **DELETE** /v2/config/{configId} | Delete an AI configuration.
-*ConfigurationManagementApi* | [**getAllConfigs**](docs/ConfigurationManagementApi.md#getAllConfigs) | **GET** /v2/config/ | List all saved AI configurations.
+*ConfigurationManagementApi* | [**getAllConfigs**](docs/ConfigurationManagementApi.md#getAllConfigs) | **GET** /v2/config | List all saved AI configurations.
 *ConfigurationManagementApi* | [**getConfig**](docs/ConfigurationManagementApi.md#getConfig) | **GET** /v2/config/{configId} | Get a specific AI configuration.
-*ConfigurationManagementApi* | [**setConfig**](docs/ConfigurationManagementApi.md#setConfig) | **POST** /v2/config/ | Create a new AI configuration.
+*ConfigurationManagementApi* | [**setConfig**](docs/ConfigurationManagementApi.md#setConfig) | **POST** /v2/config | Create a new AI configuration.
 *DetailedConfigurationParametersApi* | [**clearParameters**](docs/DetailedConfigurationParametersApi.md#clearParameters) | **DELETE** /v2/config/parameters/{configId} | Delete the parameters of the AI configuration.
 *DetailedConfigurationParametersApi* | [**getParameters**](docs/DetailedConfigurationParametersApi.md#getParameters) | **GET** /v2/config/parameters/{configId} | Get the parameters of the AI configuration.
 *DetailedConfigurationParametersApi* | [**setParameters**](docs/DetailedConfigurationParametersApi.md#setParameters) | **POST** /v2/config/parameters/{configId} | Set parameters to the given AI configuration.
@@ -159,7 +160,10 @@ Class | Method | HTTP request | Description
  - [AgeVerificationAttribute](docs/AgeVerificationAttribute.md)
  - [AgeVerificationDetection](docs/AgeVerificationDetection.md)
  - [AgeVerificationSubChecks](docs/AgeVerificationSubChecks.md)
+ - [AiClassification](docs/AiClassification.md)
+ - [AiPrototype](docs/AiPrototype.md)
  - [ApiNotice](docs/ApiNotice.md)
+ - [Attribute](docs/Attribute.md)
  - [BaseAttribute](docs/BaseAttribute.md)
  - [BaseDetection](docs/BaseDetection.md)
  - [BiometricCheckRequestData](docs/BiometricCheckRequestData.md)
@@ -167,6 +171,7 @@ Class | Method | HTTP request | Description
  - [BrokenRule](docs/BrokenRule.md)
  - [Callback](docs/Callback.md)
  - [CheckResult](docs/CheckResult.md)
+ - [CheckResultDetectionsInner](docs/CheckResultDetectionsInner.md)
  - [Config](docs/Config.md)
  - [Coordinates](docs/Coordinates.md)
  - [Data](docs/Data.md)
@@ -180,17 +185,25 @@ Class | Method | HTTP request | Description
  - [IdDocumentAttribute](docs/IdDocumentAttribute.md)
  - [IdDocumentDetection](docs/IdDocumentDetection.md)
  - [IdDocumentSubChecks](docs/IdDocumentSubChecks.md)
+ - [ImageAnalysisDetection](docs/ImageAnalysisDetection.md)
  - [KnownFace](docs/KnownFace.md)
  - [KycUiParameter](docs/KycUiParameter.md)
+ - [LanguageAttribute](docs/LanguageAttribute.md)
  - [LicenseInfo](docs/LicenseInfo.md)
  - [LiveDocumentCheckRequestData](docs/LiveDocumentCheckRequestData.md)
  - [LiveDocumentCheckResponseData](docs/LiveDocumentCheckResponseData.md)
  - [Param](docs/Param.md)
  - [ParamSet](docs/ParamSet.md)
  - [PoaCheckRequestData](docs/PoaCheckRequestData.md)
+ - [PoaDocumentAttribute](docs/PoaDocumentAttribute.md)
+ - [PoaDocumentDetection](docs/PoaDocumentDetection.md)
+ - [PoaDocumentSubChecks](docs/PoaDocumentSubChecks.md)
  - [Pricing](docs/Pricing.md)
  - [Rectangle](docs/Rectangle.md)
+ - [Segment](docs/Segment.md)
  - [Summary](docs/Summary.md)
+ - [TextDetection](docs/TextDetection.md)
+ - [ValueAttribute](docs/ValueAttribute.md)
 
 
 <a id="documentation-for-authorization"></a>

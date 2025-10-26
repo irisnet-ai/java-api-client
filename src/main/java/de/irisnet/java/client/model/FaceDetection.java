@@ -19,11 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.AgeVerificationSubChecks;
-import de.irisnet.java.client.model.BaseAttribute;
+import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.Detection;
-import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,7 +83,7 @@ public class FaceDetection extends Detection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<BaseAttribute> attributes = new ArrayList<>();
+  private List<Attribute> attributes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SUB_DETECTIONS = "subDetections";
   @SerializedName(SERIALIZED_NAME_SUB_DETECTIONS)
@@ -191,12 +189,12 @@ public class FaceDetection extends Detection {
   }
 
 
-  public FaceDetection attributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
+  public FaceDetection attributes(@javax.annotation.Nullable List<Attribute> attributes) {
     this.attributes = attributes;
     return this;
   }
 
-  public FaceDetection addAttributesItem(BaseAttribute attributesItem) {
+  public FaceDetection addAttributesItem(Attribute attributesItem) {
     if (this.attributes == null) {
       this.attributes = new ArrayList<>();
     }
@@ -209,11 +207,11 @@ public class FaceDetection extends Detection {
    * @return attributes
    */
   @javax.annotation.Nullable
-  public List<BaseAttribute> getAttributes() {
+  public List<Attribute> getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
+  public void setAttributes(@javax.annotation.Nullable List<Attribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -303,7 +301,7 @@ public class FaceDetection extends Detection {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes", "subDetections", "checkId", "hasOfficialDocument", "comparable", "faceSimilarity", "faceLivenessCheckScore", "documentFrontLivenessScore", "documentBackLivenessScore", "processedChecks", "documentHolderId", "knownFaces"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes", "subDetections"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

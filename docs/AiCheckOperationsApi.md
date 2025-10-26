@@ -9,6 +9,7 @@ All URIs are relative to *https://api.irisnet.de*
 | [**checkImage**](AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI. |
 | [**checkPoaDocument**](AiCheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform an proof of address check with the AI. |
 | [**checkStream**](AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI. |
+| [**checkText**](AiCheckOperationsApi.md#checkText) | **POST** /v2/check-text/{configId} | Check a text with the AI. |
 | [**checkVideo**](AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI. |
 | [**faceAuthentication**](AiCheckOperationsApi.md#faceAuthentication) | **POST** /v2/face-authentication/{configId} | Perform a face authentication for a given selfie with the AI. |
 | [**liveDocumentCheck**](AiCheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI. |
@@ -83,8 +84,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkIdDocument"></a>
 # **checkIdDocument**
@@ -155,8 +156,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkImage"></a>
 # **checkImage**
@@ -233,9 +234,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | successful operation. |  -  |
 | **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
-| **200** | successful operation. |  -  |
 
 <a id="checkPoaDocument"></a>
 # **checkPoaDocument**
@@ -306,8 +307,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="checkStream"></a>
 # **checkStream**
@@ -384,9 +385,84 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | successful operation. |  -  |
 | **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
+
+<a id="checkText"></a>
+# **checkText**
+> CheckResult checkText(configId, data, detail)
+
+Check a text with the AI.
+
+The response (_CheckResult_ schema) is returned immediately after the request.
+
+### Example
+```java
+// Import classes:
+import de.irisnet.java.ApiClient;
+import de.irisnet.java.ApiException;
+import de.irisnet.java.Configuration;
+import de.irisnet.java.auth.*;
+import de.irisnet.java.models.*;
+import de.irisnet.java.client.AiCheckOperationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.irisnet.de");
+    
+    // Configure API key authorization: LICENSE-KEY
+    ApiKeyAuth LICENSE-KEY = (ApiKeyAuth) defaultClient.getAuthentication("LICENSE-KEY");
+    LICENSE-KEY.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //LICENSE-KEY.setApiKeyPrefix("Token");
+
+    AiCheckOperationsApi apiInstance = new AiCheckOperationsApi(defaultClient);
+    UUID configId = UUID.randomUUID(); // UUID | The configuration id from the Basic Configuration operations.
+    Data data = new Data(); // Data | The text that needs to be checked.
+    Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
+    try {
+      CheckResult result = apiInstance.checkText(configId, data, detail);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AiCheckOperationsApi#checkText");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **configId** | **UUID**| The configuration id from the Basic Configuration operations. | |
+| **data** | [**Data**](Data.md)| The text that needs to be checked. | |
+| **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. | [optional] [default to 1] |
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
 | **200** | successful operation. |  -  |
+| **402** | Not enough credits. |  -  |
+| **404** | configId not found. |  -  |
 
 <a id="checkVideo"></a>
 # **checkVideo**
@@ -464,9 +540,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **202** | operation accepted: wait for callback. |  -  |
 | **402** | Not enough credits. |  -  |
 | **404** | configId not found. |  -  |
-| **202** | operation accepted: wait for callback. |  -  |
 
 <a id="faceAuthentication"></a>
 # **faceAuthentication**
@@ -537,8 +613,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Wait for callback. |  -  |
+| **402** | Not enough credits. |  -  |
 
 <a id="liveDocumentCheck"></a>
 # **liveDocumentCheck**
@@ -609,6 +685,6 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **402** | Not enough credits. |  -  |
 | **202** | Input accepted: Send enduser to endUserIdentUrl and wait for status/callback. |  -  |
+| **402** | Not enough credits. |  -  |
 

@@ -19,11 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.AgeVerificationSubChecks;
-import de.irisnet.java.client.model.BaseAttribute;
+import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.Coordinates;
-import de.irisnet.java.client.model.Detection;
-import de.irisnet.java.client.model.KnownFace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +53,12 @@ import de.irisnet.java.JSON;
  * A detection describes the object found with all its details.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class BaseDetection extends Detection {
+public class BaseDetection {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private String type;
+
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
   @javax.annotation.Nullable
@@ -85,11 +87,29 @@ public class BaseDetection extends Detection {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<BaseAttribute> attributes = new ArrayList<>();
+  private List<Attribute> attributes = new ArrayList<>();
 
   public BaseDetection() {
-    this.type = this.getClass().getSimpleName();
   }
+
+  public BaseDetection type(@javax.annotation.Nullable String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Used as a type discriminator for json to object conversion.
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public String getType() {
+    return type;
+  }
+
+  public void setType(@javax.annotation.Nullable String type) {
+    this.type = type;
+  }
+
 
   public BaseDetection classification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
@@ -186,12 +206,12 @@ public class BaseDetection extends Detection {
   }
 
 
-  public BaseDetection attributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
+  public BaseDetection attributes(@javax.annotation.Nullable List<Attribute> attributes) {
     this.attributes = attributes;
     return this;
   }
 
-  public BaseDetection addAttributesItem(BaseAttribute attributesItem) {
+  public BaseDetection addAttributesItem(Attribute attributesItem) {
     if (this.attributes == null) {
       this.attributes = new ArrayList<>();
     }
@@ -204,11 +224,11 @@ public class BaseDetection extends Detection {
    * @return attributes
    */
   @javax.annotation.Nullable
-  public List<BaseAttribute> getAttributes() {
+  public List<Attribute> getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(@javax.annotation.Nullable List<BaseAttribute> attributes) {
+  public void setAttributes(@javax.annotation.Nullable List<Attribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -223,25 +243,25 @@ public class BaseDetection extends Detection {
       return false;
     }
     BaseDetection baseDetection = (BaseDetection) o;
-    return Objects.equals(this.classification, baseDetection.classification) &&
+    return Objects.equals(this.type, baseDetection.type) &&
+        Objects.equals(this.classification, baseDetection.classification) &&
         Objects.equals(this.group, baseDetection.group) &&
         Objects.equals(this.id, baseDetection.id) &&
         Objects.equals(this.probability, baseDetection.probability) &&
         Objects.equals(this.coordinates, baseDetection.coordinates) &&
-        Objects.equals(this.attributes, baseDetection.attributes) &&
-        super.equals(o);
+        Objects.equals(this.attributes, baseDetection.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(classification, group, id, probability, coordinates, attributes, super.hashCode());
+    return Objects.hash(type, classification, group, id, probability, coordinates, attributes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseDetection {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
     sb.append("    group: ").append(toIndentedString(group)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -269,7 +289,7 @@ public class BaseDetection extends Detection {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes", "subDetections", "checkId", "hasOfficialDocument", "comparable", "faceSimilarity", "faceLivenessCheckScore", "documentFrontLivenessScore", "documentBackLivenessScore", "processedChecks", "documentHolderId", "knownFaces"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "classification", "group", "id", "probability", "coordinates", "attributes"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -293,6 +313,34 @@ public class BaseDetection extends Detection {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BaseDetection.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BaseDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("classification") != null && !jsonObj.get("classification").isJsonNull()) && !jsonObj.get("classification").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `classification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("classification").toString()));
+      }
+      if ((jsonObj.get("group") != null && !jsonObj.get("group").isJsonNull()) && !jsonObj.get("group").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `group` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group").toString()));
+      }
+      // validate the optional field `coordinates`
+      if (jsonObj.get("coordinates") != null && !jsonObj.get("coordinates").isJsonNull()) {
+        Coordinates.validateJsonElement(jsonObj.get("coordinates"));
+      }
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        JsonArray jsonArrayattributes = jsonObj.getAsJsonArray("attributes");
+        if (jsonArrayattributes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("attributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `attributes` to be an array in the JSON string but got `%s`", jsonObj.get("attributes").toString()));
+          }
+
+          // validate the optional field `attributes` (array)
+          for (int i = 0; i < jsonArrayattributes.size(); i++) {
+            Attribute.validateJsonElement(jsonArrayattributes.get(i));
+          };
         }
       }
   }

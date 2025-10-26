@@ -2,7 +2,6 @@
 
 # KnownFace
 
-A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
 
 ## Properties
 
