@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>4.1.3</version>
+  <version>4.1.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:4.1.3"
+     implementation "de.irisnet.java.client:irisnet-java-client:4.1.6"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-4.1.3.jar`
+* `target/irisnet-java-client-4.1.6.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -136,7 +136,7 @@ Class | Method | HTTP request | Description
 *AiCheckOperationsApi* | [**ageVerification**](docs/AiCheckOperationsApi.md#ageVerification) | **POST** /v2/age-verification/{configId} | Perform an age verfication check for a given selfie with the AI.
 *AiCheckOperationsApi* | [**checkIdDocument**](docs/AiCheckOperationsApi.md#checkIdDocument) | **POST** /v2/check-id-document/{configId} | Check an id document with the AI.
 *AiCheckOperationsApi* | [**checkImage**](docs/AiCheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
-*AiCheckOperationsApi* | [**checkPoaDocument**](docs/AiCheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform an proof of address check with the AI.
+*AiCheckOperationsApi* | [**checkPoaDocument**](docs/AiCheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform a proof of address check with the AI.
 *AiCheckOperationsApi* | [**checkStream**](docs/AiCheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
 *AiCheckOperationsApi* | [**checkText**](docs/AiCheckOperationsApi.md#checkText) | **POST** /v2/check-text/{configId} | Check a text with the AI.
 *AiCheckOperationsApi* | [**checkVideo**](docs/AiCheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.

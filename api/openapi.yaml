@@ -742,7 +742,7 @@ paths:
           description: Not enough credits.
       security:
       - LICENSE-KEY: []
-      summary: Perform an proof of address check with the AI.
+      summary: Perform a proof of address check with the AI.
       tags:
       - AI check operations
       x-content-type: application/json

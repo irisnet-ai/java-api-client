@@ -134,14 +134,3 @@ src/main/java/de/irisnet/java/client/model/Segment.java
 src/main/java/de/irisnet/java/client/model/Summary.java
 src/main/java/de/irisnet/java/client/model/TextDetection.java
 src/main/java/de/irisnet/java/client/model/ValueAttribute.java
-src/test/java/de/irisnet/java/client/model/AiClassificationTest.java
-src/test/java/de/irisnet/java/client/model/AiPrototypeTest.java
-src/test/java/de/irisnet/java/client/model/AttributeTest.java
-src/test/java/de/irisnet/java/client/model/ImageAnalysisDetectionTest.java
-src/test/java/de/irisnet/java/client/model/LanguageAttributeTest.java
-src/test/java/de/irisnet/java/client/model/PoaDocumentAttributeTest.java
-src/test/java/de/irisnet/java/client/model/PoaDocumentDetectionTest.java
-src/test/java/de/irisnet/java/client/model/PoaDocumentSubChecksTest.java
-src/test/java/de/irisnet/java/client/model/SegmentTest.java
-src/test/java/de/irisnet/java/client/model/TextDetectionTest.java
-src/test/java/de/irisnet/java/client/model/ValueAttributeTest.java

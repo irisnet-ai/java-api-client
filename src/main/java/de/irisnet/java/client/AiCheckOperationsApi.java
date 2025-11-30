@@ -605,7 +605,7 @@ public class AiCheckOperationsApi {
     }
 
     /**
-     * Perform an proof of address check with the AI.
+     * Perform a proof of address check with the AI.
      * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param poaCheckRequestData The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either &#39;utility_bill&#39; or &#39;bank_statement&#39;. (required)
@@ -625,7 +625,7 @@ public class AiCheckOperationsApi {
     }
 
     /**
-     * Perform an proof of address check with the AI.
+     * Perform a proof of address check with the AI.
      * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param poaCheckRequestData The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either &#39;utility_bill&#39; or &#39;bank_statement&#39;. (required)
@@ -646,7 +646,7 @@ public class AiCheckOperationsApi {
     }
 
     /**
-     * Perform an proof of address check with the AI. (asynchronously)
+     * Perform a proof of address check with the AI. (asynchronously)
      * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
      * @param configId The configuration id from the Basic Configuration operations. (required)
      * @param poaCheckRequestData The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either &#39;utility_bill&#39; or &#39;bank_statement&#39;. (required)
