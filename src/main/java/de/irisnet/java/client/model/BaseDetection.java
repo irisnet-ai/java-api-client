@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,12 +54,7 @@ import de.irisnet.java.JSON;
  * A detection describes the object found with all its details.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class BaseDetection {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nullable
-  private String type;
-
+public class BaseDetection extends Detection {
   public static final String SERIALIZED_NAME_CLASSIFICATION = "classification";
   @SerializedName(SERIALIZED_NAME_CLASSIFICATION)
   @javax.annotation.Nullable
@@ -90,26 +86,8 @@ public class BaseDetection {
   private List<Attribute> attributes = new ArrayList<>();
 
   public BaseDetection() {
+    this.type = this.getClass().getSimpleName();
   }
-
-  public BaseDetection type(@javax.annotation.Nullable String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Used as a type discriminator for json to object conversion.
-   * @return type
-   */
-  @javax.annotation.Nullable
-  public String getType() {
-    return type;
-  }
-
-  public void setType(@javax.annotation.Nullable String type) {
-    this.type = type;
-  }
-
 
   public BaseDetection classification(@javax.annotation.Nullable String classification) {
     this.classification = classification;
@@ -243,25 +221,25 @@ public class BaseDetection {
       return false;
     }
     BaseDetection baseDetection = (BaseDetection) o;
-    return Objects.equals(this.type, baseDetection.type) &&
-        Objects.equals(this.classification, baseDetection.classification) &&
+    return Objects.equals(this.classification, baseDetection.classification) &&
         Objects.equals(this.group, baseDetection.group) &&
         Objects.equals(this.id, baseDetection.id) &&
         Objects.equals(this.probability, baseDetection.probability) &&
         Objects.equals(this.coordinates, baseDetection.coordinates) &&
-        Objects.equals(this.attributes, baseDetection.attributes);
+        Objects.equals(this.attributes, baseDetection.attributes) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, classification, group, id, probability, coordinates, attributes);
+    return Objects.hash(classification, group, id, probability, coordinates, attributes, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseDetection {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    classification: ").append(toIndentedString(classification)).append("\n");
     sb.append("    group: ").append(toIndentedString(group)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -313,34 +291,6 @@ public class BaseDetection {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BaseDetection.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BaseDetection` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if ((jsonObj.get("classification") != null && !jsonObj.get("classification").isJsonNull()) && !jsonObj.get("classification").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `classification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("classification").toString()));
-      }
-      if ((jsonObj.get("group") != null && !jsonObj.get("group").isJsonNull()) && !jsonObj.get("group").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `group` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group").toString()));
-      }
-      // validate the optional field `coordinates`
-      if (jsonObj.get("coordinates") != null && !jsonObj.get("coordinates").isJsonNull()) {
-        Coordinates.validateJsonElement(jsonObj.get("coordinates"));
-      }
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        JsonArray jsonArrayattributes = jsonObj.getAsJsonArray("attributes");
-        if (jsonArrayattributes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("attributes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `attributes` to be an array in the JSON string but got `%s`", jsonObj.get("attributes").toString()));
-          }
-
-          // validate the optional field `attributes` (array)
-          for (int i = 0; i < jsonArrayattributes.size(); i++) {
-            Attribute.validateJsonElement(jsonArrayattributes.get(i));
-          };
         }
       }
   }

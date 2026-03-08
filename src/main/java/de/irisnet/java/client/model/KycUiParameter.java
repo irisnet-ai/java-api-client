@@ -70,6 +70,11 @@ public class KycUiParameter {
   @javax.annotation.Nullable
   private String logo;
 
+  public static final String SERIALIZED_NAME_LOGO_BACKGROUND_COLOR = "logoBackgroundColor";
+  @SerializedName(SERIALIZED_NAME_LOGO_BACKGROUND_COLOR)
+  @javax.annotation.Nullable
+  private String logoBackgroundColor = "ffffff";
+
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
   @javax.annotation.Nullable
@@ -154,6 +159,25 @@ public class KycUiParameter {
   }
 
 
+  public KycUiParameter logoBackgroundColor(@javax.annotation.Nullable String logoBackgroundColor) {
+    this.logoBackgroundColor = logoBackgroundColor;
+    return this;
+  }
+
+  /**
+   * The logo background color in hex format (rrggbb).
+   * @return logoBackgroundColor
+   */
+  @javax.annotation.Nullable
+  public String getLogoBackgroundColor() {
+    return logoBackgroundColor;
+  }
+
+  public void setLogoBackgroundColor(@javax.annotation.Nullable String logoBackgroundColor) {
+    this.logoBackgroundColor = logoBackgroundColor;
+  }
+
+
   public KycUiParameter language(@javax.annotation.Nullable String language) {
     this.language = language;
     return this;
@@ -187,12 +211,13 @@ public class KycUiParameter {
         Objects.equals(this.backgroundColor, kycUiParameter.backgroundColor) &&
         Objects.equals(this.textColor, kycUiParameter.textColor) &&
         Objects.equals(this.logo, kycUiParameter.logo) &&
+        Objects.equals(this.logoBackgroundColor, kycUiParameter.logoBackgroundColor) &&
         Objects.equals(this.language, kycUiParameter.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(primaryColor, backgroundColor, textColor, logo, language);
+    return Objects.hash(primaryColor, backgroundColor, textColor, logo, logoBackgroundColor, language);
   }
 
   @Override
@@ -203,6 +228,7 @@ public class KycUiParameter {
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    textColor: ").append(toIndentedString(textColor)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
+    sb.append("    logoBackgroundColor: ").append(toIndentedString(logoBackgroundColor)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,7 +251,7 @@ public class KycUiParameter {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("primaryColor", "backgroundColor", "textColor", "logo", "language"));
+    openapiFields = new HashSet<String>(Arrays.asList("primaryColor", "backgroundColor", "textColor", "logo", "logoBackgroundColor", "language"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -263,6 +289,9 @@ public class KycUiParameter {
       }
       if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
+      }
+      if ((jsonObj.get("logoBackgroundColor") != null && !jsonObj.get("logoBackgroundColor").isJsonNull()) && !jsonObj.get("logoBackgroundColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logoBackgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBackgroundColor").toString()));
       }
       if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));

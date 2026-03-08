@@ -146,6 +146,9 @@ public class Detection {
         case "AgeVerificationDetection":
           AgeVerificationDetection.validateJsonElement(jsonElement);
           break;
+        case "BaseDetection":
+          BaseDetection.validateJsonElement(jsonElement);
+          break;
         case "BreastDetection":
           BreastDetection.validateJsonElement(jsonElement);
           break;

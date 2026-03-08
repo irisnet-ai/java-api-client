@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>4.1.6</version>
+  <version>4.1.7</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:4.1.6"
+     implementation "de.irisnet.java.client:irisnet-java-client:4.1.7"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-4.1.6.jar`
+* `target/irisnet-java-client-4.1.7.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

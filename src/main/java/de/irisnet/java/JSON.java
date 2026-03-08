@@ -81,6 +81,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
+                .registerTypeSelector(de.irisnet.java.client.model.BaseDetection.class, new TypeSelector<de.irisnet.java.client.model.BaseDetection>() {
+                    @Override
+                    public Class<? extends de.irisnet.java.client.model.BaseDetection> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
                 .registerTypeSelector(de.irisnet.java.client.model.BreastDetection.class, new TypeSelector<de.irisnet.java.client.model.BreastDetection>() {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.BreastDetection> getClassForElement(JsonElement readElement) {
@@ -95,6 +104,7 @@ public class JSON {
                     public Class<? extends de.irisnet.java.client.model.CheckResultDetectionsInner> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("AgeVerificationDetection", de.irisnet.java.client.model.AgeVerificationDetection.class);
+                        classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
                         classByDiscriminatorValue.put("BreastDetection", de.irisnet.java.client.model.BreastDetection.class);
                         classByDiscriminatorValue.put("FaceDetection", de.irisnet.java.client.model.FaceDetection.class);
                         classByDiscriminatorValue.put("HairDetection", de.irisnet.java.client.model.HairDetection.class);
@@ -112,6 +122,7 @@ public class JSON {
                     public Class<? extends de.irisnet.java.client.model.Detection> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("AgeVerificationDetection", de.irisnet.java.client.model.AgeVerificationDetection.class);
+                        classByDiscriminatorValue.put("BaseDetection", de.irisnet.java.client.model.BaseDetection.class);
                         classByDiscriminatorValue.put("BreastDetection", de.irisnet.java.client.model.BreastDetection.class);
                         classByDiscriminatorValue.put("FaceDetection", de.irisnet.java.client.model.FaceDetection.class);
                         classByDiscriminatorValue.put("HairDetection", de.irisnet.java.client.model.HairDetection.class);
