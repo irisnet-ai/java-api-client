@@ -33,6 +33,7 @@ Can be used to set a multitude of pre-defined commonly used rules without the ne
 | LIVE_AGE_VERIFICATION_CHECK | &quot;liveAgeVerificationCheck&quot; |
 | LIVE_FACE_AUTHENTICATION | &quot;liveFaceAuthentication&quot; |
 | VIDEO_UPLOAD_IDENTIFICATION | &quot;videoUploadIdentification&quot; |
+| VIDEO_UPLOAD_AGE_VERIFICATION_CHECK | &quot;videoUploadAgeVerificationCheck&quot; |
 | CONSIDER_KNOWN_FACES | &quot;considerKnownFaces&quot; |
 | ADD_ENCODINGS_TO_RESULT | &quot;addEncodingsToResult&quot; |
 | I_FRAME_FLOW | &quot;iFrameFlow&quot; |

@@ -1909,6 +1909,7 @@ components:
               * _liveProofOfAddress_ - Can be used standalone or as a flag for the liveIdentification to also take a proof of address document into account.
               * _liveAgeVerificationCheck_ - Performs a guided live age verification check via a UI. If used together with liveIdentification or liveIdentityDocumentCheck, liveAgeVerificationCheck will run first and if age is too low a liveIdentification or liveIdentityDocumentCheck is made as well.
               * _videoUploadIdentification_ - Upload a video to perform an identityDocumentCheck and biometricCheck via a UI.
+              * _videoUploadAgeVerificationCheck_ - Upload a video to perform an ageVerificationCheck via a UI.
               * _iFrameFlow_ - Flag to signal that the iFrame flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured.
               * _redirectFlow_ - Flag to signal that the redirect flow should be used for the UI driven identification. Either iFrameFlow or redirectFlow must be present if liveIdentification, liveAgeVerificationCheck or videoUploadIdentification is configured.
               * _addEncodingsToResult_ - Flag to signal that document and selfie images of the check should be attached to the CheckResult.
@@ -1927,6 +1928,7 @@ components:
             - liveAgeVerificationCheck
             - liveFaceAuthentication
             - videoUploadIdentification
+            - videoUploadAgeVerificationCheck
             - considerKnownFaces
             - addEncodingsToResult
             - iFrameFlow
@@ -2432,6 +2434,14 @@ components:
           type: string
         photocopyCheck:
           description: Indicates whether the document is a photocopy
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
+        tamperingCheck:
+          description: Indicates whether the document image has been digitally tampered
+            with
           enum:
           - passed
           - failed

@@ -523,6 +523,65 @@ public class IdDocumentSubChecks {
   private PhotocopyCheckEnum photocopyCheck;
 
   /**
+   * Indicates whether the document image has been digitally tampered with
+   */
+  @JsonAdapter(TamperingCheckEnum.Adapter.class)
+  public enum TamperingCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    TamperingCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TamperingCheckEnum fromValue(String value) {
+      for (TamperingCheckEnum b : TamperingCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TamperingCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TamperingCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TamperingCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TamperingCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TamperingCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TAMPERING_CHECK = "tamperingCheck";
+  @SerializedName(SERIALIZED_NAME_TAMPERING_CHECK)
+  @javax.annotation.Nullable
+  private TamperingCheckEnum tamperingCheck;
+
+  /**
    * Indicates whether the document has been copied from the Internet
    */
   @JsonAdapter(SpecimenCheckEnum.Adapter.class)
@@ -1680,6 +1739,25 @@ public class IdDocumentSubChecks {
   }
 
 
+  public IdDocumentSubChecks tamperingCheck(@javax.annotation.Nullable TamperingCheckEnum tamperingCheck) {
+    this.tamperingCheck = tamperingCheck;
+    return this;
+  }
+
+  /**
+   * Indicates whether the document image has been digitally tampered with
+   * @return tamperingCheck
+   */
+  @javax.annotation.Nullable
+  public TamperingCheckEnum getTamperingCheck() {
+    return tamperingCheck;
+  }
+
+  public void setTamperingCheck(@javax.annotation.Nullable TamperingCheckEnum tamperingCheck) {
+    this.tamperingCheck = tamperingCheck;
+  }
+
+
   public IdDocumentSubChecks specimenCheck(@javax.annotation.Nullable SpecimenCheckEnum specimenCheck) {
     this.specimenCheck = specimenCheck;
     return this;
@@ -2021,6 +2099,7 @@ public class IdDocumentSubChecks {
         Objects.equals(this.photoLocation, idDocumentSubChecks.photoLocation) &&
         Objects.equals(this.blacklistCheck, idDocumentSubChecks.blacklistCheck) &&
         Objects.equals(this.photocopyCheck, idDocumentSubChecks.photocopyCheck) &&
+        Objects.equals(this.tamperingCheck, idDocumentSubChecks.tamperingCheck) &&
         Objects.equals(this.specimenCheck, idDocumentSubChecks.specimenCheck) &&
         Objects.equals(this.documentModelIdentification, idDocumentSubChecks.documentModelIdentification) &&
         Objects.equals(this.documentLivenessCheck, idDocumentSubChecks.documentLivenessCheck) &&
@@ -2042,7 +2121,7 @@ public class IdDocumentSubChecks {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, firstNameConsistency, lastNameConsistency, dobConsistency, documentNumberConsistency, issuingDateConsistency, expirationDateConsistency, knownFacesCheck);
+    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, tamperingCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, firstNameConsistency, lastNameConsistency, dobConsistency, documentNumberConsistency, issuingDateConsistency, expirationDateConsistency, knownFacesCheck);
   }
 
   @Override
@@ -2057,6 +2136,7 @@ public class IdDocumentSubChecks {
     sb.append("    photoLocation: ").append(toIndentedString(photoLocation)).append("\n");
     sb.append("    blacklistCheck: ").append(toIndentedString(blacklistCheck)).append("\n");
     sb.append("    photocopyCheck: ").append(toIndentedString(photocopyCheck)).append("\n");
+    sb.append("    tamperingCheck: ").append(toIndentedString(tamperingCheck)).append("\n");
     sb.append("    specimenCheck: ").append(toIndentedString(specimenCheck)).append("\n");
     sb.append("    documentModelIdentification: ").append(toIndentedString(documentModelIdentification)).append("\n");
     sb.append("    documentLivenessCheck: ").append(toIndentedString(documentLivenessCheck)).append("\n");
@@ -2095,7 +2175,7 @@ public class IdDocumentSubChecks {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("mrzChecksum", "mrzFormat", "mrzConsistency", "expirationDate", "securityElements", "photoLocation", "blacklistCheck", "photocopyCheck", "specimenCheck", "documentModelIdentification", "documentLivenessCheck", "dataIntegrityCheck", "dataConsistencyCheck", "ageValidationCheck", "spoofedImageAnalysis", "faceLivenessCheck", "voiceChallengeCheck", "actionChallengeCheck", "firstNameConsistency", "lastNameConsistency", "dobConsistency", "documentNumberConsistency", "issuingDateConsistency", "expirationDateConsistency", "knownFacesCheck"));
+    openapiFields = new HashSet<String>(Arrays.asList("mrzChecksum", "mrzFormat", "mrzConsistency", "expirationDate", "securityElements", "photoLocation", "blacklistCheck", "photocopyCheck", "tamperingCheck", "specimenCheck", "documentModelIdentification", "documentLivenessCheck", "dataIntegrityCheck", "dataConsistencyCheck", "ageValidationCheck", "spoofedImageAnalysis", "faceLivenessCheck", "voiceChallengeCheck", "actionChallengeCheck", "firstNameConsistency", "lastNameConsistency", "dobConsistency", "documentNumberConsistency", "issuingDateConsistency", "expirationDateConsistency", "knownFacesCheck"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -2177,6 +2257,13 @@ public class IdDocumentSubChecks {
       // validate the optional field `photocopyCheck`
       if (jsonObj.get("photocopyCheck") != null && !jsonObj.get("photocopyCheck").isJsonNull()) {
         PhotocopyCheckEnum.validateJsonElement(jsonObj.get("photocopyCheck"));
+      }
+      if ((jsonObj.get("tamperingCheck") != null && !jsonObj.get("tamperingCheck").isJsonNull()) && !jsonObj.get("tamperingCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tamperingCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tamperingCheck").toString()));
+      }
+      // validate the optional field `tamperingCheck`
+      if (jsonObj.get("tamperingCheck") != null && !jsonObj.get("tamperingCheck").isJsonNull()) {
+        TamperingCheckEnum.validateJsonElement(jsonObj.get("tamperingCheck"));
       }
       if ((jsonObj.get("specimenCheck") != null && !jsonObj.get("specimenCheck").isJsonNull()) && !jsonObj.get("specimenCheck").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `specimenCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("specimenCheck").toString()));

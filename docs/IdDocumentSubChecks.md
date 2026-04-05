@@ -16,6 +16,7 @@ Contains information on idDocument sub-checks
 |**photoLocation** | [**PhotoLocationEnum**](#PhotoLocationEnum) | Indicates whether the photo is in the correct location for a given document type |  [optional] |
 |**blacklistCheck** | [**BlacklistCheckEnum**](#BlacklistCheckEnum) | Indicates whether a competent authority deny-listed the ID document |  [optional] |
 |**photocopyCheck** | [**PhotocopyCheckEnum**](#PhotocopyCheckEnum) | Indicates whether the document is a photocopy |  [optional] |
+|**tamperingCheck** | [**TamperingCheckEnum**](#TamperingCheckEnum) | Indicates whether the document image has been digitally tampered with |  [optional] |
 |**specimenCheck** | [**SpecimenCheckEnum**](#SpecimenCheckEnum) | Indicates whether the document has been copied from the Internet |  [optional] |
 |**documentModelIdentification** | [**DocumentModelIdentificationEnum**](#DocumentModelIdentificationEnum) | Indicates whether the document model has been identified and whether or not the document conforms to official specifications |  [optional] |
 |**documentLivenessCheck** | [**DocumentLivenessCheckEnum**](#DocumentLivenessCheckEnum) | Indicates if the document image is genuine and not a photo of an image or of a screen |  [optional] |
@@ -107,6 +108,16 @@ Contains information on idDocument sub-checks
 
 
 ## Enum: PhotocopyCheckEnum
+
+| Name | Value |
+|---- | -----|
+| PASSED | &quot;passed&quot; |
+| FAILED | &quot;failed&quot; |
+| NOT_PROCESSED | &quot;not_processed&quot; |
+
+
+
+## Enum: TamperingCheckEnum
 
 | Name | Value |
 |---- | -----|
