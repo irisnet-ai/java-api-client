@@ -5,12 +5,11 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/AgeAttribute.md
 docs/AgeVerificationAttribute.md
 docs/AgeVerificationDetection.md
 docs/AgeVerificationSubChecks.md
 docs/AiCheckOperationsApi.md
-docs/AiClassification.md
-docs/AiPrototype.md
 docs/ApiNotice.md
 docs/Attribute.md
 docs/BalanceEndpointsApi.md
@@ -87,11 +86,10 @@ src/main/java/de/irisnet/java/client/BalanceEndpointsApi.java
 src/main/java/de/irisnet/java/client/ConfigurationManagementApi.java
 src/main/java/de/irisnet/java/client/DetailedConfigurationParametersApi.java
 src/main/java/de/irisnet/java/client/model/AbstractOpenApiSchema.java
+src/main/java/de/irisnet/java/client/model/AgeAttribute.java
 src/main/java/de/irisnet/java/client/model/AgeVerificationAttribute.java
 src/main/java/de/irisnet/java/client/model/AgeVerificationDetection.java
 src/main/java/de/irisnet/java/client/model/AgeVerificationSubChecks.java
-src/main/java/de/irisnet/java/client/model/AiClassification.java
-src/main/java/de/irisnet/java/client/model/AiPrototype.java
 src/main/java/de/irisnet/java/client/model/ApiNotice.java
 src/main/java/de/irisnet/java/client/model/Attribute.java
 src/main/java/de/irisnet/java/client/model/BaseAttribute.java
@@ -134,3 +132,4 @@ src/main/java/de/irisnet/java/client/model/Segment.java
 src/main/java/de/irisnet/java/client/model/Summary.java
 src/main/java/de/irisnet/java/client/model/TextDetection.java
 src/main/java/de/irisnet/java/client/model/ValueAttribute.java
+src/test/java/de/irisnet/java/client/model/AgeAttributeTest.java

@@ -34,6 +34,7 @@ Contains information on idDocument sub-checks
 |**issuingDateConsistency** | [**IssuingDateConsistencyEnum**](#IssuingDateConsistencyEnum) | Indicates if the issuing date on the document and the MRZ are consistent |  [optional] |
 |**expirationDateConsistency** | [**ExpirationDateConsistencyEnum**](#ExpirationDateConsistencyEnum) | Indicates if the expiration date on the document and the MRZ are consistent |  [optional] |
 |**knownFacesCheck** | [**KnownFacesCheckEnum**](#KnownFacesCheckEnum) | Indicates if the selfie image matches an aready existing client/customer |  [optional] |
+|**faceSimilarityCheck** | [**FaceSimilarityCheckEnum**](#FaceSimilarityCheckEnum) | Indicates if the selfie image and the ID document image belong to the same person |  [optional] |
 
 
 
@@ -288,6 +289,16 @@ Contains information on idDocument sub-checks
 
 
 ## Enum: KnownFacesCheckEnum
+
+| Name | Value |
+|---- | -----|
+| PASSED | &quot;passed&quot; |
+| FAILED | &quot;failed&quot; |
+| NOT_PROCESSED | &quot;not_processed&quot; |
+
+
+
+## Enum: FaceSimilarityCheckEnum
 
 | Name | Value |
 |---- | -----|

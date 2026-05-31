@@ -61,6 +61,15 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+                .registerTypeSelector(de.irisnet.java.client.model.AgeAttribute.class, new TypeSelector<de.irisnet.java.client.model.AgeAttribute>() {
+                    @Override
+                    public Class<? extends de.irisnet.java.client.model.AgeAttribute> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AgeAttribute", de.irisnet.java.client.model.AgeAttribute.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
                 .registerTypeSelector(de.irisnet.java.client.model.AgeVerificationDetection.class, new TypeSelector<de.irisnet.java.client.model.AgeVerificationDetection>() {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.AgeVerificationDetection> getClassForElement(JsonElement readElement) {
@@ -74,6 +83,7 @@ public class JSON {
                     @Override
                     public Class<? extends de.irisnet.java.client.model.Attribute> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AgeAttribute", de.irisnet.java.client.model.AgeAttribute.class);
                         classByDiscriminatorValue.put("LanguageAttribute", de.irisnet.java.client.model.LanguageAttribute.class);
                         classByDiscriminatorValue.put("ValueAttribute", de.irisnet.java.client.model.ValueAttribute.class);
                         classByDiscriminatorValue.put("Attribute", de.irisnet.java.client.model.Attribute.class);
@@ -242,11 +252,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeVerificationAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeVerificationDetection.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AgeVerificationSubChecks.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AiClassification.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.AiPrototype.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.ApiNotice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BaseAttribute.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new de.irisnet.java.client.model.BaseDetection.CustomTypeAdapterFactory());

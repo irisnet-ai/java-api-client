@@ -1584,6 +1584,65 @@ public class IdDocumentSubChecks {
   @javax.annotation.Nullable
   private KnownFacesCheckEnum knownFacesCheck;
 
+  /**
+   * Indicates if the selfie image and the ID document image belong to the same person
+   */
+  @JsonAdapter(FaceSimilarityCheckEnum.Adapter.class)
+  public enum FaceSimilarityCheckEnum {
+    PASSED("passed"),
+    
+    FAILED("failed"),
+    
+    NOT_PROCESSED("not_processed");
+
+    private String value;
+
+    FaceSimilarityCheckEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FaceSimilarityCheckEnum fromValue(String value) {
+      for (FaceSimilarityCheckEnum b : FaceSimilarityCheckEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FaceSimilarityCheckEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FaceSimilarityCheckEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FaceSimilarityCheckEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FaceSimilarityCheckEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      FaceSimilarityCheckEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FACE_SIMILARITY_CHECK = "faceSimilarityCheck";
+  @SerializedName(SERIALIZED_NAME_FACE_SIMILARITY_CHECK)
+  @javax.annotation.Nullable
+  private FaceSimilarityCheckEnum faceSimilarityCheck;
+
   public IdDocumentSubChecks() {
   }
 
@@ -2081,6 +2140,25 @@ public class IdDocumentSubChecks {
   }
 
 
+  public IdDocumentSubChecks faceSimilarityCheck(@javax.annotation.Nullable FaceSimilarityCheckEnum faceSimilarityCheck) {
+    this.faceSimilarityCheck = faceSimilarityCheck;
+    return this;
+  }
+
+  /**
+   * Indicates if the selfie image and the ID document image belong to the same person
+   * @return faceSimilarityCheck
+   */
+  @javax.annotation.Nullable
+  public FaceSimilarityCheckEnum getFaceSimilarityCheck() {
+    return faceSimilarityCheck;
+  }
+
+  public void setFaceSimilarityCheck(@javax.annotation.Nullable FaceSimilarityCheckEnum faceSimilarityCheck) {
+    this.faceSimilarityCheck = faceSimilarityCheck;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -2116,12 +2194,13 @@ public class IdDocumentSubChecks {
         Objects.equals(this.documentNumberConsistency, idDocumentSubChecks.documentNumberConsistency) &&
         Objects.equals(this.issuingDateConsistency, idDocumentSubChecks.issuingDateConsistency) &&
         Objects.equals(this.expirationDateConsistency, idDocumentSubChecks.expirationDateConsistency) &&
-        Objects.equals(this.knownFacesCheck, idDocumentSubChecks.knownFacesCheck);
+        Objects.equals(this.knownFacesCheck, idDocumentSubChecks.knownFacesCheck) &&
+        Objects.equals(this.faceSimilarityCheck, idDocumentSubChecks.faceSimilarityCheck);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, tamperingCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, firstNameConsistency, lastNameConsistency, dobConsistency, documentNumberConsistency, issuingDateConsistency, expirationDateConsistency, knownFacesCheck);
+    return Objects.hash(mrzChecksum, mrzFormat, mrzConsistency, expirationDate, securityElements, photoLocation, blacklistCheck, photocopyCheck, tamperingCheck, specimenCheck, documentModelIdentification, documentLivenessCheck, dataIntegrityCheck, dataConsistencyCheck, ageValidationCheck, spoofedImageAnalysis, faceLivenessCheck, voiceChallengeCheck, actionChallengeCheck, firstNameConsistency, lastNameConsistency, dobConsistency, documentNumberConsistency, issuingDateConsistency, expirationDateConsistency, knownFacesCheck, faceSimilarityCheck);
   }
 
   @Override
@@ -2154,6 +2233,7 @@ public class IdDocumentSubChecks {
     sb.append("    issuingDateConsistency: ").append(toIndentedString(issuingDateConsistency)).append("\n");
     sb.append("    expirationDateConsistency: ").append(toIndentedString(expirationDateConsistency)).append("\n");
     sb.append("    knownFacesCheck: ").append(toIndentedString(knownFacesCheck)).append("\n");
+    sb.append("    faceSimilarityCheck: ").append(toIndentedString(faceSimilarityCheck)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -2175,7 +2255,7 @@ public class IdDocumentSubChecks {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("mrzChecksum", "mrzFormat", "mrzConsistency", "expirationDate", "securityElements", "photoLocation", "blacklistCheck", "photocopyCheck", "tamperingCheck", "specimenCheck", "documentModelIdentification", "documentLivenessCheck", "dataIntegrityCheck", "dataConsistencyCheck", "ageValidationCheck", "spoofedImageAnalysis", "faceLivenessCheck", "voiceChallengeCheck", "actionChallengeCheck", "firstNameConsistency", "lastNameConsistency", "dobConsistency", "documentNumberConsistency", "issuingDateConsistency", "expirationDateConsistency", "knownFacesCheck"));
+    openapiFields = new HashSet<String>(Arrays.asList("mrzChecksum", "mrzFormat", "mrzConsistency", "expirationDate", "securityElements", "photoLocation", "blacklistCheck", "photocopyCheck", "tamperingCheck", "specimenCheck", "documentModelIdentification", "documentLivenessCheck", "dataIntegrityCheck", "dataConsistencyCheck", "ageValidationCheck", "spoofedImageAnalysis", "faceLivenessCheck", "voiceChallengeCheck", "actionChallengeCheck", "firstNameConsistency", "lastNameConsistency", "dobConsistency", "documentNumberConsistency", "issuingDateConsistency", "expirationDateConsistency", "knownFacesCheck", "faceSimilarityCheck"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -2383,6 +2463,13 @@ public class IdDocumentSubChecks {
       // validate the optional field `knownFacesCheck`
       if (jsonObj.get("knownFacesCheck") != null && !jsonObj.get("knownFacesCheck").isJsonNull()) {
         KnownFacesCheckEnum.validateJsonElement(jsonObj.get("knownFacesCheck"));
+      }
+      if ((jsonObj.get("faceSimilarityCheck") != null && !jsonObj.get("faceSimilarityCheck").isJsonNull()) && !jsonObj.get("faceSimilarityCheck").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `faceSimilarityCheck` to be a primitive type in the JSON string but got `%s`", jsonObj.get("faceSimilarityCheck").toString()));
+      }
+      // validate the optional field `faceSimilarityCheck`
+      if (jsonObj.get("faceSimilarityCheck") != null && !jsonObj.get("faceSimilarityCheck").isJsonNull()) {
+        FaceSimilarityCheckEnum.validateJsonElement(jsonObj.get("faceSimilarityCheck"));
       }
   }
 

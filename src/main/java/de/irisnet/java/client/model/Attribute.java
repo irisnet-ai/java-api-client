@@ -143,6 +143,9 @@ public class Attribute {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("type").getAsString();
       switch (discriminatorValue) {
+        case "AgeAttribute":
+          AgeAttribute.validateJsonElement(jsonElement);
+          break;
         case "LanguageAttribute":
           LanguageAttribute.validateJsonElement(jsonElement);
           break;

@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>de.irisnet.java.client</groupId>
   <artifactId>irisnet-java-client</artifactId>
-  <version>4.1.8</version>
+  <version>4.1.9</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,7 +67,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "de.irisnet.java.client:irisnet-java-client:4.1.8"
+     implementation "de.irisnet.java.client:irisnet-java-client:4.1.9"
   }
 ```
 
@@ -81,7 +81,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/irisnet-java-client-4.1.8.jar`
+* `target/irisnet-java-client-4.1.9.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -157,11 +157,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AgeAttribute](docs/AgeAttribute.md)
  - [AgeVerificationAttribute](docs/AgeVerificationAttribute.md)
  - [AgeVerificationDetection](docs/AgeVerificationDetection.md)
  - [AgeVerificationSubChecks](docs/AgeVerificationSubChecks.md)
- - [AiClassification](docs/AiClassification.md)
- - [AiPrototype](docs/AiPrototype.md)
  - [ApiNotice](docs/ApiNotice.md)
  - [Attribute](docs/Attribute.md)
  - [BaseAttribute](docs/BaseAttribute.md)

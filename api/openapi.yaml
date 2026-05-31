@@ -1279,6 +1279,28 @@ paths:
       - application/json
 components:
   schemas:
+    AgeAttribute:
+      allOf:
+      - $ref: "#/components/schemas/Attribute"
+      - properties:
+          age:
+            description: The estimated age of the person in years.
+            format: int32
+            type: integer
+          ageMin:
+            description: The estimated minimum age of the person in years.
+            format: int32
+            type: integer
+          ageMax:
+            description: The estimated maximum age of the person in years.
+            format: int32
+            type: integer
+          probability:
+            description: The probability of the estimated age.
+            example: 94
+            format: int32
+            type: integer
+      description: Attributes qualifying the _numericAgeEstimation_ classification.
     AgeVerificationAttribute:
       description: Attributes qualifying the _ageVerification_ classification.
       example:
@@ -1405,99 +1427,6 @@ components:
           - failed
           - not_processed
           type: string
-    AiClassification:
-      example:
-        min: 2
-        grouped: true
-        drawMode: 7
-        max: 4
-        cascadedFrom: cascadedFrom
-        name: name
-        description: description
-      properties:
-        name:
-          type: string
-        min:
-          format: int32
-          type: integer
-        max:
-          format: int32
-          type: integer
-        drawMode:
-          format: int32
-          type: integer
-        grouped:
-          type: boolean
-        description:
-          type: string
-        cascadedFrom:
-          type: string
-    AiPrototype:
-      example:
-        summary: summary
-        classifications:
-        - min: 2
-          grouped: true
-          drawMode: 7
-          max: 4
-          cascadedFrom: cascadedFrom
-          name: name
-          description: description
-        - min: 2
-          grouped: true
-          drawMode: 7
-          max: 4
-          cascadedFrom: cascadedFrom
-          name: name
-          description: description
-        aliases:
-        - aliases
-        - aliases
-        modes:
-        - modes
-        - modes
-        route: AI_SERVICE
-        dependsOn:
-        - dependsOn
-        - dependsOn
-        hidden: true
-        routerMethod: routerMethod
-        name: name
-      properties:
-        name:
-          type: string
-        classifications:
-          items:
-            $ref: "#/components/schemas/AiClassification"
-          type: array
-          uniqueItems: true
-        summary:
-          type: string
-        aliases:
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        modes:
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        route:
-          enum:
-          - AI_SERVICE
-          - TEXT_SERVICE
-          - PROVIDER_SERVICE
-          type: string
-        routerMethod:
-          type: string
-        dependsOn:
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        hidden:
-          type: boolean
     ApiNotice:
       example:
         code: 418
@@ -2581,6 +2510,14 @@ components:
           - failed
           - not_processed
           type: string
+        faceSimilarityCheck:
+          description: Indicates if the selfie image and the ID document image belong
+            to the same person
+          enum:
+          - passed
+          - failed
+          - not_processed
+          type: string
     ImageAnalysisDetection:
       allOf:
       - $ref: "#/components/schemas/Detection"
@@ -2778,36 +2715,6 @@ components:
         max: 0
         scale: 1.7656269
         ignore: false
-        prototypeObject:
-          summary: summary
-          classifications:
-          - min: 2
-            grouped: true
-            drawMode: 7
-            max: 4
-            cascadedFrom: cascadedFrom
-            name: name
-            description: description
-          - min: 2
-            grouped: true
-            drawMode: 7
-            max: 4
-            cascadedFrom: cascadedFrom
-            name: name
-            description: description
-          aliases:
-          - aliases
-          - aliases
-          modes:
-          - modes
-          - modes
-          route: AI_SERVICE
-          dependsOn:
-          - dependsOn
-          - dependsOn
-          hidden: true
-          routerMethod: routerMethod
-          name: name
         classification: face
         prototype: prototype
         grey: 237
@@ -3084,8 +2991,6 @@ components:
           description: "A shorthand to ignore the classification object. This is equal\
             \ to setting _min=0_, _max=-1_ and _drawMode=0_."
           type: boolean
-        prototypeObject:
-          $ref: "#/components/schemas/AiPrototype"
       required:
       - classification
     ParamSet:
@@ -3107,36 +3012,6 @@ components:
           max: 0
           scale: 1.7656269
           ignore: false
-          prototypeObject:
-            summary: summary
-            classifications:
-            - min: 2
-              grouped: true
-              drawMode: 7
-              max: 4
-              cascadedFrom: cascadedFrom
-              name: name
-              description: description
-            - min: 2
-              grouped: true
-              drawMode: 7
-              max: 4
-              cascadedFrom: cascadedFrom
-              name: name
-              description: description
-            aliases:
-            - aliases
-            - aliases
-            modes:
-            - modes
-            - modes
-            route: AI_SERVICE
-            dependsOn:
-            - dependsOn
-            - dependsOn
-            hidden: true
-            routerMethod: routerMethod
-            name: name
           classification: face
           prototype: prototype
           grey: 237
@@ -3146,41 +3021,10 @@ components:
           max: 0
           scale: 1.7656269
           ignore: false
-          prototypeObject:
-            summary: summary
-            classifications:
-            - min: 2
-              grouped: true
-              drawMode: 7
-              max: 4
-              cascadedFrom: cascadedFrom
-              name: name
-              description: description
-            - min: 2
-              grouped: true
-              drawMode: 7
-              max: 4
-              cascadedFrom: cascadedFrom
-              name: name
-              description: description
-            aliases:
-            - aliases
-            - aliases
-            modes:
-            - modes
-            - modes
-            route: AI_SERVICE
-            dependsOn:
-            - dependsOn
-            - dependsOn
-            hidden: true
-            routerMethod: routerMethod
-            name: name
           classification: face
           prototype: prototype
           grey: 237
         thresh: 0.08008282
-        kycDocumentCountryDenyList: kycDocumentCountryDenyList
         grey: 153
       properties:
         thresh:
@@ -3223,10 +3067,6 @@ components:
           type: array
         kycUiParameters:
           $ref: "#/components/schemas/KycUiParameter"
-        kycDocumentCountryDenyList:
-          description: A comma separated list of country codes (ISO 3166-1 alpha-2)
-            for which id-documents should be rejected.
-          type: string
     PoaCheckRequestData:
       example:
         frontImage: frontImage

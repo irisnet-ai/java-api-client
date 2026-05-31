@@ -84,11 +84,6 @@ public class ParamSet {
   @javax.annotation.Nullable
   private KycUiParameter kycUiParameters;
 
-  public static final String SERIALIZED_NAME_KYC_DOCUMENT_COUNTRY_DENY_LIST = "kycDocumentCountryDenyList";
-  @SerializedName(SERIALIZED_NAME_KYC_DOCUMENT_COUNTRY_DENY_LIST)
-  @javax.annotation.Nullable
-  private String kycDocumentCountryDenyList;
-
   public ParamSet() {
   }
 
@@ -221,25 +216,6 @@ public class ParamSet {
   }
 
 
-  public ParamSet kycDocumentCountryDenyList(@javax.annotation.Nullable String kycDocumentCountryDenyList) {
-    this.kycDocumentCountryDenyList = kycDocumentCountryDenyList;
-    return this;
-  }
-
-  /**
-   * A comma separated list of country codes (ISO 3166-1 alpha-2) for which id-documents should be rejected.
-   * @return kycDocumentCountryDenyList
-   */
-  @javax.annotation.Nullable
-  public String getKycDocumentCountryDenyList() {
-    return kycDocumentCountryDenyList;
-  }
-
-  public void setKycDocumentCountryDenyList(@javax.annotation.Nullable String kycDocumentCountryDenyList) {
-    this.kycDocumentCountryDenyList = kycDocumentCountryDenyList;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -255,13 +231,12 @@ public class ParamSet {
         Objects.equals(this.minDuration, paramSet.minDuration) &&
         Objects.equals(this.abortOnSeverity, paramSet.abortOnSeverity) &&
         Objects.equals(this.params, paramSet.params) &&
-        Objects.equals(this.kycUiParameters, paramSet.kycUiParameters) &&
-        Objects.equals(this.kycDocumentCountryDenyList, paramSet.kycDocumentCountryDenyList);
+        Objects.equals(this.kycUiParameters, paramSet.kycUiParameters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(thresh, grey, minDuration, abortOnSeverity, params, kycUiParameters, kycDocumentCountryDenyList);
+    return Objects.hash(thresh, grey, minDuration, abortOnSeverity, params, kycUiParameters);
   }
 
   @Override
@@ -274,7 +249,6 @@ public class ParamSet {
     sb.append("    abortOnSeverity: ").append(toIndentedString(abortOnSeverity)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    kycUiParameters: ").append(toIndentedString(kycUiParameters)).append("\n");
-    sb.append("    kycDocumentCountryDenyList: ").append(toIndentedString(kycDocumentCountryDenyList)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -296,7 +270,7 @@ public class ParamSet {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("thresh", "grey", "minDuration", "abortOnSeverity", "params", "kycUiParameters", "kycDocumentCountryDenyList"));
+    openapiFields = new HashSet<String>(Arrays.asList("thresh", "grey", "minDuration", "abortOnSeverity", "params", "kycUiParameters"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -340,9 +314,6 @@ public class ParamSet {
       // validate the optional field `kycUiParameters`
       if (jsonObj.get("kycUiParameters") != null && !jsonObj.get("kycUiParameters").isJsonNull()) {
         KycUiParameter.validateJsonElement(jsonObj.get("kycUiParameters"));
-      }
-      if ((jsonObj.get("kycDocumentCountryDenyList") != null && !jsonObj.get("kycDocumentCountryDenyList").isJsonNull()) && !jsonObj.get("kycDocumentCountryDenyList").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kycDocumentCountryDenyList` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kycDocumentCountryDenyList").toString()));
       }
   }
 

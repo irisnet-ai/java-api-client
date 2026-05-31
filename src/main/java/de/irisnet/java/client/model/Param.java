@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import de.irisnet.java.client.model.AiPrototype;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -326,11 +325,6 @@ public class Param {
   @javax.annotation.Nullable
   private Boolean ignore = false;
 
-  public static final String SERIALIZED_NAME_PROTOTYPE_OBJECT = "prototypeObject";
-  @SerializedName(SERIALIZED_NAME_PROTOTYPE_OBJECT)
-  @javax.annotation.Nullable
-  private AiPrototype prototypeObject;
-
   public Param() {
   }
 
@@ -515,25 +509,6 @@ public class Param {
   }
 
 
-  public Param prototypeObject(@javax.annotation.Nullable AiPrototype prototypeObject) {
-    this.prototypeObject = prototypeObject;
-    return this;
-  }
-
-  /**
-   * Get prototypeObject
-   * @return prototypeObject
-   */
-  @javax.annotation.Nullable
-  public AiPrototype getPrototypeObject() {
-    return prototypeObject;
-  }
-
-  public void setPrototypeObject(@javax.annotation.Nullable AiPrototype prototypeObject) {
-    this.prototypeObject = prototypeObject;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -552,13 +527,12 @@ public class Param {
         Objects.equals(this.drawMode, param.drawMode) &&
         Objects.equals(this.grey, param.grey) &&
         Objects.equals(this.scale, param.scale) &&
-        Objects.equals(this.ignore, param.ignore) &&
-        Objects.equals(this.prototypeObject, param.prototypeObject);
+        Objects.equals(this.ignore, param.ignore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(classification, prototype, min, max, severity, drawMode, grey, scale, ignore, prototypeObject);
+    return Objects.hash(classification, prototype, min, max, severity, drawMode, grey, scale, ignore);
   }
 
   @Override
@@ -574,7 +548,6 @@ public class Param {
     sb.append("    grey: ").append(toIndentedString(grey)).append("\n");
     sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
     sb.append("    ignore: ").append(toIndentedString(ignore)).append("\n");
-    sb.append("    prototypeObject: ").append(toIndentedString(prototypeObject)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -596,7 +569,7 @@ public class Param {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("classification", "prototype", "min", "max", "severity", "drawMode", "grey", "scale", "ignore", "prototypeObject"));
+    openapiFields = new HashSet<String>(Arrays.asList("classification", "prototype", "min", "max", "severity", "drawMode", "grey", "scale", "ignore"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("classification"));
@@ -637,10 +610,6 @@ public class Param {
       ClassificationEnum.validateJsonElement(jsonObj.get("classification"));
       if ((jsonObj.get("prototype") != null && !jsonObj.get("prototype").isJsonNull()) && !jsonObj.get("prototype").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `prototype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prototype").toString()));
-      }
-      // validate the optional field `prototypeObject`
-      if (jsonObj.get("prototypeObject") != null && !jsonObj.get("prototypeObject").isJsonNull()) {
-        AiPrototype.validateJsonElement(jsonObj.get("prototypeObject"));
       }
   }
 
